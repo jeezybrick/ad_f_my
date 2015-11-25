@@ -15,7 +15,7 @@
     <link href="{% static "css/jquery-ui.css" %}" rel="stylesheet">
     <link href="{% static "colorful/colorPicker.css" %}" type="text/css" media="all" rel="stylesheet" />
     <link href="{% static "css/style_old.css" %}" rel="stylesheet">
-    <link href="{% static "css/style.css" %}" rel="stylesheet">
+
     <link href="{% static "css/media.css" %}" rel="stylesheet">
     
     <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
@@ -78,7 +78,17 @@
 </div>
 </div>
 
-   {% include 'partials/footer_two.html' %}
+   <nav role="navigation" class="navbar navbar-default base-nav navbar-bottom">
+  <div id="navbar-collapse-01" class="navbar-collapse in collapse base-nav-div">
+    <p class="navbar-text span6">
+      <a href="#fakelink">Copyright 2014 AD fits Inc. All rights reserved</a>
+    </p>
+    <p class="navbar-text navbar-right span6 pull-right footer-right">
+      <a href="{% url 'policy' %}" class="">Privacy Policy | </a> 
+      <a href="{% url 'terms' %}" class="">Terms of Use</a>
+    </p>        
+  </div><!-- /.navbar-collapse -->
+</nav>
 
 </div>
 </body>
