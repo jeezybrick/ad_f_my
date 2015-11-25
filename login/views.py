@@ -45,16 +45,19 @@ class LoginView(FormView):
 		form = self.form_class(request.POST)
 
 		if form.is_valid():
+			logger.debug('Form valid')
 			username = form.cleaned_data['username']
 			password = form.cleaned_data['password']
 			user = authenticate(model, username=username, password=password)
 
 			if user is not None:
+				logger.debug(user)
 				login(request, user)
 				request.session['_id'] = user.pk
 
 				#if model is publisher model.
 				if model == Publisher:
+					logger.debug(model)
 					request.session['user_type'] = constants.USER_PUBLISHER
 					return HttpResponseRedirect(self.get_success_url()) 
 				elif model == Sponsor:
