@@ -137,25 +137,12 @@ color:#5ec8f2;
     background-color:#5ec8f2;
 }
 
-html, body {
-    height: 100%;
-    margin: 0pt;
-}
-
-.scale-footer {
-    min-height:67%;
-}
-
 .chart {
     width: 800px; 
     height: 300px;
     right: 5px;
 }
 
-.footer-right {
-    position: relative;
-    right: -310px;
-}
 
 .ui-datepicker td span, 
 .ui-datepicker td a,
