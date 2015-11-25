@@ -69,7 +69,7 @@ label {
 .adf-logos, .adf-progress {
     display: inline-block;
     margin: 0 10px;
-    height: 48px;
+    height: 0;
     /* width: 210px; */
 }
 
