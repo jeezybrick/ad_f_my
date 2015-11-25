@@ -53,15 +53,6 @@
 	position: absolute;
 	left: 400px;
 }
-.footer{
-    background-color: #777;
-    position: fixed;
-    bottom: 0;
-    color: white;
-    height: 30px;
-    width: 100%;
-    z-index: 10;
-}
 
 .scale{
 	padding-right: 5px;
