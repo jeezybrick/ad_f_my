@@ -1,5 +1,10 @@
 /*Custom css file*/
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 .adfits-logintop{
 	margin-top: 5%;
 }
