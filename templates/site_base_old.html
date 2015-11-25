@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+    <meta name="google-site-verification" content="plhjvoF8Ez5-LRVlwawOdyfsJtmgu9723kMvPraTZZ0" />
+    <meta charset="utf-8">
+    <title>
+        {% block title %}Ad Fits{% endblock %} 
+        {% block extra_title %}{% endblock %}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+    <link href="{% static "css/bootstrap-responsive.css"  %}" rel="stylesheet">
+    <link href="{% static "css/flat-ui.css" %}" rel="stylesheet">
+    <link href="{% static "css/jquery-ui.css" %}" rel="stylesheet">
+    <link href="{% static "colorful/colorPicker.css" %}" type="text/css" media="all" rel="stylesheet" />
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
+    
+    <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
+
+    <script src="{% static "js/jquery-1.8.3.min.js" %}"></script>
+    <script src="{% static "js/jquery-ui.js" %}"></script>
+    <script src="{% static "js/jquery-ui-1.10.3.custom.min.js" %}"></script>
+    <script src="{% static "js/jquery.ui.touch-punch.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/bootstrap-select.js" %}"></script>
+    <script src="{% static "js/bootstrap-switch.js" %}"></script>
+    <script src="{% static "js/flatui-checkbox.js" %}"></script>
+    <script src="{% static "js/flatui-radio.js" %}"></script>
+    <script src="{% static "js/jquery.tagsinput.js" %}"></script>
+    <script src="{% static "js/jquery.placeholder.js" %}"></script>
+    <script src="{% static "js/jquery.stacktable.js" %}"></script>
+    <script src="{% static "js/jquery.cookie.js" %}"></script>
+    <script src="{% static "js/jquery.dataTables.min.js" %}"></script>
+    <link href="{% static "css/DT_bootstrap.css" %}" rel="stylesheet">
+    <script src="{% static "js/DT_bootstrap.js" %}"></script>
+    <script src="{% static "js/app.js" %}"></script>
+    <script type="text/javascript" src="{% static "colorful/jQuery.colorPicker.js" %}">
+    </script>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <!--charts-->
+		
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>   
+    </head>
+    <body>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+        <!-- Top navbar -->
+    {% block navbar %}
+        <div class="navbar" style="" >
+		<div class="navbar-inner" style="height:80px;margin-top: -20px;">
+			<div class="container">
+				<a href="/sponsor/dashboard" class="brand">
+					<h3>
+						<img src="/static/images/adfits.png" style="position: relative;margin-top:-5px;">
+					</h3>
+				</a>
+			</div>
+		</div>
+	</div>
+    {% endblock navbar %}
+    </div>
+  </div>
+
+
+<div class="container scale-footer" >
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      {% block content %}
+      {% endblock content %}
+    </div>
+</div>
+</div>
+
+<nav role="navigation" class="navbar navbar-default base-nav navbar-bottom">
+  <div id="navbar-collapse-01" class="navbar-collapse in collapse base-nav-div">
+    <p class="navbar-text span6">
+      <a href="#fakelink">Copyright 2014 AD fits Inc. All rights reserved</a>
+    </p>
+    <p class="navbar-text navbar-right span6 pull-right footer-right">
+      <a href="{% url 'policy' %}" class="">Privacy Policy | </a> 
+      <a href="{% url 'terms' %}" class="">Terms of Use</a>
+    </p>        
+  </div><!-- /.navbar-collapse -->
+</nav>
+</div>
+</body>
+</html>

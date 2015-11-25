@@ -53,6 +53,15 @@
 	position: absolute;
 	left: 400px;
 }
+.footer{
+    background-color: #777;
+    position: fixed;
+    bottom: 0;
+    color: white;
+    height: 30px;
+    width: 100%;
+    z-index: 10;
+}
 
 .scale{
 	padding-right: 5px;
@@ -88,6 +97,34 @@
     min-height: 490px;
 }
 
+a {
+    color:#483276;
+}
+
+a:hover {
+color:#5ec8f2;
+}
+
+.navbar .nav > li > a,
+.navbar .nav > li > a[class*="fui-"] {
+  font-size: 16px;
+  font-weight: normal;
+  color:#483276;
+}
+.navbar .nav > li > a:hover {
+    color:#5ec8f2;
+}
+
+.pagination ul li.active > a,
+.pagination ul li.active > span {
+  background-color: #5ec8f2;
+  color: #ffffff;
+}
+
+.navbar .nav li.dropdown.open > .dropdown-toggle {
+  background: none;
+  color: #5ec8f2;
+}
 
 #export, 
 #login, 
@@ -105,10 +142,28 @@
     background-color:#5ec8f2;
 }
 
+.navbar .nav li.dropdown .dropdown-menu > li > a:hover {
+    background-color:#5ec8f2;
+}
+
+html, body {
+    height: 100%;
+    margin: 0pt;
+}
+
+.scale-footer {
+    min-height:67%;
+}
+
 .chart {
     width: 800px; 
     height: 300px;
     right: 5px;
+}
+
+.footer-right {
+    position: relative;
+    right: -310px;
 }
 
 .ui-datepicker td span, 
