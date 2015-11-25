@@ -1,0 +1,213 @@
+{% extends "site_base.html" %}
+{% load static %}
+
+{% block content %}
+<script type="text/javascript">
+    $(function() {
+        adFitsApp.set_app_cookie("{{ adftoken }}", "{{ adfdy }}");
+        $('#sortable1 img').css("cursor", "pointer");
+		
+		var day = {{ adfdy }}
+        var count = {{ coupon_count }}
+        var saved = ('{{ last_saved }}')
+        var today = new Date().toDateString()
+        console.log(saved);
+        console.log(today);
+        
+        $( "#left" ).sortable({ disabled: true }).addClass('img-opaque');
+        $( "#up" ).sortable({ disabled: true }).addClass('img-opaque');
+        $( "#right" ).sortable({ disabled: true }).addClass('img-opaque');
+        $( "#down" ).sortable({ disabled: true }).addClass('img-opaque');
+        $( "#center" ).sortable({ disabled: true }).addClass('img-opaque');
+                
+		if(day == 1){
+            $( "#left" ).sortable({ disabled: false }).removeClass('img-opaque');
+        }
+        
+        if(day == 2){
+			if(count != 1){
+				$( "#left" ).sortable({ disabled: false }).removeClass('img-opaque');
+				$( "#up" ).removeClass('img-opaque');
+			}
+			else{
+				$( "#up" ).sortable({ disabled: false }).removeClass('img-opaque');
+			}
+        }
+        
+        if(day == 3){
+            if(count == 2){
+				$( "#right" ).sortable({ disabled: false }).removeClass('img-opaque');
+			}
+			else if(count == 1){
+				$( "#up" ).sortable({ disabled: false }).removeClass('img-opaque');
+				$( "#right" ).removeClass('img-opaque');
+				}
+				else if(count == 0){
+					$( "#left" ).sortable({ disabled: false }).removeClass('img-opaque');
+					$( "#up" ).removeClass('img-opaque');
+					$( "#right" ).removeClass('img-opaque');
+				}
+        }
+        
+        if(day == 4){
+            if(count == 3){
+				$( "#down" ).sortable({ disabled: false }).removeClass('img-opaque');
+			}
+			else if(count == 2){
+				$( "#right" ).sortable({ disabled: false }).removeClass('img-opaque');
+				$( "#down" ).removeClass('img-opaque');
+				}
+				else if(count == 1){
+					$( "#up" ).sortable({ disabled: false }).removeClass('img-opaque');
+					$( "#right" ).removeClass('img-opaque');
+					$( "#down" ).removeClass('img-opaque');
+					}
+					else if(count == 0){
+						$( "#left" ).sortable({ disabled: false }).removeClass('img-opaque');
+						$( "#up" ).removeClass('img-opaque');
+						$( "#right" ).removeClass('img-opaque');
+						$( "#down" ).removeClass('img-opaque');
+					}
+        }
+        
+        if(day == 5){
+            if(count == 4){
+				$( "#center" ).sortable({ disabled: false }).removeClass('img-opaque');
+			}
+			else if(count == 3){
+				$( "#down" ).sortable({ disabled: false }).removeClass('img-opaque');
+				$( "#center" ).removeClass('img-opaque');
+				}
+				else if(count == 2){
+					$( "#right" ).sortable({ disabled: false }).removeClass('img-opaque');
+					$( "#down" ).removeClass('img-opaque');
+					$( "#center" ).removeClass('img-opaque');
+					}
+					else if(count == 1){
+						$( "#up" ).sortable({ disabled: false }).removeClass('img-opaque');
+						$( "#right" ).removeClass('img-opaque');
+						$( "#down" ).removeClass('img-opaque');
+						$( "#center" ).removeClass('img-opaque');
+						}
+						else if(count == 0){
+							$( "#left" ).sortable({ disabled: false }).removeClass('img-opaque');
+							$( "#up" ).removeClass('img-opaque');
+							$( "#right" ).removeClass('img-opaque');
+							$( "#down" ).removeClass('img-opaque');
+							$( "#center" ).removeClass('img-opaque');
+						}
+        }
+
+        $( "#sortable1 div" ).sortable({
+            connectWith: "div",
+            stop: function( event, ui ) {
+
+                if($('#sortable2').find('img').length==6){
+                    $('#btn-save').html('Redeem Coupon');
+                }
+
+            }
+        });
+        
+        var path = "{{MEDIA_URL}}{{image_path}}grey.JPG"
+		$( "#sortable2" ).css('background-image', 'url('+path+')');
+		
+		$( "#sortable2" ).sortable({
+            connectWith: "div",
+            change: function( event, ui ) {
+                var img_id = ui.item.attr('id');
+                var img_style = img_id + '-style'
+                ui.item.addClass(img_style);
+                var img_part = ui.item.attr('src').split('/')[4]
+                form_content = '<input type=hidden name='+ img_part +' value=' + img_style + '>'
+
+                $("#media-data").append(form_content);
+                if (saved == today)
+                {
+					return false;
+				}
+
+            }
+
+        });
+
+    });
+</script>
+
+<div class="row-fluid" >
+  <div class="span4">
+    <div class="span1"></div>
+    <div id="sortable1" class="well span10">
+      <h6 class='bg-title'>
+        <img src="{% static "images/icons/Pocket.png" %}" alt="collect" style="height:50px">
+          &nbsp;&nbsp;Collect Coupon parts
+        </h6>
+      <hr>
+        {% if coupon_count < 1 %}
+          <div id="left" >
+            <span id="left-span" class="form-group label span3 fixed">1st &nbsp;&nbsp;<i class="input-icon fui-image"></i></span>
+            <img  id="left-img" src="{{MEDIA_URL}}{{image_path}}left.png" >
+          </div>
+        {% endif %}
+
+        {% if coupon_count < 2 %}
+
+          <div id="up" >
+            <span class="form-group label span3 fixed">2nd &nbsp;&nbsp;<i class="input-icon fui-image"></i></span>
+            <img  id="up-img" src="{{MEDIA_URL}}{{image_path}}up.png">
+          </div>
+        {% endif %}
+
+        {% if coupon_count < 3 %}
+            <div id="right">
+            <span class="form-group label span3 fixed" >3rd &nbsp;&nbsp;<i class="input-icon fui-image"></i></span>
+            <img  id="right-img" src="{{MEDIA_URL}}{{image_path}}right.png">
+          </div>
+        {% endif %}
+
+        {% if coupon_count < 4 %}
+            <div id="down">
+            <span class="form-group label span3 fixed" >4th &nbsp;&nbsp;<i class="input-icon fui-image"></i></span>
+            <img  id="down-img" src="{{MEDIA_URL}}{{image_path}}down.png">
+          </div>
+        {% endif %}
+
+        {% if coupon_count < 5 %}
+            <div id="center">
+            <span class="form-group label span3 fixed" >5th &nbsp;&nbsp;<i class="input-icon fui-image"></i></span>
+            <img  id="center-img" src="{{MEDIA_URL}}{{image_path}}center.png">
+          </div>
+        {% endif %}
+
+    </div>
+ </div>
+  <div class="well span7" style="height:550px; ">
+    <h6 class='bg-title'>
+      <img src="{% static "images/icons/save.png" %}" alt="save" style="height:50px; margin-bottom: 5px"> 
+      &nbsp;&nbsp;Save your coupons
+    </h6><hr>
+
+    {% ifequal coupon_count 5%}
+      <form id="media-data" method="POST" action="/couponsRedeemed/">{% csrf_token %}
+        <div class="control-group">
+          <input  type="hidden" value="{{pk}}" name="user_token">
+          <input id="btn-start" type="submit" value="Redeem Coupon" class="btn btn-primary btn-embossed">
+        </div>
+      </form>
+    {% else %}
+      <form id="media-data" method="POST" action=".">{% csrf_token %}
+        <div class="control-group">
+          <input id="btn-start" type="submit" value="Save Reward" class="btn btn-primary btn-embossed">
+        </div>
+      </form>
+    {% endifequal %}
+    <div id="sortable2" class="layout-style">
+
+    {% for data in save_coupon_parts %}
+      <img class="{{data.coupon_class}}" src="{{MEDIA_URL}}{{image_path}}{{data.coupon_part}}" style="cursor: pointer;">
+    {% endfor %}
+    </div>
+  </div>
+  <div class="span1"></div>
+</div>
+{% endblock content %}

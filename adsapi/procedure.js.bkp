@@ -1,0 +1,471 @@
+var conn = new Mongo();
+db = conn.getDB("adfits");
+
+db.system.js.save({
+ 	_id: "get_widget_data", 
+ 	value: function (widget_token, user_token, ref_url) {
+
+ 		//Getting widet info and check if token already exists in user token collection.
+		var widget_data = db.campaign_widget.findOne({'token': widget_token});
+
+		if (widget_data) {
+			var message_class;
+			var is_available;
+			var next_day;
+			var campaign_data = db.campaign_campaign.findOne({
+				'_id': widget_data['campaign_id']
+			});
+
+			var d = new Date();
+			current_date = new Date(
+				d.getFullYear(), 
+				d.getMonth(), 
+				d.getDate()
+			);		
+
+			if (campaign_data) {
+				var user_data = db.client_usertoken.findOne({
+					'token': user_token, 
+					'widget_id': widget_data['_id'],
+					'campaign_id': widget_data['campaign_id'],
+					'reference_url': ref_url
+				});
+
+				//Getting sponsor and publisher logo
+				var sponsor_data = db.sponsor_sponsor.findOne(
+					{'_id': campaign_data['sponsor_id']}, 
+					{'logo': 1, '_id': 0}
+				)
+				var publisher_data = db.publisher_publisher.findOne(
+					{'_id': campaign_data['publisher_id']}, 
+					{'logo': 1, '_id': 0}
+				)
+
+				if (user_data) { 
+					var campaign_date = campaign_data['end_date'];
+					var u_date = user_data['last_viewed'];
+
+					//setting the last viewed date
+					last_viewed = new Date(
+						u_date.getFullYear(), 
+						u_date.getMonth(), 
+						u_date.getDate()
+					);
+					var campaign_last_day = new Date(
+						campaign_date.getFullYear(), 
+						campaign_date.getMonth(), 
+						campaign_date.getDate()
+					);
+					print(current_date)
+					print(last_viewed)
+					print(campaign_last_day)	
+					if (current_date.getTime() > campaign_last_day.getTime() 
+						|| campaign_data['coupons_available'] == 0) {
+						message_class = "main7"
+						is_available = false
+						next_day = user_data['dollar_saved']
+					} else if (last_viewed.getTime() != current_date.getTime() 
+						&& user_data['dollar_saved'] == 5) {
+						message_class = "main7"
+						is_available = false
+						next_day = user_data['dollar_saved']
+					} else if (last_viewed.getTime() != current_date.getTime() 
+						&& user_data['dollar_saved'] < 5) {
+							
+						is_available = true
+						next_day = user_data['dollar_saved'] + 1
+
+						//setting the next day and updating the collection.
+						db.client_usertoken.update(
+							{ '_id': user_data['_id'] }, 
+							{
+								$set: { 'last_viewed': current_date }, 
+								$inc: { 'day': 1 }
+							}, false, false
+						);
+
+						if (parseInt(next_day) == 5) {
+							message_class = "main5"
+						} else {
+							message_class = "main1"	
+						}	
+  					} else if (last_viewed.getTime() == current_date.getTime() 
+						|| user_data['dollar_saved'] == 5) {
+
+						is_available = true
+						next_day = user_data['dollar_saved']
+							
+						if (parseInt(user_data['dollar_saved']) == 5) {
+
+							message_class = "main6"
+						} else if (parseInt(user_data['dollar_saved']) == 4) {
+							message_class = "main5"
+						} else {
+							message_class = "main4"
+						}
+					}
+					
+					response = {
+						'status': true,
+						'day': next_day,
+						'user_token': user_data['token'],
+						'campaign_image': campaign_data['image'],
+						'coupon_left': campaign_data['coupons_available'],
+						'sponsor_logo': sponsor_data['logo'],
+						'publisher_logo': publisher_data['logo'],
+						'money_box_color': campaign_data['color'],
+						'message_class': message_class,
+						'coupons_available': campaign_data['coupons_available'],
+						'is_available': is_available 
+					}
+				} else {
+					//create new response
+
+					response = {
+						'status': true,
+						'day': 1,
+						'user_token': ObjectId().str,
+						'campaign_image': campaign_data['image'],
+						'coupon_left': campaign_data['coupons_available'],
+						'sponsor_logo': sponsor_data['logo'],
+						'publisher_logo': publisher_data['logo'],
+						'money_box_color': campaign_data['color'],
+						'message_class': "main1",
+						'coupons_available': campaign_data['coupons_available'],
+						'is_available': true 
+					}
+				}
+
+				//Make enter in the campaigntracker to track how many time an ad was viewed(vd).
+				db.campaign_campaigntracker.insert({
+					'widget_id': widget_data['_id'],
+					'campaign_id': widget_data['campaign_id'],
+					'reference_url': ref_url,
+					'day' : NumberInt(response['day']),
+					'reference_token': user_token,
+					'clicked_on' : new Date(),
+					'action': 'vd'
+				})
+			} else {
+				response = {
+					'status': false,
+					'msg': "Campaign not available."
+				}
+			}
+		} else {
+			response = {
+				'status': false,
+				'msg': "Widget not available."
+			};
+		}
+	return response;
+	}
+});
+
+
+db.system.js.save({
+ 	_id: "save_user_coupon", 
+ 	value: function (widget_token, user_token, ref_url) {
+ 		var response;
+
+ 		//Getting the widget info and checking if token already exists.
+ 		var widget_data = db.campaign_widget.findOne({'token': widget_token});
+		var user_data = db.client_usertoken.findOne({
+			'token': user_token, 
+			'widget_id': widget_data['_id'],
+			'campaign_id': widget_data['campaign_id'],
+			'reference_url': ref_url
+		});
+		
+		var date = new Date();
+		//setting the last current date
+		current_date = new Date(
+			date.getFullYear(), 
+			date.getMonth(), 
+			date.getDate()
+		);
+
+		if (user_data) {
+			//if token is already available, then check if campaign is available.
+			var campaign_data = db.campaign_campaign.findOne({
+				'_id': widget_data['campaign_id'], 
+				'coupons_available': {$ne: 0}
+			});
+
+			if(campaign_data) {
+				
+				var token_date = user_data['last_saved'];
+				var campaign_date = campaign_data['end_date'];
+
+				//setting the last viewed date
+				var last_saved = new Date(
+					token_date.getFullYear(), 
+					token_date.getMonth(), 
+					token_date.getDate()
+				);
+
+				var campaign_last_day = new Date(
+					campaign_date.getFullYear(), 
+					campaign_date.getMonth(), 
+					campaign_date.getDate()
+				);
+
+				var day = user_data['dollar_saved'] + 1
+				//putting entery for number times clicked(cd)
+				db.campaign_campaigntracker.insert({
+					'widget_id': widget_data['_id'],
+					'campaign_id': widget_data['campaign_id'],
+					'reference_url': ref_url,
+					'day' : NumberInt(day),
+					'reference_token': user_token,
+					'clicked_on' : new Date(),
+					'action': 'cd'
+				})		
+
+				//if campaign is over meaning the end date is less then the current date.
+				if (current_date.getTime() > campaign_last_day.getTime()) {
+					response = {
+						'status' : false,
+						'msg': 'Campaign not available.',
+						'is_redeemed': '',
+						'is_available': false
+					}
+				} else if (current_date.getTime() == last_saved.getTime()) {
+					//if coupon already saved for the day
+					response = {
+						'status' : true,
+						'msg': 'Coupon already saved for the day.',
+						'is_redeemed': user_data['is_redeemed'],
+						'is_available': user_data['is_available']
+					}
+				} else {
+					//Update the user token collection and 
+					//insert an entry in lient_savereward collection.
+					var data_update;
+
+					//if user trying to save the coupon on his 5 day
+					// in the dollar saved counter and set is_redeemed 
+					//as true and is_available as false.
+					if (user_data['dollar_saved'] == 5) {
+						db.client_usertoken.update({
+							'_id': user_data['_id']
+						}, {
+							$set: {
+								'last_saved': current_date,
+								'is_redeemed': true,
+								'is_available': false
+							},
+							$inc: {'dollar_saved': 1}
+						}, false, false);
+
+						response = {
+							'status' : true,
+							'msg': 'Coupon saved for the day.',
+							'is_redeemed': true,
+							'is_available': false
+						}
+					} else {					
+						db.client_usertoken.update({
+							'_id': user_data['_id']
+						}, {
+							$set: {'last_saved': current_date},
+							$inc: {'dollar_saved': 1}
+						}, false, false);
+
+						response = {
+							'status' : true,
+							'msg': 'Coupon saved for the day.',
+							'is_redeemed': user_data['is_redeemed'],
+							'is_available': user_data['is_available']
+						}
+					}
+
+					//insert an enter in client_savereward collection.
+					db.client_savereward.insert({
+						'usertoken_id': user_data['_id'],
+						'coupon_part': user_data['day'],
+						'saved_on': date
+					});
+				}
+			} else {
+				response = {
+					'status' : false,
+					'msg': 'Campaign not available.',
+					'is_redeemed': '',
+					'is_available': false
+				}
+			}
+		} else {
+			//if the token does not exists, then insert an enter in client_usertoken
+			//and insert an enter in client_savereward collection.
+			db.client_usertoken.insert({
+				'widget_id': widget_data['_id'],
+				'campaign_id': widget_data['campaign_id'],
+				'token': user_token,
+				'day': NumberInt(1),
+				'dollar_saved': NumberInt(1),
+				'created': current_date,
+				'last_viewed': current_date,
+				'last_saved': current_date,
+				'is_redeemed': false,
+				'is_available': true,
+				'reference_url': ref_url
+			});
+
+			var save_response = db.client_usertoken.findOne({
+				'widget_id': widget_data['_id'],
+				'campaign_id': widget_data['campaign_id'],
+				'token': user_token
+			}, {'_id': 1})
+
+			db.client_savereward.insert({
+				'usertoken_id': save_response['_id'],
+				'coupon_part': NumberInt(1),
+				'saved_on': date
+			})
+
+			response = {
+				'status' : true,
+				'msg': 'Coupon saved for the day.',
+				'is_redeemed': false,
+				'is_available': true
+			}
+
+			//enter to track widget clicked(cd)
+			db.campaign_campaigntracker.insert({
+				'widget_id': widget_data['_id'],
+				'campaign_id': widget_data['campaign_id'],
+				'reference_url': ref_url,
+				'day' : NumberInt(1),
+				'reference_token': user_token,
+				'clicked_on' : new Date(),
+				'action': 'cd'
+			});
+		}
+
+		return response;
+	}
+});
+
+
+db.system.js.save({
+ 	_id: "redeem_coupon", 
+ 	value: function (widget_token, user_token, ref_url, extra_data) {
+ 		//Getting the widget info and checking if token already exists.
+ 		var widget_data = db.campaign_widget.findOne({'token': widget_token});
+		var user_data = db.client_usertoken.findOne({
+			'token': user_token, 
+			'widget_id': widget_data['_id'],
+			'campaign_id': widget_data['campaign_id'],
+			'reference_url': ref_url,
+			'is_available': true,
+			'is_redeemed': false
+		});
+
+		if (user_data) {
+			var campaign_data = db.campaign_campaign.findOne({
+				'_id': widget_data['campaign_id'],
+				'coupons_available': { $ne: 0 },
+			});
+
+			var sponsor_data = db.sponsor_sponsor.findOne(
+				{'_id': campaign_data['sponsor_id']}, 
+				{'logo': 1, '_id': 0}
+			)
+			var publisher_data = db.publisher_publisher.findOne(
+				{'_id': campaign_data['publisher_id']}, 
+				{'logo': 1, '_id': 0}
+			)
+
+			var date = new Date();
+			//setting the last current date
+			current_date = new Date(
+				date.getFullYear(), 
+				date.getMonth(), 
+				date.getDate()
+			);
+
+			var campaign_date = campaign_data['end_date'];
+			var campaign_last_day = new Date(
+					campaign_date.getFullYear(), 
+					campaign_date.getMonth(), 
+					campaign_date.getDate()
+				);
+
+			//if campaign is over meaning the end date is less then the current date.
+			if (current_date.getTime() > campaign_last_day.getTime()) {
+				response = {
+					'status': true,
+					'day': 5,
+					'user_token': user_data['token'],
+					'campaign_image': campaign_data['image'],
+					'coupon_left': campaign_data['coupons_available'],
+					'sponsor_logo': sponsor_data['logo'],
+					'publisher_logo': publisher_data['logo'],
+					'money_box_color': campaign_data['color'],
+					'message_class': "main7",
+					'coupons_available': campaign_data['coupons_available'],
+					'is_redeemed': '',
+					'is_available': false
+				};
+			} else {
+				db.client_usertoken.update({
+					'_id': user_data['_id']
+				}, {
+					$set: {
+						'last_saved': current_date,
+						'is_redeemed': true,
+						'is_available': false,
+						"email": extra_data['email_id'],
+						"location": extra_data['location'],
+						"age": extra_data['age'],
+						"sex": extra_data['sex'],
+						"notify_me": extra_data['notify_me'],
+						"agreed": extra_data['agreed']
+					},
+					$inc: {'dollar_saved': 1}
+				}, false, false);
+
+				db.client_savereward.insert({
+					'usertoken_id': user_data['_id'],
+					'coupon_part': user_data['day'],
+					'saved_on': date
+				});
+
+				response = {
+					'status': true,
+					'day': 5,
+					'user_token': user_data['token'],
+					'campaign_image': campaign_data['image'],
+					'coupon_left': campaign_data['coupons_available'],
+					'sponsor_logo': sponsor_data['logo'],
+					'publisher_logo': publisher_data['logo'],
+					'money_box_color': campaign_data['color'],
+					'message_class': "main6",
+					'coupons_available': campaign_data['coupons_available'],
+					'is_redeemed': true,
+					'is_available': false
+				};
+			}
+
+			//enter to track widget clicked(cd)
+			db.campaign_campaigntracker.insert({
+				'widget_id': widget_data['_id'],
+				'campaign_id': widget_data['campaign_id'],
+				'reference_url': ref_url,
+				'day': NumberInt(5),
+				'reference_token': user_token,
+				'clicked_on' : new Date(),
+				'action': 'cd'
+			});
+		} else {
+			//invalid user token for day5
+			response = {
+				'status': false,
+				'msg': "Unable to redeem coupon."
+			};
+		}
+
+		return response;
+	}
+});

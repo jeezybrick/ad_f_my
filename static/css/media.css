@@ -1,0 +1,112 @@
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    .propos-list > li, .propos-list_two > li {
+
+        font-size: 20px;
+        font-weight: 100;
+
+    }
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .propos-list > li, .propos-list_two > li {
+
+        font-size: 20px;
+        font-weight: 100;
+
+    }
+
+    .jump-to-form-button {
+        font-size: 20px;
+    }
+
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+
+    .header h4, .footer-content h4 {
+        font-size: 15px;
+
+    }
+
+    .propos-list > li, .propos-list_two > li {
+
+        font-size: 20px;
+        font-weight: 100;
+
+    }
+    .jump-to-form-button {
+        display: block;
+        width: 100%;
+    }
+
+
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+
+    .footer-copyright {
+        padding-left: 35px;
+    }
+
+    .footer-copyright h6 {
+        font-size: 11px;
+    }
+
+    .header, .footer-content {
+        padding-right: 5px;
+    }
+
+    .header-image, .footer-image {
+        padding-left: 5px;
+
+    }
+
+    .header h4, .footer-content h4 {
+        font-size: 15px;
+
+    }
+
+    .footer-images-wrapper {
+        padding-top: 5px;
+    }
+
+    .jump-to-form-button {
+        font-size: 23px;
+    }
+
+    .adf-widgetdialog {
+        width: 300px !important;
+
+    }
+
+    .adf-widgetdialog .adf-modalbox {
+        width: 300px !important;
+        height: 200px !important;
+
+    }
+
+    .adf-piccover {
+        padding: 10px 30px 5px !important;
+    }
+
+    .adf-footer {
+        margin-top: 65px;
+    }
+
+    .adf-blackbox {
+        height: 260px !important;
+    }
+
+}

@@ -1,0 +1,77 @@
+{% load staticfiles %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{% block title %}{% endblock %} &ndash; Fits</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Google Open Sans -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/style_widget.css' %}">
+
+    <!--[if IE]>
+        <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="main-content">
+
+    {% block content %}
+        {# content #}
+    {% endblock %}
+
+</div>
+
+<!-- Jquery and bootstrap -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<!-- Custom ADF Widget JS  =============================-->
+
+<script text="javascript">
+    $(document).ready(function () {
+        $(".adf-blackbox ").hide();
+        $(".adf-mbox .collect").hide();
+        $(".adf-modalbox").hover(
+                function () {
+                    $(".adf-main").fadeToggle("slow", "swing");
+                    $(".adf-blackbox").fadeToggle("slow", "swing", function () {
+                        $(".adf-mbox .collect").slideToggle("fast", "swing");
+
+                    });
+                }, function () {
+                    $(".adf-mbox .collect").slideToggle("fast", "swing", function () {
+                        $(".adf-blackbox").fadeToggle("slow", "swing");
+                        $(".adf-main").fadeToggle("slow", "swing");
+
+                    });
+
+                });
+
+
+        $(".adf-modalbox").click(function () {
+            // add js code for for when user clicks on widget here
+        });
+    });
+</script>
+
+</body>
+</html>

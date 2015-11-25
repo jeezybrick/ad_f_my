@@ -1,0 +1,32 @@
+{% extends 'site_base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load staticfiles %}
+{% block title %}
+    {% trans "Home" %}
+{% endblock %}
+
+{% block content %}
+
+    {% include 'partials/header_two.html' %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="faq-block col-lg-12 col-md--12 col-sm-12 col-xs-12">
+
+                <h1 class="main-text-second">
+                    <strong>{% trans "Privacy Policy" %}</strong>
+                </h1>
+
+                <h2 class="main-text">
+                    POLICY CONTENT GOES HERE...
+                </h2>
+
+
+            </div>
+        </div>
+    </div>
+
+    {% include 'partials/footer_two.html' %}
+
+{% endblock %}

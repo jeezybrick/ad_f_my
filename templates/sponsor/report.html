@@ -1,0 +1,88 @@
+{% extends "sponsor/base.html" %}
+
+{% block extra_title %} | Reports{% endblock %}
+
+{% block content %}
+
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<!--Dropdown-->
+			Filter By Campaign Name:
+			<select name="info" class="mbn" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+				<option ><a href="#">----</a></option>
+				{% if campaign_list %}
+					{% for cl in campaign_list %}
+						{% if cl.selected %}
+							<option value="{% url 'sponsor_report_id' cl.id %}" selected="selected">
+								{{cl.campaign_name}}
+							</option>
+						{% else %}
+							<option value="{% url 'sponsor_report_id' cl.id %}">
+								{{cl.campaign_name}}
+							</option>
+						{% endif %}
+					{% endfor %}
+				{% else %}
+						<option >No Campaigns available</option >
+				{% endif %}
+			</select>
+		</div>
+	</div>
+    <hr>
+	<div class="row clearfix margin">
+		<div class="col-md-4 column">
+			<div class="span4"> 
+                <div class="adf-txtbox-border report-height">
+					<h4>
+						<span>Campaign Brand Views</span>
+					</h4>
+					<h4>{{ brand_view }}</h4>
+				</div>
+            </div>
+            <div class="span4"> 
+                <div class="adf-txtbox-border report-height">
+					<h4>
+						<span>Campaign Brand Clicks</span>
+					</h4>
+					<h4>{{ brand_click }}</h4>
+				</div>
+            </div>
+            <div class="span4"> 
+				<div class="adf-txtbox-border report-height">
+					<h4>
+						<span>Reminders Sent</span>
+					</h4>
+					<h4>{{ brand_reminder }}</h4>
+				</div>
+            </div>
+			<div class="span4"> 
+                <div class="adf-txtbox-border report-height">
+					<h4>
+						<span>Customers Acquired </span><br>
+						<span>(redeemed)</span>
+					</h4>
+					<h4>{{ redeemed }}</h4>
+				</div>
+            </div>
+            <div class="span4"> 
+				<div class="adf-txtbox-border report-height">
+					<h4>
+						<span>Total Twitter Shares</span>
+					</h4>
+					<h4>{{ twitter_shares }}</h4>
+				</div>
+            </div>
+			<div class="span4"> 
+            	<div class="adf-txtbox-border report-height">
+					<h4>
+						<span>Total Notification Requested for Future Rewards</span>
+					</h4>
+					<h4>{{ future_rewards }}</h4>
+				</div>
+            </div>
+
+		</div>
+	</div>
+</div>
+{% endblock content %}

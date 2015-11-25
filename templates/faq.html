@@ -1,0 +1,31 @@
+{% extends 'site_base.html' %}
+{% load i18n %}
+{% load staticfiles %}
+{% block title %}
+    {% trans "FAQ" %}
+{% endblock %}
+
+{% block content %}
+
+    {% include 'partials/header_two.html' %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="faq-block col-lg-12 col-md--12 col-sm-12 col-xs-12">
+
+                <h1 class="main-text-second">
+                    <strong>{% trans "FAQ" %}</strong>
+                </h1>
+
+                <h1 class="main-text">
+                    F.A.Q. CONTENT GOES HERE...
+                </h1>
+
+
+            </div>
+        </div>
+    </div>
+
+    {% include 'partials/footer_two.html' %}
+
+{% endblock %}

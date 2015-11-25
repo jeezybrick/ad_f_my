@@ -1,0 +1,6 @@
+#Ignore following
+
+*.pyc
+*.PYC
+local_settings.py
+grappelli

@@ -1,0 +1,122 @@
+.adfits-body {
+	width: 368px;
+	height: 269px;
+	border-radius: 3px/5px;
+	background-color: #f9fafb;
+	box-shadow: -4px 4px 1px rgba(0,0,0,.05);
+	border: solid 2px #ecf0f1;
+	position: relative;
+	cursor: pointer;
+}
+
+.adfits-body:hover {
+	opacity: .80;
+    filter: alpha(opacity=80);
+    background: rgba(0,0,0,.70);
+}
+
+.adfits-top-effect {
+	height: 4px;
+	color: rgba(0,0,0,.10);
+}
+ 
+.adfits-top-div {
+	height: 76px;
+}
+
+.adfits-background-image {
+	width: 368px;
+	height: 193px;
+	position: absolute;
+}
+
+.adfits-gift-position{
+	left: 314px;
+    position: absolute;
+    top: 16px;
+}
+
+.adfits-class-1logo{
+	left: 5px;
+    position: absolute;
+    top: 9px;
+}
+
+.adfits-and-span-class{
+	left: 59px;
+	content: "Joe's Task:";
+    position: absolute;
+    top: 23px;
+}
+
+.adfits-class-2logo{
+	left: 72px;
+    position: absolute;
+    top: 9px;
+}
+
+.adfits-radio{
+	position: absolute;
+}
+
+.adfits-radio1{
+	left: 190px;
+	top: 27px;
+}
+
+.adfits-radio2{
+	left: 220px;
+	top: 27px;
+}
+
+.adfits-radio3{
+	left: 250px;
+	top: 27px;
+}
+
+.adfits-radio4{
+	left: 280px;
+	top: 27px
+}
+
+.adfits-pos-abs{
+    position: absolute;
+	}
+
+h3{
+	font-family: “Open Sans”;
+	font-size: 30px;
+	color: #fff;
+	display: inline;
+}
+
+p{
+	font-family: “Open Sans”;
+	font-size: 17px;
+	color: #fff;
+	display: inline;
+
+}
+
+.adfits-message {
+	left: 55px;
+	top: 187px;
+	word-wrap: break-word;
+}
+
+.adfits-p{
+	Weight: Bold;
+	text-shadow:47px rgba(0,0,0,.57);
+	display: inline;
+}
+
+
+div#adfits-display_text {
+	width: 19px;
+	height: 18px;
+	top: -19px;
+	position: absolute;
+	left: 190px;
+	color: rgb(237, 236, 245);
+	background: blue;
+}

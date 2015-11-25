@@ -1,0 +1,39 @@
+{% extends "site_base.html" %}
+
+{% block extra_title %} | Dashboard{% endblock %}
+
+{% block content %}
+<div class="span12">
+<h5>Gifts Redeemed</h5>
+{{message.tags}}   
+        <div class="form-group">  
+        {% if messages %}
+          {% for message in messages %}
+              <div class="alert-block alert-{{message.tags}}">
+                  <center><a href="#" class="alert-link">{{ message }}</a><center>
+              </div>
+          {% endfor %}
+        {% endif %}
+        
+	<table class="table table-striped table-hover">
+		<tr>
+			<td>SI. No</td><td>Coupon Name</td>
+			<td>Coupon</td><td>Redeemed On</td>
+		</tr>
+		{% if redeem_list %}
+			{% for rl in redeem_list %}
+				<tr>
+					<td>{{forloop.counter}}</td>
+					<td>{{rl.campaign_name}}</td>
+					<td><img src="{{MEDIA_URL}}{{rl.campaign_image}}" width="128px" height="100px"></td>
+					<td>{{rl.redeem_on}}</td>
+				</tr>
+			{% endfor %}
+		{% else %}
+			<tr>
+				<td colspan="4"><center>No coupon redeemed yet.</center></td>
+			</tr>
+		{% endif %}
+	</table>
+</div>
+{% endblock content %}

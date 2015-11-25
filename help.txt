@@ -1,0 +1,15 @@
+Useful links
+============
+
+pip install git+https://github.com/django-nonrel/django@nonrel-1.5
+pip install git+https://github.com/django-nonrel/djangotoolbox
+pip install git+https://github.com/django-nonrel/mongodb-engine
+
+https://github.com/django-nonrel
+https://github.com/django-nonrel/django-permission-backend-nonrel
+
+Fixing SITE_ID for Django-nonrel and MongoDB
+==============================================
+https://gist.github.com/ielshareef/2986459
+
+

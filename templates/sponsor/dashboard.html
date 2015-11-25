@@ -1,0 +1,86 @@
+{% extends "sponsor/base.html" %}
+
+{% block extra_title %} | Dashboard{% endblock %}
+
+<!-- Container -->
+
+<div class="row-fluid ">
+	<div class="span12">
+		{% block content %}
+			<div class="container-fluid">
+				<div class="row-fluid scale dashboard-center">
+					
+					<!--First div with chart-->
+					<div class="span12">
+						<div class="row-fluid">
+							<div class="span6">
+									<div class="span8 adf-txtbox-border box-height">
+									<h2>
+										<span>Total Brand Views</span>
+									</h2>
+									<h2>{{brand_view}}</h2>
+									</div>
+							</div>
+							<div class="span6">
+								<div class="span8 adf-txtbox-border box-height">
+								<h2>
+									<span>Total Brand Clicks</span>
+								</h2>
+								<h2>{{brand_click}}</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+					
+					<!--Third div with chart-->	
+					<div class="span12 dashboard-divs">
+						<div class="row-fluid">
+							<div class="span6">
+								<div class="span8 adf-txtbox-border box-height">
+								<h3>
+									<span id="brand-remind">Total Brand Reminders Sent</span>
+								</h3>
+								<h2>{{ brand_reminder }}</h2>
+								</div>
+							</div>
+							<div class="span6">
+								<div class="span8 adf-txtbox-border box-height">
+								<h2>
+									<span>Total Rewards Redeemed</span>
+								</h2>
+								<h2>{{redeemed}}</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+					<!--Fifth div with chart-->	
+					<div class="span12 dashboard-divs">
+						<div class="row-fluid">
+							<div class="span6 " >
+								<div class="span8 adf-txtbox-border box-height">
+								<h2>
+									<span>Total Twitter Shares</span>
+								</h2>
+								<h2>{{twitter_shares}}</h2>
+								</div>
+							</div>
+							<div class="span6">
+								<div class="span8 adf-txtbox-border box-height">
+								<h2>
+									<span>Total Future Rewards</span>
+								</h2>
+								<h2>{{ future_rewards }}</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+					
+				
+				</div>
+			</div>
+		{% endblock content %}
+	</div>
+</div>

@@ -1,0 +1,111 @@
+{% extends "publisher/base.html" %}
+
+{% block extra_title %} | Dashboard{% endblock %}
+
+<!-- Container -->
+<div class="row-fluid">
+	<div class="span12">
+		{% block content %}
+		<script type="text/javascript">
+      		google.load("visualization", "1", {packages:["corechart"]});
+      		google.setOnLoadCallback(drawChart);
+      		function drawChart() {
+        		var data = google.visualization.arrayToDataTable({{company_list|safe}});
+
+        		var options = {
+          			title: 'Campaign Traffic',
+          			hAxis: {title: 'Month', titleTextStyle: {color: 'red'}}
+        		};
+
+        		var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        		chart.draw(data, options);
+      		}
+    	</script>
+
+		<script type="text/javascript">
+	      google.load("visualization", "1", {packages:["corechart"]});
+	      google.setOnLoadCallback(drawChart);
+	      function drawChart() {
+	        var data = google.visualization.arrayToDataTable({{reedem_list|safe}});
+
+	      var options = {
+	        width: 900,
+	        height: 400,
+	        legend: { position: 'top', maxLines: 3 },
+		bar: { groupWidth: '75%' },
+	        isStacked: true,
+	      };
+
+	        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div2'));
+	        chart.draw(data, options);
+	      }
+	    </script>
+
+		<script type="text/javascript">
+			google.load("visualization", "1", {packages:["corechart"]});
+			google.setOnLoadCallback(drawChart);
+			function drawChart() {
+				var data = google.visualization.arrayToDataTable({{campaign_list|safe}});
+
+				var options = {
+					title: 'Total Campaign',
+					hAxis: {title: 'Month', titleTextStyle: {color: 'red'}}
+				};
+
+				var chart = new google.visualization.ColumnChart(document.getElementById('chart_div3'));
+				chart.draw(data, options);
+			}
+		</script>
+		<div class="container-fluid scale">
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="row-fluid">
+						<div class="span4 adf-txtbox-border" id="chart1-text">
+							<h2>
+								<span>Total Widget Views</span>
+							</h2>
+							<h2>{{count}}</h2>
+						</div>
+						<div class="span8" >
+								<div class="media">
+									<div id="chart_div" class="chart">
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>
+				<div class="span12">
+					<div class="row-fluid">
+						<div class="span4 adf-txtbox-border" id="chart2-text">
+							<h2>
+								<span>Rewards Earned</span>
+							</h2>
+							<h2>$ {{coupons_redeemed}}</h2>
+						</div>
+						<div class="span8" >
+								<div class="media">
+									<div id="chart_div2" class="chart"></div>
+								</div>
+						</div>
+					</div>
+				</div>
+				<div class="span12">
+					<div class="row-fluid">
+						<div class="span4 adf-txtbox-border" id="chart3-text">
+							<h2>
+								<span>Total Campaigns</span>
+							</h2>
+							<h2>{{campaign}}</h2>
+						</div>
+						<div class="span8" >
+								<div class="media">
+									<div id="chart_div3" class="chart"></div>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endblock content %}
+	</div>
+</div>

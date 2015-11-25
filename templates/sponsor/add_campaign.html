@@ -1,0 +1,138 @@
+{% extends "sponsor/base.html" %}
+
+{% block extra_title %} | Add Campaigns{% endblock %}
+
+{% block content %}
+<script type="text/javascript">
+	    $(function(){
+	    		$("#id_start_date, #id_end_date").datepicker()
+	    	update_website();
+	        $("#id_publisher").bind('change', update_website);
+		});  
+
+    var update_website = function() {
+		$.ajax({
+			url: '/campaign/get-websites/',
+			type: "GET",
+			dataType: 'json',
+			data: {
+				'cid': '',
+				'pid': $("#id_publisher").val()
+			},
+			success: function(response) {
+				$("#id_website option").remove();
+				$("#id_website").append('<option value="">----</option>');
+				$.each(response['website_list'], function( index, value ) {
+				  	
+					if (value[2]) {
+						$("#id_website").append(
+							'<option value="'+ value[0] +'" selected=selected>' + value[1] + '</option>');
+					} else {
+						$("#id_website").append(
+							'<option value="'+ value[0] +'">' + value[1] + '</option>');
+					}
+				});
+			}
+		});
+	};
+
+	
+
+
+</script>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-4 column">
+		</div>
+		<div class="col-md-4 column">
+		<form class="form-horizontal" method="post" action="/sponsor/campaigns/add-campaign" enctype="multipart/form-data">
+	{% csrf_token %}
+		<fieldset>
+
+			<!-- Form Name -->
+			<legend>Add Campaign</legend>
+		<div style="position:relative;">
+
+			<!-- Text input-->
+			<div class="control-group">
+			  <label class="control-label" for="website-name">Campaign Name</label>
+			  <div class="controls">
+				{{ form.campaign_name }}
+			  </div>
+			</div>
+
+			<!-- Drop Down-->
+			<div class="control-group">
+			  <label class="control-label" for="website-domain">Publisher</label>
+			  <div class="controls">
+				{{ form.publisher }}
+			  </div>
+			</div>
+
+			<div class="control-group">
+			  <label class="control-label" for="website-domain">Website</label>
+			  <div class="controls">
+				{{ form.website }}
+			  </div>
+			</div>
+			
+			<!-- Select Basic -->
+			<div class="control-group">
+			  <label class="control-label" for="industry">Start Date</label>
+			  <div class="controls">
+				{{ form.start_date }}
+			  </div>
+			</div>
+
+			<!-- File Button --> 
+			<div class="control-group">
+			  <label class="control-label" for="logo">End Date</label>
+			  <div class="controls">
+				{{ form.end_date }}
+			  </div>
+			</div>
+			
+			<!-- File Button --> 
+			<div class="control-group">
+			  <label class="control-label" for="logo">Image</label>
+			  <div class="controls">
+				{{ form.image }}
+			  </div>
+			</div>
+			
+			<!-- File Button --> 
+			<div class="control-group">
+			  <label class="control-label" for="logo">Color</label>
+			  <div class="controls">
+				{{ form.color }}
+			  </div>
+			</div>
+			
+			<!-- File Button --> 
+			<div class="control-group">
+			  <label class="control-label" for="logo">Coupons Available</label>
+			  <div class="controls">
+				{{ form.coupons_available }}
+			  </div>
+			</div>
+
+			<!-- Button (Double) -->
+			<div class="control-group">
+			  <label class="control-label" for="add"></label>
+			  <div class="controls">
+				<button id="add" name="add" class="btn btn-success">Add</button>
+				<a href="{% url 'sponsor_campaigns' %}" id="cancel" name="cancel" class="btn btn-default">Cancel</a>
+			  </div>
+			</div>
+			
+		</div>
+		</fieldset>
+	</form>
+		</div>
+		<div class="col-md-4 column">
+		</div>
+	</div>
+</div>
+{% endblock content %}
+
+

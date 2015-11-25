@@ -1,0 +1,346 @@
+from datetime import date
+from django.conf import settings
+from django.template.loader import render_to_string
+import mandrill
+from adfits import constants
+from campaign.models import Campaign
+from client.models import Notifications, UserToken, NotificationTracker
+from bson import ObjectId
+
+
+def get_coupon_notification():
+	"""
+	Would prepare the daily notification data by email as key.
+	"""
+
+	#collecting all emails and preparing a list
+	emails = Notifications.objects.values_list(
+		"email", flat=True
+	)
+	all_email = [email for email in emails]
+
+	#setting the map fucntion for quering the usertoken models
+	user_map = '''function() {
+		var key = this.email 
+		emit(key, this._id);
+	}'''
+
+	#setting the reduce function for quering the usertoken models
+	user_reduce = '''function(key, value) {
+		var temp = []
+		var result = {'usertoken_id': []}
+		
+		for (var pos in value){
+			if ((temp.indexOf(value[pos].toString())) == -1) {
+				result.usertoken_id.push(value[pos]);
+				temp.push(value[pos].toString());
+			}
+		}
+		
+		return result;
+	}'''
+
+	#getting the usetoken id to collect basic data.
+	user_token_obj = UserToken.objects.map_reduce(
+		user_map, user_reduce,
+		out="result",
+		query={
+			"email": {"$in": all_email},
+			"is_available": True,
+			"is_redeemed": False,
+			"dollar_saved": {"$lt": 5}
+		},
+		delete_collection=True
+	)
+	
+	notification_dict = {}
+	current_date = date.today()
+
+	#preparing the notification by email as key
+	for data in user_token_obj:
+		campaign_processed = []
+		notification_dict[data.key] = []
+		
+		#colllection all info using the usertoken id and preparing the data.
+
+		try:
+			if isinstance(data.value, dict):
+				usertoken_obj = UserToken.objects.raw_query({
+					'_id': {'$in': data.value['usertoken_id']},
+				})
+			else:
+				usertoken_obj = UserToken.objects.raw_query({
+					'_id': ObjectId(data.value),
+				})
+		except:
+			continue
+		
+		for obj in usertoken_obj:
+
+			if obj.campaign.pk not in campaign_processed:
+				campaign_processed.append(obj.campaign.pk)
+
+				#if coupons availble for a coupon is not zero and
+				#campaign is not over, then keep the data in list 
+				#for the an email.
+				if (obj.campaign.coupons_available != 0 
+					and obj.campaign.end_date >= current_date):
+
+					notification_dict[data.key].append({
+						'campaign_id': obj.campaign.id,
+						'campaign_name': obj.campaign.campaign_name,
+						'publisher_id': obj.campaign.publisher.id,
+						'publisher_name': obj.campaign.publisher.name,
+						'sponsor_id': obj.campaign.sponsor.id,
+						'sponsor_name': obj.campaign.sponsor.name,
+						'website_id': obj.campaign.website.id,
+						'day_left': 5 - int(obj.dollar_saved or 0),
+						'website_link': obj.reference_url
+					})
+
+	return notification_dict
+
+
+def send_coupon_notification():
+	"""
+	Would send email for daily coupon notifications
+	"""
+
+	insert_list = []
+	email_data = get_coupon_notification()
+
+	#for each email as key prepare the mesaage and send email.
+	for key, value in email_data.items():
+
+		#if no campaign available for this email, then continue
+		if not value:
+			continue
+
+		email_message = render_to_string(
+			'notification/coupon_notification.html', {
+			'email_data': value
+		})
+
+		message = {
+			'auto_html': None,
+			'auto_text': None,
+			'from_email': 'notifications@adfits.com',
+			'from_name': 'Jennifer Williams',
+			'headers': {'Reply-To': 'notifications@adfits.com'},
+			'html': email_message,
+			'important': True,
+			'subject': constants.COUPON_SUBJECT,
+			'tags': ['Redeemed-confirmation'],
+			'text': email_message,
+			'to': [{'email': key}],
+			'track_clicks': True,
+			'track_opens': True
+		}
+
+		try:
+			mandrill_client = mandrill.Mandrill(settings.MANDRILL_API_KEY)
+			sent_status = mandrill_client.messages.send(
+				message=message, 
+				async=True, 
+				ip_pool='Main Pool'
+			)
+			
+			if sent_status:
+
+				if sent_status[0].get('status', ''):
+
+					for info in value:
+						#keep the data in list to track the number 
+						#of email and its status.
+						insert_list.append({
+							'campaign_id': info['campaign_id'],
+							'publisher_id': info['publisher_id'],
+							'sponsor_id': info['sponsor_id'],
+							'website_id': info['website_id'],
+							'day_left': info['day_left'],
+							'email_reference': sent_status[0]['_id'],
+							'email': sent_status[0]['email'],
+							'sent_status': sent_status[0]['status'],
+							'reject_reason': sent_status[0]['reject_reason'] or '',
+							'notify_type': "coupon",
+							'date_created': date.today()
+						})
+		except mandrill.Error, e:
+			continue
+		except:
+			continue
+
+	save_tracking_data(insert_list)
+
+
+
+def get_campaign_notification():
+	"""
+	Would prepare the data for sending email notification 
+	for new campaign available.
+	"""
+
+	#Setting the map function for getting the email 
+	#for new campaign notifications.
+	notification_map = '''function() {
+		var key = this.email
+		var value = {
+			"sponsor_id": this.sponsor_id,
+			"publisher_id": this.publisher_id
+		}
+		emit(key, value);
+	}'''
+
+	#Setting the reduce function for getting the email 
+	#for new campaign notifications.
+	notification_reduce = '''function(key, value) {
+		var temp_publihser = [];
+		var temp_sponsor = [];
+		var result = {"sponsor_list": [], "publisher_list": []}
+
+		for (var pos in value) {
+			if (temp_publihser.indexOf(value[pos]["publisher_id"].toString())) {
+				result.publisher_list.push(value[pos]["publisher_id"]);
+				temp_publihser.push(value[pos]["publisher_id"].toString());
+			}
+
+			if (temp_sponsor.indexOf(value[pos]["sponsor_id"].toString())) {
+				result.sponsor_list.push(value[pos]["sponsor_id"]);
+				temp_sponsor.push(value[pos]["sponsor_id"].toString());
+			}
+		}
+
+		return result;
+	}'''
+
+	#colleting campaign id and sponsor id as list and email id as key 
+	user_token_obj = Notifications.objects.map_reduce(
+		notification_map, notification_reduce,
+		out="temp",
+		delete_collection=True
+	)
+
+	notification_list = {}
+
+	for data in user_token_obj:
+		notification_list[data.key] = []
+		
+		try:
+			if (data.value.has_key('sponsor_list')
+				and data.value.has_key('publisher_list')):
+				#getting all campaigns for an email id using publisher id and sposnor id
+				campaign_obj = Campaign.objects.raw_query({
+					'$or' : [
+						{'sponsor_id': { '$in': data.value['sponsor_list'] }},
+						{'publisher_id': { '$in': data.value['publisher_list'] }}
+					],
+					'coupons_available': {'$ne': 0}
+				})
+			else:
+				campaign_obj = Campaign.objects.raw_query({
+					'$or' : [
+						{'sponsor_id': data.value['sponsor_id'] },
+						{'publisher_id': data.value['publisher_id'] }
+					],
+					'coupons_available': {'$ne': 0}
+				})
+		except:
+			continue
+
+		for obj in campaign_obj:
+
+			#if today is campaigns start date then, 
+			#then only put the data in campaign list
+			if obj.start_date == date.today():
+				notification_list[data.key].append({
+					'campaign_id': obj.id,
+					'campaign_name': obj.campaign_name,
+					'publisher_id': obj.publisher.id,
+					'publisher_name': obj.publisher.name,
+					'sponsor_id': obj.sponsor.id,
+					'sponsor_name': obj.sponsor.name,
+					'website_id': obj.website.id,
+					'website_link': obj.website.website_domain,
+					'day_left': 5
+				})
+	
+	return notification_list
+
+
+def send_campaign_notification():
+	insert_list = []
+	email_data = get_campaign_notification()
+	
+	for key, value in email_data.items():
+
+		#if no campaign available for this email, then continue
+		if not value:
+			continue
+
+		email_message = render_to_string(
+			'notification/campaign_notification.html', {
+			'email_data': value
+		})
+		
+		message = {
+			'auto_html': None,
+			'auto_text': None,
+			'from_email': 'notifications@adfits.com',
+			'from_name': 'Jennifer Williams',
+			'headers': {'Reply-To': 'notifications@adfits.com'},
+			'html': email_message,
+			'important': True,
+			'subject': constants.CAMPAIGN_SUBJECT,
+			'tags': ['New-campaign'],
+			'text': email_message,
+			'to': [{'email': key}],
+			'track_clicks': True,
+			'track_opens': True
+		}
+
+		try:
+			mandrill_client = mandrill.Mandrill(settings.MANDRILL_API_KEY)
+			sent_status = mandrill_client.messages.send(
+				message=message, 
+				async=True, 
+				ip_pool='Main Pool'
+			)
+			
+			if sent_status:
+
+				if sent_status[0].get('status', ''):
+
+					for info in value:
+						#keep the data in list to track the number 
+						#of email and its status.
+						insert_list.append({
+							'campaign_id': info['campaign_id'],
+							'publisher_id': info['publisher_id'],
+							'sponsor_id': info['sponsor_id'],
+							'website_id': info['website_id'],
+							'day_left': info['day_left'],
+							'email_reference': sent_status[0]['_id'],
+							'email': sent_status[0]['email'],
+							'sent_status': sent_status[0]['status'],
+							'reject_reason': sent_status[0]['reject_reason'] or '',
+							'notify_type': "campaign",
+							'date_created': date.today()
+						})
+		except mandrill.Error, e:
+			continue
+		except:
+			continue
+	
+	save_tracking_data(insert_list)
+	del insert_list
+
+
+def save_tracking_data(data_list):
+	"""
+	Would insert email notifications data to track 
+	the notifications sent.
+	"""
+
+	for query_data in data_list:
+		NotificationTracker.objects.create(**query_data)
+

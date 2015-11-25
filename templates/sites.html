@@ -1,0 +1,51 @@
+{% extends "pub_nav.html" %}
+
+{% block extra_title %} | Dashboard{% endblock %}
+
+<!-- Container -->
+<div class="row-fluid">
+	<div class="span12">
+		{% block content %}
+		<div class="span12">
+			<h5>Websites</h5>
+			{{message.tags}}   
+					<div class="form-group">  
+					{% if messages %}
+					  {% for message in messages %}
+						  <div class="alert-block alert-{{message.tags}}">
+							  <center><a href="#" class="alert-link">{{ message }}</a><center>
+						  </div>
+					  {% endfor %}
+					{% endif %}
+			<div style="float: right;position: absolute;right: 26px;top: -52px;">
+				<a href="sites/add-sites"><h6>+ Add more sites</h6></a>
+			</div>
+				<table class="table table-striped table-hover">
+					<tr>
+						<td>SI. No</td><td>Website Logo</td>
+						<td>Name</td><td>URL</td>
+						<td>Industry</td><td>Audience</td><td>Manage</td>
+					</tr>
+					{% if site_list %}
+						{% for sl in site_list %}
+							<tr>
+								<td>{{forloop.counter}}</td>
+								<td><img src="{{MEDIA_URL}}{{sl.logo}}" width="128px" height="100px"></td>
+								<td>{{sl.website_name}}</td>
+								<td>{{sl.website_domain}}</td>
+								<td>{{ sl.industry }}</td>
+								<td>audience here</td>
+								<td>manage here</td>
+							</tr>
+						{% endfor %}
+					{% else %}
+						<tr>
+							<td colspan="7"><center>No websites added</center></td>
+						</tr>
+					{% endif %}
+				</table>
+			</div>
+		{% endblock content %}
+	</div>
+</div>
+

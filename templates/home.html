@@ -1,0 +1,218 @@
+{% extends 'site_base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load staticfiles %}
+{% block title %}
+    {% trans "Home" %}
+{% endblock %}
+
+{% block content %}
+
+    {% include 'partials/header.html' %}
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- First section -->
+            <section class="section_1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+
+                    <!-- Widget block -->
+                    <div class="widget-wrapper col-lg-5 col-md-5 col-sm-7 col-xs-12">
+
+                        {% include 'partials/widget.html' %}
+                        
+                    </div>
+
+                    <!-- First list block -->
+                    <div class="col-lg-7 col-md-7 col-sm-5 col-xs-12">
+                        <h1 class="main-text">
+                            <strong>{% trans "Turn-Key Gamification & Rewards Tools" %}</strong>
+                        </h1>
+
+                        <h2 class="main-text">
+                            {% trans "Unlock the Power of Digital Ads 3.0" %}
+                        </h2>
+
+                        <ul class="propos-list">
+                            <li>
+                                {% trans "Deliver jaw-dropping KPIs & massive ROI to your advertising clientss" %}
+                            </li>
+
+                            <li>
+                                {% trans "Sell more premium ad units and effortlessly close more deals" %}
+                            </li>
+
+                            <li>
+                                {% trans "Build your audience with loyalty rewards and repeated ad engagement" %}
+                            </li>
+
+                            <li>
+                                {% trans "Instantly fuel the growth of your email subscriber list" %}
+                            </li>
+
+                            <li>
+                                {% trans "Spread “the love” with built-in social media amplification tools" %}
+                            </li>
+                        </ul>
+
+                        <a href="#demo_form" class="btn btn-primary jump-to-form-button">
+                            {% trans "EXPERIENCE HOW IT WORKS!" %}
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Second section -->
+            <section class="section_2 col-lg-12 col-md--12 col-sm-12 col-xs-12">
+                <h1 class="main-text text-center">
+                    <strong>{% trans "The perfect complement to any publisher’s website" %}</strong>
+                </h1>
+
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="row">
+                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
+                                <img src="{% static 'images/LoyaltyRewards3.png' %}" alt="Loyalty">
+                            </div>
+                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
+                                <h3><strong>{% trans "Visitor Loyalty Rewards" %}</strong></h3>
+                            </div>
+
+                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
+                                <h3>
+                                    <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam atque
+                                        beatae corporis dignissimos distinctio dolor dolorum eos facere, id illo natus
+                                        nesciunt odio officiis, optio placeat quibusdam quis similique vel.
+                                    </small>
+                                </h3>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                                <img src="{% static 'images/PremiumRevenue.png' %}" alt="Loyalty">
+                            </div>
+                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
+                                <h3><strong>{% trans "Premium Revenue Streams" %}</strong></h3>
+                            </div>
+
+                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
+                                <h3>
+                                    <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam atque
+                                        beatae corporis dignissimos distinctio dolor dolorum eos facere, id illo natus
+                                        nesciunt odio officiis, optio placeat quibusdam quis similique vel.
+                                    </small>
+                                </h3>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="row">
+                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
+                                <img src="{% static 'images/AdPerformance2.png' %}" alt="Loyalty">
+                            </div>
+                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
+                                <h3><strong>{% trans "Insane Ad Perfomance" %}</strong></h3>
+                            </div>
+
+                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
+                                <h3>
+                                    <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam atque
+                                        beatae corporis dignissimos distinctio dolor dolorum eos facere, id illo natus
+                                        nesciunt odio officiis, optio placeat quibusdam quis similique vel.
+                                    </small>
+                                </h3>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="row">
+                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
+                                <img src="{% static 'images/PrivateBeta.png' %}" alt="Loyalty">
+                            </div>
+                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
+                                <h3><strong>{% trans "Private Beta (invate only)" %}</strong></h3>
+                            </div>
+
+                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
+                                <h3>
+                                    <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam atque
+                                        beatae corporis dignissimos distinctio dolor dolorum eos facere, id illo natus
+                                        nesciunt odio officiis, optio placeat quibusdam quis similique vel.
+                                    </small>
+                                </h3>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="row">
+            <section class="section_3 col-lg-12 col-md--12 col-sm-12 col-xs-12">
+
+                <h1 class="main-text">
+                    <strong>{% trans "Experience Ad Gamification & Rewards in Action!" %}</strong>
+                </h1>
+
+                <div class="row">
+
+                    <div class="list-wrapper col-lg-7 col-md-7 col-sm-7 col-xs-12">
+
+                        <ul class="propos-list_two">
+                            <li>
+                                {% trans "Easily sell more premium ads to your clients" %}
+                            </li>
+
+                            <li>
+                                {% trans "Supercharge the growth of your audience" %}
+                            </li>
+
+                            <li>
+                                {% trans "Serendipitous rewards make everyone smile" %}
+                            </li>
+
+                            <li>
+                                {% trans "Generate a huge buzz around your brand" %}
+                            </li>
+
+                            <li>
+                                {% trans "Launch campaigns in 3 super easy steps" %}
+                            </li>
+
+                            <li>
+                                {% trans "Quick turnaround time and amazing support" %}
+                            </li>
+
+                            <li>
+                                {% trans "No coding required, 100% HTML5" %}
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <!-- Request form -->
+                    <div class="form-wrapper col-lg-4 col-md-4 col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+
+                        {% load crispy_forms_tags %}
+                        {% crispy form %}
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+
+    {% include 'partials/footer.html' %}
+
+{% endblock %}

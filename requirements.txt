@@ -1,0 +1,16 @@
+git+https://github.com/django-nonrel/django@nonrel-1.5
+git+https://github.com/django-nonrel/djangotoolbox
+git+https://github.com/django-nonrel/mongodb-engine
+permission-backend-nonrel==0.2
+PIL==1.1.7
+django-colorful==0.1.3
+django-grappelli==2.4.8
+django-imagekit==3.2
+gunicorn==18.0
+mandrill==1.0.53
+motor==0.1.2
+pilkit==1.1.6
+tornado==3.2
+xlwt==0.7.5
+pillow
+django-crontab==0.5.1

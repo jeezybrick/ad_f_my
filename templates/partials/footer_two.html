@@ -1,0 +1,34 @@
+{% load i18n %}
+{% load staticfiles %}
+
+<footer class="footer">
+
+    <div class="footer-two-wrapper">
+        <div class="footer-image">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/logo2.png' %}" alt="Logo">
+            </a>
+        </div>
+        <div class="footer-content-two text-right">
+            <div class="row">
+
+                <div class="footer-images-wrapper col-lg-6 col-md-6 col-sm-6 hidden-xs text-right">
+                    <a href="https://twitter.com/ADfits">
+                        <img height="55px" src="{% static 'images/TwitterFinalTwo.png' %}" alt="twitter_link">
+                    </a>
+                    <a href="https://www.linkedin.com/company/ad-fits">
+                        <img height="55px" src="{% static 'images/LinkedInFinalTwo.png' %}" alt="lnkd_link">
+                    </a>
+                </div>
+
+
+                <div class="footer-copyright col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right">
+                    <h6><a href="{% url 'terms' %}">{% trans "Terms of Use" %}</a> | <a href="{% url 'policy' %}">{% trans "Privacy Policy" %}</a></h6>
+                    <h6>{% trans "Copyright 2016, Ad Fits Inc." %}<br class="visible-xs"> {% trans "All rights reserved" %}</h6>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</footer>

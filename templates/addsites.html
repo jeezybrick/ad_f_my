@@ -1,0 +1,49 @@
+{% extends "pub_nav.html" %}
+
+{% block extra_title %} | Dashboard{% endblock %}
+{% block content %} 
+<div class="addwebsite" >
+	<form class="form-horizontal" method="post" action="{% url 'publisher.AddSitesView'%}" 
+	enctype="multipart/form-data">
+		{% csrf_token %}
+		<fieldset>
+			<legend>Add Website</legend>
+			<div style="position:relative; left:-55px;">
+			<div class="control-group">
+			  <label class="control-label" for="website-name">Website Name</label>
+			  <div class="controls">
+				{{ form.website_name }}
+			  </div>
+			</div>
+			<div class="control-group">
+			  <label class="control-label" for="website-domain">Website Domain</label>
+			  <div class="controls">
+				{{ form.website_domain }}
+				{{ form.website_domain.errors }}
+				<p class="help-block">e.g: http://www.xyz.com</p>
+			  </div>
+			</div>
+			<div class="control-group">
+			  <label class="control-label" for="industry">Industry</label>
+			  <div class="controls">
+				{{ form.industry }}
+			  </div>
+			</div>
+			<div class="control-group">
+			  <label class="control-label" for="logo">Logo</label>
+			  <div class="controls">
+				{{ form.website_logo }}
+			  </div>
+			</div>
+			<div class="control-group">
+			  <label class="control-label" for="add"></label>
+			  <div class="controls">
+				<button id="add" name="add" class="btn btn-success">Add</button>
+				<button id="cancel" name="cancel" class="btn btn-default">Cancel</button>
+			  </div>
+			</div>	
+		</div>
+		</fieldset>
+	</form>
+</div>
+{% endblock content %}
