@@ -116,7 +116,7 @@ body {
 
 .header-image, .footer-image {
     position: relative;
-    margin-right: -93px;
+    margin-right: -63px;
     z-index: 99;
 }
 
