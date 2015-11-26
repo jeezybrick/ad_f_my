@@ -13,8 +13,6 @@ body {
     top:0; 
     left:0;
     width: 100%; 
-    -webkit-transform: translate(100%, 0);
-     transform: translate(-100%, 0);   
 }
 
 .footer {
