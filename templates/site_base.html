@@ -77,10 +77,10 @@
 <script>
     $(window).scroll(function(){
   if ($(window).scrollTop() >= 330) {
-    $('.header-wrapper').addClass('fixed');
+    $('.header-wrapper').css('position', 'fixed');
    }
    else {
-    $('.header-wrapper').removeClass('fixed');
+    $('.header-wrapper').css('position', 'static');
    }
 });
 </script>
