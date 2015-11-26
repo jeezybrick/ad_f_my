@@ -33,6 +33,7 @@ body {
     justify-content: space-between;
     background-color: #5ec8f2;
     height: 110px;
+    z-index: 99;
 }
 
 .header-two-wrapper, .footer-two-wrapper {
