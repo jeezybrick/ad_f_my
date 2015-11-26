@@ -134,3 +134,10 @@
     margin-right: -40px;
     }
 }}
+
+@media (max-width: 767px) and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) { @media
+{
+    .header-image, .footer-image {
+    margin-right: -30px;
+    }
+}}
