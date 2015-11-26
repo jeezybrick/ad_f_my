@@ -10,8 +10,10 @@ body {
 
 .fixed {
     position: fixed;
-    top:0; left:0;
+    top:0; 
+    left:0;
     width: 100%; 
+    -webkit-transform: translateZ(0);
 }
 
 .footer {
@@ -33,7 +35,6 @@ body {
     justify-content: space-between;
     background-color: #5ec8f2;
     height: 110px;
-    transition: position 2.9s;
     z-index: 99;
 }
 
