@@ -112,6 +112,15 @@
 }
 
 /* Safari 6.1+ */
+
+@media (min-width: 1200px) and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) { @media
+{
+    .header-image, .footer-image {
+    margin-right: -60px;
+    }
+}}
+
+
 @media (min-width: 992px) and (max-width: 1199px) and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) { @media
 {
     .header-image, .footer-image {
