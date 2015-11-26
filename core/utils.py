@@ -3,9 +3,8 @@ from django.core.mail import send_mail
 
 def send_email_with_form_data(data):
 
-    # email_to = 'info@adfits.com'
-    email_from = 'info@adfits.com'
-    email_to = 'info@adfits.com'
+    email_from = 'smooker14@gmail.com'
+    email_to = 'smooker14@gmail.com'
     subject = 'demo_subject'
     phone = data.get('phone_0', default=None) + '-' + \
             data.get('phone_1', default=None)+'-' + \
