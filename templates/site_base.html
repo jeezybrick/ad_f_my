@@ -80,14 +80,12 @@
 <script>
     $(window).scroll(function(){
   if ($(window).scrollTop() >= 280) {
-      $('body').css('margin-top','150px');
     $('.header-wrapper').addClass('fixed').addClass('animated fadeInDown');
-    
+    $('body').css('margin-top','310px');
    }
    else {
-       $('body').css('margin-top','0');
     $('.header-wrapper').removeClass('fixed').removeClass('animated fadeInDown');
-    
+    $('body').css('margin-top','0');
    }
 });
 </script>
