@@ -81,9 +81,11 @@
     $(window).scroll(function(){
   if ($(window).scrollTop() >= 280) {
     $('.header-wrapper').addClass('fixed').addClass('animated fadeInDown');
+    $(body).css('margin-top','100px');
    }
    else {
     $('.header-wrapper').removeClass('fixed').removeClass('animated fadeInDown');
+    $(body).css('margin-top','0');
    }
 });
 </script>
