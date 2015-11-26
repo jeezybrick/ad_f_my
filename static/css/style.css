@@ -27,7 +27,6 @@ body {
 }
 
 .header-wrapper, .footer-wrapper, .header-two-wrapper, .footer-two-wrapper {
-    margin-bottom: 60px;
     display: flex;
     align-items: stretch;
     flex-flow: row nowrap;
