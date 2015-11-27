@@ -1,0 +1,41 @@
+{% load i18n %}
+{% load staticfiles %}
+
+<header id="header">
+    <div class="container" style="border-bottom: 1px solid rgba(255, 255, 255, 0.27);">
+        <div class="row">
+
+            <ul>
+                <li class="logo-container">
+                    <a href="{% url 'home' %}">
+                    </a>
+                </li>
+                <li class="nav-container">
+                    <ul id="nav">
+                        <li>
+                            <a href="{% url 'home' %}">Home</a>
+                        </li>
+
+                        <li>
+                            <a href="{% url 'home' %}">How it works</a>
+                        </li>
+                        <li class="cta">
+                            <a href="#demo_form">REQUEST ACCESS</a>
+                        </li>
+
+                        <li class="social-nav">
+                            <a href="https://twitter.com/ADfits" target="_blank">
+                                <img height="30px" src="{% static 'images/greytwitter.png' %}" alt="">
+                            </a>
+                            <a href="https://www.linkedin.com/company/ad-fits" target="_blank">
+                                <img height="30px" src="{% static 'images/greylinkedin.png' %}" alt="">
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</header>
