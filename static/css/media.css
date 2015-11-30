@@ -204,12 +204,12 @@
     }
 
     .adf-widgetdialog {
-        width: 320px !important;
+        width: 100% !important;
 
     }
 
     .adf-widgetdialog .adf-modalbox {
-        width: 320px !important;
+        width: 100% !important;
         height: 180px !important;
 
     }
