@@ -162,6 +162,7 @@ header.header-is-scrolled .logo-container a {
 }
 
 .hero-title h2 {
+    font-weight: 500;
 }
 
 .container {
