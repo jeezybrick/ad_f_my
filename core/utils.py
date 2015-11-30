@@ -1,10 +1,11 @@
 import datetime
 from django.core.mail import send_mail
+from django.conf import settings
 
 
 def send_email_with_form_data(data):
     email_to = ['ali@adfits.com', 'info@adfits.com']
-    email_from = ''
+    email_from = settings.EMAIL_HOST_USER
     subject = 'REQUEST FOR ACCESS'
 
     message = 'First Name: {}\n ' \
