@@ -12,7 +12,7 @@ $(document).ready(function () {
     <!-- Custom ADF Widget JS  =============================-->
     $(".adf-blackbox ").hide();
     $(".adf-mbox .collect").hide();
-    $(".adf-modalbox").hover(
+     $(".adf-modalbox").hover(
         function () {
             $(".adf-main").fadeToggle("slow", "swing");
             $(".adf-blackbox").fadeToggle("slow", "swing", function () {
@@ -26,12 +26,9 @@ $(document).ready(function () {
 
             });
 
+        }).click(function () {
+            window.location.hash = '#section-form';
         });
-
-
-    $(".adf-modalbox").click(function () {
-        // add js code for for when user clicks on widget here
-    });
 });
 
 
