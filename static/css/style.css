@@ -430,6 +430,7 @@ header.header-is-scrolled .logo-container a {
     background: #ee4577 none;
     font-size: 30px;
     border-radius: 10px;
+    border: none;
 }
 
 .experience-button {
