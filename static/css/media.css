@@ -168,21 +168,21 @@
 @media (max-width: 480px) {
 
     .hero-title h1 {
-        font-size: 25px;
+        font-size: 23px;
         line-height: 150%;
     }
 
     .hero-title h2 {
-        font-size: 15px;
+        font-size: 13px;
     }
 
     .adf-widgetdialog {
-        width: 270px !important;
+        width: 330px !important;
 
     }
 
     .adf-widgetdialog .adf-modalbox {
-        width: 270px !important;
+        width: 330px !important;
         height: 180px !important;
 
     }
@@ -197,6 +197,13 @@
 
     .adf-blackbox {
         height: 260px !important;
+    }
+
+    .adf-logos, .adf-progress {
+
+        margin: 0 !important;
+        width: auto !important;
+
     }
 
     header .logo-container {
