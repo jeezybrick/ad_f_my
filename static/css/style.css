@@ -200,6 +200,8 @@ header.header-is-scrolled .logo-container a {
     width: 100%;
     height: 100px;
     background-color: #76459b;
+    color: #ffffff;
+    font-weight: 300;
 }
 
 .footer a {
