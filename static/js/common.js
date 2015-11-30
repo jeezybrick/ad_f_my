@@ -40,15 +40,19 @@ $(document).ready(function () {
     $('#id_phone').mask('000-000-0000');
 });
 
-var forms = document.getElementsByTagName('form');
-for (var i = 0; i < forms.length; i++) {
-    forms[i].noValidate = true;
+$("form").submit(function(e) {
 
-    forms[i].addEventListener('submit', function(event) {
-        //Prevent submission if checkValidity on the form returns false.
-        if (!event.target.checkValidity()) {
-            event.preventDefault();
-            //Implement you own means of displaying error messages to the user here.
+    var ref = $(this).find("[required]");
+
+    $(ref).each(function(){
+        if ( $(this).val() == '' )
+        {
+            alert("Required field should not be blank.");
+
+            $(this).focus();
+
+            e.preventDefault();
+            return false;
         }
-    }, false);
-}
+    });  return true;
+});
