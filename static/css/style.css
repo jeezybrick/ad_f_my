@@ -638,4 +638,5 @@ nav ul, nav ol {
 
 .use-personal-list a {
     color: dodgerblue;
+    position: static;
 }
