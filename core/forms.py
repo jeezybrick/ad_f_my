@@ -1,64 +1,20 @@
-import re
 from django import forms
-from django.core.exceptions import ValidationError
+from django.core import validators
 from django.utils.translation import ugettext_lazy as _
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit, Layout, Field, Div
-
-
-class MyWidget(forms.widgets.MultiWidget):
-    def __init__(self, attrs=None):
-        _widgets = (
-            forms.widgets.TextInput(attrs={'size': '4', 'placeholder': '###', 'pattern': '.{3}', 'minlength': '3', 'maxlength': '3'}),
-            forms.widgets.TextInput(attrs={'size': '4', 'placeholder': '###', 'pattern': '.{3}', 'minlength': '3', 'maxlength': '3'}),
-            forms.widgets.TextInput(attrs={'size': '6', 'placeholder': '####', 'pattern': '.{4}', 'minlength': '4', 'maxlength': '4'}),
-        )
-        super(MyWidget, self).__init__(_widgets, attrs)
-
-    def decompress(self, value):
-        if value:
-            return value.split(' ')
-        return [None, None, None]
-
-    def format_output(self, rendered_widgets):
-        return (
-                   '<div class="row phone-inputs">'
-                   '<div class="col-lg-12 col-md-11 col-sm-11 col-xs-12">'
-                   '<div class="form-inline">'
-                   '<div class="col-md-3 col-xs-3 col-sm-3">%s</div>'
-                   '<div class="line-between-phone col-md-1 col-xs-1 col-sm-1 text-center">-<br></div>'
-                   '<div class="col-md-3 col-xs-3 col-sm-3">%s</div>'
-                   '<div class="line-between-phone col-md-1 col-xs-1 col-sm-1 text-center">-</div>'
-                   '<div class="col-md-3 col-xs-3 col-sm-3">%s</div>'
-                   '</div>'
-                   '</div>'
-                   '</div>'
-               ) % tuple(rendered_widgets)
-
-
-class PhoneField(forms.MultiValueField):
-    def __init__(self, *args, **kwargs):
-        list_fields = [forms.CharField(),
-                       forms.CharField(),
-                       forms.CharField()
-                       ]
-        super(PhoneField, self).__init__(list_fields, widget=MyWidget, *args, **kwargs)
-
-    def compress(self, values):
-        return ''.join(values)
-
-    def clean(self, values):
-        value = ''.join(values)
-        reg = re.compile('\d{10}$')
-        if not reg.match(value):
-            raise ValidationError(_('Invalid phone format'))
+from crispy_forms.layout import Submit, Layout, Field
 
 
 class DemoForm(forms.Form):
     first_name = forms.CharField(label='')
     last_name = forms.CharField(label='')
     email = forms.EmailField(label='', required=True)
-    phone = PhoneField(required=True, label='')
+    phone = forms.CharField(required=True, label='',
+                               validators=[
+                                   validators.RegexValidator(r'^\d{3}\-\d{3}\-\d{4}$',
+                                                             'Invalid phone format!',
+                                                             'invalid'), ])
+    company = forms.CharField(required=False, label='')
     url = forms.URLField(label='', required=False)
 
     def __init__(self, *args, **kwargs):
@@ -69,14 +25,14 @@ class DemoForm(forms.Form):
         self.helper.form_id = 'demo_form'
         self.helper.form_action = '#'
         self.helper.form_class = 'form-horizontal'
-        self.helper.field_class = 'col-md-12 '
+        self.helper.field_class = 'col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1'
         self.form_show_errors = True
         self.helper.error_text_inline = True
         self.helper.help_text_inline = False
         self.helper.html5_required = True
 
-        self.helper.add_input(Submit('submit', _('Request demo!'),
-                                     css_class='jump-to-form-button'))
+        self.helper.add_input(Submit('submit', _('Request access'),
+                                     css_class='form-button'))
 
         self.helper.layout = Layout(
 
@@ -93,15 +49,21 @@ class DemoForm(forms.Form):
                 'email',
                 placeholder=_('Email')
             )
+
             ,
-            Div(
-                Field(
-                    'phone'
-                ), css_class='form-inline'
+            Field(
+                'phone',
+                placeholder=_('###-###-####')
             )
             ,
             Field(
+                'company',
+                placeholder=_('Company name (optional)')
+            )
+
+            ,
+            Field(
                 'url',
-                placeholder=_('Website/URL (optional)')
+                placeholder=_('http://www.yourwebsite.com (optional)')
             )
         )
