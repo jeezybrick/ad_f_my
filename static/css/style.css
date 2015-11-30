@@ -203,7 +203,8 @@ header.header-is-scrolled .logo-container a {
 }
 
 .footer a {
-    color: #8d96a3;
+    color: #ffffff;
+    font-weight: 300;
 }
 
 .footer-wrapper {
