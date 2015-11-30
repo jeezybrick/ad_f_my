@@ -1,15 +1,30 @@
 {% load i18n %}
 {% load staticfiles %}
 
-<header>
-    <div class="header-two-wrapper">
-        <div class="header-image">
-            <a href="{% url 'home' %}">
-                <img src="{% static 'images/logo2.png' %}" alt="Logo">
-            </a>
-        </div>
-        <div class="header-content-two text-right">
+<header id="header-second">
+    <div class="header-wrapper container">
+        <div class="row">
 
+            <ul>
+                <li class="logo-container faq-logo">
+                    <a href="#">
+                    </a>
+                </li>
+                <li class="nav-container collapsed">
+                    <ul id="nav">
+
+                        <li class="social-nav">
+                            <a href="https://twitter.com/ADfits" target="_blank">
+                                <img height="30px" src="{% static 'images/greytwitter.png' %}" alt="Twitter">
+                            </a>
+                            <a href="https://www.linkedin.com/company/ad-fits" target="_blank">
+                                <img height="30px" src="{% static 'images/greylinkedin.png' %}" alt="LinkedIn">
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
 
