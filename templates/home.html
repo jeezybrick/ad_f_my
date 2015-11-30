@@ -101,7 +101,7 @@
 
         </section>
 
-        <section class="section_5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <section id="widget-section" class="section_5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="container">
                 <div class="section-content turn-key-section">
                     <div class="text-half col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -121,13 +121,12 @@
                         </h3>
                         <button class="experience-button">EXPERIENCE ALL OF IT</button>
                     </div>
+                    <div class="widget-wrapper col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                        {% include 'partials/widget.html' %}
+                    </div>
                 </div>
             </div>
 
-            <div class="widget-wrapper col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
-                {% include 'partials/widget.html' %}
-            </div>
-            
         </section>
 
         <section id="section-form" class="section_6 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
@@ -167,10 +166,9 @@
                 $('.header-bars-wrapper').removeClass('is-scrolled');
             }
         });
-
+        
         $('.experience-button').click(function () {
             document.getElementById('section-form').scrollIntoView();
         });
-
     </script>
 {% endblock %}
