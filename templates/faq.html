@@ -1,31 +1,57 @@
-{% extends 'site_base.html' %}
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
 {% load i18n %}
 {% load staticfiles %}
 {% block title %}
-    {% trans "FAQ" %}
+    {% trans "F.A.Q." %}
 {% endblock %}
 
 {% block content %}
 
     {% include 'partials/header_two.html' %}
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="faq-block col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="faq-block col-lg-12 col-md--12 col-sm-12 col-xs-12">
+                    <h1 class="main-text-second">
+                        <strong>{% trans "F.A.Q." %}</strong>
+                    </h1>
 
-                <h1 class="main-text-second">
-                    <strong>{% trans "FAQ" %}</strong>
-                </h1>
-
-                <h1 class="main-text">
-                    F.A.Q. CONTENT GOES HERE...
-                </h1>
+                    <h2 class="main-text">
+                        F.A.Q. content goes here... (grey)
+                    </h2>
 
 
+                </div>
             </div>
         </div>
     </div>
 
-    {% include 'partials/footer_two.html' %}
+    {% include 'partials/sidebar.html' %}
+    {% include 'partials/footer.html' %}
 
+{% endblock %}
+
+{% block js %}
+
+    <script>
+        $('.header-wrapper').css('border-bottom', '#483276 1px solid');
+        $('header').addClass('header-is-scrolled').addClass('header-side-pages');
+        $('.header-bars-wrapper').addClass('is-scrolled');
+        $('.footer').css('background-color', '#ee4577');
+    </script>
+
+     <script>
+        <!-- Scrolled header -->
+        $(window).scroll(function () {
+            if ($(window).scrollTop() >= 300) {
+                $('header').addClass('header-side-pages-is-scrolled');
+            }
+            else {
+                $('header').removeClass('header-side-pages-is-scrolled');
+            }
+        });
+
+    </script>
 {% endblock %}
