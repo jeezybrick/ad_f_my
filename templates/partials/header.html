@@ -1,14 +1,46 @@
 {% load i18n %}
 {% load staticfiles %}
 
-<header>
-    <div class="header-wrapper">
-        <div class="header-image">
-            <a href="{% url 'home' %}">
-                <img src="{% static 'images/logo1.png' %}" alt="Logo">
-            </a>
-        </div>
-        <div class="header text-right">
+<header id="header">
+    <div class="header-wrapper container">
+        <div class="row">
+
+            <ul>
+                <li class="logo-container">
+                    <a href="{% url 'home' %}">
+                    </a>
+                </li>
+                <li id="navbar" class="nav-container collapsed">
+                    <ul id="nav">
+                        <li>
+                            <a href="{% url 'home' %}">Home</a>
+                        </li>
+
+                        <li>
+                            <a href="{% url 'home' %}">How it works</a>
+                        </li>
+                        <li class="cta">
+                            <a href="#section-form">REQUEST ACCESS</a>
+                        </li>
+
+                        <li class="social-nav">
+                            <a href="https://twitter.com/ADfits" target="_blank">
+                                <img height="30px" src="{% static 'images/greytwitter.png' %}" alt="">
+                            </a>
+                            <a href="https://www.linkedin.com/company/ad-fits" target="_blank">
+                                <img height="30px" src="{% static 'images/greylinkedin.png' %}" alt="">
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="header-bars-wrapper text-right hidden-lg">
+                <button type="button" class="navbar-toggle">
+                    <i class="fa fa-bars fa-2x"></i>
+                </button>
+            </div>
 
         </div>
     </div>
