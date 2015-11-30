@@ -2,35 +2,30 @@
 {% load staticfiles %}
 
 <footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
 
-    <div class="footer-wrapper">
-        <div class="footer-image">
-            <a href="{% url 'home' %}">
-                <img src="{% static 'images/logo1.png' %}" alt="Logo">
-            </a>
-        </div>
-        <div class="footer-content">
+            <div class="logo-footer col-lg-5 col-md-5social-footer col-sm-5 col-xs-4">
+                <img height="65px" src="{% static 'images/logo_white.png' %}" alt="Logo">
+            </div>
 
-            <!-- Icons -->
-            <div class="footer-images-wrapper col-lg-6 col-md-6 col-sm-6 hidden-xs text-right">
-                <a href="https://twitter.com/ADfits">
-                    <img height="55px" src="{% static 'images/TwitterFinal.png' %}" alt="twitter_link">
+            <div class="social-footer col-lg-2 col-md-2 col-sm-2 text-center hidden-xs">
+                <a href="https://twitter.com/ADfits" target="_blank">
+                    <img height="35px" src="{% static 'images/greytwitter.png' %}" alt="">
                 </a>
-                <a href="https://www.linkedin.com/company/ad-fits">
-                    <img height="55px" src="{% static 'images/LinkedInFinal.png' %}" alt="lnkd_link">
+                <a href="https://www.linkedin.com/company/ad-fits" target="_blank">
+                    <img height="35px" src="{% static 'images/greylinkedin.png' %}" alt="">
                 </a>
             </div>
 
-            <!-- Footer text -->
-            <div class="footer-copyright col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right">
-                <h6><a href="{% url 'terms' %}">{% trans "Terms of Use" %}</a> | <a
-                        href="{% url 'policy' %}">{% trans "Privacy Policy" %}</a></h6>
-                <h6>{% trans "Copyright 2016, Ad Fits Inc."%}<br class="visible-xs">{% trans "All rights reserved" %} </h6>
+            <div class="copyright-footer col-lg-5 col-md-5 col-sm-5 col-xs-8 text-right">
+                <h5><a href="{% url 'terms' %}">Terms of Use</a> | <a href="{% url 'policy' %}">Privacy Policy</a></h5>
+                <h5>Copyright 2016, Ad Fits Inc. <span class="all-rights">All rights reserved.</span></h5>
             </div>
-
 
         </div>
 
     </div>
+
 
 </footer>
