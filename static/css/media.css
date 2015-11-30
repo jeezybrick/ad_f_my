@@ -1,16 +1,48 @@
 /* Large desktops and laptops */
 @media (min-width: 1200px) {
 
+    .hero-title h1 {
+        font-size: 45px;
+    }
+
+    .hero-title h2 {
+        font-size: 25px;
+        margin-top: 30px;
+    }
+
+    #navbar {
+        display: block !important;
+    }
+
+    .logo-footer {
+        padding-left: 60px;
+    }
+
+    header .nav-container li a {
+        padding: 0 30px;
+        font-size: 18px;
+
+    }
+
 }
 
 /* Landscape tablets and medium desktops */
 @media (min-width: 992px) and (max-width: 1199px) {
+    .hero-title h1 {
+        font-size: 30px;
+    }
 
-    .propos-list > li, .propos-list_two > li {
-
+    .hero-title h2 {
         font-size: 20px;
-        font-weight: 100;
+        margin-top: 25px;
+    }
 
+    #navbar {
+        display: block !important;
+    }
+
+    .logo-footer {
+        padding-left: 50px;
     }
 
 }
@@ -18,15 +50,46 @@
 /* Portrait tablets and small desktops */
 @media (min-width: 768px) and (max-width: 991px) {
 
-    .propos-list > li, .propos-list_two > li {
-
-        font-size: 20px;
-        font-weight: 100;
-
+    .hero-title h1 {
+        font-size: 30px;
+        line-height: 150%;
     }
 
-    .jump-to-form-button {
+    .hero-title h2 {
         font-size: 20px;
+    }
+
+    .navbar-toggle {
+        display: inline-block;
+    }
+
+    #navbar {
+        display: none;
+    }
+
+    header .logo-container {
+        margin-left: 37%;
+    }
+
+    header .faq-logo {
+        margin-left: 0;
+    }
+
+    .logo-footer {
+        padding-left: 40px;
+    }
+
+    .section-content {
+        position: static;
+    }
+
+    .text-half {
+        text-align: center;
+    }
+
+    .section_5 {
+        padding: 30px;
+        height: 900px;
     }
 
 }
@@ -34,66 +97,93 @@
 /* Landscape phones and portrait tablets */
 @media (max-width: 767px) {
 
-    .header h4, .footer-content h4 {
-        font-size: 15px;
-
+    .hero-title {
+        margin-top: 200px;
     }
 
-    .propos-list > li, .propos-list_two > li {
+    .hero-title h1 {
+        font-size: 30px;
+        line-height: 150%;
+    }
 
+    .hero-title h2 {
         font-size: 20px;
-        font-weight: 100;
-
-    }
-    .jump-to-form-button {
-        display: block;
-        width: 100%;
     }
 
+    #navbar {
+        display: none;
+    }
+
+    header .logo-container {
+        margin-left: 33%;
+    }
+
+    header .faq-logo {
+        margin-left: 0;
+    }
+
+    header .nav-container li {
+        float: none;
+    }
+
+    .logo-footer {
+        padding-left: 25px;
+    }
+
+    .section-content {
+        position: static;
+        margin-top: 40px;
+    }
+
+    .text-half {
+        text-align: center;
+        padding: 0;
+    }
+
+    .section_1 {
+        height: 600px;
+    }
+
+    .section_2, .section_3, .section_4, .section_5 {
+        padding: 0;
+        height: 650px;
+    }
+
+    .section_5 {
+        height: 950px;
+    }
+
+    .section-form {
+        padding-top: 0;
+    }
+
+    .jump-to-form-button, .form-button, .experience-button {
+
+        font-size: 25px;
+    }
 
 }
 
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
 
-    .footer-copyright {
-        padding-left: 35px;
+    .hero-title h1 {
+        font-size: 25px;
+        line-height: 150%;
     }
 
-    .footer-copyright h6 {
-        font-size: 11px;
-    }
-
-    .header, .footer-content {
-        padding-right: 5px;
-    }
-
-    .header-image, .footer-image {
-        padding-left: 5px;
-
-    }
-
-    .header h4, .footer-content h4 {
+    .hero-title h2 {
         font-size: 15px;
-
-    }
-
-    .footer-images-wrapper {
-        padding-top: 5px;
-    }
-
-    .jump-to-form-button {
-        font-size: 23px;
     }
 
     .adf-widgetdialog {
-        width: 300px !important;
+        width: 270px !important;
 
     }
 
     .adf-widgetdialog .adf-modalbox {
-        width: 300px !important;
-        height: 200px !important;
+        width: 270px !important;
+        height: 180px !important;
 
     }
 
@@ -109,41 +199,81 @@
         height: 260px !important;
     }
 
+    header .logo-container {
+        margin-left: 20%;
+        margin-right: 0;
+    }
+
+    .logo-footer {
+        padding-left: 0;
+    }
+
+    .all-rights {
+        padding-top: 5px;
+        display: block;
+    }
+
+    .section_2, .section_3, .section_4, .section_5 {
+        padding: 0;
+        height: 800px;
+    }
+
+    .section_5 {
+        height: 1100px;
+    }
+
+    .jump-to-form-button, .form-button, .experience-button {
+
+        font-size: 20px;
+    }
+
+    .image-half img {
+        height: 200px;
+    }
+
+    .nav-container {
+        display: none;
+    }
+
 }
 
-/* Safari 6.1+ */
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) {
 
-@media (min-width: 1200px) and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) { @media
-{
-    .header-image, .footer-image {
-    margin-right: -55px;
+    header .logo-container {
+        margin-left: 10%;
+        margin-right: 0;
     }
-}}
 
+    .jump-to-form-button, .form-button, .experience-button {
+        height: 60px !important;
+        padding: 0 30px;
+        font-size: 20px;
+    }
 
-@media (min-width: 992px) and (max-width: 1199px) and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) { @media
-{
-    .header-image, .footer-image {
-    margin-right: -50px;
+    .copyright-footer h5 {
+        font-size: 12px;
     }
-}}
 
-@media (min-width: 768px) and (max-width: 991px) and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) { @media
-{
-    .header-image, .footer-image {
-    margin-right: -40px;
+    .section_3 {
+        height: 800px;
     }
-}}
 
-@media (max-width: 767px) and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) { @media
-{
-    .header-image, .footer-image {
-    margin-right: -35px;
+    .section_5 {
+        height: 1200px;
     }
-}}
-@media (max-width: 480px) and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) { @media
-{
-    .header-image, .footer-image {
-    margin-right: -27px;
+
+    .jump-to-form-button, .form-button, .experience-button {
+
+        font-size: 15px;
     }
-}}
+
+    .image-half {
+        height: 170px;
+    }
+
+    .image-half img {
+        height: 150px;
+    }
+
+}
