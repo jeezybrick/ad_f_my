@@ -31,7 +31,7 @@ class DemoForm(forms.Form):
         self.helper.help_text_inline = False
         self.helper.html5_required = True
 
-        self.helper.add_input(Submit('submit', _('Request access'),
+        self.helper.add_input(Submit('submit', _('Get Early Access'),
                                      css_class='form-button'))
 
         self.helper.layout = Layout(
