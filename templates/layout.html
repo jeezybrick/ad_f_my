@@ -16,14 +16,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
     <!-- Google Open Sans -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <!-- Custom css -->
-    <link rel="stylesheet" href="{% static 'css/media_new.css' %}">
-    
-    <link rel="stylesheet" href="{% static 'css/style_widget.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media.css' %}">
 
-    <link rel="stylesheet" href="{% static 'css/style_new.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style_widget.css' %}">
 
     <!--[if IE]>
         <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -33,7 +35,7 @@
 
 <body>
 
-<div class="main-content">
+<div>
 
     {% block content %}
         {# content #}
@@ -45,36 +47,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+<!-- Jquery mask for phone input -->
+<script src="{% static 'js/jquery.mask.min.js' %}"></script>
+
+<!-- Common js -->
 <script src="{% static 'js/common.js' %}"></script>
 
-<!-- Custom ADF Widget JS  =============================-->
+{% block js %}
 
-<script text="javascript">
-    $(document).ready(function () {
-        $(".adf-blackbox ").hide();
-        $(".adf-mbox .collect").hide();
-        $(".adf-modalbox").hover(
-                function () {
-                    $(".adf-main").fadeToggle("slow", "swing");
-                    $(".adf-blackbox").fadeToggle("slow", "swing", function () {
-                        $(".adf-mbox .collect").slideToggle("fast", "swing");
+{% endblock %}
 
-                    });
-                }, function () {
-                    $(".adf-mbox .collect").slideToggle("fast", "swing", function () {
-                        $(".adf-blackbox").fadeToggle("slow", "swing");
-                        $(".adf-main").fadeToggle("slow", "swing");
-
-                    });
-
-                });
-
-
-        $(".adf-modalbox").click(function () {
-            // add js code for for when user clicks on widget here
-        });
-    });
-</script>
 
 </body>
 </html>
