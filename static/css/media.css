@@ -25,6 +25,7 @@
     }
 
     .thanks-block h2, .faq-block h2 {
+        font-size: 22px;
         line-height: 160%;
     }
 
@@ -53,7 +54,7 @@
         padding-left: 50px;
     }
     .thanks-block h2, .faq-block h2 {
-        font-size: 26px;
+        font-size: 20px;
         line-height: 140%;
     }
     
@@ -109,8 +110,8 @@
     }
 
     .thanks-block h2, .faq-block h2 {
-        font-size: 20px;
-        line-height: 120%;
+        font-size: 18px;
+        line-height: 150%;
     }
 
 }
@@ -184,8 +185,8 @@
     }
 
     .thanks-block h2, .faq-block h2 {
-        font-size: 18px;
-        line-height: 140%;
+        font-size: 16px;
+        line-height: 160%;
     }
 
 }
