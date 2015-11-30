@@ -121,6 +121,10 @@ header .nav-container li.cta {
     padding-right: 0 !important;
 }
 
+.social-nav a:hover {
+    text-decoration: none;
+}
+
 .social-nav a:nth-child(2) {
     padding-left: 0 !important;
 }
@@ -463,6 +467,10 @@ header.header-is-scrolled .logo-container a {
     padding: 30px 0;
 }
 
+.social-footer a:hover {
+    text-decoration: none;
+}
+
 .copyright-footer {
     color: #ffffff;
     padding-top: 15px;
@@ -607,18 +615,22 @@ nav ul, nav ol {
     margin: 10px 0;
 }
 
-.semi-heading{
+.semi-heading {
     font-weight: 500 !important;
 }
-.agr-list{
+
+.agr-list {
     padding-left: 30px;
 }
-.agr-list>span{
+
+.agr-list > span {
     padding-right: 20px;
 }
-.use-personal-list li{
+
+.use-personal-list li {
     padding-bottom: 20px;
 }
-.use-personal-list a{
+
+.use-personal-list a {
     color: dodgerblue;
 }
