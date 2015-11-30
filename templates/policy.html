@@ -1,32 +1,56 @@
-{% extends 'site_base.html' %}
+{% extends 'layout.html' %}
 {% load crispy_forms_tags %}
 {% load i18n %}
 {% load staticfiles %}
 {% block title %}
-    {% trans "Home" %}
+    {% trans "Privacy policy" %}
 {% endblock %}
 
 {% block content %}
 
     {% include 'partials/header.html' %}
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="thanks-block policy-block col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="thanks-block col-lg-12 col-md--12 col-sm-12 col-xs-12">
+                    <h1 class="main-text">
+                        <strong>{% trans "PRIVACY POLICY" %}</strong>
+                    </h1>
 
-                <h1 class="main-text">
-                    <strong>{% trans "PRIVACY POLICY" %}</strong>
-                </h1>
-
-                <h2 class="main-text">
-                    POLICY CONTENT GOES HERE...
-                </h2>
+                    <h2 class="main-text">
+                        POLICY CONTENT GOES HERE...
+                    </h2>
 
 
+                </div>
             </div>
         </div>
     </div>
-
+    {% include 'partials/sidebar.html' %}
     {% include 'partials/footer.html' %}
+
+{% endblock %}
+
+{% block js %}
+
+    <script>
+        $('.header-wrapper').css('border-bottom', '#483276 1px solid');
+        $('header').addClass('header-is-scrolled').addClass('header-side-pages');
+        $('.header-bars-wrapper').addClass('is-scrolled');
+    </script>
+
+    <script>
+        <!-- Scrolled header -->
+        $(window).scroll(function () {
+            if ($(window).scrollTop() >= 300) {
+                $('header').addClass('header-side-pages-is-scrolled');
+            }
+            else {
+                $('header').removeClass('header-side-pages-is-scrolled');
+            }
+        });
+
+    </script>
 
 {% endblock %}
