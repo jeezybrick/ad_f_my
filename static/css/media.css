@@ -24,6 +24,10 @@
 
     }
 
+    .thanks-block h2 {
+        line-height: 160%;
+    }
+
 }
 
 /* Landscape tablets and medium desktops */
@@ -44,6 +48,11 @@
     .logo-footer {
         padding-left: 50px;
     }
+    .thanks-block h2 {
+        font-size: 26px;
+        line-height: 140%;
+    }
+
 
 }
 
@@ -90,6 +99,11 @@
     .section_5 {
         padding: 30px;
         height: 900px;
+    }
+
+    .thanks-block h2 {
+        font-size: 20px;
+        line-height: 120%;
     }
 
 }
@@ -160,6 +174,11 @@
     .jump-to-form-button, .form-button, .experience-button {
 
         font-size: 25px;
+    }
+
+    .thanks-block h2 {
+        font-size: 18px;
+        line-height: 130%;
     }
 
 }
