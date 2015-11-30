@@ -446,6 +446,10 @@ header.header-is-scrolled .logo-container a {
     background: #483276;
 }
 
+#demo_form {
+    text-align: left;
+}
+
 #demo_form input {
     height: 40px;
     border-radius: 6px;
