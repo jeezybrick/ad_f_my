@@ -69,7 +69,8 @@ label {
 .adf-logos, .adf-progress {
     display: inline-block;
     margin: 0 10px;
-    height: 0;
+    height: 48px;
+    width: 40%;
     /* width: 210px; */
 }
 
@@ -91,13 +92,12 @@ label {
 }
 
 .adf-hostlogo {
-    background: url('/static/images/widget/host-logo.jpg') no-repeat center center;
+    background: url('/static/images/widget/ADF-Logo-Pink-Symbol-51.png') no-repeat center center;
     -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
-
 .adf-sponsorlogo {
     background: url('/static/images/widget/sponsor-logo.png') no-repeat center center;
     -webkit-background-size: cover;
@@ -109,7 +109,7 @@ label {
 /*  -progress bar -Widget
 ------------------------------------------------*/
 .adf-day1, .adf-day2, .adf-day3, .adf-day4, .adf-day5, .adf-footerlink {
-    background: url('/static/images/widget/adf-sprite.png') top left no-repeat;
+	background: url('/static/images/widget/adf-sprite-hh.png') top left no-repeat;
 }
 
 .adf-day1, .adf-day2, .adf-day3, .adf-day4, .adf-day5 {
@@ -230,7 +230,7 @@ label {
 ------------------------------------------------*/
 
 .adf-mainback {
-    background: url('/static/images/widget/Modal_Starbucks-Background-Image.jpg') no-repeat center center;
+    background: url('/static/images/widget/booster-juice-background.png') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
