@@ -27,7 +27,7 @@ $(document).ready(function () {
             });
 
         }).click(function () {
-            window.location.hash = '#section-form';
+            document.getElementById('section-form').scrollIntoView();
         });
 });
 
