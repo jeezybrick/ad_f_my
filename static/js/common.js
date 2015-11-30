@@ -39,3 +39,16 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('#id_phone').mask('000-000-0000');
 });
+
+var forms = document.getElementsByTagName('form');
+for (var i = 0; i < forms.length; i++) {
+    forms[i].noValidate = true;
+
+    forms[i].addEventListener('submit', function(event) {
+        //Prevent submission if checkValidity on the form returns false.
+        if (!event.target.checkValidity()) {
+            event.preventDefault();
+            //Implement you own means of displaying error messages to the user here.
+        }
+    }, false);
+}
