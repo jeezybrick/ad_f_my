@@ -1,4 +1,4 @@
-{% extends 'site_base.html' %}
+{% extends 'layout.html' %}
 {% load crispy_forms_tags %}
 {% load i18n %}
 {% load staticfiles %}
@@ -10,209 +10,162 @@
 
     {% include 'partials/header.html' %}
 
-    <div class="container-fluid">
-        <div class="row">
-
-            <!-- First section -->
-            <section class="section_1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="main-content">
+        <!-- First section -->
+        <section class="section_1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="container">
                 <div class="row">
+                    <div class="hero-title col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                    <!-- Widget block -->
-                    <div class="widget-wrapper col-lg-5 col-md-5 col-sm-7 col-xs-12">
-
-                        {% include 'partials/widget.html' %}
-                        
-                    </div>
-
-                    <!-- First list block -->
-                    <div class="col-lg-7 col-md-7 col-sm-5 col-xs-12">
-                        <h1 class="main-text">
-                            <strong>{% trans "Turn-Key Gamification & Rewards Tools" %}</strong>
+                        <h1>
+                            Deliver 10x digital ad performance to your clients.
                         </h1>
 
-                        <h2 class="main-text">
-                            {% trans "Unlock the Power of Digital Ads 3.0" %}
-                        </h2>
-
-                        <ul class="propos-list">
-                            <li>
-                                {% trans "Deliver jaw-dropping KPIs & massive ROI to your advertising clientss" %}
-                            </li>
-
-                            <li>
-                                {% trans "Sell more premium ad units and effortlessly close more deals" %}
-                            </li>
-
-                            <li>
-                                {% trans "Build your audience with loyalty rewards and repeated ad engagement" %}
-                            </li>
-
-                            <li>
-                                {% trans "Instantly fuel the growth of your email subscriber list" %}
-                            </li>
-
-                            <li>
-                                {% trans "Spread “the love” with built-in social media amplification tools" %}
-                            </li>
-                        </ul>
-
-                        <a href="#demo_form" class="btn btn-primary jump-to-form-button">
-                            {% trans "EXPERIENCE HOW IT WORKS!" %}
-                        </a>
+                        <h2><strong>Effortlessly.</strong></h2>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Second section -->
-            <section class="section_2 col-lg-12 col-md--12 col-sm-12 col-xs-12">
-                <h1 class="main-text text-center">
-                    <strong>{% trans "The perfect complement to any publisher’s website" %}</strong>
-                </h1>
-
+        <!-- Second section -->
+        <section class="section_2 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="container">
                 <div class="row">
-
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="row">
-                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
-                                <img src="{% static 'images/LoyaltyRewards3.png' %}" alt="Loyalty">
-                            </div>
-                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
-                                <h3><strong>{% trans "Visitor Loyalty Rewards" %}</strong></h3>
-                            </div>
-
-                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
-                                <h3>
-                                    <small>
-                                        Build visitor loyalty with the element of serendipitous.
-                                        Develop your audience with key demographic data for retargeting and funture ad campaings.
-                                    </small>
-                                </h3>
-                            </div>
-
+                    <div class="section-content">
+                        <div class="image-half col-lg-4 col-md-5 col-sm-12 col-xs-12 text-center">
+                            <img height="256" src="{% static 'images/icon#1-loyalty.png' %}" alt=loyalty"">
                         </div>
-                    </div>
+                        <div class="text-half col-lg-8 col-md-7 col-sm-12 col-xs-12">
+                            <h1>
+                                Generate visitor loyalty through rewards
+                            </h1>
 
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                                <img src="{% static 'images/PremiumRevenue.png' %}" alt="Loyalty">
-                            </div>
-                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
-                                <h3><strong>{% trans "Premium Revenue Streams" %}</strong></h3>
-                            </div>
-
-                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
-                                <h3>
-                                    <small>
-                                        Go beyond RTB inventory.Confidently sell your premium audience traffic backed by the most
-                                        important thing of all... measurable KPIs and stellar results.
-                                    </small>
-                                </h3>
-                            </div>
-
+                            <h3>
+                                Build visitor loyalty with the element of serendipitous rewards.
+                                Develop your audience with key demographic data for
+                                retargeting and future ad campaigns.
+                            </h3>
                         </div>
-                    </div>
 
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="row">
-                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
-                                <img src="{% static 'images/AdPerformance2.png' %}" alt="Loyalty">
-                            </div>
-                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
-                                <h3><strong>{% trans "Insane Ad Perfomance" %}</strong></h3>
-                            </div>
-
-                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
-                                <h3>
-                                    <small>
-                                        Deliver key metrics that will get your clients salivating for more.
-                                        Why sell abysmal click-through-rates when you can guarantee near 100% marketing ROI?
-                                    </small>
-                                </h3>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="row">
-                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
-                                <img src="{% static 'images/PrivateBeta.png' %}" alt="Loyalty">
-                            </div>
-                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
-                                <h3><strong>{% trans "Private Beta (invate only)" %}</strong></h3>
-                            </div>
-
-                            <div class="col-lg-12 col-md--12 col-sm-12 col-xs-12 text-center">
-                                <h3>
-                                    <small>
-                                        ADFits is currently in private beta(invite-only).
-                                        Get in touch with us we'll add you to the list of Publishers interested in participating.
-                                    </small>
-                                </h3>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div class="row">
-            <section class="section_3 col-lg-12 col-md--12 col-sm-12 col-xs-12">
-
-                <h1 class="main-text">
-                    <strong>{% trans "Experience Ad Gamification & Rewards in Action!" %}</strong>
-                </h1>
-
-                <div class="row">
-
-                    <div class="list-wrapper col-lg-7 col-md-7 col-sm-7 col-xs-12">
-
-                        <ul class="propos-list_two">
-                            <li>
-                                {% trans "Easily sell more premium ads to your clients" %}
-                            </li>
-
-                            <li>
-                                {% trans "Supercharge the growth of your audience" %}
-                            </li>
-
-                            <li>
-                                {% trans "Serendipitous rewards make everyone smile" %}
-                            </li>
-
-                            <li>
-                                {% trans "Generate a huge buzz around your brand" %}
-                            </li>
-
-                            <li>
-                                {% trans "Launch campaigns in 3 super easy steps" %}
-                            </li>
-
-                            <li>
-                                {% trans "Quick turnaround time and amazing support" %}
-                            </li>
-
-                            <li>
-                                {% trans "No coding required, 100% HTML5" %}
-                            </li>
-                        </ul>
-
-                    </div>
-
-                    <!-- Request form -->
-                    <div class="form-wrapper col-lg-4 col-md-4 col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-1">
-
-                        {% load crispy_forms_tags %}
-                        {% crispy form %}
                     </div>
                 </div>
 
-            </section>
-        </div>
+            </div>
+
+        </section>
+
+        <section class="section_3 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="container">
+                <div class="section-content">
+                    <div class="text-half col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                        <h1>
+                            Increase premium ad revenue streams
+                        </h1>
+
+                        <h3>
+                            Go beyond RTB inventory. Effortlessly launch gamification ad
+                            campaigns that deliver 10x digital ad performance to your
+                            clients, enabling you to close more deals.
+                        </h3>
+                    </div>
+                    <div class="image-half col-lg-5 col-md-5 col-sm-12 col-xs-12 text-center">
+                        <img height="256" src="{% static 'images/icon#2-revenue.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="section_4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="container">
+                <div class="section-content">
+
+                    <div class="image-half col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center">
+                        <img height="256" src="{% static 'images/icon#3-performance.png' %}" alt="Performance">
+                    </div>
+
+                    <div class="text-half col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                        <h1>
+                            Deliver jaw-dropping KPIs and massive ROI
+                        </h1>
+
+                        <h3>
+                            Report key metrics that will get your clients salivating for
+                            more. Why sell abysmal click-through-rates when you can
+                            guarantee CPA driven ad performance?
+                        </h3>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+        <section class="section_5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="container">
+                <div class="section-content turn-key-section">
+                    <div class="text-half col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <h1>
+                            Turn-key Ad Gamification & Rewards
+                        </h1>
+
+                        <h3>
+                            The gamification and rewards component deepens widget
+                            engagement, builds your audience, and instantly fuels the
+                            growth of your email subscriber list.
+                        </h3>
+
+                        <h3>
+                            You can even spread “the love” with social media
+                            amplification tools built right into the ad unit!
+                        </h3>
+                        <button class="experience-button">EXPERIENCE ALL OF IT</button>
+                    </div>
+                    <div class="widget-wrapper col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                        {% include 'partials/widget.html' %}
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="section-form" class="section_6 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+
+            <div class="section-form row">
+                <div class="text-half col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h1>
+                        Unlock the power of digital ads 3.0
+                    </h1>
+                </div>
+            </div>
+            <div class="form-block">
+                {% load crispy_forms_tags %}
+                {% crispy form %}
+            </div>
+
+        </section>
     </div>
+    {% include 'partials/sidebar.html' %}
 
     {% include 'partials/footer.html' %}
 
+{% endblock %}
+
+
+{% block js %}
+
+    <script>
+        <!-- Scrolled header -->
+        $(window).scroll(function () {
+            if ($(window).scrollTop() >= 280) {
+                $('header').addClass('header-is-scrolled');
+                $('.header-bars-wrapper').addClass('is-scrolled');
+            }
+            else {
+                $('header').removeClass('header-is-scrolled');
+                $('.header-bars-wrapper').removeClass('is-scrolled');
+            }
+        });
+
+    </script>
 {% endblock %}
