@@ -597,6 +597,10 @@ nav ul, nav ol {
     background-clip: padding-box;
 }
 
+#sidebar-nav ul li.social {
+    margin: 10px 0;
+}
+
 .semi-heading{
     font-weight: 500 !important;
 }
