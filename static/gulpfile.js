@@ -11,5 +11,5 @@ gulp.task('default', function() {
 gulp.task('image', function() {
     gulp.src('images/*')
         .pipe(imagemin())
-        .pipe (gulp.dest('images/compression'));
+        .pipe (gulp.dest('images/'));
 });
