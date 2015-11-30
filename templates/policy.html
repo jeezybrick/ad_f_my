@@ -401,7 +401,8 @@
 
                             information used by a third party service provider, please visit these sites:
 
-                            <a href="http://www.networkadvertising.org/managing/opt_out.asp">http://www.networkadvertising.org/managing/opt_out.asp</a> and
+                            <a href="http://www.networkadvertising.org/managing/opt_out.asp">http://www.networkadvertising.org/managing/opt_out.asp</a>
+                            and
 
                             <a href="http://www.aboutads.info/choices/">http://www.aboutads.info/choices/.</a>
 
@@ -582,6 +583,17 @@
         $('.header-wrapper').css('border-bottom', '#483276 1px solid');
         $('header').addClass('header-is-scrolled').addClass('header-side-pages');
         $('.header-bars-wrapper').addClass('is-scrolled');
+
+        $('#home-link').click(function () {
+            window.location.href = "/";
+        });
+        $('#how-it-works-link').click(function () {
+            window.location.href = "/#widget-section";
+        });
+        $('#request-acc-link').click(function () {
+            window.location.href = "/#section-form";
+        });
+
     </script>
 
     <script>
