@@ -481,6 +481,7 @@ header.header-is-scrolled .logo-container a {
 .copyright-footer {
     color: #ffffff;
     padding-top: 15px;
+    padding-right: 0;
 }
 .copyright-footer h5{
     font-weight: 300;
