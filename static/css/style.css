@@ -282,6 +282,9 @@ header.header-is-scrolled .logo-container a {
     text-decoration: none;
     position: relative;
 }
+.thanks-block.greeting-after-form h2{
+    font-size: 25px;
+}
 
 .thanks-block.greeting-after-form a:after {
     content: '';
