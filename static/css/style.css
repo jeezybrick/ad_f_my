@@ -368,7 +368,7 @@ header.header-is-scrolled .logo-container a {
 .section_1 {
     position: relative;
     width: 100%;
-    height: 700px;
+    height: 790px;
     text-align: center;
     color: #fff;
     background: url('/static/images/main_background.jpg') center;
@@ -638,5 +638,4 @@ nav ul, nav ol {
 
 .use-personal-list a {
     color: dodgerblue;
-    position: static;
 }
