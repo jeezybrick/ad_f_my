@@ -620,6 +620,7 @@ nav ul, nav ol {
 #sidebar-nav ul li.cta {
     border: 2px solid #FFFFFF;
     background-clip: padding-box;
+    border-radius: 6px;
 }
 
 #sidebar-nav ul li.social {
