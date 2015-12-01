@@ -50,7 +50,7 @@
         font-size: 20px;
         line-height: 140%;
     }
-    
+
     .section_3 .image-half {
         text-align: left;
     }
@@ -189,7 +189,8 @@
     }
 
     .adf-widgetdialog {
-        width: 100% !important;
+        width: 120% !important;
+        margin: 0 -20px;
 
     }
 
@@ -223,7 +224,6 @@
         margin-right: 0;
     }
 
-
     .all-rights {
         padding-top: 5px;
         display: block;
@@ -250,10 +250,11 @@
     .nav-container {
         display: none;
     }
-    .adf-day2{
-        display:none;
+
+    .adf-day2 {
+        display: none;
     }
-    
+
     .adf-main {
         width: 80%;
     }
