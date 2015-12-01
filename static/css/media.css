@@ -14,10 +14,6 @@
         display: block !important;
     }
 
-    .logo-footer {
-        padding-left: 60px;
-    }
-
     header .nav-container li a {
         padding: 0 30px;
         font-size: 18px;
@@ -50,9 +46,6 @@
         display: block !important;
     }
 
-    .logo-footer {
-        padding-left: 50px;
-    }
     .thanks-block h2, .faq-block h2 {
         font-size: 20px;
         line-height: 140%;
@@ -90,10 +83,6 @@
 
     header .faq-logo {
         margin-left: 0;
-    }
-
-    .logo-footer {
-        padding-left: 40px;
     }
 
     .section-content {
@@ -146,10 +135,6 @@
 
     header .nav-container li {
         float: none;
-    }
-
-    .logo-footer {
-        padding-left: 25px;
     }
 
     .section-content {
@@ -238,9 +223,6 @@
         margin-right: 0;
     }
 
-    .logo-footer {
-        padding-left: 0;
-    }
 
     .all-rights {
         padding-top: 5px;
