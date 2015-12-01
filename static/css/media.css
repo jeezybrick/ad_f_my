@@ -346,4 +346,10 @@
         height: 150px;
     }
 
+     .adf-widgetdialog {
+        width: 130% !important;
+        margin: 0 -40px;
+
+    }
+
 }
