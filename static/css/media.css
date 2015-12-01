@@ -196,7 +196,7 @@
         font-size: 25px;
     }
 
-    .thanks-block h2{
+    .thanks-block h2 {
         font-size: 16px;
         line-height: 160%;
     }
@@ -209,7 +209,6 @@
         font-size: 16px;
         line-height: 140%;
     }
-
 
 }
 
@@ -305,6 +304,10 @@
         font-size: 20px;
     }
 
+    footer.container {
+        width: 90%;
+    }
+
 }
 
 /* Custom, iPhone Retina */
@@ -346,13 +349,10 @@
         height: 150px;
     }
 
-     .adf-widgetdialog {
+    .adf-widgetdialog {
         width: 135% !important;
         margin: 0 -42px;
 
     }
-     .footer.container{
-         width: 90%;
-     }
 
 }
