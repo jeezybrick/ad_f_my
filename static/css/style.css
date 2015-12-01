@@ -273,7 +273,7 @@ header.header-is-scrolled .logo-container a {
 .thanks-block {
     color: #483276;
     margin-top: 200px;
-    padding: 0 40px;
+    padding: 0;
 
 }
 
@@ -450,7 +450,7 @@ header.header-is-scrolled .logo-container a {
     background: #ee4577;
 }
 .form-button {
-   margin-top: 15px;
+    background: #483276;
 }
 
 .form-button:hover {
