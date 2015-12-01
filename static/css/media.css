@@ -20,8 +20,17 @@
 
     }
 
-    .thanks-block h2, .faq-block h2 {
+    .thanks-block h2 {
         font-size: 22px;
+        line-height: 160%;
+    }
+
+    .faq-block .faq-heading {
+        font-size: 25px;
+    }
+
+    .faq-block h2 {
+        font-size: 20px;
         line-height: 160%;
     }
 
@@ -46,13 +55,22 @@
         display: block !important;
     }
 
-    .thanks-block h2, .faq-block h2 {
+    .thanks-block h2 {
         font-size: 20px;
         line-height: 140%;
     }
 
     .section_3 .image-half {
         text-align: left;
+    }
+
+    .faq-block .faq-heading {
+        font-size: 24px;
+    }
+
+    .faq-block h2 {
+        font-size: 18px;
+        line-height: 140%;
     }
 
 }
@@ -98,9 +116,18 @@
         height: 900px;
     }
 
-    .thanks-block h2, .faq-block h2 {
+    .thanks-block h2 {
         font-size: 18px;
         line-height: 150%;
+    }
+
+    .faq-block .faq-heading {
+        font-size: 24px;
+    }
+
+    .faq-block h2 {
+        font-size: 18px;
+        line-height: 140%;
     }
 
 }
@@ -169,10 +196,20 @@
         font-size: 25px;
     }
 
-    .thanks-block h2, .faq-block h2 {
+    .thanks-block h2{
         font-size: 16px;
         line-height: 160%;
     }
+
+    .faq-block .faq-heading {
+        font-size: 22px;
+    }
+
+    .faq-block h2 {
+        font-size: 16px;
+        line-height: 140%;
+    }
+
 
 }
 
