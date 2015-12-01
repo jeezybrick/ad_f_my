@@ -115,6 +115,7 @@ header .nav-container li a {
 header .nav-container li.cta {
     border: 2px solid #FFFFFF;
     background-clip: padding-box;
+    border-radius: 6px;
 }
 
 .social-nav a {
