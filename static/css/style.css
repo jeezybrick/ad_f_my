@@ -450,7 +450,7 @@ header.header-is-scrolled .logo-container a {
     background: #ee4577;
 }
 .form-button {
-    background: #483276;
+    margin-top: 15px;
 }
 
 .form-button:hover {
