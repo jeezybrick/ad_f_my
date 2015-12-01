@@ -27,10 +27,11 @@
             </div>
         </section>
 
-        <!-- Second section -->
-        <section class="section_2 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="container">
-                <div class="row">
+        <div class="container">
+            <div class="row">
+                <!-- Second section -->
+                <section class="section_2 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
                     <div class="section-content">
                         <div class="image-half col-lg-4 col-md-5 col-sm-12 col-xs-12 text-center">
                             <img height="256" src="{% static 'images/icon#1-loyalty.png' %}" alt="Loyalty">
@@ -48,11 +49,11 @@
                         </div>
 
                     </div>
-                </div>
-
+                </section>
             </div>
 
-        </section>
+        </div>
+
 
         <section class="section_3 col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="container">
@@ -76,30 +77,31 @@
 
         </section>
 
-        <section class="section_4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="container">
-                <div class="section-content">
+        <div class="container">
+            <div class="row">
+                <section class="section_4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="section-content">
 
-                    <div class="image-half col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center">
-                        <img height="256" src="{% static 'images/icon#3-performance.png' %}" alt="Performance">
+                        <div class="image-half col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center">
+                            <img height="256" src="{% static 'images/icon#3-performance.png' %}" alt="Performance">
+                        </div>
+
+                        <div class="text-half col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                            <h1>
+                                Deliver jaw-dropping KPIs and massive ROI
+                            </h1>
+
+                            <h3>
+                                Report key metrics that will get your clients salivating for
+                                more. Why sell abysmal click-through-rates when you can
+                                guarantee CPA driven ad performance?
+                            </h3>
+                        </div>
+
                     </div>
-
-                    <div class="text-half col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                        <h1>
-                            Deliver jaw-dropping KPIs and massive ROI
-                        </h1>
-
-                        <h3>
-                            Report key metrics that will get your clients salivating for
-                            more. Why sell abysmal click-through-rates when you can
-                            guarantee CPA driven ad performance?
-                        </h3>
-                    </div>
-
-                </div>
+                </section>
             </div>
-
-        </section>
+        </div>
 
         <section id="widget-section" class="section_5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="container">
@@ -166,7 +168,7 @@
                 $('.header-bars-wrapper').removeClass('is-scrolled');
             }
         });
-        
+
         $('.experience-button').click(function () {
             document.getElementById('section-form').scrollIntoView();
         });
