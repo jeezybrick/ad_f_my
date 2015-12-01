@@ -283,7 +283,7 @@ header.header-is-scrolled .logo-container a {
     position: relative;
 }
 
-.thanks-block a:after {
+.thanks-block.greeting-after-form a:after {
     content: '';
 
     width: 100%;
