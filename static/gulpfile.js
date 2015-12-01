@@ -3,10 +3,14 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     minifyCss = require('gulp-minify-css');
 
-
-// compress images
+// default
 gulp.task('default', function() {
 
+});
+
+// watch changes of files
+gulp.task('watch', function() {
+    gulp.watch('css/*.css', ['minify-css']);
 });
 
 // compress images
