@@ -351,5 +351,8 @@
         margin: 0 -42px;
 
     }
+     .footer.container{
+         width: 90%;
+     }
 
 }
