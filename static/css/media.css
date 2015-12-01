@@ -209,6 +209,10 @@
         font-size: 16px;
         line-height: 140%;
     }
+    
+    .section-form h1 {
+        margin-top: 50px;
+    }
 
 }
 
