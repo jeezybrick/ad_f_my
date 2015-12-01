@@ -19,9 +19,15 @@ def send_email_with_form_data(data):
         data.get('last_name', default=None),
         data.get('email', default=None),
         data.get('phone', default=None),
-        data.get('company', default='---'),
-        data.get('url', default='---'),
+        check_is_empty(data.get('company', default='---')),
+        check_is_empty(data.get('url', default='---')),
         datetime.datetime.now().date().strftime('%m/%d/%Y')
     )
 
     send_mail(subject, message, email_from, email_to, fail_silently=False)
+
+def check_is_empty(value):
+    if not value:
+        return '----'
+    return value
+
