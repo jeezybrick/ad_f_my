@@ -308,6 +308,10 @@
         width: 90%;
     }
 
+    .section-form h1 {
+        margin-top: 60px;
+    }
+
 }
 
 /* Custom, iPhone Retina */
