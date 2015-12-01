@@ -1,7 +1,8 @@
 var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     uglify = require('gulp-uglify'),
-    minifyCss = require('gulp-minify-css');
+    minifyCss = require('gulp-minify-css'),
+    plumber = require('gulp-plumber');
 
 // default
 gulp.task('default', function() {
@@ -30,6 +31,7 @@ gulp.task('compress', function() {
 // compress css
 gulp.task('minify-css', function() {
   return gulp.src('css/*.css')
+    .pipe(plumber())
     .pipe(minifyCss({compatibility: 'ie8'}))
     .pipe(gulp.dest('css/minified'));
 });
