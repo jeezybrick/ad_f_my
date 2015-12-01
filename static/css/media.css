@@ -263,6 +263,11 @@
         font-size: 10px;
     }
 
+    .jump-to-form-button, .form-button, .experience-button {
+        padding: 0 30px;
+        font-size: 25px;
+    }
+
 }
 
 /* Custom, iPhone Retina */
