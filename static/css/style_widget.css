@@ -1,6 +1,6 @@
 
 .adf-color, .adf-color.icons, .adf-footerinfo a:hover {
-    color: #1abc9c;
+    color: #663366;
 }
 
 .adf-bcolor {
@@ -70,7 +70,7 @@ label {
     display: inline-block;
     margin: 0 10px;
     height: 48px;
-    width: auto;
+    width: 40%;
     /* width: 210px; */
 }
 
