@@ -2,7 +2,7 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     uglify = require('gulp-uglify'),
     minifyCss = require('gulp-minify-css'),
-    plumber = require('gulp-plumber');
+    plumber = require('gulp-plumber'); // for error handling
 
 // default
 gulp.task('default', function() {
