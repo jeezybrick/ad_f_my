@@ -1,10 +1,11 @@
 
 .adf-color, .adf-color.icons, .adf-footerinfo a:hover {
-    color: #663366;
+    color: #1abc9c;
+    
 }
 
 .adf-bcolor {
-    background: #1abc9c;
+    background: #663366;
 }
 
 .adf-alert {
