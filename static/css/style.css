@@ -326,6 +326,7 @@ header.header-is-scrolled .logo-container a {
 
 .faq-block h2 {
     color: #5d6491;
+    font-weight: 300;
 }
 
 .header-image, .footer-image {
