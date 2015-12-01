@@ -255,6 +255,14 @@
         width: 80%;
     }
 
+    .copyright-footer h5 {
+        font-size: 14px;
+    }
+
+    .copyright-footer .copyright-text {
+        font-size: 12px;
+    }
+
 }
 
 /* Custom, iPhone Retina */
