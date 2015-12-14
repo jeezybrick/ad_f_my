@@ -166,7 +166,7 @@ require(['jquery', 'gapi'] , function($) {
 	var AdFits = (function($) {
 		var required_css = [
 			'http://fonts.googleapis.com/css?family=Open+Sans:400,600,700',
-			base_url + 'static/css/style.css?v=' + Math.random()
+			base_url + 'static/css/style.scss?v=' + Math.random()
 		];
 
 		var required_js = [

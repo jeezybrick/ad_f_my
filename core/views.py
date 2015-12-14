@@ -34,3 +34,30 @@ class HomeView(View):
     def get_success_url(self):
         return reverse("thanks")
 
+
+class JoinNetworkView(View):
+    template_name = 'join_network.html'
+    title = _('Join network')
+    form_class = forms.JoinNetworkForm
+
+    def get(self, request):
+        form = self.form_class()
+        context = {
+            'form': form,
+            'title': self.title,
+        }
+        return TemplateResponse(request, self.template_name, context)
+
+    def post(self, request):
+        form = self.form_class(data=request.POST)
+        context = {
+            'form': form,
+            'title': self.title,
+        }
+        if form.is_valid():
+            #utils.send_email_with_form_data(request.POST)
+            return redirect(self.get_success_url())
+        return TemplateResponse(request, self.template_name, context)
+
+    def get_success_url(self):
+        return reverse("home")
