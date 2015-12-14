@@ -1,12 +1,15 @@
 import calendar
 import xlwt
 from adfits import constants
+from django.shortcuts import redirect
 from django.views.generic import View
 from django.views.generic import TemplateView, UpdateView
 from django.views.generic.edit import FormView
+from django.template.response import TemplateResponse
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib import messages
+from django.utils.translation import ugettext_lazy as _
 from publisher.models import Publisher, Website
 from publisher.forms import PublisherWebsiteForm, ResetPasswordForm
 from campaign.models import CampaignTracker, Campaign
@@ -447,3 +450,48 @@ class ChangePassword(FormView):
         """
         
         return reverse('publisher_dashboard')
+
+
+class AdvertisersView(View):
+    template_name = 'advertisers.html'
+    title = _('Advertisers')
+
+    def get(self, request):
+        context = {
+            'title': self.title,
+        }
+        return TemplateResponse(request, self.template_name, context)
+    '''
+    def post(self, request):
+        context = {
+            'title': self.title,
+        }
+        if form.is_valid():
+            return redirect(self.get_success_url())
+        return TemplateResponse(request, self.template_name, context)
+
+    def get_success_url(self):
+        return reverse("get-code")
+
+    '''
+class GetCodeView(View):
+    template_name = 'get_code.html'
+    title = _('Get code')
+
+    def get(self, request):
+        context = {
+            'title': self.title,
+        }
+        return TemplateResponse(request, self.template_name, context)
+'''
+    def post(self, request):
+        context = {
+            'title': self.title,
+        }
+        if form.is_valid():
+            return redirect(self.get_success_url())
+        return TemplateResponse(request, self.template_name, context)
+
+    def get_success_url(self):
+        return reverse("home")
+'''

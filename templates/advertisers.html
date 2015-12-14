@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load staticfiles %}
+{% block title %}
+    {% trans "Home" %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="advertisers-header col-lg-10">
+                    <h2>
+                       <em>Here are some brands that you can earn income with. Choose the ones you want to
+                        allow to advertise on your website in the form of a sponsorship:</em>
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="advertisers-content col-lg-6 col-md-6">
+                    <button class="form-button">
+                        NEXT
+                    </button>
+                </div>
+
+                <div class="sponsor-network-text col-lg-6 col-md-6">
+                    <h2><em>Our sponsor network is growing every day.</em> </h2>
+                    <h2><em>Stay tuned, you’ll be able to target more sponsors soon!</em> </h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% include 'partials/sidebar.html' %}
+
+    {% include 'partials/footer.html' %}
+
+{% endblock %}
+
+
+{% block js %}
+
+    <script>
+        <!-- Scrolled header -->
+        $(window).scroll(function () {
+            if ($(window).scrollTop() >= 280) {
+                $('header').addClass('header-is-scrolled');
+                $('.header-bars-wrapper').addClass('is-scrolled');
+            }
+            else {
+                $('header').removeClass('header-is-scrolled');
+                $('.header-bars-wrapper').removeClass('is-scrolled');
+            }
+        });
+
+        $('.experience-button').click(function () {
+            document.getElementById('section-form').scrollIntoView();
+        });
+    </script>
+{% endblock %}
