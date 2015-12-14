@@ -45,6 +45,8 @@ class Website(models.Model):
 	token = models.CharField(max_length=100, null=True, blank=True)
 	industry = models.ForeignKey(Industry, null=True, blank=True)
 	twitter_name = models.CharField(max_length=100, null=True, blank=True)
+	facebook_page = models.CharField(max_length=100, null=True, blank=True)
+	avg_page_views = models.PositiveIntegerField(blank=True)
 	
 	class Meta:
 		app_label = 'publisher'
