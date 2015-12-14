@@ -54,7 +54,7 @@ class PublisherWebsiteForm(WebsiteForm):
             'type':'text', 'placeholder':'http://',
             'class': 'form-control input-small', 'style': 'height: 25px'
     	})
-    		self.fields['avg_page_views'].widget = forms.TextInput(attrs={
+    		self.fields['avg_page_views'].widget = forms.NumberInput(attrs={
             'type':'text', 'placeholder':'There are no minimums, so please be honest!',
             'class': 'form-control input-small', 'style': 'height: 25px'
     	})
