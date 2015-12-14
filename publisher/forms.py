@@ -50,6 +50,14 @@ class PublisherWebsiteForm(WebsiteForm):
             'type':'text', 'placeholder':'@',
             'class': 'form-control input-small', 'style': 'height: 25px'
     	})
+    		self.fields['facebook_page'].widget = forms.TextInput(attrs={
+            'type':'text', 'placeholder':'http://',
+            'class': 'form-control input-small', 'style': 'height: 25px'
+    	})
+    		self.fields['avg_page_views'].widget = forms.TextInput(attrs={
+            'type':'text', 'placeholder':'There are no minimums, so please be honest!',
+            'class': 'form-control input-small', 'style': 'height: 25px'
+    	})
 
 
 		
