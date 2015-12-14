@@ -47,7 +47,7 @@ class PublisherWebsiteForm(WebsiteForm):
             'class': 'form-control input-small', 'style': 'height: 25px'
     	})
 		self.fields['twitter_name'].widget = forms.TextInput(attrs={
-            'type':'text', 'placeholder':'Enter your twitter name',
+            'type':'text', 'placeholder':'@',
             'class': 'form-control input-small', 'style': 'height: 25px'
     	})
 
