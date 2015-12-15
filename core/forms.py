@@ -3,6 +3,8 @@ from django.core import validators
 from django.utils.translation import ugettext_lazy as _
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Field
+from core.models import Country
+from publisher.models import Publisher
 
 
 class DemoForm(forms.Form):
@@ -69,7 +71,7 @@ class DemoForm(forms.Form):
         )
 
 
-class JoinNetworkForm(forms.Form):
+class JoinNetworkForm(forms.ModelForm):
     error_messages = {
         'password_mismatch': _("The two password fields didn't match."),
     }
@@ -84,7 +86,7 @@ class JoinNetworkForm(forms.Form):
     url = forms.URLField(label='', required=True, help_text="<em>Don't worry, you can add more than one website later if you want!</em>")
     website = forms.CharField(label='', required=True)
     accept = forms.BooleanField(label='', required=True, help_text="I accept the Terms & Conditions and Privacy Policy.")
-    country = forms.ChoiceField(choices=(('USA', 'USA'), ('Canada', 'Canada'), ), label='', help_text="<hr>")
+    # country = forms.ChoiceField(choices=(('USA', 'USA'), ('Canada', 'Canada'), ), label='', help_text="<hr>")
 
     password1 = forms.CharField(label='',
                                 widget=forms.PasswordInput())
@@ -93,7 +95,7 @@ class JoinNetworkForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(JoinNetworkForm, self).__init__(*args, **kwargs)
-
+        self.fields['country'] = forms.ModelChoiceField(help_text="<hr>", queryset=Country.objects.all(), label='')
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.form_id = 'join_network_form'
@@ -160,6 +162,13 @@ class JoinNetworkForm(forms.Form):
             )
 
         )
+
+    class Meta:
+        model = Publisher
+        fields = ("name", "email", "country", "website", )
+        widgets = {
+
+        }
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
