@@ -4,23 +4,21 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="16">
-            <item index="0" class="java.lang.String" itemvalue="permission-backend-nonrel" />
-            <item index="1" class="java.lang.String" itemvalue="django-imagekit" />
-            <item index="2" class="java.lang.String" itemvalue="django-crontab" />
-            <item index="3" class="java.lang.String" itemvalue="djangotoolbox" />
-            <item index="4" class="java.lang.String" itemvalue="django-grappelli" />
-            <item index="5" class="java.lang.String" itemvalue="django" />
-            <item index="6" class="java.lang.String" itemvalue="django-crispy-forms" />
-            <item index="7" class="java.lang.String" itemvalue="django-colorful" />
-            <item index="8" class="java.lang.String" itemvalue="mongodb-engine" />
-            <item index="9" class="java.lang.String" itemvalue="gunicorn" />
-            <item index="10" class="java.lang.String" itemvalue="pilkit" />
-            <item index="11" class="java.lang.String" itemvalue="xlwt" />
-            <item index="12" class="java.lang.String" itemvalue="motor" />
-            <item index="13" class="java.lang.String" itemvalue="mandrill" />
-            <item index="14" class="java.lang.String" itemvalue="PIL" />
-            <item index="15" class="java.lang.String" itemvalue="tornado" />
+          <list size="14">
+            <item index="0" class="java.lang.String" itemvalue="gunicorn" />
+            <item index="1" class="java.lang.String" itemvalue="permission-backend-nonrel" />
+            <item index="2" class="java.lang.String" itemvalue="pilkit" />
+            <item index="3" class="java.lang.String" itemvalue="pillow" />
+            <item index="4" class="java.lang.String" itemvalue="xlwt" />
+            <item index="5" class="java.lang.String" itemvalue="mandrill" />
+            <item index="6" class="java.lang.String" itemvalue="django-grappelli" />
+            <item index="7" class="java.lang.String" itemvalue="django-imagekit" />
+            <item index="8" class="java.lang.String" itemvalue="django-crontab" />
+            <item index="9" class="java.lang.String" itemvalue="djangotoolbox" />
+            <item index="10" class="java.lang.String" itemvalue="motor" />
+            <item index="11" class="java.lang.String" itemvalue="mongodb-engine" />
+            <item index="12" class="java.lang.String" itemvalue="django-colorful" />
+            <item index="13" class="java.lang.String" itemvalue="tornado" />
           </list>
         </value>
       </option>

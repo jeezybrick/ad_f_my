@@ -146,10 +146,12 @@ INSTALLED_APPS = (
     'client',
     'sponsor',
     'publisher',
+    'core',
     'colorful',
     'login',
     'django_crontab',
-    'crispy_forms'
+    'crispy_forms',
+    'django_mongodb_engine'
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
