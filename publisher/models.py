@@ -67,7 +67,7 @@ class Publisher(models.Model):
     contact_name = models.CharField(_("Contact Name"), max_length=100)
     address = models.TextField(_("Address"), null=True, blank=True)
     telephone = models.IntegerField(_("Telephone"), max_length=10, null=True, blank=True)
-    email = models.EmailField(max_length=75, null=True, blank=True)
+    email = models.EmailField(max_length=75, null=True, blank=True, unique=True)
     industry = models.ForeignKey(Industry, null=True, blank=True)
     logo = models.FileField(_("Upload Logo"), upload_to=get_publisher_logo_path)
     token = models.CharField(max_length=100, null=True, blank=True)

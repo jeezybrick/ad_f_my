@@ -1,4 +1,19 @@
+/* Super Large desktops and laptops */
+@media (min-width: 1900px) {
+  .section-join-network {
+    height: 55vh !important; } }
+
 /* Large desktops and laptops */
+@media (min-width: 1200px) and (max-width: 1600px) {
+  .section-join-network {
+    height: 115vh !important; }
+    .section-join-network .widget-block {
+      min-height: 100%;
+      padding: 45px 15px; }
+    .section-join-network .form-block {
+      min-height: 100%;
+      padding: 30px 15px; } }
+
 @media (min-width: 1200px) {
   .hero-title h1 {
     font-size: 45px; }

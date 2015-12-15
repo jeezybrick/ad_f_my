@@ -16,101 +16,97 @@ from django.contrib.auth.models import make_password
 
 
 class LoginView(FormView):
-	"""
-	Would help to render user login form and validate the user.
-	"""
+    """
+    Would help to render user login form and validate the user.
+    """
 
-	template_name = 'login.html'
-	form_class = LoginForm
+    template_name = 'login.html'
+    form_class = LoginForm
 
-	def get(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
 
-		#if user has the key 'user_type' then redirect to the success url.
-		if request.session.get('user_type', ''):
-			next = self.get_success_url()
+        # if user has the key 'user_type' then redirect to the success url.
+        if request.session.get('user_type', ''):
+            next = self.get_success_url()
 
-			if next is not None:
-				return HttpResponseRedirect(next)
+            if next is not None:
+                return HttpResponseRedirect(next)
 
-		form_class = self.get_form_class()
-		form = self.get_form(form_class)
-		return self.render_to_response(self.get_context_data(form=form))	
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        return self.render_to_response(self.get_context_data(form=form))
 
-	def post(self, request, *args, **kwargs):
-		"""
-		Would help to validate user and login the user.		
-		"""
-		model =  kwargs['model']
-		
-		form = self.form_class(request.POST)
+    def post(self, request, *args, **kwargs):
+        """
+        Would help to validate user and login the user.
+        """
+        model = kwargs['model']
 
-		if form.is_valid():
-			username = form.cleaned_data['username']
-			password = form.cleaned_data['password']
-			user = authenticate(model, username=username, password=password)
+        form = self.form_class(request.POST)
 
-			if user is not None:
-				login(request, user)
-				request.session['_id'] = user.pk
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            user = authenticate(model, email=email, password=password)
 
-				#if model is publisher model.
-				if model == Publisher:
-					request.session['user_type'] = constants.USER_PUBLISHER
-					return HttpResponseRedirect(self.get_success_url()) 
-				elif model == Sponsor:
-					#if model is sponsor model.
-					request.session['user_type'] = constants.USER_SPONSOR
-					return HttpResponseRedirect(self.get_success_url()) 
-			messages.error(request, "Wrong username and Password combination.")
-			return self.form_invalid(form)
-		else:
-			return self.form_invalid(form)
+            if user is not None:
+                login(request, user)
+                request.session['_id'] = user.pk
 
-	def get_success_url(self):
-		"""
-		Would return the success url depending on the whether query url is available.
-		"""
-		
-		if self.request.session.get('user_type', '') == constants.USER_PUBLISHER:
-			return reverse('publisher_dashboard')
-		elif self.request.session.get('user_type', '') == constants.USER_SPONSOR:
-			return reverse('sponsor_dashboard')
-		else:
-			return None
+                # if model is publisher model.
+                if model == Publisher:
+                    request.session['user_type'] = constants.USER_PUBLISHER
+                    return HttpResponseRedirect(self.get_success_url())
+                elif model == Sponsor:
+                    # if model is sponsor model.
+                    request.session['user_type'] = constants.USER_SPONSOR
+                    return HttpResponseRedirect(self.get_success_url())
+            messages.error(request, "Wrong username and Password combination.")
+            return self.form_invalid(form)
+        else:
+            return self.form_invalid(form)
+
+    def get_success_url(self):
+        """
+        Would return the success url depending on the whether query url is available.
+        """
+
+        if self.request.session.get('user_type', '') == constants.USER_PUBLISHER:
+            return reverse('publisher_dashboard')
+        elif self.request.session.get('user_type', '') == constants.USER_SPONSOR:
+            return reverse('sponsor_dashboard')
+        else:
+            return None
 
 
 class ChangePassword(FormView):
-	template_name = 'reset_password.html'
-	form_class = ResetPasswordForm
-	
-	def post(self, request, *args, **kwargs):
-		query_model = kwargs['model']
-		user_id = request.session['_id']
-		user_obj = query_model.objects.get(pk=user_id)
+    template_name = 'reset_password.html'
+    form_class = ResetPasswordForm
 
-		form = self.form_class(query_model, user_obj.name, request.POST)
-		
-		if form.is_valid():
-			password = form.cleaned_data['new_password']
-			new_password = make_password(password, salt="adfits")
-			user_obj.password = new_password
-			user_obj.save()
-			return HttpResponseRedirect(self.get_success_url()) 
-		else:
-			return self.form_invalid(form)
+    def post(self, request, *args, **kwargs):
+        query_model = kwargs['model']
+        user_id = request.session['_id']
+        user_obj = query_model.objects.get(pk=user_id)
 
-	def get_success_url(self):
-		"""
-		Would return the success url depending on the whether query url is available.
-		"""
-		
-		if self.request.session.get('user_type', '') == constants.USER_PUBLISHER:
-			return reverse('publisher_dashboard')
-		elif self.request.session.get('user_type', '') == constants.USER_SPONSOR:
-			return reverse('sponsor_dashboard')
-		else:
-			return None
+        form = self.form_class(query_model, user_obj.name, request.POST)
 
+        if form.is_valid():
+            password = form.cleaned_data['new_password']
+            new_password = make_password(password, salt="adfits")
+            user_obj.password = new_password
+            user_obj.save()
+            return HttpResponseRedirect(self.get_success_url())
+        else:
+            return self.form_invalid(form)
 
+    def get_success_url(self):
+        """
+        Would return the success url depending on the whether query url is available.
+        """
 
-
+        if self.request.session.get('user_type', '') == constants.USER_PUBLISHER:
+            return reverse('publisher_dashboard')
+        elif self.request.session.get('user_type', '') == constants.USER_SPONSOR:
+            return reverse('sponsor_dashboard')
+        else:
+            return None

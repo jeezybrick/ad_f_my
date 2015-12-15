@@ -7,9 +7,9 @@ from backend import authenticate
 
         
 class LoginForm(forms.Form):
-    username = forms.CharField(
+    email = forms.EmailField(
         widget=forms.TextInput(attrs={
-            'type':'text', 'placeholder':'Enter your username','class': 'span'
+            'type':'email', 'placeholder':'Enter your username','class': 'span'
     }))
     password = forms.CharField(
         max_length = 20, widget=forms.TextInput(attrs={

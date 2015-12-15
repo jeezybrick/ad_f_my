@@ -90,9 +90,9 @@ class JoinNetworkForm(forms.ModelForm):
     accept = forms.BooleanField(label='', required=True, help_text="I accept the Terms & Conditions and Privacy Policy.")
     # country = forms.ChoiceField(choices=(('USA', 'USA'), ('Canada', 'Canada'), ), label='', help_text="<hr>")
 
-    password1 = forms.CharField(label='',
+    password1 = forms.CharField(label='', min_length=8,
                                 widget=forms.PasswordInput())
-    password2 = forms.CharField(label='',
+    password2 = forms.CharField(label='', min_length=8,
                                 widget=forms.PasswordInput())
 
     def __init__(self, *args, **kwargs):
@@ -184,7 +184,7 @@ class JoinNetworkForm(forms.ModelForm):
 
     def save(self, commit=True):
         user = super(JoinNetworkForm, self).save(commit=False)
-        user.password = make_password(self.cleaned_data["password1"])
+        user.password = make_password(self.cleaned_data["password1"], salt="adfits")
         user.is_active = False
         if commit:
             user.save()
