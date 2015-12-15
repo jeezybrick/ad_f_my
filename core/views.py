@@ -3,7 +3,16 @@ from django.views.generic import View
 from django.utils.translation import ugettext_lazy as _
 from django.template.response import TemplateResponse
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 from core import forms, utils
+
+
+# For redirect if not Auth
+class LoginRequiredMixin(object):
+    @classmethod
+    def as_view(cls, **initkwargs):
+        view = super(LoginRequiredMixin, cls).as_view(**initkwargs)
+        return login_required(view, login_url='/publisher/login')
 
 
 # For login
@@ -55,6 +64,7 @@ class JoinNetworkView(View):
             'title': self.title,
         }
         if form.is_valid():
+            form.save()
             #utils.send_email_with_form_data(request.POST)
             return redirect(self.get_success_url())
         return TemplateResponse(request, self.template_name, context)

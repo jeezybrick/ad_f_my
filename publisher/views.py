@@ -18,6 +18,7 @@ from login.forms import ResetPasswordForm
 from bson import ObjectId
 from login.backend import authenticate
 from django.contrib.auth.models import make_password
+from core.views import LoginRequiredMixin
 
 
 class DashboardView(TemplateView):
@@ -452,7 +453,7 @@ class ChangePassword(FormView):
         return reverse('publisher_dashboard')
 
 
-class AdvertisersView(View):
+class AdvertisersView(LoginRequiredMixin,View):
     template_name = 'advertisers.html'
     title = _('Advertisers')
 
@@ -474,7 +475,9 @@ class AdvertisersView(View):
         return reverse("get-code")
 
     '''
-class GetCodeView(View):
+
+
+class GetCodeView(LoginRequiredMixin, View):
     template_name = 'get_code.html'
     title = _('Get code')
 

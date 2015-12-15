@@ -1,6 +1,8 @@
 from django import forms
+from django.contrib.auth.hashers import make_password
 from django.core import validators
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.models import AbstractBaseUser
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Field
 from core.models import Country
@@ -77,7 +79,7 @@ class JoinNetworkForm(forms.ModelForm):
     }
     name = forms.CharField(label='', required=True)
     email = forms.EmailField(label='', required=True)
-    phone = forms.CharField(required=True, label='',
+    telephone = forms.CharField(required=True, label='',
                                validators=[
                                    validators.RegexValidator(r'^\d{3}\-\d{3}\-\d{4}$',
                                                              'Invalid phone format!',
@@ -128,7 +130,7 @@ class JoinNetworkForm(forms.ModelForm):
             ),
 
             Field(
-                'phone',
+                'telephone',
                 placeholder=_('###-###-#### (primary contact number)')
             )
             ,
@@ -182,9 +184,8 @@ class JoinNetworkForm(forms.ModelForm):
 
     def save(self, commit=True):
         user = super(JoinNetworkForm, self).save(commit=False)
-        user.set_password(self.cleaned_data["password1"])
+        user.password = make_password(self.cleaned_data["password1"])
         user.is_active = False
         if commit:
             user.save()
         return user
-

@@ -34,7 +34,7 @@ $(document).ready(function () {
 
 <!-- Jquery mask for phone input -->
 $(document).ready(function () {
-    $('#id_phone').mask('000-000-0000');
+    $('#id_phone, #id_telephone').mask('000-000-0000');
 });
 
 $("form").submit(function(e) {
