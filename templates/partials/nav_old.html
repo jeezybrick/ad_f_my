@@ -1,55 +1,63 @@
-<div class="navbar" style="">
-    <div class="navbar-inner" style="height:80px;margin-top: -20px;">
+{% load staticfiles %}
 
-        <div class="container">
-            <a href="/" class="brand">
-                <h3>
-                    <img src="/static/images/adfits.png"
-                         style="position: relative;margin-top:-5px;">
-                </h3>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img alt="Brand" src="{% static 'images/adfits.png' %}">
             </a>
-
-            {% block navbarcontent %}
-                <ul class="nav pull-right" style="width: 140px;margin-top: 13px;">
-                    <li>
-                        <a href="{% url 'publisher_faq' %}">FAQ</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle fui-gear" data-toggle="dropdown">
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{% url 'publisher-profile' %}">Profile</a>
-                            </li>
-                            <li>
-                                <a href="/publisher/change-password">Change Password</a>
-                            </li>
-                            <li>
-                                <a href="/publisher/logout">Logout</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul> <!-- /nav -->
-
-                <ul class="nav pull-left" style="position:relative;margin-left: 20px;margin-top: 13px;">
-                    <li>
-                        <a href="/publisher/dashboard" class="fui-home" style="font-size:16px">
-                            &nbsp;Dashboard
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/publisher/sites" class="fui-window" style="font-size:16px">
-                            &nbsp;Sites
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/publisher/audience" class="fui-user" style="font-size:16px">
-                            &nbsp;Campaigns
-                        </a>
-                    </li>
-                </ul> <!-- /nav -->
-
-            {% endblock navbarcontent %}
         </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/publisher/dashboard" class="fui-home" style="font-size:16px">
+                        &nbsp;Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="/publisher/sites" class="fui-window" style="font-size:16px">
+                        &nbsp;Sites
+                    </a>
+                </li>
+                <li>
+                    <a href="/publisher/audience" class="fui-user" style="font-size:16px">
+                        &nbsp;Campaigns
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+						<a href="{% url 'publisher_faq' %}">FAQ</a>
+					  </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle fui-gear" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false"></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{% url 'publisher-profile' %}">Profile</a>
+                        </li>
+                        <li>
+                            <a href="/publisher/change-password">Change Password</a>
+                        </li>
+                        <li>
+                            <a href="/publisher/logout">Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
-</div>
+    <!-- /.container-fluid -->
+</nav>
