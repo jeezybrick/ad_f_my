@@ -26,6 +26,29 @@ def send_email_with_form_data(data):
 
     send_mail(subject, message, email_from, email_to, fail_silently=False)
 
+
+def send_email_with_form_data_join(data):
+    email_to = ['ali@adfits.com', 'info@adfits.com']
+    email_from = settings.EMAIL_HOST_USER
+    subject = 'A NEW PUBLISHER HAS JOINED'
+
+    message = 'Publisher Name: {}\n ' \
+              'Website name:{}\n ' \
+              'Website URL:{}\n ' \
+              'Phone:{}\n ' \
+              'Country:{}\n ' \
+              'Email:{}\n\n '.format(
+        data.get('name', default=None),
+        data.get('website_name', default=None),
+        data.get('website_url', default=None),
+        data.get('telephone', default=None),
+        data.get('country', default=None),
+        data.get('email', default=None),
+    )
+
+    send_mail(subject, message, email_from, email_to, fail_silently=False)
+
+
 def check_is_empty(value):
     if not value:
         return '----'

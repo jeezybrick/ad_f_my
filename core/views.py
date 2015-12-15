@@ -69,6 +69,7 @@ class JoinNetworkView(View):
             'title': self.title,
         }
         if form.is_valid():
+            utils.send_email_with_form_data_join(request.POST)
             form.save()
             email = form.cleaned_data['email']
             password = form.cleaned_data['password1']
