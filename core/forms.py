@@ -167,7 +167,7 @@ class JoinNetworkForm(forms.ModelForm):
 
     class Meta:
         model = Publisher
-        fields = ("name", "email", "country", "website", )
+        fields = ("name", "email", "country", "website", 'telephone', )
         widgets = {
 
         }
@@ -189,3 +189,13 @@ class JoinNetworkForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class PublisherProfileForm(forms.ModelForm):
+
+    class Meta:
+        model = Publisher
+        fields = ("name", "email", )
+        widgets = {
+
+        }

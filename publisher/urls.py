@@ -18,5 +18,6 @@ urlpatterns = patterns('',
     url(r'^logout$', 'django.contrib.auth.views.logout', {'next_page': '/publisher/login'}, name='logout'),
     url(r"^advertisers/$", AdvertisersView.as_view(), name='advertisers'),
     url(r"^sites/get-code/$", GetCodeView.as_view(), name='get-code'),
+    url(r"^profile/$", ProfileView.as_view(), name='publisher-profile'),
 
 )

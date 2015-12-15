@@ -10,6 +10,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
+from core import forms
 from publisher.models import Publisher, Website
 from publisher.forms import PublisherWebsiteForm, ResetPasswordForm
 from campaign.models import CampaignTracker, Campaign
@@ -453,7 +454,7 @@ class ChangePassword(FormView):
         return reverse('publisher_dashboard')
 
 
-class AdvertisersView(LoginRequiredMixin,View):
+class AdvertisersView(LoginRequiredMixin, View):
     template_name = 'advertisers.html'
     title = _('Advertisers')
 
@@ -498,3 +499,22 @@ class GetCodeView(LoginRequiredMixin, View):
     def get_success_url(self):
         return reverse("home")
 '''
+
+
+class ProfileView(View):
+    template_name = 'publisher/profile.html'
+    title = _('Profile')
+    form_class = forms.PublisherProfileForm
+
+    def get(self, request):
+        form = self.form_class()
+        try:
+            current_user = Publisher.objects.get(id=request.session['_id'])
+        except KeyError:
+            current_user = None
+        context = {
+            'form': form,
+            'title': self.title,
+            'current_user': current_user
+        }
+        return TemplateResponse(request, self.template_name, context)

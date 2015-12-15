@@ -1,0 +1,20 @@
+{% extends "publisher/base.html" %}
+
+{% block extra_title %} | Sites{% endblock %}
+
+<!-- Container -->
+<div class="row-fluid">
+    <div class="span12">
+        {% block content %}
+            <form action="" method="post">{% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Update"/>
+            </form>
+
+            <h2>Address: <small>{{ current_user.address }}</small> </h2>
+            <h2>Country:<small>{{ current_user.country }}</small></h2>
+            <h2>Email:<small>{{ current_user.email }}</small></h2>
+        {% endblock content %}
+    </div>
+</div>
+

@@ -49,7 +49,7 @@ class Sponsor(models.Model):
     logo = models.FileField(_("Upload Logo"), upload_to=get_sponsor_logo_path)
     token = models.CharField(max_length=100, null=True, blank=True)
     notes = models.TextField(_("Note"), null=True, blank=True)
-    password = models.CharField(max_length=32)
+    password = models.CharField(max_length=128)
     country = models.ForeignKey(Country, null=True, blank=True)
 
     class Meta:

@@ -11,6 +11,7 @@ from login.backend import authenticate, login
 from publisher.models import Publisher
 from adfits import constants
 
+
 # For redirect if not Auth
 class LoginRequiredMixin(object):
     @classmethod

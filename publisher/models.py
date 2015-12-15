@@ -66,14 +66,16 @@ class Publisher(models.Model):
     name = models.CharField(_("Publisher Name"), max_length=100)
     contact_name = models.CharField(_("Contact Name"), max_length=100)
     address = models.TextField(_("Address"), null=True, blank=True)
-    telephone = models.IntegerField(_("Telephone"), max_length=10, null=True, blank=True)
+    city = models.CharField(_("City"), null=True, blank=True, max_length=80)
+    state = models.CharField(_("State"), null=True, blank=True, max_length=50)
+    telephone = models.CharField(_("Telephone"), max_length=15, null=True, blank=True)
     email = models.EmailField(max_length=75, null=True, blank=True, unique=True)
     industry = models.ForeignKey(Industry, null=True, blank=True)
     logo = models.FileField(_("Upload Logo"), upload_to=get_publisher_logo_path)
     token = models.CharField(max_length=100, null=True, blank=True)
     notes = models.TextField(_("Note"), null=True, blank=True)
     website = ModelListField(EmbeddedModelField(Website))
-    password = models.CharField(max_length=32)
+    password = models.CharField(max_length=128)
     country = models.ForeignKey(Country, null=True, blank=True)
 
     class Meta:
