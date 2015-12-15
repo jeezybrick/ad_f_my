@@ -215,6 +215,7 @@ except ImportError:
 # boostrap 3 for crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
+'''
 # Email settings
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.mandrillapp.com'
@@ -222,3 +223,13 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'info@adfits.com'
 EMAIL_HOST_PASSWORD = 'WegB8PVa9J6qhDr6x_rx5w'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+'''
+
+# Email setting
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'smooker14@gmail.com'
+EMAIL_HOST_PASSWORD = '16931693'

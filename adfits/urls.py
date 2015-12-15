@@ -4,6 +4,7 @@ from django.contrib import admin
 admin.autodiscover()
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import views as forgot_password_views
 from core import views
 from client.views import *
 from login.views import *
@@ -35,7 +36,26 @@ urlpatterns = patterns('',
     url(r'^outStandingOffers/$', login_required(DashboardPageView.as_view()), name='dashboard'),
     url(r'^outStandingOffers/(?P<pk>\w+)/$', login_required(OutStandingOffersPageView.as_view()), name='outstanding_offers'),
     url(r'^couponsRedeemed/$', login_required(CouponRedeemedPageView.as_view()), name='coupons_redeemed'),
-    url(r'^logout$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout')
+    url(r'^logout$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),
+
+    # Forgot Password Functionality
+    url(r'^forgot-password/$', forgot_password_views.password_reset,
+        #{'template_name': 'dashboard/forgot_password.html'},
+        name='password_reset'),
+
+    url(r'^forgot-password/done/$', forgot_password_views.password_reset_done,
+        #{'template_name': 'dashboard/forgot_password_done.html'},
+        name='password_reset_done'),
+
+    url(r'^forgot-password/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        forgot_password_views.password_reset_confirm,
+        #{'template_name': 'dashboard/forgot_password_confirm.html', },
+        name='password_reset_confirm'),
+
+    url(r'^forgot-password/success/$',forgot_password_views.password_reset_complete,
+        #{'template_name': 'dashboard/forgot_password_complete.html'},
+        name='password_reset_complete'),
+
 )
 
 urlpatterns += patterns('', 
