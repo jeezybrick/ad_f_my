@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3a74529-4ec4-43eb-9915-d2e4a17215ce" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/publisher/base.html" afterPath="$PROJECT_DIR$/templates/publisher/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/forms.py" afterPath="$PROJECT_DIR$/core/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/publisher/forms.py" afterPath="$PROJECT_DIR$/publisher/forms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/join_network.html" afterPath="$PROJECT_DIR$/templates/join_network.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/publisher/models.py" afterPath="$PROJECT_DIR$/publisher/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sponsor/models.py" afterPath="$PROJECT_DIR$/sponsor/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/site_base_old.html" afterPath="$PROJECT_DIR$/templates/site_base_old.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/sass/style.scss" afterPath="$PROJECT_DIR$/static/sass/style.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/publisher/urls.py" afterPath="$PROJECT_DIR$/publisher/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/views.py" afterPath="$PROJECT_DIR$/core/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/publisher/views.py" afterPath="$PROJECT_DIR$/publisher/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ad_f.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,6 +52,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="media.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/sass/media.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-22.666666">
+              <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/publisher/models.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -99,18 +98,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="193" column="43" selection-start-line="193" selection-start-column="43" selection-end-line="193" selection-end-column="43" />
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="profile.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/publisher/profile.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -124,8 +111,8 @@
       <file leaf-file-name="join_network.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/join_network.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5541619">
-              <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.4663626">
+              <caret line="66" column="21" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -960,14 +947,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/sass/media.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="24.0">
-          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python3.4/dist-packages/django/contrib/auth/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1151,14 +1130,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/sass/style.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-28.481482">
-          <caret line="772" column="0" selection-start-line="772" selection-start-column="0" selection-end-line="772" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/publisher/profile.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.333333">
@@ -1167,10 +1138,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/sass/style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-28.481482">
+          <caret line="772" column="0" selection-start-line="772" selection-start-column="0" selection-end-line="772" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/sass/media.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.666666">
+          <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/join_network.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5541619">
-          <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.4663626">
+          <caret line="66" column="21" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
           <folding />
         </state>
       </provider>

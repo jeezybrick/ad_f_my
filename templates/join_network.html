@@ -13,65 +13,65 @@
         <!-- -->
         <section class="section-join-network col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                <div class="widget-block col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                    <div class="row">
-                        <div class="widget-block-logo col-lg-4 col-md-5 col-sm-4 text-center">
-                            <img src="{% static 'images/adfits.png' %}" alt="adfits">
-                        </div>
-                        <div class="widget-block-questions col-lg-8 col-md-7 col-sm-8">
-                            <h2>
-                                <small><em>Questions?</em></small>
-                            </h2>
-                            <h2>
-                                <small><em>Call us at 647-328-8001 to get started.</em></small>
-                            </h2>
-                        </div>
+            <div class="widget-block col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="widget-block-logo col-lg-4 col-md-5 col-sm-4 text-center">
+                        <img src="{% static 'images/adfits.png' %}" alt="adfits">
                     </div>
-
-                    <div class="widget-wrapper">
-                        {% include 'partials/widget.html' %}
+                    <div class="widget-block-questions col-lg-8 col-md-7 col-sm-8">
+                        <h2>
+                            <small><em>Questions?</em></small>
+                        </h2>
+                        <h2>
+                            <small><em>Call us at 647-328-8001 to get started.</em></small>
+                        </h2>
                     </div>
+                </div>
 
-                    <h2>
-                        <em>WELCOME TO THE WORLD’S 1<sup>ST</sup>
+                <div class="widget-wrapper">
+                    {% include 'partials/widget.html' %}
+                </div>
+
+                <h2>
+                    <em>WELCOME TO THE WORLD’S 1<sup>ST</sup>
                         GAMIFICATION & REWARDS NETWORK
                         FOR PUBLISHERS.
-                        </em>
-                    </h2>
+                    </em>
+                </h2>
 
-                    <h3>
-                         <em>When you launch gamification campaigns,
+                <h3>
+                    <em>When you launch gamification campaigns,
                         you’ll generate MORE revenue, turn 1 website
                         visit into 5, and best of all, you’ll be able to
                         choose the Sponsors YOU WANT, to sponsor your
                         website and reward your audience.
-                         </em>
-                    </h3>
+                    </em>
+                </h3>
 
-                    <h3>
-                         <em>Earn $1 for every $5 card a sponsor gives away*.</em>
-                    </h3>
+                <h3>
+                    <em>Earn $1 for every $5 card a sponsor gives away*.</em>
+                </h3>
 
-                    <h4>
-                         <em>*Sponsorships range between 100-500+ cards
+                <h4>
+                    <em>*Sponsorships range between 100-500+ cards
                         (depending on website traffic) which is approx.! $200-$1,000+ income per campaign.
-                         </em>
-                    </h4>
-                </div>
-                <div class="form-block col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                    <div id="triangle-right"></div>
-                    <h3 class="col-lg-offset-1 col-md-offset-1">
-                        Join and watch how easy it is to use the power!
-                        of gamification & rewards to monetize your website.
+                    </em>
+                </h4>
+            </div>
+            <div class="form-block col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                <div id="triangle-right"></div>
+                <h3 class="col-lg-offset-1 col-md-offset-1">
+                    Join and watch how easy it is to use the power!
+                    of gamification & rewards to monetize your website.
 
-                    </h3>
+                </h3>
 
-                    <h4 class="col-lg-offset-1 col-md-offset-1">
-                        Please fill out all fields.
-                    </h4>
+                <h4 class="col-lg-offset-1 col-md-offset-1">
+                    Please fill out all fields.
+                </h4>
 
-                    {% crispy form %}
-                </div>
+                {% crispy form %}
+            </div>
 
 
         </section>
@@ -82,5 +82,7 @@
 
 
 {% block js %}
-
+    <script>
+        $('body').css('margin-bottom','0');
+    </script>
 {% endblock %}
