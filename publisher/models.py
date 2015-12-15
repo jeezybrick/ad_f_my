@@ -74,7 +74,7 @@ class Publisher(models.Model):
     notes = models.TextField(_("Note"), null=True, blank=True)
     website = ModelListField(EmbeddedModelField(Website))
     password = models.CharField(max_length=32)
-    country = models.ForeignKey(Country)
+    country = models.ForeignKey(Country, null=True, blank=True)
 
     class Meta:
         app_label = 'publisher'
