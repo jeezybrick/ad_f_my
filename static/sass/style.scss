@@ -802,3 +802,27 @@ nav {
     border-radius: 6px;
   }
 }
+
+.add-website-wrapper {
+  margin-bottom: 10%;
+}
+
+.add-website-header {
+  color: $header_purple_text;
+  font-size: 2.1em;
+  margin-left: 0;
+  margin-bottom: 50px;
+  font-weight: 600;
+}
+
+#add-website-form {
+  label {
+    color: grey;
+    font-size: 1.5em;
+    font-weight: 500;
+  }
+  input {
+    height: 50px;
+    border-radius: 6px;
+  }
+}

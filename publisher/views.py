@@ -34,21 +34,15 @@ class DashboardView(TemplateView):
     def render_to_response(self, context, **response_kwargs):
         user_id = self.request.session.get('_id', '')
         context['coupons_redeemed'] = RedeemCoupon.objects.count() * 5
-        context['campaign'] = Campaign.objects.filter(
-            publisher_id=user_id
-        ).count()
+        context['campaign'] = Campaign.objects.filter(publisher_id=user_id).count()
         total_view_count, company_list, campaign_list, reedem_list = self.map_data(user_id)
         context['count'] = total_view_count
         context['company_list'] = company_list
         context['campaign_list'] = campaign_list
         context['reedem_list'] = reedem_list
         response_kwargs.setdefault('content_type', self.content_type)
-        return self.response_class(
-            request = self.request,
-            template = self.get_template_names(),
-            context = context,
-            **response_kwargs
-        )
+        return self.response_class(request=self.request, template=self.get_template_names(), context=context,
+            **response_kwargs)
 
     def map_data(self, user_id):
         """
@@ -57,7 +51,7 @@ class DashboardView(TemplateView):
 
         template_name = 'publisher/dashboard.html'
 
-        #setting the map reduce methods.
+        # setting the map reduce methods.
         company_map = """function() {
             var key = this.clicked_on.getMonth();
             var value = this._id;
@@ -115,97 +109,71 @@ class DashboardView(TemplateView):
             return value.length;
         }"""
 
-        #Setting the camapaign and campaigntracker refference.
+        # Setting the camapaign and campaigntracker refference.
         campaign_obj = Campaign.objects.filter(publisher_id=user_id)
-        campaigntracker_obj = CampaignTracker.objects.filter(
-            publisher_id=user_id, action="vd"
-        )
+        campaigntracker_obj = CampaignTracker.objects.filter(publisher_id=user_id, action="vd")
 
-        #getting total camapaign view for the publisher.
+        # getting total camapaign view for the publisher.
         total_view_count = campaigntracker_obj.count()
 
-        #getting total camapaign view per month for the publisher.
-        #(Chart 1 on dashboard)
-        company_performance = campaigntracker_obj.map_reduce(
-            company_map, campaign_reduce, 
-            out="temp",
-            delete_collection=True
-        )
-        
-        #preparing the data to be sent for chart for campaign view per 
-        #month(Chart 1 on dashboard)
-        company_list = [['Month', 'Views', { 'role': 'style' }]]
+        # getting total camapaign view per month for the publisher.
+        # (Chart 1 on dashboard)
+        company_performance = campaigntracker_obj.map_reduce(company_map, campaign_reduce, out="temp",
+            delete_collection=True)
+
+        # preparing the data to be sent for chart for campaign view per
+        # month(Chart 1 on dashboard)
+        company_list = [['Month', 'Views', {'role': 'style'}]]
 
         [company_list.append(
-            [calendar.month_abbr[int(data.key or 0) + 1], 
-            round((data.value/total_view_count) * 100, 2), ""]
-        ) for data in company_performance]
+            [calendar.month_abbr[int(data.key or 0) + 1], round((data.value / total_view_count) * 100, 2), ""]) for data
+         in company_performance]
 
         if len(company_list) == 1:
-        	company_list.append([0, 0, "#5ec8f2"])
-        
-        #getting the data for campaign created/assigned per month to a 
-        #publisher(Chart 3 on dashboard)
-        campaign_data = campaign_obj.map_reduce(
-            campaign_map, campaign_reduce, 
-            out="temp", delete_collection=True
-        )
+            company_list.append([0, 0, "#5ec8f2"])
 
-        #preparing the data to be sent for chart for campaign created per 
-        #month(Chart 3 on dashboard)
-        campaign_list = [['Month', 'Campaigns', { 'role': 'style' }]]
+        # getting the data for campaign created/assigned per month to a
+        # publisher(Chart 3 on dashboard)
+        campaign_data = campaign_obj.map_reduce(campaign_map, campaign_reduce, out="temp", delete_collection=True)
 
-        [campaign_list.append(
-            [calendar.month_abbr[int(data.key or 0) + 1], int(data.value or 0), ""]
-        ) for data in campaign_data ]
+        # preparing the data to be sent for chart for campaign created per
+        # month(Chart 3 on dashboard)
+        campaign_list = [['Month', 'Campaigns', {'role': 'style'}]]
+
+        [campaign_list.append([calendar.month_abbr[int(data.key or 0) + 1], int(data.value or 0), ""]) for data in
+         campaign_data]
 
         if len(campaign_list) == 1:
-       		campaign_list.append([0, 0, "#5ec8f2"])
+            campaign_list.append([0, 0, "#5ec8f2"])
 
-        #getting number of coupons redeemed per month for a publisher
-        coupons_redeemed = RedeemCoupon.objects.filter(
-            publisher_id=user_id
-        ).map_reduce(
-            reedem_map, reedem_reduce, 
-            out="temp", delete_collection=True
-        )
+        # getting number of coupons redeemed per month for a publisher
+        coupons_redeemed = RedeemCoupon.objects.filter(publisher_id=user_id).map_reduce(reedem_map, reedem_reduce,
+            out="temp", delete_collection=True)
 
         reedem_dict = {}
-        #creating the for per month redeemed coupons
-        [reedem_dict.update({
-            str(int(data.key)): int(data.value or 0)
-        }) for data in coupons_redeemed ]
-        
-        #getting number of coupons not redeemed per month for a publisher
-        #(Chart 2 on dashboard)
-        coupons_notredeemed = campaign_obj.map_reduce(
-            notreedem_map, notreedem_reduce, 
-            out="temp", delete_collection=True
-        )
+        # creating the for per month redeemed coupons
+        [reedem_dict.update({str(int(data.key)): int(data.value or 0)}) for data in coupons_redeemed]
 
-        #preparing the data to be sent for chart for coupons redeemed 
-        #and not redeemed per mmonth(Chart 2 on dashboard)
-        reedem_list = [['Month', 'Coupons Not Redeemed ', 'Redeemed Coupons', { 
-            "role": 'annotation' }]
-        ]
+        # getting number of coupons not redeemed per month for a publisher
+        # (Chart 2 on dashboard)
+        coupons_notredeemed = campaign_obj.map_reduce(notreedem_map, notreedem_reduce, out="temp",
+            delete_collection=True)
+
+        # preparing the data to be sent for chart for coupons redeemed
+        # and not redeemed per mmonth(Chart 2 on dashboard)
+        reedem_list = [['Month', 'Coupons Not Redeemed ', 'Redeemed Coupons', {"role": 'annotation'}]]
 
         not_reedem_dict = {}
 
-        [not_reedem_dict.update({
-            str(int(data.key or 0)): int(data.value or 0)
-        }) for data in coupons_notredeemed ]
-        
+        [not_reedem_dict.update({str(int(data.key or 0)): int(data.value or 0)}) for data in coupons_notredeemed]
+
         for i in xrange(1, 13):
 
             if reedem_dict.get(str(i)) or not_reedem_dict.get(str(i)):
-                reedem_list.append([
-                    calendar.month_abbr[i], 
-                    not_reedem_dict.get(str(i), 0), 
-                    reedem_dict.get(str(i), 0), 
-                    ""
-                ])
+                reedem_list.append(
+                    [calendar.month_abbr[i], not_reedem_dict.get(str(i), 0), reedem_dict.get(str(i), 0), ""])
 
-        if len(reedem_list) ==  1:
+        if len(reedem_list) == 1:
             reedem_list.append([0, 0, 0, ""])
 
         return total_view_count, company_list, campaign_list, reedem_list
@@ -223,27 +191,17 @@ class SitesView(TemplateView):
         publisher_obj = Publisher.objects.get(pk=user_id)
         all_website = publisher_obj.website
         sites = Website.objects.filter(pk__in=all_website)
-        tracker_obj = CampaignTracker.objects.filter(
-            publisher_id=user_id, action="vd"
-        )
+        tracker_obj = CampaignTracker.objects.filter(publisher_id=user_id, action="vd")
 
-        #Setting the available sites for the publisher
-        context['site_list'] = [{
-            'pk': data.pk,
-            'website_domain': data.website_domain,
-            'website_name': data.website_name,
-            'logo': data.website_logo,
-            'audience': tracker_obj.filter(website_id=data.pk).count(),
-            'industry': data.industry,
-        } for data in sites]
-            
+        # Setting the available sites for the publisher
+        context['site_list'] = [
+            {'pk': data.pk, 'website_domain': data.website_domain, 'website_name': data.website_name,
+                'logo': data.website_logo, 'audience': tracker_obj.filter(website_id=data.pk).count(),
+                'industry': data.industry, } for data in sites]
+
         response_kwargs.setdefault('content_type', self.content_type)
-        return self.response_class(
-            request = self.request,
-            template = self.get_template_names(),
-            context = context,
-            **response_kwargs
-        )
+        return self.response_class(request=self.request, template=self.get_template_names(), context=context,
+            **response_kwargs)
 
 
 class AddSitesView(FormView):
@@ -253,12 +211,12 @@ class AddSitesView(FormView):
 
     template_name = 'publisher/add_site.html'
     form_class = PublisherWebsiteForm
-    
+
     def post(self, request, *args, **kwargs):
         """
         would make an entry in the website collection.      
         """
-        
+
         form = self.form_class(request.POST, request.FILES)
 
         if form.is_valid():
@@ -291,7 +249,7 @@ class EditSitesView(UpdateView):
         """
 
         return reverse('publisher_sites')
-    
+
 
 class AudienceView(TemplateView):
     """
@@ -305,58 +263,41 @@ class AudienceView(TemplateView):
         user_id = self.request.session.get('_id', '')
 
         try:
-            #getting the publisher instance
+            # getting the publisher instance
             publisher_obj = Publisher.objects.get(pk=user_id)
-            #Getting all websites by publisher
+            # Getting all websites by publisher
             all_website = publisher_obj.website
             sites = Website.objects.filter(pk__in=all_website)
-            #Setting the available sites for the publisher
-            context['site_list'] = [{
-                'website_id': data.pk,
-                'website_domain': data.website_domain,
-                'website_name': data.website_name,
-                'selected': True if data.pk == context['site_id'] else False
-            } for data in sites]
+            # Setting the available sites for the publisher
+            context['site_list'] = [
+                {'website_id': data.pk, 'website_domain': data.website_domain, 'website_name': data.website_name,
+                    'selected': True if data.pk == context['site_id'] else False} for data in sites]
 
             #
             if context.get('pk') is not None:
-                
-                website_obj = sites.filter(
-                    pk=context['site_id']
-                ).values_list(
-                    'website_name', flat=True
-                )
+
+                website_obj = sites.filter(pk=context['site_id']).values_list('website_name', flat=True)
 
                 if website_obj:
                     context['site_name'] = website_obj[0]
                 else:
                     context['site_name'] = ''
 
-                #Getting all campaign by publisher. 
-                all_campaign_list = Campaign.objects.filter(
-                    publisher=publisher_obj
-                ).values_list(
-                    'pk', flat=True
-                )
+                # Getting all campaign by publisher.
+                all_campaign_list = Campaign.objects.filter(publisher=publisher_obj).values_list('pk', flat=True)
                 campaign_list = [ObjectId(data) for data in all_campaign_list]
-                #Getting all the user who redeemed the coupon
-                context['user_redeemed'] = UserToken.objects.raw_query({
-                    'website_id': ObjectId(context['site_id']),
-                    'is_redeemed': True,
-                    'campaign_id': {'$in': campaign_list }
-                })
+                # Getting all the user who redeemed the coupon
+                context['user_redeemed'] = UserToken.objects.raw_query(
+                    {'website_id': ObjectId(context['site_id']), 'is_redeemed': True,
+                        'campaign_id': {'$in': campaign_list}})
             else:
                 context['site_id'] = 0
         except:
             context['site_list'] = []
-        
+
         response_kwargs.setdefault('content_type', self.content_type)
-        return self.response_class(
-            request = self.request,
-            template = self.get_template_names(),
-            context = context,
-            **response_kwargs
-        )
+        return self.response_class(request=self.request, template=self.get_template_names(), context=context,
+            **response_kwargs)
 
 
 class ExportAudience(TemplateView):
@@ -371,16 +312,16 @@ class ExportAudience(TemplateView):
         Get all the person who redeemed the coupon.
         """
 
-        #Setting the rresponse header
+        # Setting the rresponse header
         response = HttpResponse(mimetype="application/ms-excel")
         response['Content-Disposition'] = 'attachment; filename=%s' % ("Audience.xls")
         counter = 0
 
-        #Formatting the header of the spreadsheet
+        # Formatting the header of the spreadsheet
         workbook = xlwt.Workbook()
         worksheet = workbook.add_sheet('Audience')
         worksheet.write(counter, 0, 'Website Name')
-        worksheet.write(counter, 1, 'Email')    
+        worksheet.write(counter, 1, 'Email')
         worksheet.write(counter, 2, 'First Name')
         worksheet.write(counter, 3, 'Last Name')
         worksheet.write(counter, 4, 'Gender')
@@ -389,26 +330,19 @@ class ExportAudience(TemplateView):
 
         try:
             site_id = context.get('pk')
-            #Getting the website refered
+            # Getting the website refered
             sites = Website.objects.get(pk=site_id)
             user_id = self.request.session.get('_id', '')
-            #Getting all campaign by publisher. 
-            all_campaign_list = Campaign.objects.filter(
-                publisher_id=user_id
-            ).values_list(
-                'pk', flat=True
-            )
+            # Getting all campaign by publisher.
+            all_campaign_list = Campaign.objects.filter(publisher_id=user_id).values_list('pk', flat=True)
             campaign_list = [ObjectId(data) for data in all_campaign_list]
-            #Getting all the user who redeemed the coupon
-            user_redeemed = UserToken.objects.raw_query({
-                'website_id': ObjectId(site_id),
-                'is_redeemed': True,
-                'campaign_id': {'$in': campaign_list }
-            })
+            # Getting all the user who redeemed the coupon
+            user_redeemed = UserToken.objects.raw_query(
+                {'website_id': ObjectId(site_id), 'is_redeemed': True, 'campaign_id': {'$in': campaign_list}})
         except:
             user_redeemed = []
             counter += 1
-            #if exception ocurred set the Data not available message.
+            # if exception ocurred set the Data not available message.
             worksheet.write(counter, 1, "Data")
             worksheet.write(counter, 2, "not")
             worksheet.write(counter, 3, "available.")
@@ -416,7 +350,7 @@ class ExportAudience(TemplateView):
         for data in user_redeemed:
             counter += 1
             worksheet.write(counter, 0, sites.website_name)
-            worksheet.write(counter, 1, data.email) 
+            worksheet.write(counter, 1, data.email)
             worksheet.write(counter, 2, data.first_name)
             worksheet.write(counter, 3, data.last_name)
             worksheet.write(counter, 4, data.sex)
@@ -430,7 +364,7 @@ class ExportAudience(TemplateView):
 class ChangePassword(FormView):
     template_name = 'publisher/reset_password.html'
     form_class = ResetPasswordForm
-    
+
     def post(self, request, *args, **kwargs):
         query_model = kwargs['model']
         user_id = request.session['_id']
@@ -443,7 +377,7 @@ class ChangePassword(FormView):
             new_password = make_password(password, salt="adfits")
             user_obj.password = new_password
             user_obj.save()
-            return HttpResponseRedirect(self.get_success_url()) 
+            return HttpResponseRedirect(self.get_success_url())
         else:
             return self.form_invalid(form)
 
@@ -451,7 +385,7 @@ class ChangePassword(FormView):
         """
         Would return the success url depending on the whether query url is available.
         """
-        
+
         return reverse('publisher_dashboard')
 
 
@@ -470,25 +404,11 @@ class AdvertisersView(View):
             # sponsors_type = SponsorType.objects.filter(sponsor__country=publisher.country)
             sponsors_type = SponsorType.objects.all()
 
-        context = {
-            'title': self.title,
-            'sponsors': sponsors,
-            'sponsors_type': sponsors_type,
-        }
+        context = {'title': self.title, 'sponsors': sponsors, 'sponsors_type': sponsors_type, }
         return TemplateResponse(request, self.template_name, context)
-    '''
+
     def post(self, request):
-        context = {
-            'title': self.title,
-        }
-        if form.is_valid():
-            return redirect(self.get_success_url())
-        return TemplateResponse(request, self.template_name, context)
-
-    def get_success_url(self):
-        return reverse("get-code")
-
-    '''
+        print(request.POST)
 
 
 class GetCodeView(LoginRequiredMixin, View):
@@ -496,10 +416,10 @@ class GetCodeView(LoginRequiredMixin, View):
     title = _('Get code')
 
     def get(self, request):
-        context = {
-            'title': self.title,
-        }
+        context = {'title': self.title, }
         return TemplateResponse(request, self.template_name, context)
+
+
 '''
     def post(self, request):
         context = {
@@ -525,9 +445,5 @@ class ProfileView(View):
             current_user = Publisher.objects.get(id=request.session['_id'])
         except KeyError:
             current_user = None
-        context = {
-            'form': form,
-            'title': self.title,
-            'current_user': current_user
-        }
+        context = {'form': form, 'title': self.title, 'current_user': current_user}
         return TemplateResponse(request, self.template_name, context)

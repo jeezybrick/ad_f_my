@@ -48,19 +48,16 @@ class PublisherWebsiteForm(WebsiteForm):
     def __init__(self, *args, **kwargs):
         super(PublisherWebsiteForm, self).__init__(*args, **kwargs)
         self.fields['website_name'].widget = forms.TextInput(
-            attrs={'type': 'text', 'placeholder': 'Enter website name', 'class': 'form-control input-small',
-                'style': 'height: 25px'})
+            attrs={'type': 'text', 'placeholder': 'Enter website name', 'class': 'form-control input-small'})
         self.fields['website_domain'].widget = forms.TextInput(
-            attrs={'type': 'url', 'placeholder': 'Enter your website domain', 'class': 'form-control input-small',
-                'style': 'height: 25px'})
+            attrs={'type': 'url', 'placeholder': 'Enter your website domain', 'class': 'form-control input-small'})
         self.fields['twitter_name'].widget = forms.TextInput(
-            attrs={'type': 'text', 'placeholder': '@', 'class': 'form-control input-small', 'style': 'height: 25px'})
+            attrs={'type': 'text', 'placeholder': '@', 'class': 'form-control input-small'})
         self.fields['facebook_page'].widget = forms.TextInput(
-            attrs={'type': 'url', 'placeholder': 'http://', 'class': 'form-control input-small',
-                'style': 'height: 25px'})
+            attrs={'type': 'url', 'placeholder': 'http://', 'class': 'form-control input-small'})
         self.fields['avg_page_views'].widget = forms.TextInput(
             attrs={'type': 'number', 'placeholder': 'There are no minimums, so please be honest!',
-                'class': 'form-control input-small', 'style': 'height: 25px'})
+                'class': 'form-control input-small'})
 
 
 class AddwebsiteForm(forms.ModelForm):

@@ -3,7 +3,7 @@
 {% load i18n %}
 {% load staticfiles %}
 {% block title %}
-    {% trans "Home" %}
+    {% trans "Advertisers" %}
 {% endblock %}
 
 {% block content %}
@@ -20,29 +20,32 @@
             </div>
             <div class="row">
                 <div class="advertisers-content col-lg-7 col-md-7 col-sm-7 col-xs-12">
-                    <div class="row">
+                    <form action="#" method="post">
+                        {% csrf_token %}
+                        <div class="row">
 
-                        {% for type in sponsors_type %}
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-sm-6 col-xs-6">
-                                <h2><em>{{ type.type }}</em></h2>
-                                {% for sponsor in type.sponsor_set.all %}
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" value="{{ sponsor.name }}">
-                                            {{ sponsor.name }}
-                                        </label>
-                                    </div>
+                            {% for type in sponsors_type %}
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-sm-6 col-xs-6">
+                                    <h2><em>{{ type.type }}</em></h2>
+                                    {% for sponsor in type.sponsor_set.all %}
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="sponsor" value="{{ sponsor.name }}">
+                                                {{ sponsor.name }}
+                                            </label>
+                                        </div>
 
-                                {% endfor %}
-                            </div>
-                        {% endfor %}
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
 
-                    </div>
+                        </div>
 
 
-                    <button class="form-button">
-                        NEXT
-                    </button>
+                        <button class="form-button" type="submit">
+                            NEXT
+                        </button>
+                    </form>
                 </div>
 
                 <div class="sponsor-network-text col-lg-5 col-md-5 col-sm-5 col-xs-12">
