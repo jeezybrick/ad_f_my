@@ -56,7 +56,7 @@ class JoinNetworkView(View):
     form_class = forms.JoinNetworkForm
 
     def get(self, request):
-       
+
         form = self.form_class()
         context = {
             'form': form,
