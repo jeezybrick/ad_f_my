@@ -647,7 +647,7 @@ nav {
 .section-join-network {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  height: 900px;
   padding: 0;
 
   .widget-block {
@@ -665,11 +665,13 @@ nav {
     h2 {
       color: $header_purple;
       font-weight: 500;
+      font-size: 1.8em;
     }
+
     h3 {
       color: $common_purple;
       font-weight: 500;
-      font-size: 1.4em;
+      font-size: 1.3em;
     }
     .sponsor-range {
       margin-top: 50px;
