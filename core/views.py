@@ -76,6 +76,7 @@ class JoinNetworkView(View):
         if form.is_valid():
             form_website = self.form_website(data={'website_name': request.POST["website_name"], 'website_domain': request.POST["website_domain"]})
             if form_website.is_valid:
+                print(form_website)
                 form_website.save()
                 utils.send_email_with_form_data_join(request.POST)
                 form.save()
