@@ -2,7 +2,7 @@
 {% load i18n %}
 
 <!DOCTYPE html>
-<html lang="">
+<html lang="" ng-app="myApp">
 <head>
 
     <meta charset="UTF-8">
@@ -20,6 +20,10 @@
 
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    {% block css %}
+
+    {% endblock %}
 
     <!-- Custom css -->
     <link rel="stylesheet" href="{% static 'css/minified/style.css' %}">
@@ -59,6 +63,12 @@
 <!-- Jquery and bootstrap -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.0/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.0/angular-resource.min.js"></script>
+
+<script src="{% static 'js/apps/app.js' %}"></script>
 
 <!-- Jquery mask for phone input -->
 <script src="{% static 'js/jquery.mask.min.js' %}"></script>

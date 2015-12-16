@@ -4,3 +4,4 @@
 *.PYC
 local_settings.py
 grappelli
+.idea/*
