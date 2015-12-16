@@ -13,6 +13,7 @@ from django.utils.translation import ugettext_lazy as _
 from core import forms
 from publisher.models import Publisher, Website
 from publisher.forms import PublisherWebsiteForm, ResetPasswordForm
+from sponsor.models import Sponsor, SponsorType
 from campaign.models import CampaignTracker, Campaign
 from client.models import UserToken, RedeemCoupon
 from login.forms import ResetPasswordForm
@@ -454,13 +455,25 @@ class ChangePassword(FormView):
         return reverse('publisher_dashboard')
 
 
-class AdvertisersView(LoginRequiredMixin, View):
+class AdvertisersView(View):
     template_name = 'advertisers.html'
     title = _('Advertisers')
 
     def get(self, request):
+
+        try:
+            publisher = Publisher.objects.get(id=self.request.session['_id'])
+        except KeyError:
+            sponsors_type = sponsors = None
+        else:
+            sponsors = Sponsor.objects.filter(country=publisher.country)
+            # sponsors_type = SponsorType.objects.filter(sponsor__country=publisher.country)
+            sponsors_type = SponsorType.objects.all()
+
         context = {
             'title': self.title,
+            'sponsors': sponsors,
+            'sponsors_type': sponsors_type,
         }
         return TemplateResponse(request, self.template_name, context)
     '''

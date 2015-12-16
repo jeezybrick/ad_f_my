@@ -579,7 +579,7 @@ nav ul, nav ol {
     font-weight: 600; }
 
 .sponsor-network-text {
-  margin-top: 15%; }
+  margin-top: 20%; }
   .sponsor-network-text h2 {
     color: #76459b;
     font-size: 1.8em;
@@ -600,8 +600,19 @@ nav ul, nav ol {
   .get-code-content .form-button {
     width: 300px; }
 
+.advertisers-wrapper {
+  margin-bottom: 150px; }
+
 .advertisers-content .form-button {
   width: 300px; }
+
+.advertisers-content label {
+  color: black; }
+
+.advertisers-content input {
+  -webkit-transform: scale(1.5);
+      -ms-transform: scale(1.5);
+          transform: scale(1.5); }
 
 #triangle-right {
   position: absolute;

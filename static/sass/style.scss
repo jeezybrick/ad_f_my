@@ -449,9 +449,9 @@ header.header-is-scrolled {
 
 }
 
-.clear-button{
-    background: grey;
-  }
+.clear-button {
+  background: grey;
+}
 
 #demo_form {
   text-align: left;
@@ -730,7 +730,7 @@ nav {
 }
 
 .sponsor-network-text {
-  margin-top: 15%;
+  margin-top: 20%;
 
   h2 {
     color: $header_purple_text;
@@ -758,9 +758,19 @@ nav {
 
 }
 
+.advertisers-wrapper {
+  margin-bottom: 150px;
+}
+
 .advertisers-content {
   .form-button {
     width: 300px;
+  }
+  label {
+    color: black;
+  }
+  input {
+    transform: scale(1.5);
   }
 }
 
@@ -775,18 +785,18 @@ nav {
   border-bottom: 35px solid transparent;
 }
 
-.country_select{
-  color:grey;
-  option{
-    color:black;
+.country_select {
+  color: grey;
+  option {
+    color: black;
   }
 }
 
-.edit-profile-block{
-  .fields-inline{
+.edit-profile-block {
+  .fields-inline {
     display: inline-block;
   }
-  input{
+  input {
     height: 40px;
     border-radius: 6px;
   }

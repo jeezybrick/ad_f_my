@@ -7,27 +7,48 @@
 {% endblock %}
 
 {% block content %}
-
-    <div class="main-content">
+    {% include 'partials/nav_old.html' %}
+    <div class="main-content advertisers-wrapper">
         <div class="container">
             <div class="row">
                 <div class="advertisers-header col-lg-10">
                     <h2>
-                       <em>Here are some brands that you can earn income with. Choose the ones you want to
-                        allow to advertise on your website in the form of a sponsorship:</em>
+                        <em>Here are some brands that you can earn income with. Choose the ones you want to
+                            allow to advertise on your website in the form of a sponsorship:</em>
                     </h2>
                 </div>
             </div>
             <div class="row">
                 <div class="advertisers-content col-lg-6 col-md-6">
+                    <div class="row">
+
+                        {% for type in sponsors_type %}
+                            <div class="col-lg-4">
+                                <h2><em>{{ type.type }}</em></h2>
+                                {% for sponsor in type.sponsor_set.all %}
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" value="{{ sponsor.name }}">
+                                            {{ sponsor.name }}
+                                        </label>
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+
                     <button class="form-button">
                         NEXT
                     </button>
                 </div>
 
                 <div class="sponsor-network-text col-lg-6 col-md-6">
-                    <h2><em>Our sponsor network is growing every day.</em> </h2>
-                    <h2><em>Stay tuned, you’ll be able to target more sponsors soon!</em> </h2>
+                    <h2><em>Our sponsor network is growing every day.</em></h2>
+
+                    <h2><em>Stay tuned, you’ll be able to target more sponsors soon!</em></h2>
                 </div>
             </div>
         </div>
@@ -42,21 +63,11 @@
 
 {% block js %}
 
-    <script>
-        <!-- Scrolled header -->
-        $(window).scroll(function () {
-            if ($(window).scrollTop() >= 280) {
-                $('header').addClass('header-is-scrolled');
-                $('.header-bars-wrapper').addClass('is-scrolled');
-            }
-            else {
-                $('header').removeClass('header-is-scrolled');
-                $('.header-bars-wrapper').removeClass('is-scrolled');
-            }
-        });
 
-        $('.experience-button').click(function () {
-            document.getElementById('section-form').scrollIntoView();
-        });
-    </script>
+{% endblock %}
+
+
+{% block css %}
+
+
 {% endblock %}
