@@ -27,6 +27,7 @@ class HomeView(View):
     title = _('Home')
 
     def get(self, request):
+
         form = self.form_class()
         context = {
             'form': form,
@@ -55,6 +56,35 @@ class JoinNetworkView(View):
     form_class = forms.JoinNetworkForm
 
     def get(self, request):
+        import csv
+        from sponsor.models import Sponsor, SponsorType
+        from core.models import Country
+        rest = SponsorType.objects.get(type='Restaurants')
+        retail = SponsorType.objects.get(type='Retailers')
+        brands = SponsorType.objects.get(type='CPG Brands')
+        usa = Country.objects.get(name='USA')
+        canada = Country.objects.get(name='Canada')
+        with open('Sponsors List (USA).csv', 'rb') as csvfile:
+            spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+            for row in spamreader:
+                print(row)
+                sponsor = Sponsor(name=row[0], type=rest, country=usa)
+                sponsor.save()
+                sponsor = Sponsor(name=row[1], type=retail, country=usa)
+                sponsor.save()
+                sponsor = Sponsor(name=row[2], type=brands, country=usa)
+                sponsor.save()
+
+        with open('Sponsors List (Canada).csv', 'rb') as csvfile:
+            spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+            for row in spamreader:
+                print(row)
+                sponsor = Sponsor(name=row[0], type=rest, country=canada)
+                sponsor.save()
+                sponsor = Sponsor(name=row[1], type=retail, country=canada)
+                sponsor.save()
+                sponsor = Sponsor(name=row[2], type=brands, country=canada)
+                sponsor.save()
         form = self.form_class()
         context = {
             'form': form,
