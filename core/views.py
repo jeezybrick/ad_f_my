@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from core import forms, utils
 from publisher.forms import WebsiteNewForm
 from login.backend import authenticate, login
-from publisher.models import Publisher
+from publisher.models import Publisher, Website
 from adfits import constants
 
 
@@ -76,10 +76,14 @@ class JoinNetworkView(View):
         if form.is_valid():
             form_website = self.form_website(data={'website_name': request.POST["website_name"], 'website_domain': request.POST["website_domain"]})
             if form_website.is_valid:
-                print(form_website)
-                form_website.save()
+                first = form.save(commit=False)
+                second = form_website.save(commit=False)
+
+                first.website = second
+
+                first.save()
+                second.save()
                 utils.send_email_with_form_data_join(request.POST)
-                form.save()
                 email = form.cleaned_data['email']
                 password = form.cleaned_data['password1']
                 user = authenticate(Publisher, email=email, password=password)
