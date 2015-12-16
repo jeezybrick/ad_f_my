@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.auth.hashers import make_password
 from django.conf import settings
 from sponsor.forms import SponsorForm
-from sponsor.models import Sponsor, SponsorType, Industry
+from sponsor.models import Sponsor, SponsorType
 from adfits import constants
 from PIL import Image, ImageOps
 
@@ -14,7 +14,7 @@ class SponsorAdmin(admin.ModelAdmin):
 
     def __init__(self, model, admin_site):
         super(SponsorAdmin, self).__init__(model, admin_site)
-
+'''
     def save_model(self, request, object, form, change):
         """
         The purpose of the method is to perform the post saving action
@@ -47,10 +47,9 @@ class SponsorAdmin(admin.ModelAdmin):
         im = output.resize(size, Image.ANTIALIAS)
         im.save(os.path.join(settings.MEDIA_ROOT, "campaign/sponsor_logo", token, "sponsor_logo.png"))
 
-
+'''
 class SponsorTypeAdmin(admin.ModelAdmin):
     fields = ("type", )
-
 
 
 admin.site.register(SponsorType, SponsorTypeAdmin)

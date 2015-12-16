@@ -12,5 +12,5 @@ class SponsorForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(SponsorForm, self).__init__(*args, **kwargs)
         self.fields['industry'] = forms.ModelChoiceField(
-        	Industry.objects.all()
+        	Industry.objects.all(), required=False
         )
