@@ -97,7 +97,7 @@ class JoinNetworkForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(JoinNetworkForm, self).__init__(*args, **kwargs)
-        self.fields['country'] = forms.ModelChoiceField(help_text="<hr>", queryset=Country.objects.all(), label='')
+        self.fields['country'] = forms.ModelChoiceField(help_text="<hr>", queryset=Country.objects.all(), label='', initial='0')
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.form_id = 'join_network_form'
@@ -135,7 +135,7 @@ class JoinNetworkForm(forms.ModelForm):
             )
             ,
             Field(
-                'country',
+                'country'
             )
             ,
 
