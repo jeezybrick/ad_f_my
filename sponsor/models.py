@@ -35,6 +35,21 @@ class Industry(models.Model):
         return self.industry_type
 
 
+class SponsorType(models.Model):
+    """
+    The purpose of the models is to publishers
+    """
+
+    type = models.CharField(_("Sponsor Type"), max_length=100)
+
+    class Meta:
+        app_label = 'sponsor'
+        db_table = 'sponsor_type'
+
+    def __unicode__(self):
+        return self.type
+
+
 class Sponsor(models.Model):
     """
     The purpose of the models is to publishers
@@ -51,6 +66,7 @@ class Sponsor(models.Model):
     notes = models.TextField(_("Note"), null=True, blank=True)
     password = models.CharField(max_length=128)
     country = models.ForeignKey(Country, null=True, blank=True)
+    type = models.ForeignKey(SponsorType, null=True, blank=True)
 
     class Meta:
         app_label = 'sponsor'
