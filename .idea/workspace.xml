@@ -4,14 +4,8 @@
     <list default="true" id="b3a74529-4ec4-43eb-9915-d2e4a17215ce" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/Sponsors List (Canada).csv" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Sponsors List (USA).csv" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/publisher/add_site.html" afterPath="$PROJECT_DIR$/templates/publisher/add_site.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/advertisers.html" afterPath="$PROJECT_DIR$/templates/advertisers.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/publisher/forms.py" afterPath="$PROJECT_DIR$/publisher/forms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/style.css" afterPath="$PROJECT_DIR$/static/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/minified/style.css" afterPath="$PROJECT_DIR$/static/css/minified/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/join_network.html" afterPath="$PROJECT_DIR$/templates/join_network.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/sass/style.scss" afterPath="$PROJECT_DIR$/static/sass/style.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/publisher/views.py" afterPath="$PROJECT_DIR$/publisher/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ad_f.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -86,8 +80,8 @@
       <file leaf-file-name="style.scss" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/sass/style.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46996465">
-              <caret line="806" column="19" selection-start-line="806" selection-start-column="19" selection-end-line="806" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.6725559">
+              <caret line="680" column="5" selection-start-line="680" selection-start-column="5" selection-end-line="680" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -96,8 +90,8 @@
       <file leaf-file-name="join_network.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/join_network.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.481482">
-              <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="39" selection-end-column="21" />
+            <state vertical-scroll-proportion="-18.0">
+              <caret line="54" column="40" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -134,7 +128,6 @@
         <option value="$PROJECT_DIR$/publisher/urls.py" />
         <option value="$PROJECT_DIR$/templates/site_base_old.html" />
         <option value="$PROJECT_DIR$/templates/partials/nav_old.html" />
-        <option value="$PROJECT_DIR$/templates/join_network.html" />
         <option value="$PROJECT_DIR$/templates/login.html" />
         <option value="$PROJECT_DIR$/core/utils.py" />
         <option value="$PROJECT_DIR$/static/js/services/EditProfile.js" />
@@ -160,6 +153,7 @@
         <option value="$PROJECT_DIR$/publisher/views.py" />
         <option value="$PROJECT_DIR$/publisher/forms.py" />
         <option value="$PROJECT_DIR$/templates/publisher/add_site.html" />
+        <option value="$PROJECT_DIR$/templates/join_network.html" />
         <option value="$PROJECT_DIR$/static/sass/style.scss" />
       </list>
     </option>
@@ -626,7 +620,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3" y="0" width="1926" height="1051" extended-state="6" />
+    <frame x="-3" y="0" width="1926" height="1051" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1077,14 +1071,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/join_network.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.481482">
-          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="39" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/publisher/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1103,10 +1089,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/join_network.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.0">
+          <caret line="54" column="40" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/sass/style.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46996465">
-          <caret line="806" column="19" selection-start-line="806" selection-start-column="19" selection-end-line="806" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.6725559">
+          <caret line="680" column="5" selection-start-line="680" selection-start-column="5" selection-end-line="680" selection-end-column="5" />
           <folding />
         </state>
       </provider>
