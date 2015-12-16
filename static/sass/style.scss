@@ -446,7 +446,12 @@ header.header-is-scrolled {
   &:hover {
     background: #483276;
   }
+
 }
+
+.clear-button{
+    background: grey;
+  }
 
 #demo_form {
   text-align: left;
@@ -774,5 +779,15 @@ nav {
   color:grey;
   option{
     color:black;
+  }
+}
+
+.edit-profile-block{
+  .fields-inline{
+    display: inline-block;
+  }
+  input{
+    height: 40px;
+    border-radius: 6px;
   }
 }

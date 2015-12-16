@@ -38,6 +38,8 @@ urlpatterns = patterns('',
     url(r'^couponsRedeemed/$', login_required(CouponRedeemedPageView.as_view()), name='coupons_redeemed'),
     url(r'^logout$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),
 
+    url(r'^', include('api.urls')),
+
     # Forgot Password Functionality
     url(r'^forgot-password/$', forgot_password_views.password_reset,
         #{'template_name': 'dashboard/forgot_password.html'},

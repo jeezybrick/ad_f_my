@@ -363,6 +363,9 @@ header.header-is-scrolled .logo-container a {
   .form-button:hover {
     background: #483276; }
 
+.clear-button {
+  background: grey; }
+
 #demo_form {
   text-align: left; }
   #demo_form input {
@@ -614,3 +617,11 @@ nav ul, nav ol {
   color: grey; }
   .country_select option {
     color: black; }
+
+.edit-profile-block .fields-inline {
+  display: inline-block; }
+
+.edit-profile-block input {
+  height: 40px;
+  -webkit-border-radius: 6px;
+          border-radius: 6px; }

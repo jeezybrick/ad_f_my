@@ -1,7 +1,8 @@
 
 angular
     .module('myApp', [
-        'ngResource'
+        'ngResource',
+        'myApp.services',
     ])
     .config(function ($locationProvider, $httpProvider, $resourceProvider, $interpolateProvider) {
 

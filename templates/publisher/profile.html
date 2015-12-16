@@ -8,9 +8,26 @@
     <div class="span12">
         {% block content %}
             {% include 'partials/nav_old.html' %}
-            <div class="" ng-controller="EditProfileController as vm" ng-cloak>
+            <div class="edit-profile-block" ng-controller="EditProfileController as vm" ng-cloak>
 
-                <h1>[[ vm.test ]]</h1>
+                <h4 class="fields-inline">Name:</h4><input type="text" ng-model="vm.publisher.name"><br>
+
+                <h4 class="fields-inline">Phone:</h4><input type="text" ng-model="vm.publisher.telephone"><br>
+
+                <h4 class="fields-inline">Address:</h4>[[ vm.publisher.address ]]<br>
+
+                <h4 class="fields-inline">Country:</h4>[[ vm.publisher.country.name ]]<br>
+
+                <h4 class="fields-inline">Email:</h4>[[ vm.publisher.email ]]<br>
+                <hr>
+
+                <button class="form-button" ng-click="vm.updateProfile()">
+                    Save
+                </button>
+
+                <button class="form-button clear-button" ng-click="vm.clear()">
+                    Cancel
+                </button>
 
             </div>
             {% include 'partials/footer.html' %}
@@ -20,12 +37,12 @@
 
 {% block js %}
 
-   <script src="{% static 'js/controllers/EditProfileController.js' %}"></script>
+    <script src="{% static 'js/controllers/EditProfileController.js' %}"></script>
 
 {% endblock %}
 
 {% block css %}
 
-   <link href="{% static "css/flat-ui.css" %}" rel="stylesheet">
+    <link href="{% static "css/flat-ui.css" %}" rel="stylesheet">
 
 {% endblock %}

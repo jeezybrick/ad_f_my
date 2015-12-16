@@ -2,15 +2,30 @@ angular
     .module('myApp')
     .controller('EditProfileController', EditProfileController);
 
-function EditProfileController($log) {
+function EditProfileController(Publisher, $log) {
     var vm = this;
-    vm.sendMessage = sendMessage;
-    vm.test = 'Hello!';
+    vm.updateProfile = updateProfile;
+    vm.clear = clear;
+    vm.publisher = {};
+    vm.publisher_default = {};
 
-    function sendMessage() {
+    vm.publisher = Publisher.query(function (response) {
+        angular.copy(vm.publisher, vm.publisher_default);
 
-        $log.info('function work');
+    }, function () {
 
+    });
+
+    function updateProfile() {
+        vm.publisher.$update(function (response) {
+
+        }, function (error) {
+
+        });
+    }
+
+    function clear() {
+        angular.copy(vm.publisher_default, vm.publisher);
     }
 
 }

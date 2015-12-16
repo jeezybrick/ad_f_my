@@ -151,7 +151,8 @@ INSTALLED_APPS = (
     'login',
     'django_crontab',
     'crispy_forms',
-    'django_mongodb_engine'
+    'django_mongodb_engine',
+    'rest_framework',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
