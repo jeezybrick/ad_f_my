@@ -11,7 +11,7 @@
     <div class="main-content advertisers-wrapper">
         <div class="container">
             <div class="row">
-                <div class="advertisers-header col-lg-10">
+                <div class="advertisers-header col-lg-10 col-md-10 col-sm-12 col-xs-12">
                     <h2>
                         <em>Here are some brands that you can earn income with. Choose the ones you want to
                             allow to advertise on your website in the form of a sponsorship:</em>
@@ -19,11 +19,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="advertisers-content col-lg-6 col-md-6">
+                <div class="advertisers-content col-lg-7 col-md-7 col-sm-7 col-xs-12">
                     <div class="row">
 
                         {% for type in sponsors_type %}
-                            <div class="col-lg-4">
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-sm-6 col-xs-6">
                                 <h2><em>{{ type.type }}</em></h2>
                                 {% for sponsor in type.sponsor_set.all %}
                                     <div class="checkbox">
@@ -45,7 +45,7 @@
                     </button>
                 </div>
 
-                <div class="sponsor-network-text col-lg-6 col-md-6">
+                <div class="sponsor-network-text col-lg-5 col-md-5 col-sm-5 col-xs-12">
                     <h2><em>Our sponsor network is growing every day.</em></h2>
 
                     <h2><em>Stay tuned, you’ll be able to target more sponsors soon!</em></h2>

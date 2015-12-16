@@ -14,7 +14,7 @@ class PublisherForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(PublisherForm, self).__init__(*args, **kwargs)
-        self.fields['industry'] = forms.ModelChoiceField(Industry.objects.all())
+        self.fields['industry'] = forms.ModelChoiceField(Industry.objects.all(), required=False)
 
 
 class WebsiteForm(forms.ModelForm):
@@ -27,7 +27,17 @@ class WebsiteForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(WebsiteForm, self).__init__(*args, **kwargs)
-        self.fields['industry'] = forms.ModelChoiceField(Industry.objects.all())
+        self.fields['industry'] = forms.ModelChoiceField(Industry.objects.all(), required=False)
+
+
+class WebsiteNewForm(forms.ModelForm):
+    """
+    This form will used while adding/editting websites.
+    """
+
+    class Meta:
+        model = Website
+        fields = ("website_name", "website_domain", )
 
 
 class PublisherWebsiteForm(WebsiteForm):
@@ -46,7 +56,7 @@ class PublisherWebsiteForm(WebsiteForm):
         self.fields['twitter_name'].widget = forms.TextInput(
             attrs={'type': 'text', 'placeholder': '@', 'class': 'form-control input-small', 'style': 'height: 25px'})
         self.fields['facebook_page'].widget = forms.TextInput(
-            attrs={'type': 'text', 'placeholder': 'http://', 'class': 'form-control input-small',
+            attrs={'type': 'url', 'placeholder': 'http://', 'class': 'form-control input-small',
                 'style': 'height: 25px'})
         self.fields['avg_page_views'].widget = forms.TextInput(
             attrs={'type': 'number', 'placeholder': 'There are no minimums, so please be honest!',

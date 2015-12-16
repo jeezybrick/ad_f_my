@@ -364,7 +364,8 @@ header.header-is-scrolled .logo-container a {
     background: #483276; }
 
 .clear-button {
-  background: grey; }
+  background: grey;
+  margin-left: 10px; }
 
 #demo_form {
   text-align: left; }

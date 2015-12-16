@@ -4,21 +4,31 @@
 {% block extra_title %} | Sites{% endblock %}
 
 <!-- Container -->
-<div class="row-fluid">
-    <div class="span12">
-        {% block content %}
-            {% include 'partials/nav_old.html' %}
+
+{% block content %}
+    {% include 'partials/nav_old.html' %}
+    <div class="container">
+        <div class="row">
             <div class="edit-profile-block" ng-controller="EditProfileController as vm" ng-cloak>
 
                 <h4 class="fields-inline">Name:</h4><input type="text" ng-model="vm.publisher.name"><br>
 
                 <h4 class="fields-inline">Phone:</h4><input type="text" ng-model="vm.publisher.telephone"><br>
 
-                <h4 class="fields-inline">Address:</h4>[[ vm.publisher.address ]]<br>
+                <h4 class="fields-inline">Address:
+                    <small>[[ vm.publisher.address ]]</small>
+                </h4>
+                <br>
 
-                <h4 class="fields-inline">Country:</h4>[[ vm.publisher.country.name ]]<br>
+                <h4 class="fields-inline">Country:
+                    <small>[[ vm.publisher.country.name ]]</small>
+                </h4>
+                <br>
 
-                <h4 class="fields-inline">Email:</h4>[[ vm.publisher.email ]]<br>
+                <h4 class="fields-inline">Email:
+                    <small>[[ vm.publisher.email ]]</small>
+                </h4>
+                <br>
                 <hr>
 
                 <button class="form-button" ng-click="vm.updateProfile()">
@@ -28,12 +38,12 @@
                 <button class="form-button clear-button" ng-click="vm.clear()">
                     Cancel
                 </button>
-
             </div>
-            {% include 'partials/footer.html' %}
-        {% endblock content %}
+        </div>
+
     </div>
-</div>
+    {% include 'partials/footer.html' %}
+{% endblock content %}
 
 {% block js %}
 

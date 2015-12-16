@@ -43,7 +43,7 @@ class Website(models.Model):
 
     website_name = models.CharField(_("Website Name"), max_length=100)
     website_domain = models.URLField(_("Website Domain"), max_length=100)
-    website_logo = models.FileField(_("Upload Logo"), upload_to=get_website_logo_path)
+    website_logo = models.FileField(_("Upload Logo"), upload_to=get_website_logo_path, blank=True)
     token = models.CharField(max_length=100, null=True, blank=True)
     industry = models.ForeignKey(Industry, null=True, blank=True)
     twitter_name = models.CharField(max_length=100, null=True, blank=True)
