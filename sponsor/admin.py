@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.auth.hashers import make_password
 from django.conf import settings
 from sponsor.forms import SponsorForm
-from sponsor.models import Sponsor, SponsorType
+from sponsor.models import Sponsor, SponsorType, Industry
 from adfits import constants
 from PIL import Image, ImageOps
 
@@ -52,5 +52,7 @@ class SponsorTypeAdmin(admin.ModelAdmin):
     fields = ("type", )
 
 
+
 admin.site.register(SponsorType, SponsorTypeAdmin)
+
 admin.site.register(Sponsor, SponsorAdmin)
