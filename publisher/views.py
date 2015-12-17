@@ -418,7 +418,6 @@ class AdvertisersView(View):
             sponsors_type = sponsors = None
         else:
             sponsors_list = request.POST.pop('sponsor')
-            print(sponsors_list)
             publisher.sponsor = sponsors_list
             publisher.save()
         return HttpResponseRedirect(self.get_success_url())
