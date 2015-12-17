@@ -12,3 +12,13 @@ class Country(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+class TimeStampedModel(models.Model):
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+
+        abstract = True

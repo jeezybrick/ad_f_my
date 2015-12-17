@@ -23,7 +23,7 @@ from login.backend import authenticate
 from core.views import LoginRequiredMixin
 
 
-class DashboardView(TemplateView):
+class DashboardView(LoginRequiredMixin, TemplateView):
     """
     Would help to render the publisher dashboard with different 
     charts to show publisher specifice activity.
@@ -32,18 +32,20 @@ class DashboardView(TemplateView):
     template_name = 'publisher/dashboard.html'
 
     def render_to_response(self, context, **response_kwargs):
-        user_id = self.request.session.get('_id', '')
         context['coupons_redeemed'] = RedeemCoupon.objects.count() * 5
-        context['campaign'] = Campaign.objects.filter(publisher_id=user_id).count()
-        total_view_count, company_list, campaign_list, reedem_list = self.map_data(user_id)
+        context['campaign'] = Campaign.objects.filter(publisher_id=self.request.user.id).count()
+        '''
+        total_view_count, company_list, campaign_list, reedem_list = self.map_data(self.request.user.id)
         context['count'] = total_view_count
         context['company_list'] = company_list
         context['campaign_list'] = campaign_list
         context['reedem_list'] = reedem_list
+        '''
         response_kwargs.setdefault('content_type', self.content_type)
         return self.response_class(request=self.request, template=self.get_template_names(), context=context,
             **response_kwargs)
 
+    '''
     def map_data(self, user_id):
         """
         Would prepare data for the charts to be displayed on publisher dashboard.
@@ -110,8 +112,8 @@ class DashboardView(TemplateView):
         }"""
 
         # Setting the camapaign and campaigntracker refference.
-        campaign_obj = Campaign.objects.filter(publisher_id=user_id)
-        campaigntracker_obj = CampaignTracker.objects.filter(publisher_id=user_id, action="vd")
+        campaign_obj = Campaign.objects.filter(publisher_id=self.request.user.id)
+        campaigntracker_obj = CampaignTracker.objects.filter(publisher_id=self.request.user.id, action="vd")
 
         # getting total camapaign view for the publisher.
         total_view_count = campaigntracker_obj.count()
@@ -147,7 +149,7 @@ class DashboardView(TemplateView):
             campaign_list.append([0, 0, "#5ec8f2"])
 
         # getting number of coupons redeemed per month for a publisher
-        coupons_redeemed = RedeemCoupon.objects.filter(publisher_id=user_id).map_reduce(reedem_map, reedem_reduce,
+        coupons_redeemed = RedeemCoupon.objects.filter(publisher_id=self.request.user.id).map_reduce(reedem_map, reedem_reduce,
             out="temp", delete_collection=True)
 
         reedem_dict = {}
@@ -178,8 +180,10 @@ class DashboardView(TemplateView):
 
         return total_view_count, company_list, campaign_list, reedem_list
 
+        '''
 
-class SitesView(TemplateView):
+
+class SitesView(LoginRequiredMixin, TemplateView):
     """
     Would help to render Websites for the perticular publisher
     """
@@ -188,10 +192,10 @@ class SitesView(TemplateView):
 
     def render_to_response(self, context, **response_kwargs):
         user_id = self.request.session.get('_id', '')
-        publisher_obj = Publisher.objects.get(pk=user_id)
+        publisher_obj = Publisher.objects.get(pk=self.request.user.id)
         all_website = publisher_obj.website
         sites = Website.objects.filter(pk__in=all_website)
-        tracker_obj = CampaignTracker.objects.filter(publisher_id=user_id, action="vd")
+        tracker_obj = CampaignTracker.objects.filter(publisher_id=self.request.user.id, action="vd")
 
         # Setting the available sites for the publisher
         context['site_list'] = [
@@ -204,7 +208,7 @@ class SitesView(TemplateView):
             **response_kwargs)
 
 
-class AddSitesView(FormView):
+class AddSitesView(LoginRequiredMixin, FormView):
     """
     Would add new websites.
     """
@@ -223,7 +227,7 @@ class AddSitesView(FormView):
             try:
                 website_obj = form.save()
                 user_id = request.session.get('_id', '')
-                publisher_obj = Publisher.objects.get(pk=user_id)
+                publisher_obj = Publisher.objects.get(pk=self.request.user.id)
                 publisher_obj.website.append(website_obj.id)
                 publisher_obj.save()
                 return HttpResponseRedirect(reverse('publisher_sites'))
@@ -234,7 +238,7 @@ class AddSitesView(FormView):
             return self.form_invalid(form)
 
 
-class EditSitesView(UpdateView):
+class EditSitesView(LoginRequiredMixin, UpdateView):
     """
     Would help to edit website info
     """
@@ -251,7 +255,7 @@ class EditSitesView(UpdateView):
         return reverse('publisher_sites')
 
 
-class AudienceView(TemplateView):
+class AudienceView(LoginRequiredMixin, TemplateView):
     """
     Would render the audience template for the publisher tab.
     """
@@ -264,7 +268,7 @@ class AudienceView(TemplateView):
 
         try:
             # getting the publisher instance
-            publisher_obj = Publisher.objects.get(pk=user_id)
+            publisher_obj = Publisher.objects.get(pk=self.request.user.id)
             # Getting all websites by publisher
             all_website = publisher_obj.website
             sites = Website.objects.filter(pk__in=all_website)
@@ -300,7 +304,7 @@ class AudienceView(TemplateView):
             **response_kwargs)
 
 
-class ExportAudience(TemplateView):
+class ExportAudience(LoginRequiredMixin, TemplateView):
     """
     Would be used to export the all users who had 
     reedemed the coupon for a website.
@@ -334,7 +338,7 @@ class ExportAudience(TemplateView):
             sites = Website.objects.get(pk=site_id)
             user_id = self.request.session.get('_id', '')
             # Getting all campaign by publisher.
-            all_campaign_list = Campaign.objects.filter(publisher_id=user_id).values_list('pk', flat=True)
+            all_campaign_list = Campaign.objects.filter(publisher_id=self.request.user.id).values_list('pk', flat=True)
             campaign_list = [ObjectId(data) for data in all_campaign_list]
             # Getting all the user who redeemed the coupon
             user_redeemed = UserToken.objects.raw_query(
@@ -368,7 +372,7 @@ class ChangePassword(FormView):
     def post(self, request, *args, **kwargs):
         query_model = kwargs['model']
         user_id = request.session['_id']
-        user_obj = query_model.objects.get(pk=user_id)
+        user_obj = query_model.objects.get(pk=self.request.user.id)
 
         form = self.form_class(query_model, user_obj.name, request.POST)
 
@@ -389,7 +393,7 @@ class ChangePassword(FormView):
         return reverse('publisher_dashboard')
 
 
-class AdvertisersView(View):
+class AdvertisersView(LoginRequiredMixin, View):
     template_name = 'advertisers.html'
     title = _('Advertisers')
 
@@ -450,7 +454,7 @@ class GetCodeView(LoginRequiredMixin, View):
 '''
 
 
-class ProfileView(View):
+class ProfileView(LoginRequiredMixin, View):
     template_name = 'publisher/profile.html'
     title = _('Profile')
     form_class = forms.PublisherProfileForm

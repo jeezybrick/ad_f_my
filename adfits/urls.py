@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import views as forgot_password_views
 from core import views
 from client.views import *
-from login.views import *
+from my_auth.views import LoginView
 from campaign.ajax import get_websites
 from sponsor.models import Sponsor
 from publisher.models import Publisher
@@ -15,10 +15,10 @@ from publisher.models import Publisher
 urlpatterns = patterns('',
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    #url(r'^grappelli/', include('grappelli.urls')),
+   url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^sponsor/login$', LoginView.as_view(), kwargs={'model': Sponsor}, name='sponsor_login'),
-    url(r'^publisher/login$', LoginView.as_view(), kwargs={'model': Publisher}, name='publisher_login'),
+    url(r'^sponsor/login$', LoginView.as_view(), name='sponsor_login'),
+    url(r'^publisher/login$', LoginView.as_view(), name='publisher_login'),
     url(r'^publisher/', include('publisher.urls')),
     url(r'^sponsor/', include('sponsor.urls')),
     url(r'^campaign/get-websites/$', get_websites),

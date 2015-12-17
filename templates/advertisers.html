@@ -29,7 +29,7 @@
                                     <h2><em>{{ type.type }}</em></h2>
                                     {% for sponsor in type.sponsor_set.all %}
 
-                                        {% if sponsor.country == publisher.country %}
+                                        {% if sponsor.country == request.user.country %}
                                             <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" name="sponsor" value="{{ sponsor.id }}">
