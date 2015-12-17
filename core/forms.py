@@ -168,9 +168,9 @@ class JoinNetworkForm(forms.ModelForm):
 
     class Meta:
         model = Publisher
-        fields = ("name", "email", "country", "website_name", "website_domain", 'telephone', )
+        fields = ("name", "email", "country", "website_name", "website_domain", 'telephone', 'website', )
         widgets = {
-
+            'website': forms.MultipleHiddenInput()
         }
 
     def clean_password2(self):

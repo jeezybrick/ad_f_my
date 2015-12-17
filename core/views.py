@@ -67,6 +67,8 @@ class JoinNetworkView(View):
         return TemplateResponse(request, self.template_name, context)
 
     def post(self, request):
+        data = dict(request.POST.iteritems())
+        data["website"] = [request.POST["website_name"], request.POST["website_domain"]]
         form = self.form_class(data=request.POST)
 
         context = {
@@ -74,15 +76,16 @@ class JoinNetworkView(View):
             'title': self.title,
         }
         if form.is_valid():
-            form_website = self.form_website(data={'website_name': request.POST["website_name"], 'website_domain': request.POST["website_domain"]})
+
+            form_website = self.form_website(data={'website': [request.POST["website_name"], request.POST["website_domain"]]})
             if form_website.is_valid:
                 first = form.save(commit=False)
-                second = form_website.save(commit=False)
+                #second = form_website.save(commit=False)
 
-                first.website = second
+                #first.website = second
 
                 first.save()
-                second.save()
+                #second.save()
                 utils.send_email_with_form_data_join(request.POST)
                 email = form.cleaned_data['email']
                 password = form.cleaned_data['password1']

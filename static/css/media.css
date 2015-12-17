@@ -1,15 +1,21 @@
 /* Super Large desktops and laptops */
 @media (min-width: 1900px) {
   .section-join-network {
-    height: 950px; } }
+    height: 950px; }
+    .section-join-network .widget-block-questions h2 {
+      font-size: 2.3em; }
+    .section-join-network .widget-block h2 {
+      font-size: 2.2em; } }
 
 /* Large desktops and laptops */
-@media (min-width: 1200px) and (max-width: 1600px) {
+@media (min-width: 1200px) and (max-width: 1899px) {
   .section-join-network {
     height: 950px; }
     .section-join-network .widget-block {
       height: 100%;
       padding: 45px 15px; }
+      .section-join-network .widget-block h2 {
+        font-size: 1.8em !important; }
     .section-join-network .form-block {
       height: 100%;
       padding: 30px 15px; } }
@@ -40,6 +46,8 @@
     .section-join-network .widget-block {
       min-height: 100%;
       padding: 55px 15px; }
+      .section-join-network .widget-block h2 {
+        font-size: 2.0em; }
     .section-join-network .form-block {
       min-height: 100%;
       padding: 30px 15px; } }
@@ -68,13 +76,17 @@
     .section-join-network .widget-block {
       min-height: 100%;
       padding: 45px 15px; }
+      .section-join-network .widget-block h2 {
+        font-size: 1.5em; }
     .section-join-network .form-block {
       min-height: 100%;
       padding: 30px 15px; }
   .widget-block-questions h2 {
     font-size: 1.9em; }
   .container {
-    width: 90%; } }
+    width: 90%; }
+  #hint_id_accept {
+    font-size: 1.1em; } }
 
 /* Portrait tablets and small desktops */
 @media (min-width: 768px) and (max-width: 991px) {
@@ -157,7 +169,9 @@
     font-size: 16px;
     line-height: 140%; }
   .section-form h1 {
-    margin-top: 50px; } }
+    margin-top: 50px; }
+  #hint_id_accept {
+    font-size: 1.0em; } }
 
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
@@ -212,7 +226,13 @@
     width: 90%; }
   .section-form h1 {
     font-size: 30px;
-    margin-top: 60px; } }
+    margin-top: 60px; }
+  .section-join-network {
+    height: 950px; }
+    .section-join-network .widget-block {
+      height: 120%; }
+    .section-join-network .form-block {
+      height: 110%; } }
 
 /* Custom, iPhone Retina */
 @media only screen and (max-width: 320px) {

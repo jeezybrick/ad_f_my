@@ -518,6 +518,7 @@ nav ul, nav ol {
   position: relative;
   width: 100%;
   height: 900px;
+  min-height: 100vh;
   padding: 0; }
   .section-join-network .widget-block {
     height: 100%;
