@@ -1,4 +1,5 @@
 import time
+from django.contrib.auth.hashers import make_password
 from django.views.generic.edit import FormView
 from django.views.generic import TemplateView
 from django.http import HttpResponseRedirect
@@ -12,7 +13,6 @@ from backend import authenticate, login
 from django.core.urlresolvers import reverse
 from django.forms.forms import BoundField
 from adfits import constants
-from django.contrib.auth.models import make_password
 
 
 class LoginView(FormView):

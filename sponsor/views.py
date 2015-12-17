@@ -1,4 +1,5 @@
 import calendar
+from django.contrib.auth.hashers import make_password
 from adfits import constants
 from django.views.generic import View
 from django.views.generic import UpdateView
@@ -14,7 +15,6 @@ from client.models import (UserToken, CampaignNotifier,
     SocialShare, NotificationTracker)
 from sponsor.models import Sponsor
 from bson import ObjectId
-from django.contrib.auth.models import make_password
 from login.forms import ResetPasswordForm
 
 

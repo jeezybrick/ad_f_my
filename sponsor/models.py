@@ -2,7 +2,7 @@ import os
 import time
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from djangotoolbox.fields import EmbeddedModelField
+
 from core.models import Country
 
 
@@ -58,15 +58,15 @@ class Sponsor(models.Model):
     name = models.CharField(_("Sponsor Name"), max_length=100)
     contact_name = models.CharField(_("Contact Name"), max_length=100, blank=True)
     address = models.TextField(_("Address"), blank=True)
-    telephone = models.IntegerField(_("Telephone"), max_length=10, null=True, blank=True)
+    telephone = models.CharField(_("Telephone"), max_length=20, null=True, blank=True)
     email = models.EmailField(_("Email"), max_length=75, blank=True)
-    industry = EmbeddedModelField(Industry, null=True, blank=True)
+    # industry = models.ManyToManyField(Industry, blank=True)
     logo = models.FileField(_("Upload Logo"), upload_to=get_sponsor_logo_path, blank=True)
     token = models.CharField(max_length=100, blank=True)
     notes = models.TextField(_("Note"), blank=True)
     password = models.CharField(max_length=128)
-    country = models.ForeignKey(Country, null=True, blank=True)
-    type = models.ForeignKey(SponsorType, null=True, blank=True)
+    country = models.ForeignKey(Country,  blank=False)
+    type = models.ForeignKey(SponsorType, blank=False)
 
     class Meta:
         app_label = 'sponsor'

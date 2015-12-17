@@ -15,7 +15,7 @@ from publisher.models import Publisher
 urlpatterns = patterns('',
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^grappelli/', include('grappelli.urls')),
+    #url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^sponsor/login$', LoginView.as_view(), kwargs={'model': Sponsor}, name='sponsor_login'),
     url(r'^publisher/login$', LoginView.as_view(), kwargs={'model': Publisher}, name='publisher_login'),

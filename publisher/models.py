@@ -2,8 +2,6 @@ import os
 import time
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from djangotoolbox.fields import EmbeddedModelField
-from adfits.fields import ModelListField
 from sponsor.models import Industry, Sponsor
 from core.models import Country
 
@@ -74,8 +72,8 @@ class Publisher(models.Model):
     logo = models.FileField(_("Upload Logo"), upload_to=get_publisher_logo_path, blank=True)
     token = models.CharField(max_length=100, null=True, blank=True)
     notes = models.TextField(_("Note"), null=True, blank=True)
-    website = ModelListField(EmbeddedModelField(Website))
-    sponsor = ModelListField(EmbeddedModelField(Sponsor))
+    website = models.ForeignKey(Website, related_name='website')
+    sponsor = models.ManyToManyField(Sponsor)
     password = models.CharField(max_length=128)
     country = models.ForeignKey(Country, null=True, blank=True)
 

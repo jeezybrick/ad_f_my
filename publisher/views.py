@@ -1,5 +1,6 @@
 import calendar
 import xlwt
+from django.contrib.auth.hashers import make_password
 from adfits import constants
 from django.shortcuts import redirect
 from django.views.generic import View
@@ -19,7 +20,6 @@ from client.models import UserToken, RedeemCoupon
 from login.forms import ResetPasswordForm
 from bson import ObjectId
 from login.backend import authenticate
-from django.contrib.auth.models import make_password
 from core.views import LoginRequiredMixin
 
 
@@ -395,18 +395,14 @@ class AdvertisersView(View):
 
     def get(self, request):
 
-
         try:
             publisher = Publisher.objects.get(id=self.request.session['_id'])
         except KeyError:
-            sponsors_type = sponsors = None
+            sponsors_type = publisher = None
         else:
-            print(publisher.website)
-            sponsors = Sponsor.objects.filter(country=publisher.country)
-            # sponsors_type = SponsorType.objects.filter(sponsor__country=publisher.country)
             sponsors_type = SponsorType.objects.all()
 
-        context = {'title': self.title, 'sponsors': sponsors, 'sponsors_type': sponsors_type, }
+        context = {'title': self.title, 'sponsors_type': sponsors_type, 'publisher': publisher}
         return TemplateResponse(request, self.template_name, context)
 
     def post(self, request):
@@ -418,9 +414,9 @@ class AdvertisersView(View):
             sponsors_type = sponsors = None
         else:
             sponsors_list = request.POST.pop('sponsor')
-            print(sponsors_list)
-            publisher.sponsor = sponsors_list
-            publisher.save()
+            for sponsor in sponsors_list:
+                publisher.sponsor.add(Sponsor.objects.get(id=sponsor))
+                publisher.save()
         return HttpResponseRedirect(self.get_success_url())
 
     def get_success_url(self):

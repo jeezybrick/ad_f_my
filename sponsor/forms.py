@@ -8,6 +8,7 @@ class SponsorForm(forms.ModelForm):
     
     class Meta:
         model = Sponsor
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super(SponsorForm, self).__init__(*args, **kwargs)

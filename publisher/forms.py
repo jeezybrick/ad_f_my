@@ -11,6 +11,7 @@ class PublisherForm(forms.ModelForm):
 
     class Meta:
         model = Publisher
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super(PublisherForm, self).__init__(*args, **kwargs)
@@ -24,6 +25,7 @@ class WebsiteForm(forms.ModelForm):
 
     class Meta:
         model = Website
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super(WebsiteForm, self).__init__(*args, **kwargs)
@@ -75,6 +77,7 @@ class AddwebsiteForm(forms.ModelForm):
 
     class Meta:
         model = Website
+        fields = '__all__'
 
 
 class ResetPasswordForm(forms.Form):

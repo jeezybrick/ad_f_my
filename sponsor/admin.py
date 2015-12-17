@@ -48,6 +48,7 @@ class SponsorAdmin(admin.ModelAdmin):
         im.save(os.path.join(settings.MEDIA_ROOT, "campaign/sponsor_logo", token, "sponsor_logo.png"))
 
 '''
+
 class SponsorTypeAdmin(admin.ModelAdmin):
     fields = ("type", )
 

@@ -20,6 +20,7 @@ class DemoForm(forms.Form):
                                                              'invalid'), ])
     company = forms.CharField(required=False, label='')
     url = forms.URLField(label='', required=False)
+    website = forms.MultipleChoiceField(required=False)
 
     def __init__(self, *args, **kwargs):
         super(DemoForm, self).__init__(*args, **kwargs)
@@ -168,9 +169,9 @@ class JoinNetworkForm(forms.ModelForm):
 
     class Meta:
         model = Publisher
-        fields = ("name", "email", "country", "website_name", "website_domain", 'telephone', 'website', )
+        fields = ("name", "email", "country", "website_name", "website_domain", 'telephone', )
         widgets = {
-            'website': forms.MultipleHiddenInput()
+            # 'website': forms.MultipleHiddenInput()
         }
 
     def clean_password2(self):

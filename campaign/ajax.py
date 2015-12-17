@@ -1,5 +1,6 @@
+import json
 from django.http import HttpResponse
-from django.utils import simplejson
+
 from campaign.models import Campaign
 from publisher.models import Publisher, Website
 from django.core.exceptions import ObjectDoesNotExist
@@ -44,6 +45,6 @@ def get_websites(request):
 		'website_list': website_list
 	}
 	return HttpResponse(
-		simplejson.dumps(response),
+		json.dumps(response),
 		content_type = 'application/javascript; charset=utf8'
 	)

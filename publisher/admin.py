@@ -14,7 +14,7 @@ class PublisherAdmin(admin.ModelAdmin):
 
     def __init__(self, model, admin_site):
         super(PublisherAdmin, self).__init__(model, admin_site)
-
+'''
     def save_model(self, request, object, form, change):
         """
         The purpose of the method is to perform the post saving action
@@ -48,7 +48,7 @@ class PublisherAdmin(admin.ModelAdmin):
         im = output.resize(size, Image.ANTIALIAS)
         im.save(os.path.join(settings.MEDIA_ROOT, "campaign/publisher_logo",
                              token, "publisher_logo.png"))
-
+'''
 
 class WebsiteAdmin(admin.ModelAdmin):
     form = WebsiteForm
