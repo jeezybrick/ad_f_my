@@ -168,6 +168,12 @@
     font-size: 1.1em;
   }
 
+  .advertisers-header, .get-code-header {
+    h2 {
+      font-size: 2.0em;
+    }
+  }
+
 }
 
 /* Portrait tablets and small desktops */
@@ -227,6 +233,12 @@
     }
     .form-block {
       height: 800px;
+    }
+  }
+
+  .advertisers-header, .get-code-header {
+    h2 {
+      font-size: 1.8em;
     }
   }
 }
@@ -301,6 +313,18 @@
 
   #hint_id_accept {
     font-size: 1.0em;
+  }
+
+  .advertisers-header, .get-code-header {
+    h2 {
+      font-size: 1.7em;
+    }
+  }
+
+  .advertisers-content {
+    h2 {
+      font-size: 1.6em;
+    }
   }
 
 }
@@ -391,8 +415,20 @@
     .widget-block {
       height: 120%;
     }
-    .form-block{
+    .form-block {
       height: 110%;
+    }
+  }
+
+  .advertisers-content {
+    h2 {
+      font-size: 1.4em;
+    }
+  }
+
+  .advertisers-header, .get-code-header {
+    h2 {
+      font-size: 1.5em;
     }
   }
 }

@@ -7,15 +7,15 @@
     {% include 'partials/nav_old.html' %}
 
     <div class="container add-website-wrapper">
-        <div class="row clearfix">
+        <div class="row">
             <h3 class="add-website-header">
                 <em>
                     Help us accurately categorize your website. Tell us more about your content.
                 </em>
             </h3>
 
-
-            <form id="add-website-form" method="post" action="." enctype="multipart/form-data">
+            <div class="col-lg-7 col-md-7 col-sm-9 col-xs-12">
+                <form id="add-website-form" method="post" action="." enctype="multipart/form-data">
                 {% csrf_token %}
 
                 <fieldset>
@@ -48,7 +48,9 @@
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label" for="categories">Select <strong>sub-categories</strong> for your website. The best sub-categories to use are sub-sections from your website.</label>
+                            <label class="control-label" for="categories">Select <strong>sub-categories</strong> for your website.
+                                <br>
+                                The best sub-categories to use are sub-sections from your website.</label>
 
                             <div class="controls">
                                 {{ form.industry }}
@@ -97,6 +99,8 @@
                     </div>
                 </fieldset>
             </form>
+            </div>
+
 
         </div>
     </div>

@@ -86,7 +86,9 @@
   .container {
     width: 90%; }
   #hint_id_accept {
-    font-size: 1.1em; } }
+    font-size: 1.1em; }
+  .advertisers-header h2, .get-code-header h2 {
+    font-size: 2.0em; } }
 
 /* Portrait tablets and small desktops */
 @media (min-width: 768px) and (max-width: 991px) {
@@ -123,7 +125,9 @@
     .section-join-network .widget-block {
       height: 800px; }
     .section-join-network .form-block {
-      height: 800px; } }
+      height: 800px; }
+  .advertisers-header h2, .get-code-header h2 {
+    font-size: 1.8em; } }
 
 /* Landscape phones and portrait tablets */
 @media (max-width: 767px) {
@@ -171,7 +175,11 @@
   .section-form h1 {
     margin-top: 50px; }
   #hint_id_accept {
-    font-size: 1.0em; } }
+    font-size: 1.0em; }
+  .advertisers-header h2, .get-code-header h2 {
+    font-size: 1.7em; }
+  .advertisers-content h2 {
+    font-size: 1.6em; } }
 
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
@@ -232,7 +240,11 @@
     .section-join-network .widget-block {
       height: 120%; }
     .section-join-network .form-block {
-      height: 110%; } }
+      height: 110%; }
+  .advertisers-content h2 {
+    font-size: 1.4em; }
+  .advertisers-header h2, .get-code-header h2 {
+    font-size: 1.5em; } }
 
 /* Custom, iPhone Retina */
 @media only screen and (max-width: 320px) {

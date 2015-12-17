@@ -395,11 +395,13 @@ class AdvertisersView(View):
 
     def get(self, request):
 
+
         try:
             publisher = Publisher.objects.get(id=self.request.session['_id'])
         except KeyError:
             sponsors_type = sponsors = None
         else:
+            print(publisher.website)
             sponsors = Sponsor.objects.filter(country=publisher.country)
             # sponsors_type = SponsorType.objects.filter(sponsor__country=publisher.country)
             sponsors_type = SponsorType.objects.all()
@@ -408,7 +410,25 @@ class AdvertisersView(View):
         return TemplateResponse(request, self.template_name, context)
 
     def post(self, request):
-        print(request.POST)
+        request.POST = request.POST.copy()
+
+        try:
+            publisher = Publisher.objects.get(id=self.request.session['_id'])
+        except KeyError:
+            sponsors_type = sponsors = None
+        else:
+            sponsors_list = request.POST.pop('sponsor')
+            print(sponsors_list)
+            publisher.sponsor = sponsors_list
+            publisher.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_success_url(self):
+        """
+        Would return the success url depending on the whether query url is available.
+        """
+
+        return reverse('publisher_add_sites')
 
 
 class GetCodeView(LoginRequiredMixin, View):

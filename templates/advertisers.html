@@ -19,13 +19,13 @@
                 </div>
             </div>
             <div class="row">
-                <div class="advertisers-content col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                <div class="advertisers-content col-lg-7 col-md-7 col-sm-12 col-xs-12">
                     <form action="#" method="post">
                         {% csrf_token %}
                         <div class="row">
 
                             {% for type in sponsors_type %}
-                                <div class="col-lg-4 col-md-6 col-sm-6 col-sm-6 col-xs-6">
+                                <div class="col-lg-4 col-md-6 col-sm-4 col-xs-4">
                                     <h2><em>{{ type.type }}</em></h2>
                                     {% for sponsor in type.sponsor_set.all %}
                                         <div class="checkbox">
@@ -48,7 +48,7 @@
                     </form>
                 </div>
 
-                <div class="sponsor-network-text col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                <div class="sponsor-network-text col-lg-5 col-md-5 col-sm-12 col-xs-12">
                     <h2><em>Our sponsor network is growing every day.</em></h2>
 
                     <h2><em>Stay tuned, you’ll be able to target more sponsors soon!</em></h2>

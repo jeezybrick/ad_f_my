@@ -86,7 +86,7 @@ class JoinNetworkView(View):
 
                 first.save()
                 #second.save()
-                utils.send_email_with_form_data_join(request.POST)
+                # utils.send_email_with_form_data_join(request.POST)
                 email = form.cleaned_data['email']
                 password = form.cleaned_data['password1']
                 user = authenticate(Publisher, email=email, password=password)
