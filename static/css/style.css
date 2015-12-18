@@ -650,6 +650,9 @@ nav ul, nav ol {
   margin-bottom: 50px;
   font-weight: 600; }
 
+#add-website-form .control-group {
+  margin-bottom: 30px; }
+
 #add-website-form label {
   color: grey;
   font-size: 1.5em;
