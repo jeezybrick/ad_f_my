@@ -44,5 +44,5 @@ class AdvertisersList(APIView):
     def get(self, request):
         queryset = SponsorType.objects.all()
 
-        serializer = serializers.SponsorSerializer(queryset, many=True)
+        serializer = serializers.SponsorSerializer(queryset, many=True, context={'request': request})
         return Response(serializer.data)

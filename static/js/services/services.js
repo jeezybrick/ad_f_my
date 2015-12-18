@@ -13,7 +13,7 @@ angular.module('myApp.services', ['ngResource'])
             });
     })
     .factory('Sponsor', function ($resource) {
-        return $resource('/api/advertisers/'
+        return $resource('/api/sponsor/'
             , {}, {
                 'query': {method: 'GET', isArray: true}
             });
