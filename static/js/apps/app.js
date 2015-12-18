@@ -3,6 +3,7 @@ angular
     .module('myApp', [
         'ngResource',
         'myApp.services',
+        'angucomplete-alt'
     ])
     .config(function ($locationProvider, $httpProvider, $resourceProvider, $interpolateProvider) {
 
