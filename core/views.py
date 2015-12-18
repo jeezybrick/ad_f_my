@@ -1,3 +1,4 @@
+from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.utils.translation import ugettext_lazy as _
@@ -9,7 +10,6 @@ from django.contrib.auth.decorators import login_required
 from core import forms, utils
 from my_auth.models import MyUser
 from publisher.forms import WebsiteNewForm
-from login.backend import authenticate, login
 from publisher.models import Publisher, Website
 from adfits import constants
 
@@ -86,7 +86,7 @@ class JoinNetworkView(View):
                 # utils.send_email_with_form_data_join(request.POST)
                 email = form.cleaned_data['email']
                 password = form.cleaned_data['password1']
-                user = authenticate(MyUser, email=email, password=password)
+                user = authenticate(email=email, password=password)
 
                 if user is not None:
                     login(request, user)
