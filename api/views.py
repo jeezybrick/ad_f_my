@@ -11,9 +11,12 @@ from publisher.models import Publisher
 
 
 # Publisher detail
+from sponsor.models import Industry
+
+
 class CurrentPublisherDetail(generics.RetrieveUpdateAPIView):
     serializer_class = serializers.PublisherSerializer
-    permission_classes = (permissions.IsAuthenticated, )
+    permission_classes = (permissions.IsAuthenticated,)
 
     def get_object(self):
         try:
@@ -21,3 +24,12 @@ class CurrentPublisherDetail(generics.RetrieveUpdateAPIView):
         except ObjectDoesNotExist:
             publisher = self.request.user
         return publisher
+
+
+class CategoryList(APIView):
+    def get(self, request):
+        parent = request.GET.get('parent', None)
+        sub = request.GET.get('sub', None)
+        queryset = Industry.objects.all()
+        serializer = serializers.CategorySerializer(queryset, many=True)
+        return Response(serializer.data)
