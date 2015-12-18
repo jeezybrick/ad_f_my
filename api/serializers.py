@@ -22,9 +22,20 @@ class PublisherSerializer(serializers.ModelSerializer):
 
 class SponsorSerializer(serializers.ModelSerializer):
 
+    sponsor = serializers.SerializerMethodField(read_only=True)
+
+    def get_sponsor(self, obj):
+        request = self.context.get('request', None)
+        sponsor = None
+        print(request)
+        print('dddddddddddddddddd')
+        if request:
+            sponsor = obj.sponsor_set.filter(myuser_ptr_id=request.user.id, country=request.user.country)
+        return sponsor
+
     class Meta:
         model = SponsorType
-        fields = ('id', 'type', )
+        fields = ('id', 'type', 'sponsor', )
 
 
 class CategorySerializer(serializers.ModelSerializer):
