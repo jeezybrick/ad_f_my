@@ -15,7 +15,7 @@ angular.module('myApp.services', ['ngResource'])
     .factory('Sponsor', function ($resource) {
         return $resource('/api/advertisers/'
             , {}, {
-                'query': {method: 'GET', isArray: false}
+                'query': {method: 'GET', isArray: true}
             });
     });
 
