@@ -400,7 +400,7 @@ class AdvertisersView(LoginRequiredMixin, View):
     def get(self, request):
 
         try:
-            publisher = Publisher.objects.get(id=self.request.session['_id'])
+            publisher = Publisher.objects.get(id=self.request.user.id)
         except KeyError:
             sponsors_type = publisher = None
         else:
@@ -413,9 +413,9 @@ class AdvertisersView(LoginRequiredMixin, View):
         request.POST = request.POST.copy()
 
         try:
-            publisher = Publisher.objects.get(id=self.request.session['_id'])
+            publisher = Publisher.objects.get(id=self.request.user.id)
         except KeyError:
-            sponsors_type = sponsors = None
+            publisher = sponsors = None
         else:
             sponsors_list = request.POST.pop('sponsor')
             for sponsor in sponsors_list:
@@ -427,7 +427,6 @@ class AdvertisersView(LoginRequiredMixin, View):
         """
         Would return the success url depending on the whether query url is available.
         """
-
         return reverse('publisher_add_sites')
 
 
