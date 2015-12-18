@@ -188,6 +188,7 @@ class JoinNetworkForm(forms.ModelForm):
         user = super(JoinNetworkForm, self).save(commit=False)
         user.password = make_password(self.cleaned_data["password1"], salt="adfits")
         user.is_active = False
+
         if commit:
             user.save()
         return user
