@@ -12,6 +12,7 @@ function AdvertisersController(Sponsor, $log) {
     vm.sponsors_type = Sponsor.query(function (response) {
 
 
+
     }, function () {
 
     });
