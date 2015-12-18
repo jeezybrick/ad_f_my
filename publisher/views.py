@@ -421,7 +421,7 @@ class AdvertisersView(LoginRequiredMixin, View):
             try:
                 sponsors_list = request.POST.pop('sponsor')
             except KeyError:
-                sponsors_list = None
+                sponsors_list = False
             for sponsor in sponsors_list:
                 publisher.sponsor.add(Sponsor.objects.get(myuser_ptr=sponsor))
                 publisher.save()
