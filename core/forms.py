@@ -86,8 +86,7 @@ class JoinNetworkForm(forms.ModelForm):
                                                              'Invalid phone format!',
                                                              'invalid'), ]
                             )
-    website_domain = forms.URLField(label='', required=True, help_text="<em>Don't worry, you can add more than one website later if you want!</em>")
-    website_name = forms.CharField(label='', required=True)
+
     accept = forms.BooleanField(label='', required=True, help_text="I accept the Terms & Conditions and Privacy Policy.")
     # country = forms.ChoiceField(choices=(('USA', 'USA'), ('Canada', 'Canada'), ), label='', help_text="<hr>")
 
@@ -119,16 +118,6 @@ class JoinNetworkForm(forms.ModelForm):
                 placeholder=_('Your Name or Publisher Name')
             )
             ,
-
-            Field(
-                'website_name',
-                placeholder=_('Website Name: e.g. Mommy on the Run')
-            )
-            ,
-            Field(
-                'website_domain',
-                placeholder=_('Website URL e.g. http://')
-            ),
 
             Field(
                 'telephone',
@@ -169,10 +158,7 @@ class JoinNetworkForm(forms.ModelForm):
 
     class Meta:
         model = Publisher
-        fields = ("name", "email", "country", "website_name", "website_domain", 'telephone', )
-        widgets = {
-            # 'website': forms.MultipleHiddenInput()
-        }
+        fields = ("name", "email", "country", 'telephone', )
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
