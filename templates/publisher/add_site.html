@@ -6,7 +6,7 @@
 {% block content %}
     {% include 'partials/nav_old.html' %}
 
-    <div class="container add-website-wrapper">
+    <div class="container add-website-wrapper" ng-controller="DemoController">
         <div class="row">
             <h3 class="add-website-header">
                 <em>
@@ -49,7 +49,7 @@
                                                       placeholder="Examples: Parenting, Travel, Moms, Gaming, etc."
                                                       pause="100"
                                                       selected-object="testObj"
-                                                      remote-url="http://adfits.com/api/category?parent="
+                                                      remote-url="http://www.adfits.com/api/category?parent="
                                                       remote-url-data-field="results"
                                                       title-field="firstName,surname"
                                                       description-field="email"
@@ -71,7 +71,7 @@
                                                       placeholder="Examples: Food, Health, Style, Games"
                                                       pause="100"
                                                       selected-object="testObj"
-                                                      remote-url="http://adfits.com/api/category?sub="
+                                                      remote-url="http://www.adfits.com/api/category?sub="
                                                       remote-url-data-field="results"
                                                       title-field="firstName,surname"
                                                       description-field="email"
@@ -131,6 +131,12 @@
     </div>
     {% include 'partials/footer.html' %}
 {% endblock content %}
+
+{% block js %}
+
+    <script src="{% static 'js/controllers/DemoController.js' %}"></script>
+
+{% endblock %}
 
 
 {% block css %}

@@ -3,7 +3,9 @@ angular
     .module('myApp', [
         'ngResource',
         'myApp.services',
-        'angucomplete-alt'
+        'angucomplete-alt',
+        'ngAnimate',
+        'ui.bootstrap'
     ])
     .config(function ($locationProvider, $httpProvider, $resourceProvider, $interpolateProvider) {
 
