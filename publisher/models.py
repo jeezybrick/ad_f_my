@@ -2,8 +2,7 @@ import os
 import time
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from djangotoolbox.fields import EmbeddedModelField
-from adfits.fields import ModelListField
+from my_auth.models import MyUser
 from sponsor.models import Industry, Sponsor
 from core.models import Country
 
@@ -58,26 +57,20 @@ class Website(models.Model):
         return self.website_name
 
 
-class Publisher(models.Model):
+class Publisher(MyUser):
     """
     The purpose of the models is to publishers
     """
-
-    name = models.CharField(_("Publisher Name"), max_length=100)
-    contact_name = models.CharField(_("Contact Name"), max_length=100, blank=True)
-    address = models.TextField(_("Address"), null=True, blank=True)
-    city = models.CharField(_("City"), null=True, blank=True, max_length=80)
-    state = models.CharField(_("State"), null=True, blank=True, max_length=50)
-    telephone = models.CharField(_("Telephone"), max_length=15, null=True, blank=True)
-    email = models.EmailField(max_length=75, null=True, blank=True, unique=True)
+    address = models.TextField(_("Address"), blank=True)
+    city = models.CharField(_("City"), blank=True, max_length=80)
+    state = models.CharField(_("State"),  blank=True, max_length=50)
+    telephone = models.CharField(_("Telephone"), max_length=15, blank=True)
     industry = models.ForeignKey(Industry, null=True, blank=True)
-    logo = models.FileField(_("Upload Logo"), upload_to=get_publisher_logo_path, blank=True)
-    token = models.CharField(max_length=100, null=True, blank=True)
-    notes = models.TextField(_("Note"), null=True, blank=True)
-    website = ModelListField(EmbeddedModelField(Website))
-    sponsor = ModelListField(EmbeddedModelField(Sponsor))
-    password = models.CharField(max_length=128)
-    country = models.ForeignKey(Country, null=True, blank=True)
+    logo = models.ImageField(_("Upload Logo"), upload_to='', blank=True)
+    notes = models.TextField(_("Note"), blank=True)
+    website = models.ForeignKey(Website, related_name='website', null=True, blank=True)
+    sponsor = models.ManyToManyField(Sponsor, related_name='sponsor', null=True, blank=True)
+    country = models.ForeignKey(Country, null=True, blank=False, related_name='country')
 
     class Meta:
         app_label = 'publisher'

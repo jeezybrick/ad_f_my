@@ -78,8 +78,13 @@ class JoinNetworkView(View):
             form_website = self.form_website(data={'website_name': request.POST.get('website_name'), 'website_domain': request.POST.get('website_domain')})
             if form_website.is_valid:
                 first = form.save(commit=False)
+<<<<<<< HEAD
                 second = form_website.save(commit=False)
                 first.website = [second.website_name]
+=======
+                second = form_website.save()
+                first.website = second
+>>>>>>> fe148123935a239c25be5effd4469fb9350049e4
                 first.save()
                 second.save()
                 # utils.send_email_with_form_data_join(request.POST)

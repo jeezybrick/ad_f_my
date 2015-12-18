@@ -100,34 +100,41 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
 )
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
-AUTHENTICATION_BACKENDS = (
-    'permission_backend_nonrel.backends.NonrelPermissionBackend',
-    'adfits.backends.EmailAuthBackend',
-)
+
 
 ROOT_URLCONF = 'adfits.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'adfits.wsgi.application'
 
-TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-    os.path.join(BASE_DIR, "templates")
-)
-
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                "django.core.context_processors.request",
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 INSTALLED_APPS = (
     'grappelli',
     'django.contrib.auth',
@@ -139,19 +146,18 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
-    'djangotoolbox',
-    'permission_backend_nonrel',
     'gunicorn',
     'campaign',
     'client',
     'sponsor',
     'publisher',
     'core',
+    'my_auth',
+
     'colorful',
     'login',
     'django_crontab',
     'crispy_forms',
-    'django_mongodb_engine',
     'rest_framework',
 )
 
@@ -213,6 +219,11 @@ try:
 except ImportError:
     pass
 
+
+# Default auth model
+AUTH_USER_MODEL = 'my_auth.MyUser'
+
+
 # boostrap 3 for crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
@@ -234,3 +245,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'smooker14@gmail.com'
 EMAIL_HOST_PASSWORD = '16931693'
+

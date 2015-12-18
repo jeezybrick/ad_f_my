@@ -1,4 +1,4 @@
-from django.contrib.auth.models import make_password
+from django.contrib.auth.hashers import make_password
 from publisher.models import Publisher
 from sponsor.models import Sponsor
 

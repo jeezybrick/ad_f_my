@@ -25,6 +25,7 @@ class WidgetForm(forms.ModelForm):
 
     class Meta:
         model = Widget
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super(WidgetForm, self).__init__(*args, **kwargs)

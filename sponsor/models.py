@@ -2,8 +2,9 @@ import os
 import time
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from djangotoolbox.fields import EmbeddedModelField
+
 from core.models import Country
+from my_auth.models import MyUser
 
 
 def get_sponsor_logo_path(instance, filename):
@@ -50,23 +51,18 @@ class SponsorType(models.Model):
         return self.type
 
 
-class Sponsor(models.Model):
+class Sponsor(MyUser):
     """
     The purpose of the models is to publishers
     """
 
-    name = models.CharField(_("Sponsor Name"), max_length=100)
-    contact_name = models.CharField(_("Contact Name"), max_length=100, blank=True)
     address = models.TextField(_("Address"), blank=True)
-    telephone = models.IntegerField(_("Telephone"), max_length=10, null=True, blank=True)
-    email = models.EmailField(_("Email"), max_length=75, blank=True)
-    industry = EmbeddedModelField(Industry, null=True, blank=True)
-    logo = models.FileField(_("Upload Logo"), upload_to=get_sponsor_logo_path, blank=True)
-    token = models.CharField(max_length=100, blank=True)
+    telephone = models.CharField(_("Telephone"), max_length=20, blank=True)
+    industry = models.ManyToManyField(Industry, blank=True, null=True)
+    logo = models.ImageField(_("Upload Logo"), upload_to='', blank=True)
     notes = models.TextField(_("Note"), blank=True)
-    password = models.CharField(max_length=128)
-    country = models.ForeignKey(Country, null=True, blank=True)
-    type = models.ForeignKey(SponsorType, null=True, blank=True)
+    country = models.ForeignKey(Country, blank=False, null=True)
+    type = models.ForeignKey(SponsorType, blank=False, null=True)
 
     class Meta:
         app_label = 'sponsor'
