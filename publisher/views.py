@@ -414,8 +414,8 @@ class AdvertisersView(LoginRequiredMixin, View):
         request.POST = request.POST.copy()
 
         try:
-            publisher = Publisher.objects.get(id=self.request.user.id)
-        except KeyError:
+            publisher = Publisher.objects.get(myuser_ptr=self.request.user.id)
+        except ObjectDoesNotExist:
             publisher = sponsors = None
         else:
             sponsors_list = request.POST.pop('sponsor')
