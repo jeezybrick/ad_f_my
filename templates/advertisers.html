@@ -8,7 +8,7 @@
 
 {% block content %}
     {% include 'partials/nav_old.html' %}
-    <div class="main-content advertisers-wrapper">
+    <div class="main-content advertisers-wrapper" ng-controller="AdvertisersController as vm" ng-cloak>
         <div class="container">
             <div class="row">
                 <div class="advertisers-header col-lg-10 col-md-10 col-sm-12 col-xs-12">
@@ -20,35 +20,29 @@
             </div>
             <div class="row">
                 <div class="advertisers-content col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                    <form action="#" method="post">
-                        {% csrf_token %}
+
                         <div class="row">
 
-                            {% for type in sponsors_type %}
-                                <div class="col-lg-4 col-md-6 col-sm-4 col-xs-4">
-                                    <h2><em>{{ type.type }}</em></h2>
-                                    {% for sponsor in type.sponsor_set.all %}
+                            <div class="col-lg-4 col-md-6 col-sm-4 col-xs-4" ng-repeat="type in sponsors_type">
+                                <h2><em>[[ type.type ]]</em></h2>
 
-                                        {% if sponsor.country == request.user.country %}
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="sponsor" value="{{ sponsor.id }}">
-                                                    {{ sponsor.name }}
-                                                </label>
-                                            </div>
-                                        {% endif %}
 
-                                    {% endfor %}
+                                <div class="checkbox" ng-repeat="sponsor in type">
+                                    <label>
+                                        <input type="checkbox" name="sponsor" value="[[ sponsor.id ]]">
+                                        [[ sponsor.name ]]
+                                    </label>
                                 </div>
-                            {% endfor %}
+
+                            </div>
 
                         </div>
 
 
-                        <button class="form-button" type="submit">
+                        <button class="form-button" type="submit" ng-click="vm.addSponsors">
                             NEXT
                         </button>
-                    </form>
+
                 </div>
 
                 <div class="sponsor-network-text col-lg-5 col-md-5 col-sm-12 col-xs-12">
@@ -69,6 +63,7 @@
 
 {% block js %}
 
+    <script src="{% static 'js/controllers/AdvertisersController.js' %}"></script>
 
 {% endblock %}
 

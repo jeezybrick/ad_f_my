@@ -11,5 +11,11 @@ angular.module('myApp.services', ['ngResource'])
                 'update': {method: 'PUT'},
                 'query': {method: 'GET', isArray: false}
             });
+    })
+    .factory('Sponsor', function ($resource) {
+        return $resource('/api/advertisers/'
+            , {}, {
+                'query': {method: 'GET', isArray: false}
+            });
     });
 

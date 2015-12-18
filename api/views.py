@@ -11,7 +11,7 @@ from publisher.models import Publisher
 
 
 # Publisher detail
-from sponsor.models import Industry
+from sponsor.models import Industry, Sponsor
 
 
 class CurrentPublisherDetail(generics.RetrieveUpdateAPIView):
@@ -37,4 +37,12 @@ class CategoryList(APIView):
             queryset = Industry.objects.filter(industry_type__contains=sub)
 
         serializer = serializers.CategorySerializer(queryset, many=True)
+        return Response(serializer.data)
+
+
+class AdvertisersList(APIView):
+    def get(self, request):
+        queryset = Sponsor.objects.all()
+
+        serializer = serializers.SponsorSerializer(queryset, many=True)
         return Response(serializer.data)
