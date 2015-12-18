@@ -10,7 +10,7 @@ from PIL import Image, ImageOps
 
 class SponsorAdmin(admin.ModelAdmin):
 
-    fields = ("name", "logo", "country", "type", )
+    fields = ("email", "name", "logo", "country", "type", )
 '''
     form = SponsorForm
     exclude = ('token', 'password')
