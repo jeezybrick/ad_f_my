@@ -24,10 +24,11 @@ class Migration(migrations.Migration):
             model_name='sponsor',
             name='email',
         ),
-        migrations.RemoveField(
-            model_name='sponsor',
-            name='id',
-        ),
+
+        # migrations.RemoveField(
+        #     model_name='sponsor',
+        #     name='id',
+        # ),
         migrations.RemoveField(
             model_name='sponsor',
             name='name',
@@ -48,7 +49,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='sponsor',
             name='myuser_ptr',
-            field=models.OneToOneField(auto_created=True, default='', on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to=settings.AUTH_USER_MODEL),
+            field=models.OneToOneField(auto_created=True, default='', on_delete=django.db.models.deletion.CASCADE, parent_link=True, serialize=False, to=settings.AUTH_USER_MODEL),
             preserve_default=False,
         ),
     ]

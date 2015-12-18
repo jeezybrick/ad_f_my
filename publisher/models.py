@@ -69,7 +69,7 @@ class Publisher(MyUser):
     logo = models.ImageField(_("Upload Logo"), upload_to='', blank=True)
     notes = models.TextField(_("Note"), blank=True)
     website = models.ForeignKey(Website, related_name='website', null=True, blank=True)
-    sponsor = models.ManyToManyField(Sponsor, related_name='sponsor', null=True, blank=True)
+    sponsor = models.ManyToManyField(Sponsor, related_name='sponsor', blank=True)
     country = models.ForeignKey(Country, null=True, blank=False, related_name='country')
 
     class Meta:

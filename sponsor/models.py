@@ -58,7 +58,7 @@ class Sponsor(MyUser):
 
     address = models.TextField(_("Address"), blank=True)
     telephone = models.CharField(_("Telephone"), max_length=20, blank=True)
-    industry = models.ManyToManyField(Industry, blank=True, null=True)
+    industry = models.ManyToManyField(Industry, blank=True)
     logo = models.ImageField(_("Upload Logo"), upload_to='', blank=True)
     notes = models.TextField(_("Note"), blank=True)
     country = models.ForeignKey(Country, blank=False, null=True)
