@@ -418,7 +418,10 @@ class AdvertisersView(LoginRequiredMixin, View):
         except ObjectDoesNotExist:
             publisher = sponsors = None
         else:
-            sponsors_list = request.POST.pop('sponsor')
+            try:
+                sponsors_list = request.POST.pop('sponsor')
+            except KeyError:
+                sponsors_list = None
             for sponsor in sponsors_list:
                 publisher.sponsor.add(Sponsor.objects.get(myuser_ptr=sponsor))
                 publisher.save()
