@@ -1,4 +1,5 @@
 import calendar
+from django.core.exceptions import ObjectDoesNotExist
 import xlwt
 from django.contrib.auth.hashers import make_password
 from adfits import constants
@@ -400,8 +401,8 @@ class AdvertisersView(LoginRequiredMixin, View):
     def get(self, request):
 
         try:
-            publisher = Publisher.objects.get(id=self.request.user.id)
-        except KeyError:
+            publisher = Publisher.objects.get(myuser_ptr=self.request.user)
+        except ObjectDoesNotExist:
             sponsors_type = publisher = None
         else:
             sponsors_type = SponsorType.objects.all()
@@ -419,7 +420,7 @@ class AdvertisersView(LoginRequiredMixin, View):
         else:
             sponsors_list = request.POST.pop('sponsor')
             for sponsor in sponsors_list:
-                publisher.sponsor.add(Sponsor.objects.get(id=sponsor))
+                publisher.sponsor.add(Sponsor.objects.get(myuser_ptr=sponsor))
                 publisher.save()
         return HttpResponseRedirect(self.get_success_url())
 
