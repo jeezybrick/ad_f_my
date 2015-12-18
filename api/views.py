@@ -31,5 +31,10 @@ class CategoryList(APIView):
         parent = request.GET.get('parent', None)
         sub = request.GET.get('sub', None)
         queryset = Industry.objects.all()
+        if parent:
+            queryset = Industry.objects.filter(industry_type=parent)
+        if sub:
+            queryset = Industry.objects.filter(industry_type=sub)
+
         serializer = serializers.CategorySerializer(queryset, many=True)
         return Response(serializer.data)
