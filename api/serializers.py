@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from core.models import Country
 from publisher.models import Publisher
-from sponsor.models import Industry
+from sponsor.models import Industry, SponsorType
 
 
 class CountrySerializer(serializers.ModelSerializer):
@@ -23,8 +23,8 @@ class PublisherSerializer(serializers.ModelSerializer):
 class SponsorSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Publisher
-        fields = ('id', 'name', )
+        model = SponsorType
+        fields = ('id', 'type', )
 
 
 class CategorySerializer(serializers.ModelSerializer):
