@@ -20,6 +20,13 @@ class PublisherSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'telephone', 'address', 'country', 'email', )
 
 
+class SponsorSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Publisher
+        fields = ('id', 'name', )
+
+
 class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:

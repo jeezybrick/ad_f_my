@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^api/publisher/(?P<pk>[0-9]+)/$',
         views.CurrentPublisherDetail.as_view(), name='publisher_detail_api'),
      url(r'^api/category/$', views.CategoryList.as_view(), name='category_api'),
+     url(r'^api/advertisers/$', views.AdvertisersList.as_view(), name='advertisers_api'),
 ]
