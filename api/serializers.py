@@ -26,11 +26,10 @@ class SponsorSerializer(serializers.ModelSerializer):
 
     def get_sponsor(self, obj):
         request = self.context.get('request', None)
-        sponsor = None
-        print(request)
-        print('dddddddddddddddddd')
+        sponsor = False
         if request:
-            sponsor = obj.sponsor_set.filter(myuser_ptr_id=request.user.id, country=request.user.country)
+            # sponsor = obj.sponsor_set.filter(myuser_ptr_id=request.user.id, country=request.user.country)
+            sponsor = obj.sponsor_set.all()
         return sponsor
 
     class Meta:
