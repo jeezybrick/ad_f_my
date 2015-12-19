@@ -58,9 +58,10 @@ urlpatterns = patterns('',
         #{'template_name': 'dashboard/forgot_password_complete.html'},
         name='password_reset_complete'),
 
+
 )
 
-urlpatterns += patterns('', 
+urlpatterns += patterns('',
 	url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
 		'document_root': settings.MEDIA_ROOT
 	}),

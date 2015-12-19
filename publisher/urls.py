@@ -6,6 +6,7 @@ from publisher.models import Publisher
 
 
 urlpatterns = patterns('',
+
     url(r'^dashboard$', DashboardView.as_view(), name='publisher_dashboard'),
     url(r'^sites/$', SitesView.as_view(), name='publisher_sites'),
     url(r'^sites/add-sites/$', AddSitesView.as_view(), name='publisher_add_sites'),
@@ -16,8 +17,10 @@ urlpatterns = patterns('',
     url(r'^faq$', TemplateView.as_view(template_name="publisher/faq.html"), name='publisher_faq'),
     url(r'^change-password/$',ChangePassword.as_view(), kwargs={'model': Publisher}, name="publisher_pass_change"),
     url(r'^logout$', 'django.contrib.auth.views.logout', {'next_page': '/publisher/login'}, name='logout'),
-    url(r"^advertisers/$", AdvertisersView.as_view(), name='advertisers'),
+    # url(r"^advertisers/$", AdvertisersView.as_view(), name='advertisers'),
+    url(r"^advertisers/$", TemplateView.as_view(template_name="publisher/index.html"), name='advertisers'),
     url(r"^sites/get-code/$", GetCodeView.as_view(), name='get-code'),
     url(r"^profile/$", ProfileView.as_view(), name='publisher-profile'),
+    url(r'^$', TemplateView.as_view(template_name="publisher/index.html"), name='publisher_dashboard'),
 
 )

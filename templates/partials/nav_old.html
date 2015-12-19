@@ -20,17 +20,17 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="/publisher/dashboard" class="fui-home" style="font-size:16px">
+                    <a ui-sref="publisher.dashboard" class="fui-home" style="font-size:16px">
                         &nbsp;Dashboard
                     </a>
                 </li>
                 <li>
-                    <a href="/publisher/sites" class="fui-window" style="font-size:16px">
+                    <a ui-sref="publisher.sites" class="fui-window" style="font-size:16px">
                         &nbsp;Sites
                     </a>
                 </li>
                 <li>
-                    <a href="/publisher/audience" class="fui-user" style="font-size:16px">
+                    <a ui-sref="publisher.audience" class="fui-user" style="font-size:16px">
                         &nbsp;Campaigns
                     </a>
                 </li>
@@ -41,11 +41,11 @@
 						<a href="{% url 'publisher_faq' %}">FAQ</a>
 					  </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle fui-gear" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    <a href="javascript:;" class="dropdown-toggle fui-gear" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false"></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="{% url 'publisher-profile' %}">Profile</a>
+                            <a ui-sref="publisher.profile">Profile</a>
                         </li>
                         <li>
                             <a href="/publisher/change-password">Change Password</a>
