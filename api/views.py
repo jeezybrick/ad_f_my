@@ -7,7 +7,7 @@ from rest_framework import generics, status, permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from api import serializers
-from publisher.models import Publisher
+from publisher.models import Publisher, Website
 
 
 # Publisher detail
@@ -41,8 +41,40 @@ class CategoryList(APIView):
 
 
 class AdvertisersList(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
     def get(self, request):
         queryset = SponsorType.objects.all()
 
-        serializer = serializers.SponsorSerializer(queryset, many=True, context={'request': request})
+        serializer = serializers.SponsorTypeSerializer(queryset, many=True, context={'request': request})
         return Response(serializer.data)
+
+
+class PublisherWebsiteList(generics.GenericAPIView):
+
+    serializer_class = serializers.PublisherWebsiteSerializer
+    queryset = Website.objects.all()
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get(self, request):
+        queryset = Website.objects.all()
+
+        serializer = serializers.PublisherWebsiteSerializer(queryset, many=True, context={'request': request})
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = serializers.PublisherWebsiteSerializer(data=request.data)
+        if serializer.is_valid():
+            test = serializer.save(commit=False)
+            print(test)
+            #serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def perform_create(self, serializer):
+        try:
+            publisher = Publisher.objects.get(id=self.request.user.id)
+        except ObjectDoesNotExist:
+            publisher = self.request.user
+
+        #serializer.save(publisher=publisher)

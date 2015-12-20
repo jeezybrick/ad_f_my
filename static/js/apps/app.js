@@ -48,7 +48,7 @@ angular
             .state('publisher.advertisers', {
                 url: 'advertisers/',
                 templateUrl: '/static/pages/publisher/advertisers.html',
-                controller: 'PublisherController',
+                controller: 'AdvertisersController',
                 controllerAs: 'vm',
 
             })
@@ -67,17 +67,17 @@ angular
             .state('publisher.sites', {
                 url: 'publisher/sites/',
                 templateUrl: '/static/pages/publisher/sites/index.html',
-                controller: 'PublisherController',
+                controller: 'PublisherSitesController',
                 controllerAs: 'vm'
             })
             .state('publisher.addsites', {
-                url: 'publisher/sites/add-sites',
+                url: 'sites/add-sites/',
                 templateUrl: '/static/pages/publisher/sites/add.html',
-                controller: 'PublisherController',
+                controller: 'PublisherSitesController',
                 controllerAs: 'vm'
             })
             .state('publisher.getcode', {
-                url: 'publisher/sites/get-code',
+                url: 'publisher/sites/get-code/',
                 templateUrl: '/static/pages/publisher/sites/get_code.html',
                 controller: 'PublisherController',
                 controllerAs: 'vm'

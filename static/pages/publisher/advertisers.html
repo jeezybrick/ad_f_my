@@ -1,4 +1,4 @@
- <div class="main-content advertisers-wrapper" ng-cloak>
+<div class="main-content advertisers-wrapper" ng-cloak>
         <div class="container">
             <div class="row">
                 <div class="advertisers-header col-lg-10 col-md-10 col-sm-12 col-xs-12">
@@ -17,11 +17,11 @@
                                 <h2><em>[[ sponsor.type ]]</em></h2>
 
 
-                                <div class="checkbox" ng-show="sponsor.sponsor.length">
-                                    <label>
-                                        <input type="checkbox" name="sponsor" value="[[ sponsor.id ]]">
-                                        [[ sponsor.sponsor[0] ]]
-                                    </label>
+                                <div class="checkbox" ng-repeat="sponsor in sponsor.sponsor_set">
+                                    <md-checkbox ng-checked="exists(sponsor, selected)" ng-click="toggle(sponsor, selected)">
+                                        [[ sponsor.name ]]
+                                    </md-checkbox>
+
                                 </div>
 
                             </div>

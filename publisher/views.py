@@ -398,7 +398,7 @@ class ChangePassword(FormView):
 
 
 class AdvertisersView(LoginRequiredMixin, View):
-    template_name = 'advertisers.html'
+    template_name = 'publisher/advertisers.html'
     title = _('Advertisers')
 
     def get(self, request):

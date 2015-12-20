@@ -27,11 +27,11 @@
                                 <h2><em>[[ sponsor.type ]]</em></h2>
 
 
-                                <div class="checkbox" ng-show="sponsor.sponsor.length">
-                                    <label>
-                                        <input type="checkbox" name="sponsor" value="[[ sponsor.id ]]">
-                                        [[ sponsor.sponsor[0] ]]
-                                    </label>
+                                <div class="checkbox" ng-repeat="sponsor in sponsor.sponsor_set">
+                                    <md-checkbox ng-checked="exists(sponsor, selected)" ng-click="toggle(sponsor, selected)">
+                                        [[ sponsor.name ]]
+                                    </md-checkbox>
+
                                 </div>
 
                             </div>
@@ -39,7 +39,7 @@
                         </div>
 
 
-                        <button class="form-button" type="submit" ng-click="vm.addSponsors">
+                        <button class="form-button" type="submit" ng-click="vm.addSponsors()">
                             NEXT
                         </button>
 

@@ -17,7 +17,7 @@
                                 <label class="control-label" for="website-name">Website Name:</label>
 
                                 <div class="controls">
-                                    <input class="form-control input-small" id="id_website_name" name="website_name" placeholder="Enter website name" type="text">
+                                    <input ng-model="vm.website.website_name" class="form-control input-small" id="id_website_name" name="website_name" placeholder="Enter website name" type="text">
                                 </div>
                             </div>
                             <!-- Text input-->
@@ -25,7 +25,7 @@
                                 <label class="control-label" for="website-domain">Website URL:</label>
 
                                 <div class="controls">
-                                    <input class="form-control input-small" id="id_website_domain" name="website_domain" placeholder="Enter your website domain" type="url">
+                                    <input ng-model="vm.website.website_domain" class="form-control input-small" id="id_website_domain" name="website_domain" placeholder="Enter your website domain" type="url">
                                 </div>
                             </div>
                             <!-- Select Basic -->
@@ -38,7 +38,7 @@
                                     <angucomplete-alt id="categories"
                                                       placeholder="Examples: Parenting, Travel, Moms, Gaming, etc."
                                                       pause="100"
-                                                      selected-object="testObj"
+                                                      selected-object="vm.website.industry"
                                                       remote-url="http://www.adfits.com/api/category?parent="
                                                       title-field="industry_type"
                                                       image-field="profilePic"
@@ -59,7 +59,7 @@
                                     <angucomplete-alt id="categories_sub"
                                                       placeholder="Examples: Food, Health, Style, Games"
                                                       pause="100"
-                                                      selected-object="testObj"
+                                                      selected-object="vm.website.industry"
                                                       remote-url="http://www.adfits.com/api/category?sub="
                                                       title-field="industry_type"
                                                       image-field="profilePic"
@@ -74,7 +74,7 @@
                                 <label class="control-label" for="logo">Twitter Account:</label>
 
                                 <div class="controls">
-                                    <input class="form-control input-small" id="id_twitter_name" name="twitter_name" placeholder="@" type="text">
+                                    <input ng-model="vm.website.twitter_name" class="form-control input-small" id="id_twitter_name" name="twitter_name" placeholder="@" type="text">
                                 </div>
                             </div>
 
@@ -82,7 +82,7 @@
                                 <label class="control-label" for="logo">Facebook Page:</label>
 
                                 <div class="controls">
-                                    <input class="form-control input-small" id="id_facebook_page" name="facebook_page" placeholder="http://" type="url">
+                                    <input ng-model="vm.website.facebook_page" class="form-control input-small" id="id_facebook_page" name="facebook_page" placeholder="http://" type="url">
                                 </div>
                             </div>
 
@@ -90,7 +90,7 @@
                                 <label class="control-label" for="logo">Avg. Monthly Site Pageviews:</label>
 
                                 <div class="controls">
-                                    <input class="form-control input-small" id="id_avg_page_views" name="avg_page_views" placeholder="There are no minimums, so please be honest!" type="number">
+                                    <input ng-model="vm.website.avg_page_views" class="form-control input-small" id="id_avg_page_views" name="avg_page_views" placeholder="There are no minimums, so please be honest!" type="number">
                                 </div>
                             </div>
                             <!-- File Button -->
@@ -98,7 +98,7 @@
                                 <label class="control-label" for="website-logo">Website Logo:</label>
 
                                 <div class="controls">
-                                   <input id="id_website_logo" name="website_logo" type="file">
+                                   <input ng-model="vm.website.website_logo" id="id_website_logo" name="website_logo" type="file">
                                 </div>
                             </div>
                             <!-- Button (Double) -->
@@ -106,7 +106,7 @@
                                 <label class="control-label" for="add"></label>
 
                                 <div class="controls">
-                                    <button id="add" name="add" class="form-button">COMPLETE SETUP</button>
+                                    <button type="button" id="add" name="add" class="form-button" ng-click="vm.addWebsite()">COMPLETE SETUP</button>
                                 </div>
                             </div>
                         </div>
