@@ -9,6 +9,7 @@ angular
         'myApp.services',
 
         'ngMaterial',
+        'ngMdIcons',
         'angucomplete-alt',
         'ui.bootstrap'
     ])
@@ -65,7 +66,19 @@ angular
             })
             .state('publisher.sites', {
                 url: 'publisher/sites/',
-                templateUrl: '/static/pages/publisher/sites.html',
+                templateUrl: '/static/pages/publisher/sites/index.html',
+                controller: 'PublisherController',
+                controllerAs: 'vm'
+            })
+            .state('publisher.addsites', {
+                url: 'publisher/sites/add-sites',
+                templateUrl: '/static/pages/publisher/sites/add.html',
+                controller: 'PublisherController',
+                controllerAs: 'vm'
+            })
+            .state('publisher.getcode', {
+                url: 'publisher/sites/get-code',
+                templateUrl: '/static/pages/publisher/sites/get_code.html',
                 controller: 'PublisherController',
                 controllerAs: 'vm'
             })

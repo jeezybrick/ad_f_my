@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
      <!-- Angular Material CSS now available via Google CDN; version 0.11.2 used here -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.1/angular-material.min.css">
+    <link rel="stylesheet" href="{% static 'css/minified/angular-material.css' %}">
 
     {% block css %}
 
@@ -85,6 +85,7 @@
 
 <!-- Angular Material Javascript now available via Google CDN; version 0.11.2 used here -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.1/angular-material.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.6.0/angular-material-icons.min.js"></script>
 
 <!-- Jquery mask for phone input -->
 <script src="{% static 'js/jquery.mask.min.js' %}"></script>

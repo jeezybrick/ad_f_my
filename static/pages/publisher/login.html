@@ -6,35 +6,50 @@
     </div>
 
     <!-- form for login-->
-    <form name="loginForm" class="form-horizontal action_add" role="form" method="POST">
+    <form name="loginForm" action="#" class="form-horizontal action_add" role="form" method="POST">
 
-        <div class="row">
-            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12 text-center">
-                <div layout="column">
-                    <md-input-container flex>
-                        <label>Your name</label>
-                        <input required name="username" ng-model="user.fullname">
+            <div class="row">
+                <div class="publisher-login-block col-lg-3 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 text-center">
+                    <div layout="column">
+                        <h3>Publisher Login</h3>
+                        <md-divider class="login-divider"></md-divider>
+                        <md-input-container class="md-icon-float md-icon-right md-block" flex>
+                            <label>Enter your email</label>
+                            <input required name="email" ng-model="user.email" type="email">
+                            <md-icon md-svg-src="{% static 'images/icons/profile_black.svg' %}"></md-icon>
+                            <div ng-messages="loginForm.email.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-icon-float md-icon-right md-block" flex>
+                            <label>Password</label>
+                            <input required name="password" ng-model="user.password" type="password">
+                            <md-icon md-svg-src="{% static 'images/icons/lock_black.svg' %}"></md-icon>
 
-                        <div ng-messages="loginForm.username.$error">
-                            <div ng-message="required">This is required.</div>
-                        </div>
-                    </md-input-container>
-                    <md-input-container flex>
-                        <label>Membership card id</label>
-                        <input required name="card_id" ng-model="user.mem_id" type="number">
-                        <div ng-messages="loginForm.card_id.$error">
-                            <div ng-message="required">This is required.</div>
-                        </div>
-                    </md-input-container>
+                            <div ng-messages="loginForm.password.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
                 </div>
             </div>
-        </div>
 
-            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
-                <md-button ng-disabled="loginForm.$invalid" class="login-btn md-raised md-primary" ng-click="sendLoginData()">ok</md-button>
+            <div class="publisher-login-button-wrapper col-lg-3 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+                <md-button type="submit" ng-disabled="loginForm.$invalid"
+                           class="login-btn md-raised md-primary publisher-login-button" ng-click="vm.sendLoginData()">
+                    Publisher Login
+                </md-button>
             </div>
 
-    </form>
+            <div style="position: relative" ng-show="vm.loginProcess">
+                <div class="col-lg-12 text-center" style="position: absolute;left: 40%;margin-top: 30px;">
+                    <md-progress-circular md-mode="indeterminate" md-diameter="80"></md-progress-circular>
+                </div>
+            </div>
+
+
+        </form>
+
 
         <!-- Flash error messages -->
         <div class="col-lg-12">

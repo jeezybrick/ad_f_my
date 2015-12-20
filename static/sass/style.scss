@@ -3,6 +3,7 @@
 html {
   position: relative;
   min-height: 100%;
+  height: auto !important;
 }
 
 body {
@@ -852,4 +853,8 @@ nav {
 }
 .publisher-toolbar{
   background-color: #f8f8f8 !important;
+  span{
+    color:black !important;
+  }
+
 }
