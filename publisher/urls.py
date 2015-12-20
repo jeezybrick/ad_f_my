@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from publisher.views import *
 from publisher.models import Publisher
 
@@ -21,6 +22,6 @@ urlpatterns = patterns('',
     url(r"^advertisers/$", TemplateView.as_view(template_name="publisher/index.html"), name='advertisers'),
     url(r"^sites/get-code/$", GetCodeView.as_view(), name='get-code'),
     url(r"^profile/$", ProfileView.as_view(), name='publisher-profile'),
-    url(r'^$', TemplateView.as_view(template_name="publisher/index.html"), name='publisher_dashboard'),
+    url(r'^$', login_required(TemplateView.as_view(template_name="publisher/index.html"), login_url='/publisher/login/'), name='publisher_dashboard'),
 
 )

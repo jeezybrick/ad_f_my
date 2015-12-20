@@ -3,10 +3,13 @@ angular
         'ngRoute',
         'ngResource',
         'ngSanitize',
+        'ngMessages',
+        'ngAnimate',
         'ui.router',
         'myApp.services',
+
+        'ngMaterial',
         'angucomplete-alt',
-        'ngAnimate',
         'ui.bootstrap'
     ])
     .config(function ($locationProvider, $httpProvider, $resourceProvider, $interpolateProvider, $routeProvider,
@@ -42,27 +45,33 @@ angular
 
             })
             .state('publisher.advertisers', {
-                url: '^/advertisers/',
+                url: 'advertisers/',
                 templateUrl: '/static/pages/publisher/advertisers.html',
                 controller: 'PublisherController',
                 controllerAs: 'vm',
 
             })
             .state('publisher.dashboard', {
-                url: '^/dashboard/',
+                url: 'dashboard/',
                 templateUrl: '/static/pages/publisher/dashboard.html',
                 controller: 'PublisherController',
                 controllerAs: 'vm'
             })
             .state('publisher.profile', {
-                url: '^/profile/',
+                url: 'profile/',
                 templateUrl: '/static/pages/publisher/profile.html',
                 controller: 'EditProfileController',
                 controllerAs: 'vm'
             })
             .state('publisher.sites', {
-                url: '^/publisher/sites/',
+                url: 'publisher/sites/',
                 templateUrl: '/static/pages/publisher/sites.html',
+                controller: 'PublisherController',
+                controllerAs: 'vm'
+            })
+            .state('publisher.login', {
+                url: 'publisher/login/',
+                templateUrl: '/static/pages/publisher/login.html',
                 controller: 'PublisherController',
                 controllerAs: 'vm'
             })

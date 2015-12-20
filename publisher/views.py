@@ -12,6 +12,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.mixins import LoginRequiredMixin
 from core import forms
 from publisher.models import Publisher, Website
 from publisher.forms import PublisherWebsiteForm, ResetPasswordForm
@@ -21,7 +22,7 @@ from client.models import UserToken, RedeemCoupon
 from login.forms import ResetPasswordForm
 from bson import ObjectId
 from login.backend import authenticate
-from core.views import LoginRequiredMixin
+# from core.views import LoginRequiredMixin
 
 
 class DashboardView(LoginRequiredMixin, TemplateView):
@@ -31,6 +32,8 @@ class DashboardView(LoginRequiredMixin, TemplateView):
     """
 
     template_name = 'publisher/dashboard.html'
+    login_url = '/publisher/login/'
+    redirect_field_name = ''
 
     def render_to_response(self, context, **response_kwargs):
         context['coupons_redeemed'] = RedeemCoupon.objects.count() * 5

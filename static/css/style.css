@@ -662,3 +662,21 @@ nav ul, nav ol {
   height: 50px;
   -webkit-border-radius: 6px;
           border-radius: 6px; }
+
+.login-divider {
+  margin-bottom: 20px; }
+
+.publisher-login-button-wrapper {
+  padding-right: 45px; }
+
+.publisher-login-button {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0; }
+
+.md-icon-right {
+  padding-left: 0 !important; }
+
+.publisher-toolbar {
+  background-color: #f8f8f8 !important; }
