@@ -63,11 +63,9 @@ class PublisherWebsiteList(generics.GenericAPIView):
         return Response(serializer.data)
 
     def post(self, request):
-        serializer = serializers.PublisherWebsiteSerializer(data=request.data)
+        serializer = serializers.PublisherWebsiteSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
-            test = serializer.save(commit=False)
-            print(test)
-            #serializer.save()
+            serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -77,4 +75,4 @@ class PublisherWebsiteList(generics.GenericAPIView):
         except ObjectDoesNotExist:
             publisher = self.request.user
 
-        #serializer.save(publisher=publisher)
+        serializer.save(publishers=publisher)

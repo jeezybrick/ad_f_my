@@ -42,6 +42,7 @@ class SponsorTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = SponsorType
         fields = ('id', 'type', 'sponsor_set',)
+        read_only_fields = ()
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -56,3 +57,12 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
         model = Website
         fields = ('id', 'website_name', 'website_domain', 'website_logo', 'industry', 'twitter_name', 'facebook_page',
                   'avg_page_views',)
+
+    def create(self, validated_data):
+        # Get current publisher
+        user = self.context['request'].user
+        publisher = Publisher.objects.get(id=user.id)
+
+        website = Website.objects.create(**validated_data)
+        website.publishers.add(publisher)
+        return website

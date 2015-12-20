@@ -68,9 +68,9 @@ class Publisher(MyUser):
     industry = models.ForeignKey(Industry, null=True, blank=True)
     logo = models.ImageField(_("Upload Logo"), upload_to='', blank=True)
     notes = models.TextField(_("Note"), blank=True)
-    website = models.ManyToManyField(Website, related_name='website', blank=True)
-    sponsor = models.ManyToManyField(Sponsor, related_name='sponsor', blank=True)
-    country = models.ForeignKey(Country, null=True, blank=False, related_name='country')
+    website = models.ManyToManyField(Website, related_name='publishers', blank=True)
+    sponsor = models.ManyToManyField(Sponsor, related_name='publishers', blank=True)
+    country = models.ForeignKey(Country, null=True, blank=False, related_name='publishers')
 
     class Meta:
         app_label = 'publisher'
