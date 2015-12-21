@@ -64,7 +64,9 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
         # Get current publisher
         user = self.context['request'].user
         publisher = Publisher.objects.get(id=user.id)
+        list_of_catefories = validated_data.get('industry', None)
 
         website = Website.objects.create(**validated_data)
         website.publishers.add(publisher)
+        website.industry.add([list_of_catefories])
         return website
