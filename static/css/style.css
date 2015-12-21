@@ -668,13 +668,10 @@ nav ul, nav ol {
   margin-bottom: 20px; }
 
 .publisher-login-button-wrapper {
-  padding-right: 45px; }
+  padding-right: 40px; }
 
 .publisher-login-button {
-  display: block;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+  width: 185px;
   background-color: #ee4577 !important;
   color: #fff !important; }
   .publisher-login-button[disabled] {

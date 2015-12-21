@@ -14,7 +14,7 @@
         <form name="loginForm" action="#" class="form-horizontal action_add" role="form" method="POST">
             {% csrf_token %}
             <div class="row">
-                <div class="publisher-login-block col-lg-3 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 text-center">
+                <div class="publisher-login-block" layout="row" layout-align="center center" flex="auto">
                     <div layout="column">
                         <h3>Publisher Login</h3>
                         <md-divider class="login-divider"></md-divider>
@@ -39,19 +39,16 @@
                 </div>
             </div>
 
-            <div class="publisher-login-button-wrapper col-lg-3 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+            <div class="publisher-login-button-wrapper" layout="row" layout-align="center center" flex="auto">
                 <md-button type="submit" ng-disabled="loginForm.$invalid"
                            class="login-btn md-raised md-primary publisher-login-button" ng-click="vm.sendLoginData()">
                     Publisher Login
                 </md-button>
             </div>
 
-            <div style="position: relative" ng-show="vm.loginProcess">
-                <div class="col-lg-12 text-center" style="position: absolute;left: 40%;margin-top: 30px;">
+                <div layout="row" layout-align="center center" flex="auto" ng-show="vm.loginProcess">
                     <md-progress-circular class="login-progress-circular" md-mode="indeterminate" md-diameter="80"></md-progress-circular>
                 </div>
-            </div>
-
 
         </form>
 
