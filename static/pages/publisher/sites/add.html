@@ -1,0 +1,119 @@
+<div class="container add-website-wrapper" >
+        <div class="row">
+            <h3 class="add-website-header">
+                <em>
+                    Help us accurately categorize your website. Tell us more about your content.
+                </em>
+            </h3>
+
+            <div class="col-lg-7 col-md-7 col-sm-9 col-xs-12">
+                <form id="add-website-form" method="post" action="." enctype="multipart/form-data">
+
+                    <fieldset>
+
+                        <div style="position:relative; left:-55px;">
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="website-name">Website Name:</label>
+
+                                <div class="controls">
+                                    <input ng-model="vm.website.website_name" class="form-control input-small" id="id_website_name" name="website_name" placeholder="Enter website name" type="text">
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="website-domain">Website URL:</label>
+
+                                <div class="controls">
+                                    <input ng-model="vm.website.website_domain" class="form-control input-small" id="id_website_domain" name="website_domain" placeholder="Enter your website domain" type="url">
+                                </div>
+                            </div>
+                            <!-- Select Basic -->
+                            <div class="control-group">
+                                <label class="control-label" for="categories">Select the <strong>category</strong> that
+                                    best describes your website:</label>
+
+                                <div class="controls">
+
+                                    <angucomplete-alt id="categories"
+                                                      placeholder="Examples: Parenting, Travel, Moms, Gaming, etc."
+                                                      pause="100"
+                                                      selected-object="vm.website.industry"
+                                                      remote-url="http://www.adfits.com/api/category?parent="
+                                                      title-field="industry_type"
+                                                      image-field="profilePic"
+                                                      minlength="3"
+                                                      input-class="form-control form-control-small"
+                                                      match-class="highlight"/>
+
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="categories">Select <strong>sub-categories</strong> for
+                                    your website.
+                                    <br>
+                                    The best sub-categories to use are sub-sections from your website.</label>
+
+                                <div class="controls">
+                                    <angucomplete-alt id="categories_sub"
+                                                      placeholder="Examples: Food, Health, Style, Games"
+                                                      pause="100"
+                                                      selected-object="vm.website.industry"
+                                                      remote-url="http://www.adfits.com/api/category?sub="
+                                                      title-field="industry_type"
+                                                      image-field="profilePic"
+                                                      minlength="3"
+                                                      input-class="form-control form-control-small"
+                                                      match-class="highlight"/>
+
+                                </div>
+                            </div>
+                            <!-- File Button -->
+                            <div class="control-group">
+                                <label class="control-label" for="logo">Twitter Account:</label>
+
+                                <div class="controls">
+                                    <input ng-model="vm.website.twitter_name" class="form-control input-small" id="id_twitter_name" name="twitter_name" placeholder="@" type="text">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="logo">Facebook Page:</label>
+
+                                <div class="controls">
+                                    <input ng-model="vm.website.facebook_page" class="form-control input-small" id="id_facebook_page" name="facebook_page" placeholder="http://" type="url">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label class="control-label" for="logo">Avg. Monthly Site Pageviews:</label>
+
+                                <div class="controls">
+                                    <input ng-model="vm.website.avg_page_views" class="form-control input-small" id="id_avg_page_views" name="avg_page_views" placeholder="There are no minimums, so please be honest!" type="number">
+                                </div>
+                            </div>
+                            <!-- File Button -->
+                            <div class="control-group">
+                                <label class="control-label" for="website-logo">Website Logo:</label>
+
+                                <div class="controls">
+                                   <input ng-model="vm.website.website_logo" id="id_website_logo" name="website_logo" type="file">
+                                </div>
+                            </div>
+                            <!-- Button (Double) -->
+                            <div class="control-group">
+                                <label class="control-label" for="add"></label>
+
+                                <div class="controls">
+                                    <button type="button" id="add" name="add" class="form-button" ng-click="vm.addWebsite()">COMPLETE SETUP</button>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+
+        </div>
+    </div>

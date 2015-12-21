@@ -1,18 +1,13 @@
-{% extends "layout.html" %}
-{% load i18n %}
-{% load staticfiles %}
+<div ng-cloak class="wrapper-form col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
+    <!-- postloader -->
+    <div layout="row" layout-align="space-around" ng-show="loginProcess">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
 
-{% block title %} Login {% endblock %}
-{% block content %}
+    <!-- form for login-->
+    <form name="loginForm" action="#" class="form-horizontal action_add" role="form" method="POST">
 
-{% include 'partials/nav_material.html' %}
-
-    <div ng-cloak class="wrapper-form col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-controller="PublisherLoginController as vm">
-
-        <!-- form for login-->
-        <form name="loginForm" action="#" class="form-horizontal action_add" role="form" method="POST">
-            {% csrf_token %}
             <div class="row">
                 <div class="publisher-login-block col-lg-3 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 text-center">
                     <div layout="column">
@@ -55,20 +50,9 @@
 
         </form>
 
+
         <!-- Flash error messages -->
         <div class="col-lg-12">
             <div flash-message="4000"></div>
         </div>
-    </div>
-    {% include 'partials/footer.html' %}
-
-{% endblock content %}
-
-{% block js %}
-    <script>
-        $('body').css('margin-bottom', '0');
-    </script>
-
-    <script src="{% static 'js/controllers/PublisherLoginController.js' %}"></script>
-
-{% endblock %}
+</div>

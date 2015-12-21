@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load staticfiles %}
+
+{% block content %}
+
+    {% include 'partials/nav_old.html' %}
+
+    <div ui-view >Loading...</div>
+
+{% include 'partials/footer.html' %}
+
+{% endblock %}
+
+
+{% block js %}
+
+    <script src="{% static 'js/controllers/PublisherController.js' %}"></script>
+    <script src="{% static 'js/controllers/EditProfileController.js' %}"></script>
+    <script src="{% static 'js/controllers/AdvertisersController.js' %}"></script>
+    <script src="{% static 'js/controllers/PublisherSitesController.js' %}"></script>
+
+{% endblock %}
+
+{% block css %}
+    <link href="{% static "css/flat-ui.css" %}" rel="stylesheet">
+
+{% endblock %}

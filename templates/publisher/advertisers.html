@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load staticfiles %}
+{% block title %}
+    {% trans "Advertisers" %}
+{% endblock %}
+
+{% block content %}
+    {% include 'partials/nav_old.html' %}
+    <div class="main-content advertisers-wrapper" ng-controller="AdvertisersController as vm" ng-show="vm.isSponsorsLoad" ng-cloak>
+        <div class="container">
+            <div class="row">
+                <div class="advertisers-header col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                    <h2>
+                        <em>Here are some brands that you can earn income with. Choose the ones you want to
+                            allow to advertise on your website in the form of a sponsorship:</em>
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="advertisers-content col-lg-7 col-md-7 col-sm-12 col-xs-12" >
+
+                        <div class="row">
+
+                            <div class="col-lg-4 col-md-6 col-sm-4 col-xs-4" ng-repeat="sponsor in vm.sponsors_type">
+                                <h2><em>[[ sponsor.type ]]</em></h2>
+
+
+                                <div class="checkbox" ng-repeat="sponsor in sponsor.sponsor_set">
+                                    <md-checkbox ng-checked="exists(sponsor, selected)" ng-click="toggle(sponsor, selected)">
+                                        [[ sponsor.name ]]
+                                    </md-checkbox>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <button class="form-button" type="submit" ng-click="vm.addSponsors()">
+                            NEXT
+                        </button>
+
+                </div>
+
+                <div class="sponsor-network-text col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                    <h2><em>Our sponsor network is growing every day.</em></h2>
+
+                    <h2><em>Stay tuned, you’ll be able to target more sponsors soon!</em></h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% include 'partials/sidebar.html' %}
+
+    {% include 'partials/footer.html' %}
+
+{% endblock %}
+
+
+{% block js %}
+
+    <script src="{% static 'js/controllers/AdvertisersController.js' %}"></script>
+
+{% endblock %}
+
+
+{% block css %}
+
+
+{% endblock %}

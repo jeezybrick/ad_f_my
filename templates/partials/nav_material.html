@@ -1,0 +1,37 @@
+{% load staticfiles %}
+
+<md-toolbar class="publisher-toolbar" ng-cloak>
+
+    <div class="md-toolbar-tools">
+        <!--The left side is hidden when the screen size is larger than small -->
+        <md-button class="menu" hide-gt-sm>
+            <ng-md-icon icon=”menu”></ng-md-icon>
+        </md-button>
+
+        <img src="{% static 'images/adfits.png' %}" alt="logo">
+
+        <md-button ui-sref="publisher.dashboard" aria-label="Dashboard">
+            Dashboard
+        </md-button>
+
+        <md-button ui-sref="publisher.sites" aria-label="Sites">
+            Sites
+        </md-button>
+
+        <md-button ui-sref="publisher.audience" aria-label="Campaigns">
+            Campaigns
+        </md-button>
+
+        <!-- Right side -->
+        <span flex></span>
+        <md-button ui-sref="index.profile" aria-label="Profile">
+            <ng-md-icon icon="person"></ng-md-icon>
+            Profile
+        </md-button>
+
+        <md-button ui-sref="logout" aria-label="Logout">
+            <ng-md-icon icon="logout"></ng-md-icon>
+            Logout
+        </md-button>
+    </div>
+</md-toolbar>

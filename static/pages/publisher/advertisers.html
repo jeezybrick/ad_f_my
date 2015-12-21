@@ -1,14 +1,4 @@
-{% extends 'layout.html' %}
-{% load crispy_forms_tags %}
-{% load i18n %}
-{% load staticfiles %}
-{% block title %}
-    {% trans "Advertisers" %}
-{% endblock %}
-
-{% block content %}
-    {% include 'partials/nav_old.html' %}
-    <div class="main-content advertisers-wrapper" ng-controller="AdvertisersController as vm" ng-show="vm.isSponsorsLoad" ng-cloak>
+<div class="main-content advertisers-wrapper" ng-cloak>
         <div class="container">
             <div class="row">
                 <div class="advertisers-header col-lg-10 col-md-10 col-sm-12 col-xs-12">
@@ -27,11 +17,11 @@
                                 <h2><em>[[ sponsor.type ]]</em></h2>
 
 
-                                <div class="checkbox" ng-show="sponsor.sponsor.length">
-                                    <label>
-                                        <input type="checkbox" name="sponsor" value="[[ sponsor.id ]]">
-                                        [[ sponsor.sponsor[0] ]]
-                                    </label>
+                                <div class="checkbox" ng-repeat="sponsor in sponsor.sponsor_set">
+                                    <md-checkbox ng-checked="exists(sponsor, selected)" ng-click="toggle(sponsor, selected)">
+                                        [[ sponsor.name ]]
+                                    </md-checkbox>
+
                                 </div>
 
                             </div>
@@ -39,7 +29,7 @@
                         </div>
 
 
-                        <button class="form-button" type="submit" ng-click="vm.addSponsors">
+                        <button class="form-button" type="submit" ng-click="vm.addSponsors()">
                             NEXT
                         </button>
 
@@ -54,21 +44,3 @@
         </div>
 
     </div>
-    {% include 'partials/sidebar.html' %}
-
-    {% include 'partials/footer.html' %}
-
-{% endblock %}
-
-
-{% block js %}
-
-    <script src="{% static 'js/controllers/AdvertisersController.js' %}"></script>
-
-{% endblock %}
-
-
-{% block css %}
-
-
-{% endblock %}

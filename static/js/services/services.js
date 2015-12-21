@@ -1,6 +1,3 @@
-/**
- * Created by user on 05.10.15.
- */
 
 
 angular.module('myApp.services', ['ngResource'])
@@ -16,6 +13,13 @@ angular.module('myApp.services', ['ngResource'])
         return $resource('/api/sponsor/'
             , {}, {
                 'query': {method: 'GET', isArray: true}
+            });
+    })
+    .factory('Website', function ($resource) {
+        return $resource('/api/publisher/website/'
+            , {}, {
+                //'update': {method: 'PUT'},
+                'query': {method: 'GET', isArray: false}
             });
     });
 
