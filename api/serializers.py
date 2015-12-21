@@ -77,6 +77,7 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
         list_of_categories = validated_data.pop('industry', None)
 
         website = Website.objects.create(**validated_data)
-        website.publishers.add(publisher)
+       #  website.publishers.add(publisher)
         website.industry.add(*[Industry.objects.get_or_create(id=industry['id'])[0] for industry in list_of_categories])
+        website.save()
         return website
