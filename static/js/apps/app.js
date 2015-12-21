@@ -65,7 +65,7 @@ angular
                 controllerAs: 'vm'
             })
             .state('publisher.sites', {
-                url: 'publisher/sites/',
+                url: 'sites/',
                 templateUrl: '/static/pages/publisher/sites/index.html',
                 controller: 'PublisherSitesController',
                 controllerAs: 'vm'
@@ -77,13 +77,13 @@ angular
                 controllerAs: 'vm'
             })
             .state('publisher.getcode', {
-                url: 'publisher/sites/get-code/',
+                url: 'sites/get-code/',
                 templateUrl: '/static/pages/publisher/sites/get_code.html',
                 controller: 'PublisherController',
                 controllerAs: 'vm'
             })
             .state('publisher.login', {
-                url: 'publisher/login/',
+                url: 'login/',
                 templateUrl: '/static/pages/publisher/login.html',
                 controller: 'PublisherController',
                 controllerAs: 'vm'

@@ -26,6 +26,7 @@ class Industry(models.Model):
     """
 
     industry_type = models.CharField(_("Industry"), max_length=100)
+    type = models.CharField(_("Category type"), max_length=100, choices=(('default', 'Default'), ('sub', 'Sub'), ), default='default')
 
     class Meta:
         app_label = 'campaign'
