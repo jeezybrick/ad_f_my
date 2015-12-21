@@ -839,13 +839,22 @@ nav {
 
 .publisher-login-button-wrapper{
   padding-right: 45px;
-}
+  }
 
 .publisher-login-button{
   display: block;
   width: 100%;
   margin: 0;
   padding: 0;
+  background-color: $pink_button !important;
+  color: $white !important;
+  &[disabled]{
+    color : rgba(0, 0, 0, 0.26) !important;
+    background-color: transparent !important;
+  }
+  &:not([disabled]):hover{
+    background-color: $header_purple !important;
+  }
 }
 
 .md-icon-right{
@@ -861,4 +870,12 @@ nav {
 
 #edit-site-icon{
   cursor: pointer;
+}
+
+.login-progress-circular{
+
+}
+
+.nav-logo{
+  margin-right: 20px;
 }
