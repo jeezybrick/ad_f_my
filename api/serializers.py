@@ -49,7 +49,7 @@ class SponsorTypeSerializer(serializers.ModelSerializer):
 
 class CategorySerializer(serializers.ModelSerializer):
     id = serializers.IntegerField()
-    
+
     class Meta:
         model = Industry
         fields = ('id', 'industry_type', 'type')
@@ -74,7 +74,7 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
             publisher = Publisher.objects.get(id=user.id)
         except ObjectDoesNotExist:
             raise serializers.ValidationError(_("You're not a publisher!"))
-        list_of_categories = validated_data.get('industry', None)
+        list_of_categories = validated_data.pop('industry', None)
 
         website = Website.objects.create(**validated_data)
         website.publishers.add(publisher)
