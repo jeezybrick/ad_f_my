@@ -7,23 +7,18 @@ function PublisherSitesController(Website, $log, $state) {
     vm.addWebsite = addWebsite;
     vm.clear = clear;
     vm.publisher = {};
+    vm.website = {};
 
-    vm.website = new Website();
+    vm.website = Website.query(function (response) {
+
+
+    }, function () {
+
+    });
 
 
     function addWebsite() {
 
-        if (angular.isDefined(vm.website.industry.originalObject)) {
-                vm.website.industry = [vm.website.industry.originalObject];
-        }
-
-        vm.website.$save(function (response) {
-
-            $state.go('publisher.getcode');
-
-        }, function (error) {
-
-        });
     }
 
     function clear() {

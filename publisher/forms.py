@@ -13,10 +13,6 @@ class PublisherForm(forms.ModelForm):
         model = Publisher
         fields = '__all__'
 
-    def __init__(self, *args, **kwargs):
-        super(PublisherForm, self).__init__(*args, **kwargs)
-        self.fields['industry'] = forms.ModelChoiceField(Industry.objects.all(), required=False)
-
 
 class WebsiteForm(forms.ModelForm):
     """
@@ -26,10 +22,6 @@ class WebsiteForm(forms.ModelForm):
     class Meta:
         model = Website
         fields = '__all__'
-
-    def __init__(self, *args, **kwargs):
-        super(WebsiteForm, self).__init__(*args, **kwargs)
-        self.fields['industry'] = forms.ModelChoiceField(Industry.objects.all(), required=False)
 
 
 class WebsiteNewForm(forms.ModelForm):

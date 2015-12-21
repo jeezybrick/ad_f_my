@@ -53,11 +53,10 @@ class AdvertisersList(APIView):
 class PublisherWebsiteList(generics.GenericAPIView):
 
     serializer_class = serializers.PublisherWebsiteSerializer
-    queryset = Website.objects.all()
     permission_classes = (permissions.IsAuthenticated,)
 
     def get(self, request):
-        queryset = Website.objects.all()
+        queryset = self.get_queryset()
 
         serializer = serializers.PublisherWebsiteSerializer(queryset, many=True, context={'request': request})
         return Response(serializer.data)
@@ -68,6 +67,16 @@ class PublisherWebsiteList(generics.GenericAPIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def get_queryset(self):
+        try:
+            publisher = Publisher.objects.get(id=self.request.user.id)
+        except ObjectDoesNotExist:
+            pass
+            #raise
+        # queryset = Website.objects.filter(publishers=publisher)
+        queryset = Website.objects.all()
+        return queryset
 
     def perform_create(self, serializer):
         try:

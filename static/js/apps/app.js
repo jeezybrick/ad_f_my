@@ -73,7 +73,7 @@ angular
             .state('publisher.addsites', {
                 url: 'sites/add-sites/',
                 templateUrl: '/static/pages/publisher/sites/add.html',
-                controller: 'PublisherSitesController',
+                controller: 'PublisherAddSitesController',
                 controllerAs: 'vm'
             })
             .state('publisher.getcode', {

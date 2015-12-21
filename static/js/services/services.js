@@ -19,7 +19,7 @@ angular.module('myApp.services', ['ngResource'])
         return $resource('/api/publisher/website/'
             , {}, {
                 //'update': {method: 'PUT'},
-                'query': {method: 'GET', isArray: false}
+                'query': {method: 'GET', isArray: true}
             });
     });
 
