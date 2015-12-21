@@ -206,15 +206,6 @@ html, body {
 .md-button {
   letter-spacing: 0.010em; }
 
-/************
- * Defaults
- ************/
-button,
-select,
-html,
-textarea,
-input {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 select,
 button,
