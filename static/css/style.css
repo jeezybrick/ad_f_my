@@ -683,3 +683,6 @@ nav ul, nav ol {
   background-color: #f8f8f8 !important; }
   .publisher-toolbar span {
     color: black !important; }
+
+#edit-site-icon {
+  cursor: pointer; }

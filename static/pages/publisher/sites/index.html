@@ -21,7 +21,9 @@
         <td>[[ website.website_domain ]]</td>
         <td>[[ website.industry ]]</td>
         <td>Status</td>
-        <td>Edit</td>
+        <td>
+            <ng-md-icon id="edit-site-icon" ui-sref="publisher.editsites({ id:website.id})" icon="edit"></ng-md-icon>
+        </td>
     </tr>
     <tr>
         <td colspan="7" ng-hide="vm.website.length">
