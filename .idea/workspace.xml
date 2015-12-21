@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3a74529-4ec4-43eb-9915-d2e4a17215ce" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/controllers/PublisherLoginController.js" afterPath="$PROJECT_DIR$/static/js/controllers/PublisherLoginController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/controllers/PublisherSitesController.js" afterPath="$PROJECT_DIR$/static/js/controllers/PublisherSitesController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/serializers.py" afterPath="$PROJECT_DIR$/api/serializers.py" />
     </list>
     <ignored path="ad_f.iws" />
@@ -108,8 +106,8 @@
       <file leaf-file-name="serializers.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30653265">
-              <caret line="51" column="4" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.6381909">
+              <caret line="76" column="47" selection-start-line="76" selection-start-column="47" selection-end-line="76" selection-end-column="47" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
               </folding>
@@ -1178,8 +1176,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30653265">
-          <caret line="51" column="4" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.6381909">
+          <caret line="76" column="47" selection-start-line="76" selection-start-column="47" selection-end-line="76" selection-end-column="47" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
           </folding>
