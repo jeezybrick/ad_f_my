@@ -53,6 +53,8 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class PublisherWebsiteSerializer(serializers.ModelSerializer):
 
+    industry = CategorySerializer(many=True, required=False, read_only=False)
+
     class Meta:
         model = Website
         fields = ('id', 'website_name', 'website_domain', 'website_logo', 'industry', 'twitter_name', 'facebook_page',

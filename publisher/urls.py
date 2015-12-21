@@ -10,7 +10,7 @@ urlpatterns = patterns('',
 
     url(r'^dashboard$', DashboardView.as_view(), name='publisher_dashboard'),
     url(r'^sites/$', SitesView.as_view(), name='publisher_sites'),
-    url(r'^sites/add-sites/$', AddSitesView.as_view(), name='publisher_add_sites'),
+    # url(r'^sites/add-sites/$', AddSitesView.as_view(), name='publisher_add_sites'),
     url(r'^sites/edit-sites/(?P<pk>\w+)/$', EditSitesView.as_view(), name='publisher_edit_sites'),
     url(r'^audience/$', AudienceView.as_view(), name='publisher_audience'),
     url(r'^audience/(?P<pk>\w+)/$', AudienceView.as_view(), name='publisher_audience_id'),
