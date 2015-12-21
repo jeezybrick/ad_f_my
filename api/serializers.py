@@ -28,8 +28,7 @@ class SponsorSerializer(serializers.ModelSerializer):
         request = self.context.get('request', None)
         sponsor = False
         if request:
-            # sponsor = obj.sponsor_set.filter(myuser_ptr_id=request.user.id, country=request.user.country)
-            sponsor = obj.sponsor_set.all()
+            sponsor = [c.name for c in obj.sponsor_set.filter()]
         return sponsor
 
     class Meta:

@@ -8,7 +8,7 @@
 
 {% block content %}
     {% include 'partials/nav_old.html' %}
-    <div class="main-content advertisers-wrapper" ng-controller="AdvertisersController as vm" ng-cloak>
+    <div class="main-content advertisers-wrapper" ng-controller="AdvertisersController as vm" ng-show="vm.isSponsorsLoad" ng-cloak>
         <div class="container">
             <div class="row">
                 <div class="advertisers-header col-lg-10 col-md-10 col-sm-12 col-xs-12">
@@ -19,18 +19,18 @@
                 </div>
             </div>
             <div class="row">
-                <div class="advertisers-content col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                <div class="advertisers-content col-lg-7 col-md-7 col-sm-12 col-xs-12" >
 
                         <div class="row">
 
-                            <div class="col-lg-4 col-md-6 col-sm-4 col-xs-4" ng-repeat="type in vm.sponsors_type">
-                                <h2><em>[[ type.type ]]</em></h2>
+                            <div class="col-lg-4 col-md-6 col-sm-4 col-xs-4" ng-repeat="sponsor in vm.sponsors_type">
+                                <h2><em>[[ sponsor.type ]]</em></h2>
 
 
-                                <div class="checkbox" ng-repeat="sponsor in type">
+                                <div class="checkbox" ng-show="sponsor.sponsor.length">
                                     <label>
                                         <input type="checkbox" name="sponsor" value="[[ sponsor.id ]]">
-                                        [[ sponsor.name ]]
+                                        [[ sponsor.sponsor[0] ]]
                                     </label>
                                 </div>
 
