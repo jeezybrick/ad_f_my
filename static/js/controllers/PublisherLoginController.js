@@ -5,6 +5,7 @@ angular
 function PublisherLoginController() {
     var vm = this;
     vm.loginProcess = false;
+    vm.not_auth_completed = false;
     vm.sendLoginData = sendLoginData;
 
 
