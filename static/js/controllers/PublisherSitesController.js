@@ -9,7 +9,7 @@ function PublisherSitesController(Website, $log, $state) {
     vm.publisher = {};
 
     vm.website = new Website();
-    //vm.publisher.sponsor = $scope.selected;
+    vm.website.industry = vm.website.industry.originalObject.id;
 
     function addWebsite() {
         vm.website.$save(function (response) {
