@@ -12,9 +12,9 @@ function PublisherSitesController(Website, $log, $state) {
 
 
     function addWebsite() {
-        vm.website.industry = vm.website.industry.originalObject;
+        vm.website.industry = vm.website.industry.originalObject.id;
         vm.website.$save(function (response) {
-            
+
             $state.go('publisher.getcode');
 
         }, function (error) {
