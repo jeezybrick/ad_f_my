@@ -44,7 +44,7 @@ class Website(models.Model):
     website_domain = models.URLField(_("Website Domain"), max_length=100)
     website_logo = models.FileField(_("Upload Logo"), upload_to=get_website_logo_path, blank=True)
     token = models.CharField(max_length=100, null=True, blank=True)
-    industry = models.ForeignKey(Industry, null=True, blank=True)
+    industry = models.ManyToManyField(Industry, blank=True)
     twitter_name = models.CharField(max_length=100, null=True, blank=True)
     facebook_page = models.CharField(max_length=100, null=True, blank=True)
     avg_page_views = models.PositiveIntegerField(blank=True, null=True)
