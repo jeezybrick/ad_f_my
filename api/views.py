@@ -74,8 +74,8 @@ class PublisherWebsiteList(generics.GenericAPIView):
         except ObjectDoesNotExist:
             pass
             #raise
-        # queryset = Website.objects.filter(publishers=publisher)
-        queryset = Website.objects.all()
+        queryset = Website.objects.filter(publishers__id__exact=publisher.id)
+        # queryset = Website.objects.all()
         return queryset
 
     def perform_create(self, serializer):
