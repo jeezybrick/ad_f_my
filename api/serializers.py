@@ -60,6 +60,9 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
         fields = ('id', 'website_name', 'website_domain', 'website_logo', 'industry', 'twitter_name', 'facebook_page',
                   'avg_page_views',)
 
+    def validate_industry(self, industry):
+        return industry
+
     def create(self, validated_data):
         # Get current publisher
         user = self.context['request'].user
