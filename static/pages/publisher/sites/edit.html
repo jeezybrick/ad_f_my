@@ -1,0 +1,73 @@
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-4 column">
+		</div>
+		<div class="col-md-4 column">
+				<form class="form-horizontal" method="post" action="." enctype="multipart/form-data">
+	{% csrf_token %}
+		<fieldset>
+
+			<!-- Form Name -->
+			<legend>Add Website</legend>
+
+		<div style="position:relative; left:-55px;">
+
+			<!-- Text input-->
+			<div class="control-group">
+			  <label class="control-label" for="website-name">Website Name</label>
+			  <div class="controls">
+				{{ form.website_name }}
+			  </div>
+			</div>
+
+			<!-- Text input-->
+			<div class="control-group">
+			  <label class="control-label" for="website-domain">Website Domain</label>
+			  <div class="controls">
+				{{ form.website_domain }}
+				{{ form.website_domain.errors }}
+				<p class="help-block">e.g: http://www.xyz.com</p>
+			  </div>
+			</div>
+
+			<!-- Select Basic -->
+			<div class="control-group">
+			  <label class="control-label" for="industry">Industry</label>
+			  <div class="controls">
+				{{ form.industry }}
+			  </div>
+			</div>
+
+			<!-- File Button --> 
+			<div class="control-group">
+			  <label class="control-label" for="logo">Twitter</label>
+			  <div class="controls">
+				{{ form.twitter_name }}
+			  </div>
+			</div>
+
+			<!-- File Button --> 
+			<div class="control-group">
+			  <label class="control-label" for="logo">Logo</label>
+			  <div class="controls">
+				{{ form.website_logo }}
+			  </div>
+			</div>
+
+			<!-- Button (Double) -->
+			<div class="control-group">
+			  <label class="control-label" for="add"></label>
+			  <div class="controls">
+				<button id="update" name="add" class="btn btn-success">Update</button>
+				<button id="cancel" name="cancel" class="btn btn-default">Cancel</button>
+			  </div>
+			</div>
+			
+		</div>
+		</fieldset>
+	</form>
+		</div>
+		<div class="col-md-4 column">
+		</div>
+	</div>
+</div>

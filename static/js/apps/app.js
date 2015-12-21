@@ -70,6 +70,12 @@ angular
                 controller: 'PublisherSitesController',
                 controllerAs: 'vm'
             })
+            .state('publisher.editsites', {
+                url: 'sites/edit-sites/:id/',
+                templateUrl: '/static/pages/publisher/sites/edit.html',
+                controller: 'PublisherSitesEditController',
+                controllerAs: 'vm'
+            })
             .state('publisher.addsites', {
                 url: 'sites/add-sites/',
                 templateUrl: '/static/pages/publisher/sites/add.html',
