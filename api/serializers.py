@@ -1,3 +1,5 @@
+from django.core.exceptions import ObjectDoesNotExist
+from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
 from core.models import Country
 from publisher.models import Publisher, Website
@@ -66,11 +68,13 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         # Get current publisher
         user = self.context['request'].user
-        publisher = Publisher.objects.get(id=user.id)
+        try:
+            publisher = Publisher.objects.get(id=user.id)
+        except ObjectDoesNotExist:
+            raise serializers.ValidationError(_("You're not a publisher!"))
         list_of_categories = validated_data.get('industry', None)
-        print(list_of_categories)
 
         website = Website.objects.create(**validated_data)
         website.publishers.add(publisher)
-        website.industry.add(list_of_categories)
+        website.industry.add(*[Industry.objects.get_or_create(id=industry['id'])[0] for industry in list_of_categories])
         return website
