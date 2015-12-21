@@ -48,6 +48,8 @@ class SponsorTypeSerializer(serializers.ModelSerializer):
 
 
 class CategorySerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField()
+    
     class Meta:
         model = Industry
         fields = ('id', 'industry_type', 'type')
