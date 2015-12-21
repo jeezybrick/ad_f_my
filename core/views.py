@@ -87,5 +87,6 @@ class JoinNetworkView(View):
         return TemplateResponse(request, self.template_name, context)
 
     def get_success_url(self):
-        return reverse("advertisers")
+        url = '/publisher/#/advertisers/'
+        return url
 
