@@ -693,3 +693,11 @@ nav ul, nav ol {
 
 .nav-logo {
   margin-right: 20px; }
+
+.active-link-nav span {
+  color: #fff !important; }
+
+.link-nav:hover {
+  background-color: #3f51b5 !important; }
+  .link-nav:hover span {
+    color: #fff !important; }
