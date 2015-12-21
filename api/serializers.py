@@ -48,7 +48,7 @@ class SponsorTypeSerializer(serializers.ModelSerializer):
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Industry
-        fields = ('id', 'industry_type',)
+        fields = ('id', 'industry_type', 'type')
 
 
 class PublisherWebsiteSerializer(serializers.ModelSerializer):
