@@ -1,5 +1,9 @@
 @import 'colors';
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
 html {
   position: relative;
   min-height: 100%;
