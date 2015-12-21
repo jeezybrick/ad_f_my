@@ -674,7 +674,14 @@ nav ul, nav ol {
   display: block;
   width: 100%;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  background-color: #ee4577 !important;
+  color: #fff !important; }
+  .publisher-login-button[disabled] {
+    color: rgba(0, 0, 0, 0.26) !important;
+    background-color: transparent !important; }
+  .publisher-login-button:not([disabled]):hover {
+    background-color: #483276 !important; }
 
 .md-icon-right {
   padding-left: 0 !important; }
@@ -686,3 +693,6 @@ nav ul, nav ol {
 
 #edit-site-icon {
   cursor: pointer; }
+
+.nav-logo {
+  margin-right: 20px; }
