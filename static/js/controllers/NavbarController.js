@@ -6,6 +6,7 @@ function NavbarController($mdSidenav, $log) {
     var vm = this;
     vm.toggleSideNav = buildToggler('right');
     vm.buildToggler = buildToggler;
+    vm.close = close;
 
     function buildToggler(navID) {
       return function() {
@@ -15,6 +16,14 @@ function NavbarController($mdSidenav, $log) {
             //$log.debug("toggle " + navID + " is done");
           });
       }
+    }
+
+    function close () {
+        $log.debug("'''''''''''''");
+      $mdSidenav('right').close()
+        .then(function () {
+         // $log.debug("close LEFT is done");
+        });
     }
 
 
