@@ -67,7 +67,7 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Website
         fields = ('id', 'website_name', 'website_domain', 'website_logo', 'industry', 'twitter_name', 'facebook_page',
-                  'avg_page_views',)
+                  'avg_page_views', 'is_verified', )
 
     def validate_industry(self, industry):
         return industry
