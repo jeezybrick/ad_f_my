@@ -1,31 +1,41 @@
 {% load staticfiles %}
 
-<md-toolbar class="publisher-toolbar" ng-cloak>
+<md-toolbar class="publisher-toolbar" ng-controller="NavbarController as vm" ng-cloak>
 
-    <div class="md-toolbar-tools">
+    <div hide-gt-sm layout="row" layout-align="space-between center">
+        <span></span>
+        <img height="65" width="125" class="nav-logo" src="{% static 'images/logo2.png' %}" alt="logo">
 
-        <img class="nav-logo" src="{% static 'images/adfits.png' %}" alt="logo">
+        <md-button class="md-icon-button" aria-label="Menu" ng-click="vm.toggleSideNav()">
+            <ng-md-icon icon="menu"></ng-md-icon>
+        </md-button>
+    </div>
+
+    <div class="md-toolbar-tools" hide-xs hide-sm>
+
+        <img height="65" width="125" class="nav-logo" src="{% static 'images/logo2.png' %}" alt="logo">
+
         {% if user.is_authenticated %}
-            <md-button ui-sref-active="active" ui-sref="publisher.dashboard" aria-label="Dashboard">
+            <md-button class="link-nav" ui-sref-active="md-raised md-primary active-link-nav" ui-sref="publisher.dashboard" aria-label="Dashboard">
                 Dashboard
             </md-button>
 
-            <md-button ui-sref-active="active" ui-sref="publisher.sites" aria-label="Sites">
+            <md-button class="link-nav" ui-sref-active="md-raised md-primary active-link-nav" ui-sref="publisher.sites" aria-label="Sites">
                 Sites
             </md-button>
 
-            <md-button ui-sref-active="active" ui-sref="publisher.audience" aria-label="Campaigns">
+            <md-button class="link-nav" ui-sref-active="md-raised md-primary active-link-nav" ui-sref="publisher.audience" aria-label="Campaigns">
                 Campaigns
             </md-button>
 
             <!-- Right side -->
             <span flex></span>
-            <md-button ui-sref="index.profile" aria-label="Profile">
+            <md-button class="link-nav" ui-sref-active="md-raised md-primary active-link-nav" ui-sref="publisher.profile" aria-label="Profile">
                 <ng-md-icon icon="person"></ng-md-icon>
                 Profile
             </md-button>
 
-            <md-button ui-sref="logout" aria-label="Logout">
+            <md-button class="link-nav" href="/logout" aria-label="Logout">
                 <ng-md-icon icon="logout"></ng-md-icon>
                 Logout
             </md-button>

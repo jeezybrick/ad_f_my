@@ -88,11 +88,18 @@ angular
                 controller: 'PublisherController',
                 controllerAs: 'vm'
             })
-            .state('publisher.login', {
+            .state('publisher.audience', {
+                    url: 'audience/',
+                    templateUrl: '/static/pages/publisher/audience.html',
+                    controller: 'PublisherController',
+                    controllerAs: 'vm'
+            });
+
+            /*.state('publisher.login', {
                 url: 'login/',
                 templateUrl: '/static/pages/publisher/login.html',
                 controller: 'PublisherController',
                 controllerAs: 'vm'
-            })
+            })*/
 
     });

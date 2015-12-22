@@ -9,12 +9,12 @@
 {% include 'partials/nav_material.html' %}
 
     <div ng-cloak class="wrapper-form col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-controller="PublisherLoginController as vm">
-
+    {% if not user.is_authenticated %}
         <!-- form for login-->
         <form name="loginForm" action="#" class="form-horizontal action_add" role="form" method="POST">
             {% csrf_token %}
             <div class="row">
-                <div class="publisher-login-block col-lg-3 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 text-center">
+                <div class="publisher-login-block" layout="row" layout-align="center center" flex="auto">
                     <div layout="column">
                         <h3>Publisher Login</h3>
                         <md-divider class="login-divider"></md-divider>
@@ -39,37 +39,41 @@
                 </div>
             </div>
 
-            <div class="publisher-login-button-wrapper col-lg-3 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+            <div class="publisher-login-button-wrapper" layout="row" layout-align="center center" flex="auto">
                 <md-button type="submit" ng-disabled="loginForm.$invalid"
                            class="login-btn md-raised md-primary publisher-login-button" ng-click="vm.sendLoginData()">
                     Publisher Login
                 </md-button>
             </div>
 
-            <div style="position: relative" ng-show="vm.loginProcess">
-                <div class="col-lg-12 text-center" style="position: absolute;left: 40%;margin-top: 30px;">
-                    <md-progress-circular class="login-progress-circular" md-mode="indeterminate" md-diameter="80"></md-progress-circular>
+                <div layout="row" layout-align="center center" flex="auto" ng-show="vm.loginProcess">
+                    <md-progress-circular class="login-progress-circular md-accent md-hue-2" md-mode="indeterminate" md-diameter="80"></md-progress-circular>
                 </div>
-            </div>
-
 
         </form>
-
+        {% else %}
+            <div layout="row" layout-align="center center" flex="auto">
+                <h2>You are already logged in!</h2>
+            </div>
+        {% endif %}
         <!-- Flash error messages -->
         <div class="col-lg-12">
             <div flash-message="4000"></div>
         </div>
     </div>
+
+
+    {% include 'partials/navbar.html' %}
     {% include 'partials/footer.html' %}
 
 {% endblock content %}
 
 {% block js %}
     <script>
-        $('body').css('margin-bottom', '0');
         $('.container').css('width','100%').css('padding','0 30px');
     </script>
 
     <script src="{% static 'js/controllers/PublisherLoginController.js' %}"></script>
+    <script src="{% static 'js/controllers/NavbarController.js' %}"></script>
 
 {% endblock %}

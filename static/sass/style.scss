@@ -1,5 +1,9 @@
 @import 'colors';
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
 html {
   position: relative;
   min-height: 100%;
@@ -820,7 +824,7 @@ nav {
 }
 
 #add-website-form {
-  .control-group{
+  .control-group {
     margin-bottom: 30px;
   }
   label {
@@ -833,49 +837,65 @@ nav {
     border-radius: 6px;
   }
 }
-.login-divider{
+
+.login-divider {
   margin-bottom: 20px;
 }
 
-.publisher-login-button-wrapper{
-  padding-right: 45px;
-  }
+.publisher-login-button-wrapper {
+  padding-right: 40px;
+}
 
-.publisher-login-button{
-  display: block;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+.publisher-login-button {
+  width: 185px;
   background-color: $pink_button !important;
   color: $white !important;
-  &[disabled]{
-    color : rgba(0, 0, 0, 0.26) !important;
+  &[disabled] {
+    color: rgba(0, 0, 0, 0.26) !important;
     background-color: transparent !important;
   }
-  &:not([disabled]):hover{
+  &:not([disabled]):hover {
     background-color: $header_purple !important;
   }
 }
 
-.md-icon-right{
+.md-icon-right {
   padding-left: 0 !important;
 }
-.publisher-toolbar{
+
+.publisher-toolbar {
   background-color: #f8f8f8 !important;
-  span{
-    color:black !important;
+  span {
+    color: black !important;
   }
 
 }
 
-#edit-site-icon{
+#edit-site-icon {
   cursor: pointer;
 }
 
-.login-progress-circular{
+.login-progress-circular {
 
 }
 
-.nav-logo{
+.nav-logo {
   margin-right: 20px;
+}
+
+.active-link-nav {
+  span {
+    color: $white !important;
+  }
+
+}
+
+.link-nav {
+  &:hover {
+    background-color: rgb(63, 81, 181) !important;
+    span {
+      color: $white !important;
+    }
+
+  }
 }
