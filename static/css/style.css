@@ -704,3 +704,6 @@ nav ul, nav ol {
   background-color: #3f51b5 !important; }
   .link-nav:hover span {
     color: #fff !important; }
+
+.edit-profile-wrapper {
+  width: 95%; }
