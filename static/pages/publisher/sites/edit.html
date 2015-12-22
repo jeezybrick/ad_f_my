@@ -1,73 +1,67 @@
 <div class="container">
-	<div class="row clearfix">
-		<div class="col-md-4 column">
-		</div>
-		<div class="col-md-4 column">
-				<form class="form-horizontal" method="post" action="." enctype="multipart/form-data">
-	{% csrf_token %}
-		<fieldset>
+    <div class="row clearfix">
+        <div class="col-md-4 column">
+        </div>
+        <div class="col-md-4 column">
+            <form name="edit_website" class="form-horizontal" method="post" action="." enctype="multipart/form-data">
 
-			<!-- Form Name -->
-			<legend>Add Website</legend>
+                <div layout="row" layout-align="center center" flex="auto">
 
-		<div style="position:relative; left:-55px;">
+                    <div layout="column">
+                         <h2>Edit Website</h2>
+                        <md-input-container class="md-block" flex>
+                            <label>Website Name</label>
+                            <input required name="website_name" ng-model="vm.website.website_name" type="text">
+                            <div ng-messages="edit_website.website_name.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex>
+                            <label>Website URL</label>
+                            <input required name="website_domain" ng-model="vm.website.website_domain" type="text">
 
-			<!-- Text input-->
-			<div class="control-group">
-			  <label class="control-label" for="website-name">Website Name</label>
-			  <div class="controls">
-				{{ form.website_name }}
-			  </div>
-			</div>
+                            <div ng-messages="edit_website.website_domain.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
 
-			<!-- Text input-->
-			<div class="control-group">
-			  <label class="control-label" for="website-domain">Website Domain</label>
-			  <div class="controls">
-				{{ form.website_domain }}
-				{{ form.website_domain.errors }}
-				<p class="help-block">e.g: http://www.xyz.com</p>
-			  </div>
-			</div>
+                        <md-input-container class="md-block" flex>
+                            <label>Industry</label>
+                            <input name="website_industry" ng-model="vm.website.industry" type="text">
 
-			<!-- Select Basic -->
-			<div class="control-group">
-			  <label class="control-label" for="industry">Industry</label>
-			  <div class="controls">
-				{{ form.industry }}
-			  </div>
-			</div>
+                        </md-input-container>
 
-			<!-- File Button --> 
-			<div class="control-group">
-			  <label class="control-label" for="logo">Twitter</label>
-			  <div class="controls">
-				{{ form.twitter_name }}
-			  </div>
-			</div>
+                        <md-input-container class="md-block" flex>
+                            <label>Twitter</label>
+                            <input name="twitter_name" ng-model="vm.website.twitter_name" type="text">
 
-			<!-- File Button --> 
-			<div class="control-group">
-			  <label class="control-label" for="logo">Logo</label>
-			  <div class="controls">
-				{{ form.website_logo }}
-			  </div>
-			</div>
+                        </md-input-container>
 
-			<!-- Button (Double) -->
-			<div class="control-group">
-			  <label class="control-label" for="add"></label>
-			  <div class="controls">
-				<button id="update" name="add" class="btn btn-success">Update</button>
-				<button id="cancel" name="cancel" class="btn btn-default">Cancel</button>
-			  </div>
-			</div>
-			
-		</div>
-		</fieldset>
-	</form>
-		</div>
-		<div class="col-md-4 column">
-		</div>
-	</div>
+                        <md-input-container class="md-block" flex>
+                            <label>Facebook Page:</label>
+                            <input name="facebook_page" ng-model="vm.website.facebook_page" type="text">
+
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex>
+                            <label>Website logo</label>
+                            <input name="website_logo" ng-model="vm.website.website_logo" type="file">
+
+                        </md-input-container>
+
+                        <div layout="row">
+                            <md-button class="md-raised md-primary" ng-click="vm.editWebsite()">Save</md-button>
+                            <md-button class="md-raised" ng-click="vm.clear()">Cancel</md-button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-md-4 column">
+        </div>
+    </div>
 </div>

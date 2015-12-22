@@ -1,4 +1,5 @@
 import datetime
+from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.http import Http404
@@ -85,3 +86,20 @@ class PublisherWebsiteList(generics.GenericAPIView):
             publisher = self.request.user
 
         serializer.save(publishers=publisher)
+
+
+class PublisherWebsiteDetail(generics.RetrieveAPIView, generics.UpdateAPIView,):
+    permission_classes = (permissions.IsAuthenticated, )
+    serializer_class = serializers.PublisherWebsiteSerializer
+
+    def get_object(self):
+
+        lookup_url_kwarg = self.lookup_url_kwarg or self.lookup_field
+        filter_kwargs = {self.lookup_field: self.kwargs[lookup_url_kwarg]}
+        obj = get_object_or_404(Website, id=filter_kwargs['pk'])
+        if obj is None:
+            raise Http404
+        self.check_object_permissions(self.request, obj)
+
+        return obj
+

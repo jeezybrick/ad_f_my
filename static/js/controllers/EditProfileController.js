@@ -8,6 +8,8 @@ function EditProfileController(Publisher, $log) {
     vm.clear = clear;
     vm.publisher = {};
     vm.publisher_default = {};
+    vm.editableName = false;
+    vm.editablePhone = false;
 
     vm.publisher = Publisher.query(function (response) {
         angular.copy(vm.publisher, vm.publisher_default);

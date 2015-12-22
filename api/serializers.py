@@ -24,10 +24,14 @@ class PublisherSerializer(serializers.ModelSerializer):
     country = CountrySerializer(read_only=True)
     email = serializers.EmailField(read_only=True, required=False)
     sponsor = SponsorSerializer(many=True, required=False, read_only=False)
+    count_of_added_websites = serializers.SerializerMethodField(read_only=True)
+
+    def get_count_of_added_websites(self, obj):
+        return obj.website.all().count()
 
     class Meta:
         model = Publisher
-        fields = ('id', 'name', 'telephone', 'address', 'country', 'email', 'sponsor',)
+        fields = ('id', 'name', 'telephone', 'address', 'country', 'email', 'sponsor', 'count_of_added_websites', )
 
     def update(self, instance, validated_data):
         print validated_data
@@ -77,7 +81,7 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
         list_of_categories = validated_data.pop('industry', None)
 
         website = Website.objects.create(**validated_data)
-       #  website.publishers.add(publisher)
+        website.publishers.add(publisher)
         website.industry.add(*[Industry.objects.get_or_create(id=industry['id'])[0] for industry in list_of_categories])
         website.save()
         return website

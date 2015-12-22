@@ -73,7 +73,7 @@ angular
             .state('publisher.editsites', {
                 url: 'sites/edit-sites/:id/',
                 templateUrl: '/static/pages/publisher/sites/edit.html',
-                controller: 'PublisherSitesEditController',
+                controller: 'PublisherEditSitesController',
                 controllerAs: 'vm'
             })
             .state('publisher.addsites', {

@@ -2,9 +2,26 @@
     <div class="row">
         <div class="edit-profile-block" ng-cloak>
 
-            <h4 class="fields-inline">Name:</h4><input type="text" ng-model="vm.publisher.name"><br>
+            <div layout="row" layout-align="start center">
+                <h4 class="fields-inline">Name: <small ng-hide="vm.editableName">[[ vm.publisher.name ]]</small> </h4>
+                <md-input-container class="md-icon-float md-icon-right md-block" ng-show="vm.editableName">
+                    <label>Enter your name</label>
+                    <input required name="email" ng-model="vm.publisher.name" type="text">
+                </md-input-container>
+                <ng-md-icon id="edit-site-icon" ng-click="vm.editableName = !vm.editableName" icon="edit"></ng-md-icon>
+            </div>
 
-            <h4 class="fields-inline">Phone:</h4><input type="text" ng-model="vm.publisher.telephone"><br>
+            <div layout="row" layout-align="start center">
+                <h4 class="fields-inline">Phone:
+                    <small ng-hide="vm.editablePhone">[[ vm.publisher.telephone ]]</small>
+                </h4>
+                <md-input-container class="md-icon-float md-icon-right md-block" ng-show="vm.editablePhone">
+                    <label>Enter your phone</label>
+                    <input required name="text" ng-model="vm.publisher.telephone" type="text">
+                </md-input-container>
+                <ng-md-icon id="edit-site-icon" ng-click="vm.editablePhone = !vm.editablePhone" icon="edit"></ng-md-icon>
+            </div>
+
 
             <h4 class="fields-inline">Address:
                 <small>[[ vm.publisher.address ]]</small>
@@ -22,7 +39,7 @@
             <br>
 
             <h4 class="fields-inline">Number of Websites Added:
-                <small>[[ vm.publisher.count_of_websites ]]</small>
+                <small>[[ vm.publisher.count_of_added_websites ]]</small>
             </h4>
             <br>
             <hr>

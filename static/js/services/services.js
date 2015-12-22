@@ -16,9 +16,9 @@ angular.module('myApp.services', ['ngResource'])
             });
     })
     .factory('Website', function ($resource) {
-        return $resource('/api/publisher/website/'
-            , {}, {
-                //'update': {method: 'PUT'},
+        return $resource('/api/publisher/website/:id/'
+            , {id: '@id'}, {
+                'update': {method: 'PUT'},
                 'query': {method: 'GET', isArray: true}
             });
     });
