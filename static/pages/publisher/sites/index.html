@@ -16,7 +16,8 @@
 </div>
 
 <div class="container-fluid">
-    <table class="table table-striped table-hover" ng-show="vm.websitesLoad">
+    <div class="table-responsive">
+        <table class="table table-striped table-hover" ng-show="vm.websitesLoad">
         <tr>
             <td>SI. No</td>
             <td>Website Logo</td>
@@ -34,7 +35,7 @@
             <td>[[ website.website_domain ]]</td>
             <td><h5 ng-repeat="industry in website.industry">[[industry.industry_type]]</h5>
 
-                <h3 ng-hide="website.industry.length">-----</h3></td>
+                <h3 ng-hide="website.industry.length" style="margin-top: 0">-----</h3></td>
             <td><h5>
                 <span ng-show="website.is_verified">Verified</span>
                 <span ng-hide="website.is_verified">Not verified</span>
@@ -51,4 +52,5 @@
         </tr>
 
     </table>
+    </div>
 </div>
