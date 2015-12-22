@@ -23,7 +23,7 @@
     </tr>
     <tr ng-repeat="website in vm.website">
         <td>[[ website.id ]]</td>
-        <td><img ng-show="website.website_logo.length" ng-src="[[ website.website_logo ]]" width="128px" height="100px"><h5 ng-hide="website.website_logo.length">No logo</h5></td>
+        <td><img ng-show="website.website_logo.length" ng-src="[[ website.website_logo ]]" width="128" height="100"><h5 ng-hide="website.website_logo.length">No logo</h5></td>
         <td>[[ website.website_name ]]</td>
         <td>[[ website.website_domain ]]</td>
         <td><h5 ng-repeat="industry in website.industry">[[industry.industry_type]]</h5><h3 ng-hide="website.industry.length">-----</h3></td>
