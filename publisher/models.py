@@ -48,6 +48,7 @@ class Website(models.Model):
     twitter_name = models.CharField(max_length=100, null=True, blank=True)
     facebook_page = models.CharField(max_length=100, null=True, blank=True)
     avg_page_views = models.PositiveIntegerField(blank=True, null=True)
+    is_verified = models.BooleanField(default=False)
 
     class Meta:
         app_label = 'publisher'
