@@ -19,7 +19,7 @@
         <td><img ng-src="[[ website.website_logo ]]" width="128px" height="100px"></td>
         <td>[[ website.website_name ]]</td>
         <td>[[ website.website_domain ]]</td>
-        <td>[[ website.industry ]]</td>
+        <td><h4 ng-repeat="industry in website.industry">[[industry.industry_type]]</h4></td>
         <td>Status</td>
         <td>
             <ng-md-icon id="edit-site-icon" ui-sref="publisher.editsites({ id:website.id})" icon="edit"></ng-md-icon>
