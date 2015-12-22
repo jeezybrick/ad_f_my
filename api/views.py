@@ -73,7 +73,7 @@ class PublisherWebsiteList(generics.GenericAPIView):
         try:
             publisher = Publisher.objects.get(id=self.request.user.id)
         except ObjectDoesNotExist:
-            raise PermissionDenied
+            raise PermissionDenied("You're not a publisher!")
         queryset = Website.objects.filter(publishers__id__exact=publisher.id)
         # queryset = Website.objects.all()
         return queryset

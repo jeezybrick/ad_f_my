@@ -1,5 +1,5 @@
 
-<div class="container-fluid">
+<div class="container-fluid" ng-show="vm.websitesLoad">
     <div layout="row" layout-align="space-between center">
         <h2>Websites:</h2>
 
@@ -7,9 +7,14 @@
     </div>
 </div>
 
-<div layout="row" layout-align="center center" flex="auto" ng-hide="vm.websitesLoad">
+<div layout="row" layout-align="center center" flex="auto" ng-hide="vm.websitesLoad || vm.websitesLoadError">
     <md-progress-circular class="login-progress-circular md-accent md-hue-2" md-mode="indeterminate" md-diameter="80"></md-progress-circular>
 </div>
+
+<div layout="row" layout-align="center center" flex="auto" ng-show="vm.websitesLoadError">
+    <h2 class="md-display-1 md-warn md-hue-1" style="color:#E53935">You're not a publisher!</h2>
+</div>
+
 
 <table class="table table-striped table-hover" ng-show="vm.websitesLoad">
     <tr>
