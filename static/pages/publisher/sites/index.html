@@ -19,10 +19,10 @@
     </tr>
     <tr ng-repeat="website in vm.website">
         <td>[[ website.id ]]</td>
-        <td><img ng-src="[[ website.website_logo ]]" width="128px" height="100px"></td>
+        <td><img ng-show="website.website_logo.length" ng-src="[[ website.website_logo ]]" width="128px" height="100px"><h5 ng-hide="website.website_logo.length">No logo</h5></td>
         <td>[[ website.website_name ]]</td>
         <td>[[ website.website_domain ]]</td>
-        <td><h3 ng-repeat="industry in website.industry">[[industry.industry_type]]</h3><h3 ng-hide="website.industry.length">-----</h3></td>
+        <td><h5 ng-repeat="industry in website.industry">[[industry.industry_type]]</h5><h3 ng-hide="website.industry.length">-----</h3></td>
         <td>Status</td>
         <td>
             <ng-md-icon id="edit-site-icon" ui-sref="publisher.editsites({ id:website.id})" icon="edit"></ng-md-icon>
