@@ -1,10 +1,10 @@
 <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
-    <md-toolbar class="md-theme-light md-accent md-hue-4" layout="row" layout-align="space-between center">
+    <md-toolbar class="md-theme-light md-accent md-hue-4" layout="row" layout-align="space-between center" ng-controller="SidebarController as vm">
         <span></span>
         <h1 class="md-toolbar-tools">Menu</h1>
-        <ng-md-icon ng-click="vm.close()" id="close-icon" icon="clear" style="fill: white"></ng-md-icon>
+        <ng-md-icon ng-click="vm.close()" id="close-icon" icon="clear" style="fill: white;margin-right: 15px; padding-top: 7px;"></ng-md-icon>
     </md-toolbar>
-    <md-content layout-padding layout="column">
+    <md-content layout-padding layout="column" ng-controller="SidebarController as vm">
 
         {% if user.is_authenticated %}
             <md-button class="link-nav" ui-sref-active="md-raised md-primary active-link-nav"
