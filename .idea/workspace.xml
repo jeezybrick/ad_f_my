@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3a74529-4ec4-43eb-9915-d2e4a17215ce" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/controllers/NavbarController.js" afterPath="$PROJECT_DIR$/static/js/controllers/NavbarController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/controllers/PublisherAddSitesController.js" afterPath="$PROJECT_DIR$/static/js/controllers/PublisherAddSitesController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/apps/app.js" afterPath="$PROJECT_DIR$/static/js/apps/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/pages/publisher/sites/index.html" afterPath="$PROJECT_DIR$/static/pages/publisher/sites/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/publisher/index.html" afterPath="$PROJECT_DIR$/templates/publisher/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/nav_material.html" afterPath="$PROJECT_DIR$/templates/partials/nav_material.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/navbar.html" afterPath="$PROJECT_DIR$/templates/partials/navbar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sponsor/views.py" afterPath="$PROJECT_DIR$/sponsor/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/views.py" afterPath="$PROJECT_DIR$/api/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ad_f.iws" />
@@ -51,12 +44,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nav_material.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="nav_material.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/partials/nav_material.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4280702">
-              <caret line="48" column="84" selection-start-line="48" selection-start-column="84" selection-end-line="48" selection-end-column="84" />
+            <state vertical-scroll-proportion="-15.703704">
+              <caret line="58" column="35" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/api/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5477387">
+              <caret line="81" column="12" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -170,7 +175,6 @@
         <option value="$PROJECT_DIR$/static/js/controllers/EditProfileController.js" />
         <option value="$PROJECT_DIR$/static/js/services/services.js" />
         <option value="$PROJECT_DIR$/api/urls.py" />
-        <option value="$PROJECT_DIR$/api/views.py" />
         <option value="$PROJECT_DIR$/static/js/controllers/PublisherEditSitesController.js" />
         <option value="$PROJECT_DIR$/adfits/settings.py" />
         <option value="$PROJECT_DIR$/static/pages/publisher/sites/edit.html" />
@@ -190,6 +194,7 @@
         <option value="$PROJECT_DIR$/static/js/controllers/NavbarController.js" />
         <option value="$PROJECT_DIR$/templates/partials/navbar.html" />
         <option value="$PROJECT_DIR$/templates/partials/nav_material.html" />
+        <option value="$PROJECT_DIR$/api/views.py" />
       </list>
     </option>
   </component>
@@ -1211,14 +1216,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39865997">
-          <caret line="65" column="40" selection-start-line="65" selection-start-column="40" selection-end-line="65" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6097152">
@@ -1327,9 +1324,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/partials/nav_material.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4280702">
-          <caret line="48" column="84" selection-start-line="48" selection-start-column="84" selection-end-line="48" selection-end-column="84" />
+        <state vertical-scroll-proportion="-15.703704">
+          <caret line="58" column="35" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5477387">
+          <caret line="81" column="12" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from django.http import Http404
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from rest_framework import generics, status, permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -73,8 +73,7 @@ class PublisherWebsiteList(generics.GenericAPIView):
         try:
             publisher = Publisher.objects.get(id=self.request.user.id)
         except ObjectDoesNotExist:
-            pass
-            #raise
+            raise PermissionDenied
         queryset = Website.objects.filter(publishers__id__exact=publisher.id)
         # queryset = Website.objects.all()
         return queryset
