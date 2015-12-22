@@ -1,17 +1,37 @@
 <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
-    <md-toolbar class="md-theme-light">
+    <md-toolbar class="md-theme-light  md-accent md-hue-4">
         <h1 class="md-toolbar-tools">Menu</h1>
     </md-toolbar>
-    <md-content ng-controller="NavbarController" layout-padding>
-        <form>
-            <md-input-container>
-                <label for="testInput">Test input</label>
-                <input type="text" id="testInput"
-                       ng-model="data" md-autofocus>
-            </md-input-container>
-        </form>
-        <md-button ng-click="close()" class="md-primary">
-            Close Sidenav Right
-        </md-button>
+    <md-content ng-controller="NavbarController" layout-padding layout="column">
+
+        {% if user.is_authenticated %}
+            <md-button class="link-nav" ui-sref-active="md-raised md-primary active-link-nav"
+                       ui-sref="publisher.dashboard" aria-label="Dashboard">
+                Dashboard
+            </md-button>
+
+            <md-button class="link-nav" ui-sref-active="md-raised md-primary active-link-nav" ui-sref="publisher.sites"
+                       aria-label="Sites">
+                Sites
+            </md-button>
+
+            <md-button class="link-nav" ui-sref-active="md-raised md-primary active-link-nav"
+                       ui-sref="publisher.audience" aria-label="Campaigns">
+                Campaigns
+            </md-button>
+
+            <!-- Right side -->
+            <span flex></span>
+            <md-button class="link-nav" ui-sref-active="md-raised md-primary active-link-nav"
+                       ui-sref="publisher.profile" aria-label="Profile">
+                <ng-md-icon icon="person"></ng-md-icon>
+                Profile
+            </md-button>
+
+            <md-button class="link-nav" href="/logout" aria-label="Logout">
+                <ng-md-icon icon="logout"></ng-md-icon>
+                Logout
+            </md-button>
+        {% endif %}
     </md-content>
 </md-sidenav>
