@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-4 column">
+        </div>
+        <div class="col-md-4 column">
+            <form name="edit_website" class="form-horizontal" method="post" action="." enctype="multipart/form-data">
+
+                <div layout="row" layout-align="center start" flex="auto">
+
+                    <div layout="column">
+                        <h2>Add Website</h2>
+                        <md-input-container class="md-block" flex>
+                            <label>Website Name</label>
+                            <input required name="website_name" ng-model="vm.website.website_name" type="text">
+
+                            <div ng-messages="edit_website.website_name.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex>
+                            <label>Website URL</label>
+                            <input required name="website_domain" ng-model="vm.website.website_domain" type="text">
+
+                            <div ng-messages="edit_website.website_domain.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex>
+                            <md-select ng-model="vm.website.industry" placeholder="Select a category" multiple="true">
+                                <md-option ng-value="industry" ng-repeat="industry in vm.website.industry">
+                                    [[industry.industry_type ]]
+                                </md-option>
+                            </md-select>
+
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex>
+                            <label>Twitter</label>
+                            <input name="twitter_name" ng-model="vm.website.twitter_name" type="text">
+
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex>
+                            <label>Facebook Page:</label>
+                            <input name="facebook_page" ng-model="vm.website.facebook_page" type="text">
+
+                        </md-input-container>
+
+                        <md-input-container class="md-block" flex>
+                            <label>Website logo</label>
+                            <input data-my-Directive id="website_logo" name="website_logo"  type="file">
+
+                        </md-input-container>
+
+                        <div layout="row">
+                            <md-button class="md-raised md-primary" ng-click="vm.addWebsite()">Add website</md-button>
+                            <md-button class="md-raised" ng-click="vm.clear()">Cancel</md-button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-md-4 column">
+        </div>
+    </div>
+</div>
