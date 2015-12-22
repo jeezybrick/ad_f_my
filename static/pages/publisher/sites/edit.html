@@ -8,10 +8,11 @@
                 <div layout="row" layout-align="center center" flex="auto">
 
                     <div layout="column">
-                         <h2>Edit Website</h2>
+                        <h2>Edit Website</h2>
                         <md-input-container class="md-block" flex>
                             <label>Website Name</label>
                             <input required name="website_name" ng-model="vm.website.website_name" type="text">
+
                             <div ng-messages="edit_website.website_name.$error">
                                 <div ng-message="required">This is required.</div>
                             </div>
@@ -26,8 +27,11 @@
                         </md-input-container>
 
                         <md-input-container class="md-block" flex>
-                            <label>Industry</label>
-                            <input name="website_industry" ng-model="vm.website.industry" type="text">
+                            <md-select ng-model="vm.website.industry" placeholder="Select a category" multiple="true">
+                                <md-option ng-value="industry" ng-repeat="industry in vm.website.industry">
+                                    [[industry.industry_type ]]
+                                </md-option>
+                            </md-select>
 
                         </md-input-container>
 
