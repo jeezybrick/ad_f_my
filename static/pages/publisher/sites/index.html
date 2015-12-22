@@ -1,6 +1,3 @@
-<div layout="row" layout-align="center center" flex="auto" ng-hide="vm.websitesLoad">
-    <md-progress-circular class="login-progress-circular md-accent md-hue-2" md-mode="indeterminate" md-diameter="80"></md-progress-circular>
-</div>
 
 <div class="container-fluid">
     <div layout="row" layout-align="space-between center">
@@ -10,6 +7,9 @@
     </div>
 </div>
 
+<div layout="row" layout-align="center center" flex="auto" ng-hide="vm.websitesLoad">
+    <md-progress-circular class="login-progress-circular md-accent md-hue-2" md-mode="indeterminate" md-diameter="80"></md-progress-circular>
+</div>
 
 <table class="table table-striped table-hover" ng-show="vm.websitesLoad">
     <tr>
