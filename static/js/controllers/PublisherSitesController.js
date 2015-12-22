@@ -9,11 +9,14 @@ function PublisherSitesController(Website, $log, $state) {
     vm.publisher = {};
     vm.website = {};
     vm.websitesLoad = false;
+    vm.websitesLoadError = '';
 
     vm.website = Website.query(function (response) {
 
         vm.websitesLoad = true;
-    }, function () {
+    }, function (error) {
+
+        vm.websitesLoadError = error.data;
 
     });
 
