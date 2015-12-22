@@ -1,8 +1,11 @@
-<h2>Websites:</h2>
+<div class="container-fluid">
+    <div layout="row" layout-align="space-between center">
+        <h2>Websites:</h2>
 
-<div style="float: right;position: absolute;right: 26px;top: -52px;">
-    <a href="sites/add-sites"><h6>+ Add more sites</h6></a>
+        <h3><ng-md-icon ui-sref="publisher.addsite" icon="add"></ng-md-icon> Add more sites</h3>
+    </div>
 </div>
+
 
 <table class="table table-striped table-hover">
     <tr>
@@ -19,7 +22,7 @@
         <td><img ng-src="[[ website.website_logo ]]" width="128px" height="100px"></td>
         <td>[[ website.website_name ]]</td>
         <td>[[ website.website_domain ]]</td>
-        <td><h4 ng-repeat="industry in website.industry">[[industry.industry_type]]</h4></td>
+        <td><h3 ng-repeat="industry in website.industry">[[industry.industry_type]]</h3><h3 ng-hide="website.industry.length">-----</h3></td>
         <td>Status</td>
         <td>
             <ng-md-icon id="edit-site-icon" ui-sref="publisher.editsites({ id:website.id})" icon="edit"></ng-md-icon>

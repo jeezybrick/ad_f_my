@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b3a74529-4ec4-43eb-9915-d2e4a17215ce" name="Default" comment="" />
+    <list default="true" id="b3a74529-4ec4-43eb-9915-d2e4a17215ce" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/pages/publisher/sites/index.html" afterPath="$PROJECT_DIR$/static/pages/publisher/sites/index.html" />
+    </list>
     <ignored path="ad_f.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -34,8 +36,18 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/pages/publisher/sites/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.67730904">
-              <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.49258837">
+              <caret line="24" column="131" selection-start-line="24" selection-start-column="131" selection-end-line="24" selection-end-column="131" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nav_material.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/partials/nav_material.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.0">
+              <caret line="9" column="49" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -1032,14 +1044,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/partials/nav_material.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.05587229">
-          <caret line="4" column="68" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/controllers/PublisherController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.67699116">
@@ -1218,10 +1222,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/partials/nav_material.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.0">
+          <caret line="9" column="49" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/pages/publisher/sites/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67730904">
-          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.49258837">
+          <caret line="24" column="131" selection-start-line="24" selection-start-column="131" selection-end-line="24" selection-end-column="131" />
           <folding />
         </state>
       </provider>
