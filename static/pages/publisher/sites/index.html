@@ -15,35 +15,40 @@
     <h2 class="md-display-1 md-warn md-hue-1" style="color:#E53935">You're not a publisher!</h2>
 </div>
 
+<div class="container-fluid">
+    <table class="table table-striped table-hover" ng-show="vm.websitesLoad">
+        <tr>
+            <td>SI. No</td>
+            <td>Website Logo</td>
+            <td>Name</td>
+            <td>URL</td>
+            <td>Industry</td>
+            <td>Status</td>
+            <td>Manage</td>
+        </tr>
+        <tr ng-repeat="website in vm.website">
+            <td>[[ website.id ]]</td>
+            <td><img ng-show="website.website_logo.length" ng-src="[[ website.website_logo ]]" width="128" height="100">
+                <h5 ng-hide="website.website_logo.length">No logo</h5></td>
+            <td>[[ website.website_name ]]</td>
+            <td>[[ website.website_domain ]]</td>
+            <td><h5 ng-repeat="industry in website.industry">[[industry.industry_type]]</h5>
 
-<table class="table table-striped table-hover" ng-show="vm.websitesLoad">
-    <tr>
-        <td>SI. No</td>
-        <td>Website Logo</td>
-        <td>Name</td>
-        <td>URL</td>
-        <td>Industry</td>
-        <td>Status</td>
-        <td>Manage</td>
-    </tr>
-    <tr ng-repeat="website in vm.website">
-        <td>[[ website.id ]]</td>
-        <td><img ng-show="website.website_logo.length" ng-src="[[ website.website_logo ]]" width="128" height="100"><h5 ng-hide="website.website_logo.length">No logo</h5></td>
-        <td>[[ website.website_name ]]</td>
-        <td>[[ website.website_domain ]]</td>
-        <td><h5 ng-repeat="industry in website.industry">[[industry.industry_type]]</h5><h3 ng-hide="website.industry.length">-----</h3></td>
-        <td><h5>
-            <span ng-show="website.is_verified">Verified</span>
-            <span ng-hide="website.is_verified">Not verified</span>
-        </h5></td>
-        <td>
-            <ng-md-icon id="edit-site-icon" ui-sref="publisher.editsites({ id:website.id})" icon="edit"></ng-md-icon>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="7" ng-hide="vm.website.length">
-            <center>No websites added</center>
-        </td>
-    </tr>
+                <h3 ng-hide="website.industry.length">-----</h3></td>
+            <td><h5>
+                <span ng-show="website.is_verified">Verified</span>
+                <span ng-hide="website.is_verified">Not verified</span>
+            </h5></td>
+            <td>
+                <ng-md-icon id="edit-site-icon" ui-sref="publisher.editsites({ id:website.id})"
+                            icon="edit"></ng-md-icon>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="7" ng-hide="vm.website.length">
+                <center>No websites added</center>
+            </td>
+        </tr>
 
-</table>
+    </table>
+</div>
