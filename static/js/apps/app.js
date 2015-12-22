@@ -82,6 +82,12 @@ angular
                 controller: 'PublisherAddSitesController',
                 controllerAs: 'vm'
             })
+            .state('publisher.addsite-after', {
+                url: 'sites/add/',
+                templateUrl: '/static/pages/publisher/sites/add_after.html',
+                controller: 'PublisherAddSitesController',
+                controllerAs: 'vm'
+            })
             .state('publisher.getcode', {
                 url: 'sites/get-code/',
                 templateUrl: '/static/pages/publisher/sites/get_code.html',
