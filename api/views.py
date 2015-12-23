@@ -4,6 +4,7 @@ from django.http import Http404
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from django.utils.translation import ugettext_lazy as _
 from rest_framework import generics, status, permissions, serializers as ser
+from rest_framework.parsers import FileUploadParser, MultiPartParser
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from api import serializers
@@ -90,6 +91,7 @@ class PublisherWebsiteList(generics.GenericAPIView):
 class PublisherWebsiteDetail(generics.RetrieveAPIView, generics.UpdateAPIView,):
     permission_classes = (permissions.IsAuthenticated, )
     serializer_class = serializers.PublisherWebsiteSerializer
+    # parser_classes = (FileUploadParser, MultiPartParser, )
 
     def get_object(self):
 

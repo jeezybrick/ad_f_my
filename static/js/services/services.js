@@ -1,5 +1,3 @@
-
-
 angular.module('myApp.services', ['ngResource'])
 
     .factory('Publisher', function ($resource) {
@@ -13,15 +11,26 @@ angular.module('myApp.services', ['ngResource'])
     .factory('Sponsor', function ($resource) {
         return $resource('/api/sponsor/'
             , {}, {
-                'query': {method: 'GET', isArray: true}
+                'query': {
+                    method: 'GET', isArray: true
+                }
             });
     })
-    
+
     .factory('Website', function ($resource) {
         return $resource('/api/publisher/website/:id/'
             , {id: '@id'}, {
-                'update': {method: 'PUT'},
-                'query': {method: 'GET', isArray: true}
+                'update': {
+                    method: 'PUT'
+                },
+
+                'query': {
+                    method: 'GET', isArray: true
+                },
+
+                save: {
+                    method: "POST"
+                }
             });
     });
 

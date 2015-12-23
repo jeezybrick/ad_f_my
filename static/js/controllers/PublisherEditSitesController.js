@@ -2,7 +2,7 @@ angular
     .module('myApp')
     .controller('PublisherEditSitesController', PublisherEditSitesController);
 
-function PublisherEditSitesController(Website, $log, $state, $stateParams) {
+function PublisherEditSitesController(Website, $log, $state, $stateParams, Upload) {
      var vm = this;
     vm.editWebsite = editWebsite;
     vm.clear = clear;
@@ -23,11 +23,16 @@ function PublisherEditSitesController(Website, $log, $state, $stateParams) {
 
     function editWebsite() {
 
-        vm.website.$update(function (response) {
-
-        }, function (error) {
-
+        Upload.upload({
+            url: '/api/publisher/website/'+ $stateParams.id + '/',
+            data: vm.website
+        }).then(function (resp) {
+            $state.go('publisher.sites');
+        }, function (err) {
+            console.log('Error status: '+ err);
+        }, function (evt) {
         });
+
 
     }
 

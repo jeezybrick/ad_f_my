@@ -11,7 +11,8 @@ angular
         'ngMaterial',
         'ngMdIcons',
         'angucomplete-alt',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'ngFileUpload'
     ])
     .config(function ($locationProvider, $httpProvider, $resourceProvider, $interpolateProvider, $routeProvider,
                       $compileProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider) {
