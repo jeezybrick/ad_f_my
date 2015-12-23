@@ -1,8 +1,11 @@
 <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
-    <md-toolbar class="md-theme-light md-accent md-hue-4" layout="row" layout-align="space-between center" ng-controller="SidebarController as vm">
+    <md-toolbar class="md-theme-light md-accent md-hue-4" layout="row" layout-align="space-between center"
+                ng-controller="SidebarController as vm">
         <span></span>
+
         <h1 class="md-toolbar-tools">Menu</h1>
-        <ng-md-icon ng-click="vm.close()" id="close-icon" icon="clear" style="fill: white;margin-right: 15px; padding-top: 7px;"></ng-md-icon>
+        <ng-md-icon ng-click="vm.close()" id="close-icon" icon="clear"
+                    style="fill: white;margin-right: 15px; padding-top: 7px;"></ng-md-icon>
     </md-toolbar>
     <md-content layout-padding layout="column" ng-controller="SidebarController as vm">
 
@@ -41,6 +44,11 @@
                 <ng-md-icon icon="logout"></ng-md-icon>
                 Logout
             </md-button>
+        {% else %}
+            <md-button class="link-nav" href="/" aria-label="Home">
+                Home
+            </md-button>
+
         {% endif %}
     </md-content>
 </md-sidenav>
