@@ -45,11 +45,7 @@ class AdvertisersList(APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
     def get(self, request):
-        try:
-            publisher = Publisher.objects.get(id=self.request.user.id)
-        except ObjectDoesNotExist:
-            raise PermissionDenied("You're not a publisher!")
-        queryset = SponsorType.objects.filter(sponsor__country__id__exact=publisher.country_id)
+        queryset = SponsorType.objects.all()
 
         serializer = serializers.SponsorTypeSerializer(queryset, many=True, context={'request': request})
         return Response(serializer.data)
