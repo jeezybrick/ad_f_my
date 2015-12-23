@@ -71,8 +71,8 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class PublisherWebsiteSerializer(serializers.ModelSerializer):
-    industry = CategorySerializer(many=True, required=False, read_only=False)
-    website_logo = serializers.ImageField(allow_empty_file=False, required=False, read_only=False)
+    industry = CategorySerializer(many=True, required=False, read_only=True)
+    website_logo = serializers.ImageField(allow_empty_file=True, required=False, read_only=False)
     is_verified = serializers.BooleanField(read_only=True)
 
     class Meta:

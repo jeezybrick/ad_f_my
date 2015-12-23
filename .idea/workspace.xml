@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3a74529-4ec4-43eb-9915-d2e4a17215ce" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/controllers/PublisherAddSitesController.js" afterPath="$PROJECT_DIR$/static/js/controllers/PublisherAddSitesController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/controllers/PublisherEditSitesController.js" afterPath="$PROJECT_DIR$/static/js/controllers/PublisherEditSitesController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ad_f.iml" afterPath="$PROJECT_DIR$/.idea/ad_f.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/pages/publisher/sites/add_after.html" afterPath="$PROJECT_DIR$/static/pages/publisher/sites/add_after.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/apps/app.js" afterPath="$PROJECT_DIR$/static/js/apps/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/pages/publisher/sites/edit.html" afterPath="$PROJECT_DIR$/static/pages/publisher/sites/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/layout.html" afterPath="$PROJECT_DIR$/templates/layout.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/serializers.py" afterPath="$PROJECT_DIR$/api/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/services/services.js" afterPath="$PROJECT_DIR$/static/js/services/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/views.py" afterPath="$PROJECT_DIR$/api/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ad_f.iws" />
@@ -48,17 +40,29 @@
         <entry file="file://$PROJECT_DIR$/static/js/controllers/PublisherEditSitesController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
+              <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/api/serializers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.52380955">
+              <caret line="83" column="23" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#53#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/pages/publisher/sites/edit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.76666665">
-              <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+            <state vertical-scroll-proportion="-6.0">
+              <caret line="13" column="97" selection-start-line="13" selection-start-column="85" selection-end-line="13" selection-end-column="97" />
               <folding />
             </state>
           </provider>
@@ -157,12 +161,12 @@
         <option value="$PROJECT_DIR$/api/views.py" />
         <option value="$PROJECT_DIR$/static/js/apps/app.js" />
         <option value="$PROJECT_DIR$/templates/layout.html" />
-        <option value="$PROJECT_DIR$/api/serializers.py" />
         <option value="$PROJECT_DIR$/static/pages/publisher/sites/add_after.html" />
-        <option value="$PROJECT_DIR$/static/js/controllers/PublisherEditSitesController.js" />
         <option value="$PROJECT_DIR$/static/js/services/services.js" />
         <option value="$PROJECT_DIR$/static/js/controllers/PublisherAddSitesController.js" />
         <option value="$PROJECT_DIR$/static/pages/publisher/sites/edit.html" />
+        <option value="$PROJECT_DIR$/static/js/controllers/PublisherEditSitesController.js" />
+        <option value="$PROJECT_DIR$/api/serializers.py" />
       </list>
     </option>
   </component>
@@ -1079,16 +1083,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6825397">
-          <caret line="85" column="37" selection-start-line="85" selection-start-column="37" selection-end-line="85" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/pages/publisher/sites/add_after.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41666666">
@@ -1121,19 +1115,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/controllers/PublisherEditSitesController.js">
+    <entry file="file://$PROJECT_DIR$/static/pages/publisher/sites/edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
+        <state vertical-scroll-proportion="-6.0">
+          <caret line="13" column="97" selection-start-line="13" selection-start-column="85" selection-end-line="13" selection-end-column="97" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/pages/publisher/sites/edit.html">
+    <entry file="file://$PROJECT_DIR$/static/js/controllers/PublisherEditSitesController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76666665">
-          <caret line="55" column="42" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.52380955">
+          <caret line="83" column="23" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
