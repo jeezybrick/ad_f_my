@@ -58,6 +58,9 @@ urlpatterns = patterns('',
         #{'template_name': 'dashboard/forgot_password_complete.html'},
         name='password_reset_complete'),
 
+    # Social
+    url('', include('social.apps.django_app.urls', namespace='social'))
+
 
 )
 

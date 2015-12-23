@@ -711,3 +711,9 @@ nav ul, nav ol {
 .nav-icons {
   margin-top: 12px;
   margin-right: 5px; }
+
+md-toast.md-error-toast-theme {
+  background-color: #a94442; }
+
+#socialLoginForm > a {
+  margin: 0 5px; }
