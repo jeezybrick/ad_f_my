@@ -19,9 +19,6 @@ class SponsorSerializer(serializers.ModelSerializer):
         model = Sponsor
         fields = ('id', 'name',)
 
-    def to_representation(self, instance):
-        pass
-
 
 class PublisherSerializer(serializers.ModelSerializer):
     country = CountrySerializer(read_only=True)
@@ -34,7 +31,7 @@ class PublisherSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Publisher
-        fields = ('id', 'name', 'telephone', 'address', 'country', 'email', 'sponsor', 'count_of_added_websites', )
+        fields = ('id', 'name', 'telephone', 'address', 'country', 'email', 'sponsor', 'count_of_added_websites',)
 
     def update(self, instance, validated_data):
         sponsors = validated_data.get('sponsor', instance.sponsor)
@@ -74,14 +71,13 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class PublisherWebsiteSerializer(serializers.ModelSerializer):
-
     industry = CategorySerializer(many=True, required=False, read_only=False)
     website_logo = serializers.ImageField(allow_empty_file=True)
 
     class Meta:
         model = Website
         fields = ('id', 'website_name', 'website_domain', 'website_logo', 'industry', 'twitter_name', 'facebook_page',
-                  'avg_page_views', 'is_verified', )
+                  'avg_page_views', 'is_verified',)
 
     def validate_industry(self, industry):
         return industry
@@ -97,6 +93,11 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
 
         website = Website.objects.create(**validated_data)
         website.publishers.add(publisher)
-        website.industry.add(*[Industry.objects.get_or_create(id=industry['id'])[0] for industry in list_of_categories])
+        website.industry.add(
+            *[Industry.objects.get_or_create(id=industry['id'],
+                                             industry_type=industry['industry_type'],
+                                             type=industry['type'])[0]
+              for industry in list_of_categories]
+        )
         website.save()
         return website

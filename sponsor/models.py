@@ -20,13 +20,22 @@ def get_sponsor_logo_path(instance, filename):
     return os.path.join('campaign/sponsor_logo/%s/%s') % (token, filename)
 
 
+INDUSTRY_DEFAULT = 'default'
+INDUSTRY_SUB = 'sub'
+
+INDUSTRY_TYPE = (
+    (INDUSTRY_DEFAULT, 'Default'),
+    (INDUSTRY_SUB, 'Sub'),
+)
+
+
 class Industry(models.Model):
     """
     This model is used for adding industry types of various publishers & sponsors
     """
 
     industry_type = models.CharField(_("Industry"), max_length=100)
-    type = models.CharField(_("Category type"), max_length=100, choices=(('default', 'Default'), ('sub', 'Sub'), ), default='default')
+    type = models.CharField(_("Category type"), max_length=100, choices=INDUSTRY_TYPE, default=INDUSTRY_DEFAULT)
 
     class Meta:
         app_label = 'campaign'

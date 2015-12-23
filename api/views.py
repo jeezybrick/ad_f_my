@@ -1,10 +1,9 @@
-import datetime
+from django.db.models import Q
 from django.shortcuts import get_object_or_404
-from django.utils import timezone
-from django.utils.translation import ugettext_lazy as _
 from django.http import Http404
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
-from rest_framework import generics, status, permissions
+from django.utils.translation import ugettext_lazy as _
+from rest_framework import generics, status, permissions, serializers as ser
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from api import serializers
@@ -23,7 +22,7 @@ class CurrentPublisherDetail(generics.RetrieveUpdateAPIView):
         try:
             publisher = Publisher.objects.get(id=self.request.user.id)
         except ObjectDoesNotExist:
-            publisher = self.request.user
+             raise ser.ValidationError(_("You're not a publisher!"))
         return publisher
 
 
@@ -31,11 +30,13 @@ class CategoryList(APIView):
     def get(self, request):
         parent = request.GET.get('parent', None)
         sub = request.GET.get('sub', None)
-        queryset = Industry.objects.all()
         if parent:
-            queryset = Industry.objects.filter(industry_type__contains=parent, type='default')
-        if sub:
-            queryset = Industry.objects.filter(industry_type__contains=sub, type='sub')
+            lol = Q(industry_type__contains=parent, type='default')
+        elif sub:
+            lol = Q(industry_type__contains=sub, type='sub')
+        else:
+            lol = Q()
+        queryset = Industry.objects.filter(lol)
 
         serializer = serializers.CategorySerializer(queryset, many=True)
         return Response(serializer.data)
@@ -75,14 +76,13 @@ class PublisherWebsiteList(generics.GenericAPIView):
         except ObjectDoesNotExist:
             raise PermissionDenied("You're not a publisher!")
         queryset = Website.objects.filter(publishers__id__exact=publisher.id)
-        # queryset = Website.objects.all()
         return queryset
 
     def perform_create(self, serializer):
         try:
             publisher = Publisher.objects.get(id=self.request.user.id)
         except ObjectDoesNotExist:
-            publisher = self.request.user
+            raise ser.ValidationError(_("You're not a publisher!"))
 
         serializer.save(publishers=publisher)
 
@@ -101,4 +101,3 @@ class PublisherWebsiteDetail(generics.RetrieveAPIView, generics.UpdateAPIView,):
         self.check_object_permissions(self.request, obj)
 
         return obj
-

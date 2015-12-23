@@ -13,11 +13,11 @@ class DemoForm(forms.Form):
     first_name = forms.CharField(label='')
     last_name = forms.CharField(label='')
     email = forms.EmailField(label='', required=True)
-    phone = forms.CharField(required=True, label='',
-                               validators=[
-                                   validators.RegexValidator(r'^\d{3}\-\d{3}\-\d{4}$',
-                                                             'Invalid phone format!',
-                                                             'invalid'), ])
+    phone = forms.CharField(required=True,
+                            label='',
+                            validators=[validators.RegexValidator(r'^\d{3}\-\d{3}\-\d{4}$',
+                                                                  'Invalid phone format!',
+                                                                  'invalid'), ])
     company = forms.CharField(required=False, label='')
     url = forms.URLField(label='', required=False)
     website = forms.MultipleChoiceField(required=False)
@@ -30,7 +30,8 @@ class DemoForm(forms.Form):
         self.helper.form_id = 'demo_form'
         self.helper.form_action = '#'
         self.helper.form_class = 'form-horizontal'
-        self.helper.field_class = 'col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1'
+        self.helper.field_class = 'col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 ' \
+                                  'col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1'
         self.form_show_errors = True
         self.helper.error_text_inline = True
         self.helper.help_text_inline = False
@@ -80,12 +81,11 @@ class JoinNetworkForm(forms.ModelForm):
     }
     name = forms.CharField(label='', required=True)
     email = forms.EmailField(label='', required=True)
-    telephone = forms.CharField(required=True, label='',
-                               validators=[
-                                   validators.RegexValidator(r'^\d{3}\-\d{3}\-\d{4}$',
-                                                             'Invalid phone format!',
-                                                             'invalid'), ]
-                            )
+    telephone = forms.CharField(required=True,
+                                label='',
+                                validators=[validators.RegexValidator(r'^\d{3}\-\d{3}\-\d{4}$',
+                                                                      'Invalid phone format!',
+                                                                      'invalid'), ])
 
     accept = forms.BooleanField(label='', required=True, help_text="I accept the Terms & Conditions and Privacy Policy.")
     # country = forms.ChoiceField(choices=(('USA', 'USA'), ('Canada', 'Canada'), ), label='', help_text="<hr>")
@@ -97,7 +97,10 @@ class JoinNetworkForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(JoinNetworkForm, self).__init__(*args, **kwargs)
-        self.fields['country'] = forms.ModelChoiceField(help_text="<hr>", queryset=Country.objects.all(), label='', empty_label='Country')
+        self.fields['country'] = forms.ModelChoiceField(help_text="<hr>",
+                                                        queryset=Country.objects.all(),
+                                                        label='',
+                                                        empty_label='Country')
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.form_id = 'join_network_form'

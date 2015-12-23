@@ -1,17 +1,10 @@
 from django.contrib.auth import login, authenticate
-from django.shortcuts import render, redirect
-from django.views.generic import View
-from django.utils.translation import ugettext_lazy as _
-from django.template.response import TemplateResponse
-from django.core.urlresolvers import reverse
+from django.views.generic import  FormView
+from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from core import forms, utils
-from my_auth.models import MyUser
-from publisher.forms import WebsiteNewForm
-from publisher.models import Publisher, Website
-from adfits import constants
 
 
 # For redirect if not Auth
@@ -23,70 +16,30 @@ class LoginRequiredMixin(object):
 
 
 # For login
-class HomeView(View):
+class HomeView(FormView):
     form_class = forms.DemoForm
     template_name = 'home.html'
-    title = _('Home')
+    success_url = reverse_lazy("thanks")
 
-    def get(self, request):
-
-        form = self.form_class()
-        context = {
-            'form': form,
-            'title': self.title,
-        }
-        return TemplateResponse(request, self.template_name, context)
-
-    def post(self, request):
-        form = self.form_class(data=request.POST)
-        context = {
-            'form': form,
-            'title': self.title,
-        }
-        if form.is_valid():
-            utils.send_email_with_form_data(request.POST)
-            return redirect(self.get_success_url())
-        return TemplateResponse(request, self.template_name, context)
-
-    def get_success_url(self):
-        return reverse("thanks")
+    def form_valid(self, form):
+        utils.send_email_with_form_data(self.request.POST)
+        return super(HomeView, self).form_valid(form)
 
 
-class JoinNetworkView(View):
+class JoinNetworkView(FormView):
     template_name = 'join_network.html'
-    title = _('Join network')
     form_class = forms.JoinNetworkForm
+    success_url = '/publisher/#/advertisers/'
 
-    def get(self, request):
+    def form_valid(self, form):
+        form.save()
+        # utils.send_email_with_form_data_join(request.POST)
+        email = form.cleaned_data['email']
+        password = form.cleaned_data['password1']
+        user = authenticate(email=email, password=password)
 
-        form = self.form_class()
-        context = {
-            'form': form,
-            'title': self.title,
-        }
-        return TemplateResponse(request, self.template_name, context)
-
-    def post(self, request):
-        form = self.form_class(data=request.POST)
-
-        context = {
-            'form': form,
-            'title': self.title,
-        }
-        if form.is_valid():
-            form.save()
-            # utils.send_email_with_form_data_join(request.POST)
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password1']
-            user = authenticate(email=email, password=password)
-
-            if user is not None:
-                login(request, user)
-                return HttpResponseRedirect(self.get_success_url())
-            messages.error(request, "Wrong username and Password combination.")
-        return TemplateResponse(request, self.template_name, context)
-
-    def get_success_url(self):
-        url = '/publisher/#/advertisers/'
-        return url
-
+        if user is not None:
+            login(self.request, user)
+            return HttpResponseRedirect(self.get_success_url())
+        messages.error(self.request, "Wrong username and Password combination.")
+        return super(JoinNetworkView, self).form_valid(form)
