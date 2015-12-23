@@ -159,6 +159,8 @@ INSTALLED_APPS = (
     'django_crontab',
     'crispy_forms',
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
@@ -245,3 +247,5 @@ EMAIL_HOST_USER = 'smooker14@gmail.com'
 EMAIL_HOST_PASSWORD = '16931693'
 
 '''
+
+OLD_PASSWORD_FIELD_ENABLED = True

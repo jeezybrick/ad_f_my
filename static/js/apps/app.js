@@ -64,6 +64,12 @@ angular
                 controller: 'EditProfileController',
                 controllerAs: 'vm'
             })
+            .state('publisher.changepassword', {
+                url: 'profile/change-password/',
+                templateUrl: '/static/pages/publisher/change-password.html',
+                controller: 'EditProfileController',
+                controllerAs: 'vm'
+            })
             .state('publisher.sites', {
                 url: 'sites/',
                 templateUrl: '/static/pages/publisher/sites/index.html',
