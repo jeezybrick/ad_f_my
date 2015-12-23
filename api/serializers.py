@@ -54,7 +54,10 @@ class SponsorTypeSerializer(serializers.ModelSerializer):
             publisher = Publisher.objects.get(id=user.id)
         except ObjectDoesNotExist:
             raise serializers.ValidationError(_("You're not a publisher!"))
-        return obj.sponsor.filter(country=publisher.country)
+
+        queryset = obj.sponsor_set.filter(country=publisher.country)
+        serializer = SponsorSerializer(queryset, many=True)
+        return serializer.data
 
     class Meta:
         model = SponsorType
