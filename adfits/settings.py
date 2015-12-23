@@ -67,7 +67,7 @@ ADMIN_MEDIA_PREFIX = '/media/admin/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -278,10 +278,7 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
   'fields': 'id, name, email'
 }
 SOCIAL_AUTH_GITHUB_SCOPE = ['email']
-SOCIAL_AUTH_GITHUB_PROFILE_EXTRA_PARAMS = {
-  'locale': 'en_EN',
-  'fields': 'id, name, email'
-}
+
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
 
 SOCIAL_AUTH_PIPELINE = (

@@ -19,6 +19,9 @@ class SponsorSerializer(serializers.ModelSerializer):
         model = Sponsor
         fields = ('id', 'name',)
 
+    def to_representation(self, instance):
+        pass
+
 
 class PublisherSerializer(serializers.ModelSerializer):
     country = CountrySerializer(read_only=True)
@@ -34,7 +37,6 @@ class PublisherSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'telephone', 'address', 'country', 'email', 'sponsor', 'count_of_added_websites', )
 
     def update(self, instance, validated_data):
-        print validated_data
         sponsors = validated_data.get('sponsor', instance.sponsor)
         for sponsor in sponsors:
             instance.sponsor.add(Sponsor.objects.get(myuser_ptr=sponsor.get('id')))
@@ -43,7 +45,16 @@ class PublisherSerializer(serializers.ModelSerializer):
 
 
 class SponsorTypeSerializer(serializers.ModelSerializer):
-    sponsor_set = SponsorSerializer(many=True, required=False, read_only=True)
+    # sponsor_set = SponsorSerializer(many=True, required=False, read_only=True)
+    sponsor_set = serializers.SerializerMethodField()
+
+    def get_sponsor_set(self, obj):
+        user = self.context['request'].user
+        try:
+            publisher = Publisher.objects.get(id=user.id)
+        except ObjectDoesNotExist:
+            raise serializers.ValidationError(_("You're not a publisher!"))
+        return obj.sponsor.filter(country=publisher.country)
 
     class Meta:
         model = SponsorType
