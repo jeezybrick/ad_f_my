@@ -287,9 +287,8 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.auth_allowed',
     'social.pipeline.social_auth.social_user',
     'social.pipeline.user.get_username',
-    'my_auth.pipeline.redirect_to_login_form',  # my pipeline
     'social.pipeline.user.create_user',
-
+    # 'my_auth.pipeline.redirect_to_login_form',  # my pipeline
     'social.pipeline.social_auth.associate_user',
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details'
