@@ -1,13 +1,11 @@
-import re
 from django import forms
-from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.forms import UserCreationForm
 from backend import authenticate
 from my_auth.forms import AuthenticationForm
 
+
 class LoginForm(AuthenticationForm):
-    email = forms.EmailField(
+    email = forms.EmailField(required=True,
         widget=forms.TextInput(attrs={
             'type': 'email', 'placeholder': 'Enter your email', 'class': 'span'
         }))
