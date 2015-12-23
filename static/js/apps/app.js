@@ -14,7 +14,7 @@ angular
         'ui.bootstrap'
     ])
     .config(function ($locationProvider, $httpProvider, $resourceProvider, $interpolateProvider, $routeProvider,
-                      $compileProvider, $stateProvider, $urlRouterProvider) {
+                      $compileProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider) {
 
 
         // CSRF Support
@@ -32,6 +32,8 @@ angular
         // enable html5Mode for pushstate ('#'-less URLs)
         //$locationProvider.html5Mode(true);
         //$locationProvider.hashPrefix('!');
+
+        $mdThemingProvider.theme('error-toast');
 
 
         // Routing
@@ -101,17 +103,17 @@ angular
                 controllerAs: 'vm'
             })
             .state('publisher.audience', {
-                    url: 'audience/',
-                    templateUrl: '/static/pages/publisher/audience.html',
-                    controller: 'PublisherController',
-                    controllerAs: 'vm'
-            });
-
-            /*.state('publisher.login', {
-                url: 'login/',
-                templateUrl: '/static/pages/publisher/login.html',
+                url: 'audience/',
+                templateUrl: '/static/pages/publisher/audience.html',
                 controller: 'PublisherController',
                 controllerAs: 'vm'
-            })*/
+            });
+
+        /*.state('publisher.login', {
+         url: 'login/',
+         templateUrl: '/static/pages/publisher/login.html',
+         controller: 'PublisherController',
+         controllerAs: 'vm'
+         })*/
 
     });

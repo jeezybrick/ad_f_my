@@ -161,6 +161,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
+    'social.apps.django_app.default',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
@@ -249,3 +250,28 @@ EMAIL_HOST_PASSWORD = '16931693'
 '''
 
 OLD_PASSWORD_FIELD_ENABLED = True
+
+SOCIAL_AUTH_USER_MODEL = 'my_auth.MyUser'
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.github.GithubOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_GITHUB_KEY = '2abee56deea44960508b'
+SOCIAL_AUTH_GITHUB_SECRET = '4be14a5e6acef884cae00b76defa6cea86854a4c'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1627150820892036'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'e2b17ae2c8a8eb78c70c05d16136cedd'
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+)
+
+SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'email']
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
