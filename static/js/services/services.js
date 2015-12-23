@@ -9,12 +9,14 @@ angular.module('myApp.services', ['ngResource'])
                 'query': {method: 'GET', isArray: false}
             });
     })
+
     .factory('Sponsor', function ($resource) {
         return $resource('/api/sponsor/'
             , {}, {
                 'query': {method: 'GET', isArray: true}
             });
     })
+    
     .factory('Website', function ($resource) {
         return $resource('/api/publisher/website/:id/'
             , {id: '@id'}, {
