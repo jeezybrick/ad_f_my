@@ -1,88 +1,108 @@
-from django.core.exceptions import ObjectDoesNotExist
+import datetime
+from django.shortcuts import get_object_or_404
+from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
-from rest_framework import serializers
-from core.models import Country
+from django.http import Http404
+from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
+from rest_framework import generics, status, permissions
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from api import serializers
 from publisher.models import Publisher, Website
-from sponsor.models import Industry, SponsorType, Sponsor
 
 
-class CountrySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Country
-        fields = ('name',)
+# Publisher detail
+from sponsor.models import Industry, Sponsor, SponsorType
 
 
-class SponsorSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField()
+class CurrentPublisherDetail(generics.RetrieveUpdateAPIView):
+    serializer_class = serializers.PublisherSerializer
+    permission_classes = (permissions.IsAuthenticated,)
 
-    class Meta:
-        model = Sponsor
-        fields = ('id', 'name',)
-
-
-class PublisherSerializer(serializers.ModelSerializer):
-    country = CountrySerializer(read_only=True)
-    email = serializers.EmailField(read_only=True, required=False)
-    sponsor = SponsorSerializer(many=True, required=False, read_only=False)
-    count_of_added_websites = serializers.SerializerMethodField(read_only=True)
-
-    def get_count_of_added_websites(self, obj):
-        return obj.website.all().count()
-
-    class Meta:
-        model = Publisher
-        fields = ('id', 'name', 'telephone', 'address', 'country', 'email', 'sponsor', 'count_of_added_websites', )
-
-    def update(self, instance, validated_data):
-        print validated_data
-        sponsors = validated_data.get('sponsor', instance.sponsor)
-        for sponsor in sponsors:
-            instance.sponsor.add(Sponsor.objects.get(myuser_ptr=sponsor.get('id')))
-            instance.save()
-        return instance
-
-
-class SponsorTypeSerializer(serializers.ModelSerializer):
-    sponsor_set = SponsorSerializer(many=True, required=False, read_only=True)
-
-    class Meta:
-        model = SponsorType
-        fields = ('id', 'type', 'sponsor_set',)
-        read_only_fields = ()
-
-
-class CategorySerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField()
-
-    class Meta:
-        model = Industry
-        fields = ('id', 'industry_type', 'type')
-
-
-class PublisherWebsiteSerializer(serializers.ModelSerializer):
-
-    industry = CategorySerializer(many=True, required=False, read_only=False)
-    website_logo = serializers.ImageField(allow_empty_file=True)
-
-    class Meta:
-        model = Website
-        fields = ('id', 'website_name', 'website_domain', 'website_logo', 'industry', 'twitter_name', 'facebook_page',
-                  'avg_page_views', 'is_verified', )
-
-    def validate_industry(self, industry):
-        return industry
-
-    def create(self, validated_data):
-        # Get current publisher
-        user = self.context['request'].user
+    def get_object(self):
         try:
-            publisher = Publisher.objects.get(id=user.id)
+            publisher = Publisher.objects.get(id=self.request.user.id)
         except ObjectDoesNotExist:
-            raise serializers.ValidationError(_("You're not a publisher!"))
-        list_of_categories = validated_data.pop('industry', None)
+            publisher = self.request.user
+        return publisher
 
-        website = Website.objects.create(**validated_data)
-        website.publishers.add(publisher)
-        website.industry.add(*[Industry.objects.get_or_create(id=industry['id'])[0] for industry in list_of_categories])
-        website.save()
-        return website
+
+class CategoryList(APIView):
+    def get(self, request):
+        parent = request.GET.get('parent', None)
+        sub = request.GET.get('sub', None)
+        queryset = Industry.objects.all()
+        if parent:
+            queryset = Industry.objects.filter(industry_type__contains=parent, type='default')
+        if sub:
+            queryset = Industry.objects.filter(industry_type__contains=sub, type='sub')
+
+        serializer = serializers.CategorySerializer(queryset, many=True)
+        return Response(serializer.data)
+
+
+class AdvertisersList(APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get(self, request):
+        try:
+            publisher = Publisher.objects.get(id=self.request.user.id)
+        except ObjectDoesNotExist:
+            raise PermissionDenied("You're not a publisher!")
+        queryset = Website.objects.filter(country__id__exact=publisher.country_id)
+
+        serializer = serializers.SponsorTypeSerializer(queryset, many=True, context={'request': request})
+        return Response(serializer.data)
+
+
+class PublisherWebsiteList(generics.GenericAPIView):
+
+    serializer_class = serializers.PublisherWebsiteSerializer
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get(self, request):
+        queryset = self.get_queryset()
+
+        serializer = serializers.PublisherWebsiteSerializer(queryset, many=True, context={'request': request})
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = serializers.PublisherWebsiteSerializer(data=request.data, context={'request': request})
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def get_queryset(self):
+        try:
+            publisher = Publisher.objects.get(id=self.request.user.id)
+        except ObjectDoesNotExist:
+            raise PermissionDenied("You're not a publisher!")
+        queryset = Website.objects.filter(publishers__id__exact=publisher.id)
+        # queryset = Website.objects.all()
+        return queryset
+
+    def perform_create(self, serializer):
+        try:
+            publisher = Publisher.objects.get(id=self.request.user.id)
+        except ObjectDoesNotExist:
+            publisher = self.request.user
+
+        serializer.save(publishers=publisher)
+
+
+class PublisherWebsiteDetail(generics.RetrieveAPIView, generics.UpdateAPIView,):
+    permission_classes = (permissions.IsAuthenticated, )
+    serializer_class = serializers.PublisherWebsiteSerializer
+
+    def get_object(self):
+
+        lookup_url_kwarg = self.lookup_url_kwarg or self.lookup_field
+        filter_kwargs = {self.lookup_field: self.kwargs[lookup_url_kwarg]}
+        obj = get_object_or_404(Website, id=filter_kwargs['pk'])
+        if obj is None:
+            raise Http404
+        self.check_object_permissions(self.request, obj)
+
+        return obj
+
