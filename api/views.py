@@ -8,6 +8,7 @@ from rest_framework.parsers import FileUploadParser, MultiPartParser
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from api import serializers
+from api.permissions import IsAuthorOrReadOnly
 from publisher.models import Publisher, Website
 
 
@@ -89,7 +90,7 @@ class PublisherWebsiteList(generics.GenericAPIView):
 
 
 class PublisherWebsiteDetail(generics.RetrieveAPIView, generics.UpdateAPIView,):
-    permission_classes = (permissions.IsAuthenticated, )
+    permission_classes = (permissions.IsAuthenticated, IsAuthorOrReadOnly)
     serializer_class = serializers.PublisherWebsiteSerializer
     # parser_classes = (FileUploadParser, MultiPartParser, )
 

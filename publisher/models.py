@@ -58,6 +58,17 @@ class Website(models.Model):
         return self.website_name
 
 
+IS_COMPLETED_DEFAULT = 'advertisers'
+IS_COMPLETED_ADD_WEBSITE = 'add_website'
+IS_COMPLETED_GET_CODE = 'get_code'
+
+IS_COMPLETED_STAGE = (
+    (IS_COMPLETED_DEFAULT, 'advertisers'),
+    (IS_COMPLETED_ADD_WEBSITE, 'Add website'),
+    (IS_COMPLETED_GET_CODE, 'Get code'),
+)
+
+
 class Publisher(MyUser):
     """
     The purpose of the models is to publishers
@@ -72,6 +83,9 @@ class Publisher(MyUser):
     website = models.ManyToManyField(Website, related_name='publishers', blank=True)
     sponsor = models.ManyToManyField(Sponsor, related_name='publishers', blank=True)
     country = models.ForeignKey(Country, null=True, blank=False, related_name='publishers')
+    is_completed_auth = models.CharField(_("Complete join network stage"), max_length=100,
+                                         choices=IS_COMPLETED_STAGE,
+                                         default=IS_COMPLETED_DEFAULT)
 
     class Meta:
         app_label = 'publisher'
