@@ -100,6 +100,7 @@ class PublisherWebsiteList(generics.GenericAPIView):
         return Response(serializer.data)
 
     def post(self, request):
+        print(request.data)
         serializer = serializers.PublisherWebsiteSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()

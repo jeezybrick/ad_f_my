@@ -35,17 +35,17 @@
 
                                 <div class="controls">
 
-                                    <input angucomplete-alt ng-model="vm.website.industry" id="categories"
+                                    <angucomplete-alt ng-model="vm.website.industry_default" id="categories"
                                                       placeholder="Examples: Parenting, Travel, Moms, Gaming, etc."
                                                       pause="100"
-                                                      selected-object="vm.website.industry"
+                                                      selected-object="vm.website.industry_default"
                                                       remote-url="http://www.adfits.com/api/category?parent="
                                                       title-field="industry_type"
                                                       image-field="profilePic"
                                                       minlength="3"
                                                       input-class="form-control form-control-small"
                                                       match-class="highlight"
-                                                      class="form-control"/>
+                                                      />
 
                                 </div>
                             </div>
@@ -57,16 +57,17 @@
                                     The best sub-categories to use are sub-sections from your website.</label>
 
                                 <div class="controls">
-                                    <angucomplete-alt id="categories_sub"
+                                    <angucomplete-alt  ng-model="vm.website.industry_sub" id="categories_sub"
                                                       placeholder="Examples: Food, Health, Style, Games"
                                                       pause="100"
-                                                      selected-object="vm.website.industry"
+                                                      selected-object="vm.website.industry_sub"
                                                       remote-url="http://www.adfits.com/api/category?sub="
                                                       title-field="industry_type"
                                                       image-field="profilePic"
                                                       minlength="3"
                                                       input-class="form-control form-control-small"
-                                                      match-class="highlight"/>
+                                                      match-class="highlight"
+                                                        />
 
                                 </div>
                             </div>
