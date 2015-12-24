@@ -2,7 +2,8 @@ angular
     .module('myApp')
     .controller('PublisherAddSitesController', PublisherAddSitesController);
 
-function PublisherAddSitesController(Website, $log, $state, Upload) {
+function PublisherAddSitesController($scope, Website, $log, $state, Upload) {
+    $scope.searchStr = 'ffff';
     var vm = this;
     vm.addWebsite = addWebsite;
     vm.clear = clear;

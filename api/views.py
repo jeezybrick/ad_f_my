@@ -63,7 +63,7 @@ class PublisherWebsiteList(generics.GenericAPIView):
     permission_classes = (permissions.IsAuthenticated,)
 
     def get(self, request):
-        '''
+
         import csv
         from sponsor.models import Sponsor, SponsorType
         from core.models import Country
@@ -93,7 +93,7 @@ class PublisherWebsiteList(generics.GenericAPIView):
                 sponsor.save()
                 sponsor = Sponsor(name=row[2], type=brands, country=canada)
                 sponsor.save()
-        '''
+
         queryset = self.get_queryset()
 
         serializer = serializers.PublisherWebsiteSerializer(queryset, many=True, context={'request': request})

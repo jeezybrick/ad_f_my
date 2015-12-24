@@ -61,11 +61,12 @@ class SponsorType(models.Model):
         return self.type
 
 
-class Sponsor(MyUser):
+class Sponsor(models.Model):
     """
     The purpose of the models is to publishers
     """
 
+    name = models.CharField(_("Name"), blank=True, max_length=100)
     address = models.TextField(_("Address"), blank=True)
     telephone = models.CharField(_("Telephone"), max_length=20, blank=True)
     industry = models.ManyToManyField(Industry, blank=True)
