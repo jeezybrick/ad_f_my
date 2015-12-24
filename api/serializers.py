@@ -84,6 +84,7 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
         return industry
 
     def create(self, validated_data):
+        print(validated_data)
         # Get current publisher
         user = self.context['request'].user
         try:
@@ -94,11 +95,11 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
 
         website = Website.objects.create(**validated_data)
         website.publishers.add(publisher)
-        website.industry.add(
-            *[Industry.objects.get_or_create(id=industry['id'],
-                                             industry_type=industry['industry_type'],
-                                             type=industry['type'])[0]
-              for industry in list_of_categories]
-        )
+        # website.industry.add(
+        #     *[Industry.objects.get_or_create(id=industry['id'],
+        #                                      industry_type=industry['industry_type'],
+        #                                      type=industry['type'])[0]
+        #       for industry in list_of_categories]
+        # )
         website.save()
         return website

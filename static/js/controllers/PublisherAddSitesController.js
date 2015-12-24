@@ -12,13 +12,13 @@ function PublisherAddSitesController(Website, $log, $state, Upload) {
     vm.website = new Website();
 
 
-    function addWebsite() {
+    function addWebsite(next_page) {
 
         Upload.upload({
             url: '/api/publisher/website/',
             data: vm.website
         }).then(function (resp) {
-            $state.go('publisher.sites');
+            $state.go(next_page);
         }, function (err) {
             console.log('Error status: '+ err);
         }, function (evt) {

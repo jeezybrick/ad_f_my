@@ -6,13 +6,11 @@
                 </em>
             </h3>
 
-            [[ vm.website.industry.originalObject ]]
-
             <div class="col-lg-7 col-md-7 col-sm-9 col-xs-12">
                 <form id="add-website-form" method="post" action="." enctype="multipart/form-data">
 
                     <fieldset>
-
+                    [[ vm.website.industry ]]
                         <div style="position:relative; left:-55px;">
                             <!-- Text input-->
                             <div class="control-group">
@@ -37,7 +35,7 @@
 
                                 <div class="controls">
 
-                                    <angucomplete-alt id="categories"
+                                    <input angucomplete-alt ng-model="vm.website.industry" id="categories"
                                                       placeholder="Examples: Parenting, Travel, Moms, Gaming, etc."
                                                       pause="100"
                                                       selected-object="vm.website.industry"
@@ -46,7 +44,8 @@
                                                       image-field="profilePic"
                                                       minlength="3"
                                                       input-class="form-control form-control-small"
-                                                      match-class="highlight"/>
+                                                      match-class="highlight"
+                                                      class="form-control"/>
 
                                 </div>
                             </div>
@@ -108,7 +107,7 @@
                                 <label class="control-label" for="add"></label>
 
                                 <div class="controls">
-                                    <button type="button" id="add" name="add" class="form-button" ng-click="vm.addWebsite()">COMPLETE SETUP</button>
+                                    <button type="button" id="add" name="add" class="form-button" ng-click="vm.addWebsite('publisher.getcode')">COMPLETE SETUP</button>
                                 </div>
                             </div>
                         </div>

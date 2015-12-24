@@ -18,7 +18,7 @@ from sponsor.models import Industry, Sponsor, SponsorType
 
 class CurrentPublisherDetail(generics.RetrieveUpdateAPIView):
     serializer_class = serializers.PublisherSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.IsAuthenticated, )
 
     def get_object(self):
         try:
@@ -26,6 +26,9 @@ class CurrentPublisherDetail(generics.RetrieveUpdateAPIView):
         except ObjectDoesNotExist:
              raise ser.ValidationError(_("You're not a publisher!"))
         return publisher
+
+    def get_queryset(self):
+        pass
 
 
 class CategoryList(APIView):
@@ -60,6 +63,37 @@ class PublisherWebsiteList(generics.GenericAPIView):
     permission_classes = (permissions.IsAuthenticated,)
 
     def get(self, request):
+        '''
+        import csv
+        from sponsor.models import Sponsor, SponsorType
+        from core.models import Country
+        rest = SponsorType.objects.get(type='Restaurants')
+        retail = SponsorType.objects.get(type='Retailers')
+        brands = SponsorType.objects.get(type='CPG Brands')
+        usa = Country.objects.get(name='USA')
+        canada = Country.objects.get(name='Canada')
+        with open('Sponsors List (USA).csv', 'rb') as csvfile:
+            spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+            for row in spamreader:
+                print(row)
+                sponsor = Sponsor(name=row[0], type=rest, country=usa)
+                sponsor.save()
+                sponsor = Sponsor(name=row[1], type=retail, country=usa)
+                sponsor.save()
+                sponsor = Sponsor(name=row[2], type=brands, country=usa)
+                sponsor.save()
+
+        with open('Sponsors List (Canada).csv', 'rb') as csvfile:
+            spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
+            for row in spamreader:
+                print(row)
+                sponsor = Sponsor(name=row[0], type=rest, country=canada)
+                sponsor.save()
+                sponsor = Sponsor(name=row[1], type=retail, country=canada)
+                sponsor.save()
+                sponsor = Sponsor(name=row[2], type=brands, country=canada)
+                sponsor.save()
+        '''
         queryset = self.get_queryset()
 
         serializer = serializers.PublisherWebsiteSerializer(queryset, many=True, context={'request': request})
