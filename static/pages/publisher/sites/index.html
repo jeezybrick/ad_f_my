@@ -20,7 +20,7 @@
 
 <div class="container-fluid">
     <div class="table-responsive">
-        <table class="table table-striped table-hover" ng-show="vm.websitesLoad">
+        <table class="sites-list-table table table-striped table-hover" ng-show="vm.websitesLoad">
             <tr>
                 <td>SI. No</td>
                 <td>Website Logo</td>
@@ -30,7 +30,7 @@
                 <td>Status</td>
                 <td>Manage</td>
             </tr>
-            <tr ng-repeat="website in vm.website.results">
+            <tr class="repeat-sites" ng-repeat="website in vm.website.results">
                 <td>[[ website.id ]]</td>
                 <td><img ng-show="website.website_logo.length" ng-src="[[ website.website_logo ]]" width="128"
                          height="100">

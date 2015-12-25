@@ -732,3 +732,14 @@ md-toast.md-error-toast-theme {
   cursor: not-allowed;
   background-color: #fff;
   border-color: #ddd; }
+
+/* ng-animate */
+.repeat-sites.ng-enter {
+  -webkit-animation: fadeInUp 0.5s;
+          animation: fadeInUp 0.5s; }
+
+/*
+.repeat-sites.ng-leave {
+    animation: fadeOutUpDown 0.5s;
+}
+*/
