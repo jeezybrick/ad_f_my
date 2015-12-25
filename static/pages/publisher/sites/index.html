@@ -1,14 +1,17 @@
-
 <div class="container-fluid" ng-show="vm.websitesLoad">
     <div layout="row" layout-align="space-between center">
         <h2>Websites:</h2>
 
-        <h3><ng-md-icon ui-sref="publisher.addsite-after" icon="add" style="cursor: pointer"></ng-md-icon> Add more sites</h3>
+        <h3>
+            <ng-md-icon ui-sref="publisher.addsite-after" icon="add" style="cursor: pointer"></ng-md-icon>
+            Add more sites
+        </h3>
     </div>
 </div>
 
 <div layout="row" layout-align="center center" flex="auto" ng-hide="vm.websitesLoad || vm.websitesLoadError">
-    <md-progress-circular class="login-progress-circular md-accent md-hue-2" md-mode="indeterminate" md-diameter="80"></md-progress-circular>
+    <md-progress-circular class="login-progress-circular md-accent md-hue-2" md-mode="indeterminate"
+                          md-diameter="80"></md-progress-circular>
 </div>
 
 <div layout="row" layout-align="center center" flex="auto" ng-show="vm.websitesLoadError">
@@ -18,39 +21,62 @@
 <div class="container-fluid">
     <div class="table-responsive">
         <table class="table table-striped table-hover" ng-show="vm.websitesLoad">
-        <tr>
-            <td>SI. No</td>
-            <td>Website Logo</td>
-            <td>Name</td>
-            <td>URL</td>
-            <td>Industry</td>
-            <td>Status</td>
-            <td>Manage</td>
-        </tr>
-        <tr ng-repeat="website in vm.website">
-            <td>[[ website.id ]]</td>
-            <td><img ng-show="website.website_logo.length" ng-src="[[ website.website_logo ]]" width="128" height="100">
-                <h5 ng-hide="website.website_logo.length">No logo</h5></td>
-            <td>[[ website.website_name ]]</td>
-            <td>[[ website.website_domain ]]</td>
-            <td><h5 ng-repeat="industry in website.industry">[[industry.industry_type]]</h5>
+            <tr>
+                <td>SI. No</td>
+                <td>Website Logo</td>
+                <td>Name</td>
+                <td>URL</td>
+                <td>Industry</td>
+                <td>Status</td>
+                <td>Manage</td>
+            </tr>
+            <tr ng-repeat="website in vm.website.results">
+                <td>[[ website.id ]]</td>
+                <td><img ng-show="website.website_logo.length" ng-src="[[ website.website_logo ]]" width="128"
+                         height="100">
+                    <h5 ng-hide="website.website_logo.length">No logo</h5></td>
+                <td>[[ website.website_name ]]</td>
+                <td>[[ website.website_domain ]]</td>
+                <td><h5 ng-repeat="industry in website.industry">[[industry.industry_type]]</h5>
 
-                <h3 ng-hide="website.industry.length" style="margin-top: 0">-----</h3></td>
-            <td><h5>
-                <span ng-show="website.is_verified">Verified</span>
-                <span ng-hide="website.is_verified">Javascript Tag Not Found</span>
-            </h5></td>
-            <td>
-                <ng-md-icon id="edit-site-icon" ui-sref="publisher.editsites({ id:website.id})"
-                            icon="edit"></ng-md-icon>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="7" ng-hide="vm.website.length">
-                <center>No websites added</center>
-            </td>
-        </tr>
+                    <h3 ng-hide="website.industry.length" style="margin-top: 0">-----</h3></td>
+                <td><h5>
+                    <span ng-show="website.is_verified">Verified</span>
+                    <span ng-hide="website.is_verified">Javascript Tag Not Found</span>
+                </h5></td>
+                <td>
+                    <ng-md-icon id="edit-site-icon" ui-sref="publisher.editsites({ id:website.id})"
+                                icon="edit"></ng-md-icon>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7" ng-hide="vm.website.results.length">
+                    <center>No websites added</center>
+                </td>
+            </tr>
 
-    </table>
+        </table>
+
+        <!-- pagination -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-if="vm.website.previous || vm.website.next">
+            <nav>
+                <ul class="pager">
+
+                    <!-- disabled if item list has no previous page -->
+                    <li>
+                        <button ng-click="vm.pagination(vm.website.previous)"
+                                ng-class="{disabled:vm.isWebsitesNotPrevious(vm.website)}">Previous
+                        </button>
+                    </li>
+
+                    <!-- disabled if item list has no next page -->
+                    <li>
+                        <button ng-click="vm.pagination(vm.website.next)"
+                                ng-class="{disabled:vm.isWebsitesNotNext(vm.website)}">Next
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
 </div>

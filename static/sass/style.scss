@@ -917,3 +917,19 @@ md-toast.md-error-toast-theme {
     margin: 0 5px;
   }
 }
+
+.pager li > button {
+    display: inline-block;
+    padding: 5px 14px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    color: #337ab7;
+}
+
+.pager li > button[class~="disabled"] {
+    color: #777;
+    cursor: not-allowed;
+    background-color: #fff;
+    border-color: #ddd;
+}

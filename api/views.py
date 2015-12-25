@@ -4,6 +4,7 @@ from django.http import Http404
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from django.utils.translation import ugettext_lazy as _
 from rest_framework import generics, status, permissions, serializers as ser
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.parsers import FileUploadParser, MultiPartParser
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -14,6 +15,18 @@ from publisher.models import Publisher, Website
 
 # Publisher detail
 from sponsor.models import Industry, Sponsor, SponsorType
+
+
+# Standard Pagination class
+class StandardResultsSetPagination(PageNumberPagination):
+    page_size = 9
+    page_size_query_param = 'page_size'
+    max_page_size = 1
+
+
+# Comments pagination
+class SitesIndexPagination(StandardResultsSetPagination):
+    page_size = 4
 
 
 class CurrentPublisherDetail(generics.RetrieveUpdateAPIView):
@@ -59,11 +72,17 @@ class AdvertisersList(APIView):
 
 class PublisherWebsiteList(generics.GenericAPIView):
 
+    pagination_class = SitesIndexPagination
     serializer_class = serializers.PublisherWebsiteSerializer
     permission_classes = (permissions.IsAuthenticated,)
 
     def get(self, request):
         queryset = self.get_queryset()
+
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
 
         serializer = serializers.PublisherWebsiteSerializer(queryset, many=True, context={'request': request})
         return Response(serializer.data)

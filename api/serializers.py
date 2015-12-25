@@ -95,7 +95,6 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
         website = Website.objects.create(**validated_data)
         website.publishers.add(publisher)
         if list_of_categories:
-            print(list_of_categories)
             website.industry.add(
                 *[Industry.objects.get_or_create(industry_type=industry['industry_type'],
                                                  type=industry['type'])[0]

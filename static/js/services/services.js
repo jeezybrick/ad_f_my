@@ -25,7 +25,7 @@ angular.module('myApp.services', ['ngResource'])
                 },
 
                 'query': {
-                    method: 'GET', isArray: true
+                    method: 'GET', isArray: false
                 },
 
                 save: {
