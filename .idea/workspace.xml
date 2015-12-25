@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3a74529-4ec4-43eb-9915-d2e4a17215ce" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/controllers/PublisherAddSitesController.js" afterPath="$PROJECT_DIR$/static/js/controllers/PublisherAddSitesController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/pages/publisher/sites/add.html" afterPath="$PROJECT_DIR$/static/pages/publisher/sites/add.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ad_f.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,18 +38,8 @@
       <file leaf-file-name="add.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/pages/publisher/sites/add.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9035088">
-              <caret line="120" column="10" selection-start-line="120" selection-start-column="10" selection-end-line="120" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add_after.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/pages/publisher/sites/add_after.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.444445">
-              <caret line="51" column="45" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.9368421">
+              <caret line="70" column="74" selection-start-line="70" selection-start-column="54" selection-end-line="70" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -57,7 +49,7 @@
         <entry file="file://$PROJECT_DIR$/static/js/controllers/PublisherAddSitesController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -81,7 +73,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/static/pages/publisher/login.html" />
         <option value="$PROJECT_DIR$/static/pages/publisher/sites/get_code.html" />
         <option value="$PROJECT_DIR$/publisher/views.py" />
         <option value="$PROJECT_DIR$/templates/publisher/advertisers.html" />
@@ -121,7 +112,6 @@
         <option value="$PROJECT_DIR$/api/utils.py" />
         <option value="$PROJECT_DIR$/api/permissions.py" />
         <option value="$PROJECT_DIR$/static/pages/publisher/sites/add_after.html" />
-        <option value="$PROJECT_DIR$/static/js/controllers/PublisherAddSitesController.js" />
         <option value="$PROJECT_DIR$/sponsor/migrations/0012_auto_20151224_0825.py" />
         <option value="$PROJECT_DIR$/static/sass/media.scss" />
         <option value="$PROJECT_DIR$/templates/partials/nav_material.html" />
@@ -131,6 +121,8 @@
         <option value="$PROJECT_DIR$/api/views.py" />
         <option value="$PROJECT_DIR$/api/serializers.py" />
         <option value="$PROJECT_DIR$/static/pages/publisher/advertisers.html" />
+        <option value="$PROJECT_DIR$/static/js/angucomplete-alt.min.js" />
+        <option value="$PROJECT_DIR$/static/js/controllers/PublisherAddSitesController.js" />
         <option value="$PROJECT_DIR$/static/pages/publisher/sites/add.html" />
       </list>
     </option>
@@ -355,6 +347,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ad_f" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ad_f" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -783,16 +797,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3384956">
-          <caret line="186" column="0" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.virtualenvs/ad_f/local/lib/python2.7/site-packages/rest_framework/response.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29867256">
@@ -1104,7 +1108,7 @@
         <state vertical-scroll-proportion="-0.20603015">
           <caret line="28" column="28" selection-start-line="28" selection-start-column="28" selection-end-line="28" selection-end-column="28" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1143,14 +1147,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/apps/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="44" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/controllers/PublisherSitesController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1183,14 +1179,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/controllers/PublisherAddSitesController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/pages/publisher/sites/add_after.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.444445">
@@ -1199,10 +1187,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/apps/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.5979899">
+          <caret line="53" column="44" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/angucomplete-alt.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.030150754">
+          <caret line="1" column="2539" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="10695" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/controllers/PublisherAddSitesController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/pages/publisher/sites/add.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9035088">
-          <caret line="120" column="10" selection-start-line="120" selection-start-column="10" selection-end-line="120" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.9368421">
+          <caret line="70" column="74" selection-start-line="70" selection-start-column="54" selection-end-line="70" selection-end-column="74" />
           <folding />
         </state>
       </provider>
