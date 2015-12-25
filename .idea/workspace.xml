@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3a74529-4ec4-43eb-9915-d2e4a17215ce" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/controllers/PublisherSitesController.js" afterPath="$PROJECT_DIR$/static/js/controllers/PublisherSitesController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/pages/publisher/sites/index.html" afterPath="$PROJECT_DIR$/static/pages/publisher/sites/index.html" />
     </list>
     <ignored path="ad_f.iws" />
@@ -37,8 +36,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/pages/publisher/sites/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7894737">
-              <caret line="50" column="17" selection-start-line="50" selection-start-column="17" selection-end-line="50" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.44210526">
+              <caret line="39" column="63" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -776,7 +775,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3" y="0" width="1926" height="1051" extended-state="7" />
+    <frame x="-3" y="0" width="1926" height="1051" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32975295" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1232,8 +1231,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/pages/publisher/sites/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7894737">
-          <caret line="50" column="17" selection-start-line="50" selection-start-column="17" selection-end-line="50" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.44210526">
+          <caret line="39" column="63" selection-start-line="39" selection-start-column="63" selection-end-line="39" selection-end-column="63" />
           <folding />
         </state>
       </provider>
