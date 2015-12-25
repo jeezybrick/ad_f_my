@@ -9,6 +9,7 @@ function PublisherSitesController(Website, $log, $state, $http) {
     vm.pagination = pagination;
     vm.isWebsitesNotPrevious = isWebsitesNotPrevious;
     vm.isWebsitesNotNext = isWebsitesNotNext;
+    vm.filterByDefaultCategory = filterByDefaultCategory;
 
     vm.publisher = {};
     vm.website = {};
@@ -45,6 +46,11 @@ function PublisherSitesController(Website, $log, $state, $http) {
 
     function isWebsitesNotNext(websites) {
         return !websites.next;
+    }
+
+    function filterByDefaultCategory(category) {
+
+        return category
     }
 
 
