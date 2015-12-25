@@ -83,18 +83,19 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
         return industry
 
     def create(self, validated_data):
-
         # Get current publisher
         user = self.context['request'].user
         try:
             publisher = Publisher.objects.get(id=user.id)
         except ObjectDoesNotExist:
             raise serializers.ValidationError(_("You're not a publisher!"))
-        list_of_categories = validated_data.pop('industry', None)
+        # list_of_categories = validated_data.pop('industry', None)
+        list_of_categories = self.context['request'].data.pop('industry', None)
 
         website = Website.objects.create(**validated_data)
         website.publishers.add(publisher)
         if list_of_categories:
+            print(list_of_categories)
             website.industry.add(
                 *[Industry.objects.get_or_create(industry_type=industry['industry_type'],
                                                  type=industry['type'])[0]
