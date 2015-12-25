@@ -1,47 +1,52 @@
 <div class="main-content advertisers-wrapper" ng-cloak>
 
     <div class="container">
-            <div class="row">
-                <div class="advertisers-header col-lg-10 col-md-10 col-sm-12 col-xs-12">
-                    <h2>
-                        <em>Here are some brands that you can earn income with. Choose the ones you want to
-                            allow to advertise on your website in the form of a sponsorship:</em>
-                    </h2>
-                </div>
+        <div class="row">
+            <div class="advertisers-header col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                <h2>
+                    <em>Here are some brands that you can earn income with. Choose the ones you want to
+                        allow to advertise on your website in the form of a sponsorship:</em>
+                </h2>
             </div>
-            <div class="row">
-                <div class="advertisers-content col-lg-7 col-md-7 col-sm-12 col-xs-12" >
+        </div>
+        <div layout="row" layout-align="center center" flex="auto"
+             ng-hide="vm.isSponsorsLoad">
+            <md-progress-circular class="login-progress-circular md-accent md-hue-2" md-mode="indeterminate"
+                                  md-diameter="80"></md-progress-circular>
+        </div>
+        <div class="row">
+            <div class="advertisers-content col-lg-7 col-md-7 col-sm-12 col-xs-12" ng-show="vm.isSponsorsLoad">
 
-                        <div class="row">
+                <div class="row">
 
-                            <div class="col-lg-4 col-md-6 col-sm-4 col-xs-4" ng-repeat="sponsor in vm.sponsors_type">
-                                <h2><em>[[ sponsor.type ]]</em></h2>
+                    <div class="col-lg-4 col-md-6 col-sm-4 col-xs-4" ng-repeat="sponsor in vm.sponsors_type">
+                        <h2><em>[[ sponsor.type ]]</em></h2>
 
 
-                                <div class="checkbox" ng-repeat="sponsor in sponsor.sponsor_set">
-                                    <md-checkbox ng-checked="exists(sponsor, selected)" ng-click="toggle(sponsor, selected)">
-                                        [[ sponsor.name ]]
-                                    </md-checkbox>
-
-                                </div>
-
-                            </div>
+                        <div class="checkbox" ng-repeat="sponsor in sponsor.sponsor_set">
+                            <md-checkbox ng-checked="exists(sponsor, selected)" ng-click="toggle(sponsor, selected)">
+                                [[ sponsor.name ]]
+                            </md-checkbox>
 
                         </div>
 
-
-                        <button class="form-button" type="submit" ng-click="vm.addSponsors()">
-                            NEXT
-                        </button>
+                    </div>
 
                 </div>
 
-                <div class="sponsor-network-text col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                    <h2><em>Our sponsor network is growing every day.</em></h2>
 
-                    <h2><em>Stay tuned, you’ll be able to target more sponsors soon!</em></h2>
-                </div>
+                <button class="form-button" type="submit" ng-click="vm.addSponsors()">
+                    NEXT
+                </button>
+
+            </div>
+
+            <div class="sponsor-network-text col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                <h2><em>Our sponsor network is growing every day.</em></h2>
+
+                <h2><em>Stay tuned, you’ll be able to target more sponsors soon!</em></h2>
             </div>
         </div>
+    </div>
 
 </div>
