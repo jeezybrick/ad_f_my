@@ -129,7 +129,9 @@
   .advertisers-header h2, .get-code-header h2 {
     font-size: 1.8em; }
   .join-network-wrapper {
-    width: 95%; } }
+    width: 95%; }
+  .nav-logo {
+    margin-right: 0; } }
 
 /* Landscape phones and portrait tablets */
 @media (max-width: 767px) {
@@ -188,7 +190,9 @@
     margin-top: 10px;
     text-align: center; }
   .section-join-network .form-block {
-    height: 80%; } }
+    height: 80%; }
+  .nav-logo {
+    margin-right: 0; } }
 
 /* Portrait phones and smaller */
 @media (max-width: 480px) {
