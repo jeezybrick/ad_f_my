@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3a74529-4ec4-43eb-9915-d2e4a17215ce" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/serializers.py" afterPath="$PROJECT_DIR$/api/serializers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/views.py" afterPath="$PROJECT_DIR$/api/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/pages/publisher/advertisers.html" afterPath="$PROJECT_DIR$/static/pages/publisher/advertisers.html" />
     </list>
     <ignored path="ad_f.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,23 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/api/views.py">
+      <file leaf-file-name="advertisers.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/pages/publisher/advertisers.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.75376886">
-              <caret line="109" column="14" selection-start-line="109" selection-start-column="14" selection-end-line="109" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#30#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="serializers.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/serializers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="107" column="22" selection-start-line="107" selection-start-column="22" selection-end-line="107" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.85263157">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -114,7 +101,6 @@
         <option value="$PROJECT_DIR$/sponsor/admin.py" />
         <option value="$PROJECT_DIR$/sponsor/models.py" />
         <option value="$PROJECT_DIR$/sponsor/migrations/0015_auto_20151225_0137.py" />
-        <option value="$PROJECT_DIR$/static/pages/publisher/advertisers.html" />
         <option value="$PROJECT_DIR$/static/js/angucomplete-alt.min.js" />
         <option value="$PROJECT_DIR$/static/js/controllers/PublisherAddSitesController.js" />
         <option value="$PROJECT_DIR$/static/pages/publisher/sites/add.html" />
@@ -125,6 +111,7 @@
         <option value="$PROJECT_DIR$/static/sass/style.scss" />
         <option value="$PROJECT_DIR$/api/views.py" />
         <option value="$PROJECT_DIR$/api/serializers.py" />
+        <option value="$PROJECT_DIR$/static/pages/publisher/advertisers.html" />
       </list>
     </option>
   </component>
@@ -1090,14 +1077,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/pages/publisher/advertisers.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28421053">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/pages/publisher/sites/add_after.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.444445">
@@ -1224,7 +1203,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.8190955">
           <caret line="107" column="22" selection-start-line="107" selection-start-column="22" selection-end-line="107" selection-end-column="22" />
           <folding />
         </state>
@@ -1237,6 +1216,14 @@
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/pages/publisher/advertisers.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.85263157">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
