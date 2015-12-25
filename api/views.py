@@ -90,16 +90,25 @@ class PublisherWebsiteList(generics.GenericAPIView):
     def post(self, request):
         default_category = request.data.get('industry_default[originalObject]', None)
         sub_category = request.data.get('industry_sub[originalObject]', None)
-        if default_category:
-            request.data['industry'] = {
+        if default_category and sub_category:
+            request.data['industry'] = [{
                 'industry_type': default_category,
                 'type': 'default',
-            }
-        if sub_category:
-            request.data['industry'] = {
+            }, {
+               'industry_type': sub_category,
+                'type': 'sub',
+            }]
+        elif sub_category:
+            request.data['industry'] = [{
                 'industry_type': sub_category,
                 'type': 'sub',
-            }
+            }]
+        else:
+            request.data['industry'] = [{
+                'industry_type': default_category,
+                'type': 'default',
+            }]
+
         serializer = serializers.PublisherWebsiteSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
