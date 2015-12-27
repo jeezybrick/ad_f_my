@@ -603,7 +603,8 @@ nav ul, nav ol {
     -webkit-border-radius: 5px;
             border-radius: 5px;
     border: 1px solid gray;
-    width: 35%; }
+    width: 45%;
+    padding: 10px; }
   .get-code-content .form-button {
     width: 300px; }
 

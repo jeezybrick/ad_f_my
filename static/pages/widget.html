@@ -1,0 +1,90 @@
+<div class="modal-dialog adf-widgetdialog">
+        	<div class="modal-content adf-modalbox">
+
+        		<!-- activate .adf-blackbox when on hover -->
+        		<div class="adf-blackbox"></div>
+        		<div class="adf-top"></div>
+        		<div class="modal-header adf-header">
+
+        			<div class="adf-logos">
+			        <!-- replace link & add to .adf-hostlogo { background:url('NewImage.png') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;} -->
+						<a href="#http://www.adfits.com" title="The Host">
+							<div class="adf-hostlogo"></div>
+						</a>
+						<h4>&amp;</h4>
+					<!-- replace link & add to .adf-sponsorlogo { background:url('NewImage.png') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;} -->
+						<a href="#http://www.boosterjuice.com" title="Visit Sponsor's Website">
+							<div class="adf-sponsorlogo"></div>
+						</a>
+					</div>
+
+			        <div class="adf-progress">
+			        <!-- add .received for acquired days, add .active for current day-->
+			        	<div class="adf-day1 received"></div>
+			        	<div class="adf-day2 received"></div>
+			        	<div class="adf-day3 active"></div>
+			        	<div class="adf-day4"></div>
+			        	<div class="adf-day5"></div>
+					</div>
+					<div class="adf-mboxwrapper">
+			  			<div class="mbox-arrow"></div>
+			  			<div class="adf-mbox"><div class="collect"><h5>Collect</br>your new</br><b>Dollar</b></h5></div>
+			  			<div class="mbox-total adf-bcolor"><h4><span>$</span>3</h4></div>
+			  		</div>
+			  	</div>
+			</div>
+
+			<!-- add to .adf-mainback { background:url('NewImage.png') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;} -->
+			<div class="modal-body adf-mainback">
+				<div class="adf-piccover">
+
+					<div class="adf-main">
+					<!-- display .main1 on initial-->
+						<div class="main1">
+				  			<h3>$2500</h3><p class="inblock"><b>&nbsp  to Give Away</b></p>
+				  			<p><b>Earn $1</b> for every consecutive daily visit of Ad Fits!
+			            	</p>
+						</div>
+
+						<div class="main2">
+				  			<p>Keep adding money to your gift card by visiting <b>Fast Company</b> every day for the next <b>4 days</b>!
+			            	</p>
+						</div>
+
+						<div class="main3">
+				  			<h3>4 days left</h3>
+				  			<p>to Redeem you Reward</p>
+				  			 <h5>Send me a daily reminder</h5>
+				  			<div class="form-group">
+					  			<div class="input-group input-group">
+
+						            <input class="form-control input-sm" id="adf-reminderemail" type="text" placeholder="Email">
+						            <span class="input-group-btn">
+						            	<button class="btn btn-default" type="button"><span class="fui-arrow-right pull-right"></span></button>
+									</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="main4">
+				  			<h1><span>$</span>1</h1>
+						</div>
+
+						<div class="main5">
+				  			<h3>COMPLETED</h3>
+				  			<p>Well Done!</p>
+				  			<a id="btn-redeem" href="#" class="btn btn-block btn-embossed btn-primary">Redeem $5</a>
+				  		</div>
+					</div><!-- .adf-main-->
+
+				</div>
+			</div>
+
+        </div><!-- .adf-modalbox-->
+    	<div class="adf-footer">
+          <a class="adf-footerlink" href="{% url 'home' %}" title="Visit AdFits" target="_blank"></a>
+          <div class="adf-footerinfo">
+	          <h6><bold class="adf-color">500</bold> cards left <a href="{% url 'faq' %}" title="More Info"> ?</a></h6>
+        </div>
+    	</div>
+      </div>

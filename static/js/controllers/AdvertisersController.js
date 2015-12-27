@@ -2,7 +2,7 @@ angular
     .module('myApp')
     .controller('AdvertisersController', AdvertisersController);
 
-function AdvertisersController($scope, $state, $location, Sponsor, Publisher, $log) {
+function AdvertisersController($scope, $state, $location, Sponsor, Publisher, $log, $http) {
     var vm = this;
     vm.addSponsors = addSponsors;
     vm.clear = clear;
@@ -13,8 +13,18 @@ function AdvertisersController($scope, $state, $location, Sponsor, Publisher, $l
     vm.sponsors_type = {};
     vm.publisher = {};
     vm.selected = [];
+    vm.page = '/static/pages/widget.html';
 
     $scope.selected = [];
+
+     var myEl = angular.element(document.querySelector('#ad-adfits'));
+
+    $http.get(vm.page).success(function (data) {
+
+        myEl.html(data);
+
+    });
+
 
     vm.sponsors_type = Sponsor.query(function (response) {
 
