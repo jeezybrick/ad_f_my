@@ -1,5 +1,5 @@
 from django.contrib.auth import login, authenticate
-from django.views.generic import  FormView
+from django.views.generic import FormView
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.contrib import messages
@@ -33,7 +33,8 @@ class JoinNetworkView(FormView):
 
     def form_valid(self, form):
         form.save()
-        # utils.send_email_with_form_data_join(request.POST)
+        form.send_email()
+
         email = form.cleaned_data['email']
         password = form.cleaned_data['password1']
         user = authenticate(email=email, password=password)
@@ -41,5 +42,5 @@ class JoinNetworkView(FormView):
         if user is not None:
             login(self.request, user)
             return HttpResponseRedirect(self.get_success_url())
-        messages.error(self.request, "Wrong username and Password combination.")
+       #  messages.error(self.request, "Wrong username and Password combination.")
         return super(JoinNetworkView, self).form_valid(form)

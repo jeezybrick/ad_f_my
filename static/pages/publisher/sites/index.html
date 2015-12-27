@@ -37,9 +37,13 @@
                     <h5 ng-hide="website.website_logo.length">No logo</h5></td>
                 <td>[[ website.website_name ]]</td>
                 <td>[[ website.website_domain ]]</td>
-                <td><h5 ng-repeat="industry in website.industry">[[industry.industry_type]]</h5>
+                <td>
+                    <h5 ng-repeat="industry in website.industry" ng-hide="industry.type === 'sub'">
+                    [[industry.industry_type]]
+                    </h5>
 
-                    <h3 ng-hide="website.industry.length" style="margin-top: 0">-----</h3></td>
+                    <h3 ng-hide="website.industry.length" style="margin-top: 0">-----</h3>
+                </td>
                 <td><h5>
                     <span ng-show="website.is_verified">Verified</span>
                     <span ng-hide="website.is_verified">Javascript Tag Not Found</span>

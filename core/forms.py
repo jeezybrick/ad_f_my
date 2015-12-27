@@ -3,6 +3,8 @@ from django.contrib.auth.hashers import make_password
 from django.core import validators
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser
+from django.conf import settings
+from django.core.mail import send_mail
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Field
 from core.models import Country
@@ -87,7 +89,8 @@ class JoinNetworkForm(forms.ModelForm):
                                                                       'Invalid phone format!',
                                                                       'invalid'), ])
 
-    accept = forms.BooleanField(label='', required=True, help_text="I accept the Terms & Conditions and Privacy Policy.")
+    accept = forms.BooleanField(label='', required=True,
+                                help_text="I accept the Terms & Conditions and Privacy Policy.")
     # country = forms.ChoiceField(choices=(('USA', 'USA'), ('Canada', 'Canada'), ), label='', help_text="<hr>")
 
     password1 = forms.CharField(label='', min_length=8,
@@ -161,7 +164,7 @@ class JoinNetworkForm(forms.ModelForm):
 
     class Meta:
         model = Publisher
-        fields = ("name", "email", "country", 'telephone', )
+        fields = ("name", "email", "country", 'telephone',)
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -182,12 +185,27 @@ class JoinNetworkForm(forms.ModelForm):
             user.save()
         return user
 
+    def send_email(self):
+        email_to = ['ali@adfits.com', 'info@adfits.com']
+        email_from = settings.EMAIL_HOST_USER
+        subject = 'A NEW PUBLISHER HAS JOINED'
+
+        message = 'Publisher Name: {}\n ' \
+                  'Phone:{}\n ' \
+                  'Country:{}\n ' \
+                  'Email:{}\n\n '.format(
+            self.cleaned_data.get('name'),
+            self.cleaned_data.get('telephone'),
+            self.cleaned_data.get('country'),
+            self.cleaned_data.get('email'),
+        )
+        # send_mail(subject, message, email_from, email_to, fail_silently=False)
+
 
 class PublisherProfileForm(forms.ModelForm):
-
     class Meta:
         model = Publisher
-        fields = ("name", "email", )
+        fields = ("name", "email",)
         widgets = {
 
         }
