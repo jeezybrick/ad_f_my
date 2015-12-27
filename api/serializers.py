@@ -1,5 +1,6 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import ugettext_lazy as _
+from django.db.models import Avg, Max, Min, Count, Sum
 from rest_framework import serializers
 from core.models import Country
 from publisher.models import Publisher, Website
@@ -25,13 +26,19 @@ class PublisherSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(read_only=True, required=False)
     sponsor = SponsorSerializer(many=True, required=False, read_only=False)
     count_of_added_websites = serializers.SerializerMethodField(read_only=True)
+    total_avg_monthly_pageviews = serializers.SerializerMethodField(read_only=True)
 
     def get_count_of_added_websites(self, obj):
         return obj.website.all().count()
 
+    def get_total_avg_monthly_pageviews(self, obj):
+        return obj.website.all().aggregate(Sum('avg_page_views'))
+        # return obj.website.annotate(num_books=Count('book'))
+
     class Meta:
         model = Publisher
-        fields = ('id', 'name', 'telephone', 'address', 'country', 'email', 'sponsor', 'count_of_added_websites',)
+        fields = ('id', 'name', 'telephone', 'address', 'country', 'email', 'sponsor', 'count_of_added_websites',
+                  'total_avg_monthly_pageviews', )
 
     def update(self, instance, validated_data):
         sponsors = validated_data.get('sponsor', instance.sponsor)
