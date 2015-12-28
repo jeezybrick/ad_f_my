@@ -35,6 +35,7 @@
 
                 <h4 class="fields-inline">Address:
                     <small>[[ vm.publisher.address ]]</small>
+                    <small ng-hide="vm.publisher.address.length">----</small>
                 </h4>
                 <br>
 
@@ -52,6 +53,12 @@
                     <small>[[ vm.publisher.count_of_added_websites ]]</small>
                 </h4>
                 <br>
+
+                <h4 class="fields-inline">Total Avg. Monthly Pageviews:
+                    <small>[[ vm.publisher.total_avg_monthly_pageviews ]]</small>
+                </h4>
+                <br>
+
                 <hr>
 
                 <button class="form-button" ng-click="vm.updateProfile()">

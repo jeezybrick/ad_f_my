@@ -29,11 +29,10 @@ class PublisherSerializer(serializers.ModelSerializer):
     total_avg_monthly_pageviews = serializers.SerializerMethodField(read_only=True)
 
     def get_count_of_added_websites(self, obj):
-        return obj.website.all().count()
+        return obj.websites.all().count()
 
     def get_total_avg_monthly_pageviews(self, obj):
-        return obj.website.all().aggregate(Sum('avg_page_views'))
-        # return obj.website.annotate(num_books=Count('book'))
+        return obj.websites.all().aggregate(Sum('avg_page_views')).get('avg_page_views__sum', False)
 
     class Meta:
         model = Publisher
