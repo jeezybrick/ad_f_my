@@ -41,9 +41,12 @@ class PublisherSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         sponsors = validated_data.get('sponsor', instance.sponsor)
+        instance.name = validated_data.get('name', instance.name)
+        instance.telephone = validated_data.get('telephone', instance.telephone)
         for sponsor in sponsors:
             instance.sponsor.add(Sponsor.objects.get(id=sponsor.get('id')))
             instance.save()
+        instance.save()
         return instance
 
 
