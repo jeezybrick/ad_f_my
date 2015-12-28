@@ -14,6 +14,7 @@ function AdvertisersController($scope, $state, $location, Sponsor, Publisher, $l
     vm.publisher = {};
     vm.selected = [];
     vm.page = '/static/pages/widget.html';
+    vm.addSponsorsProcess = false;
 
     $scope.selected = [];
 
@@ -36,6 +37,7 @@ function AdvertisersController($scope, $state, $location, Sponsor, Publisher, $l
 
 
     function addSponsors() {
+        vm.addSponsorsProcess = true;
 
         vm.publisher = new Publisher();
         vm.publisher.sponsor = $scope.selected;

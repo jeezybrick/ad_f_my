@@ -345,6 +345,11 @@ header.header-is-scrolled .logo-container a {
           border-radius: 10px;
   border: none;
   font-weight: 300; }
+  .jump-to-form-button[class~="disabled"], .form-button[class~="disabled"] {
+    color: #777;
+    cursor: not-allowed;
+    background-color: #fff;
+    border-color: #ddd; }
 
 .experience-button {
   display: inline-block;
