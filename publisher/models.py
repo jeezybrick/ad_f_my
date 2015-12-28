@@ -35,28 +35,6 @@ def get_website_logo_path(instance, filename):
     return os.path.join('campaign/website_logo/%s/%s') % (token, filename)
 
 
-class Website(models.Model):
-    """
-    This model is used to assign websites types to publisher
-    """
-
-    website_name = models.CharField(_("Website Name"), max_length=100)
-    website_domain = models.URLField(_("Website Domain"), max_length=100)
-    website_logo = models.ImageField(_("Upload Logo"), upload_to=get_website_logo_path, blank=True)
-    token = models.CharField(max_length=100, null=True, blank=True)
-    industry = models.ManyToManyField(Industry, blank=True)
-    twitter_name = models.CharField(max_length=100, null=True, blank=True)
-    facebook_page = models.CharField(max_length=100, null=True, blank=True)
-    avg_page_views = models.PositiveIntegerField(blank=True, null=True)
-    is_verified = models.BooleanField(default=False)
-
-    class Meta:
-        app_label = 'publisher'
-        db_table = 'publisher_website'
-
-    def __unicode__(self):
-        return self.website_name
-
 
 IS_COMPLETED_DEFAULT = 'advertisers'
 IS_COMPLETED_ADD_WEBSITE = 'add_website'
@@ -80,7 +58,7 @@ class Publisher(MyUser):
     industry = models.ForeignKey(Industry, null=True, blank=True)
     logo = models.ImageField(_("Upload Logo"), upload_to='', blank=True)
     notes = models.TextField(_("Note"), blank=True)
-    website = models.ManyToManyField(Website, related_name='publishers', blank=True)
+    # website = models.ForeignKey(Website, related_name='publishers', blank=True, null=True)
     sponsor = models.ManyToManyField(Sponsor, related_name='publishers', blank=True)
     country = models.ForeignKey(Country, null=True, blank=False, related_name='publishers')
     is_completed_auth = models.CharField(_("Complete join network stage"), max_length=100,
@@ -93,3 +71,27 @@ class Publisher(MyUser):
 
     def __unicode__(self):
         return self.name
+
+
+class Website(models.Model):
+    """
+    This model is used to assign websites types to publisher
+    """
+
+    website_name = models.CharField(_("Website Name"), max_length=100)
+    website_domain = models.URLField(_("Website Domain"), max_length=100)
+    website_logo = models.ImageField(_("Upload Logo"), upload_to=get_website_logo_path, blank=True)
+    token = models.CharField(max_length=100, null=True, blank=True)
+    industry = models.ManyToManyField(Industry, blank=True)
+    twitter_name = models.CharField(max_length=100, null=True, blank=True)
+    facebook_page = models.CharField(max_length=100, null=True, blank=True)
+    avg_page_views = models.PositiveIntegerField(blank=True, null=True)
+    is_verified = models.BooleanField(default=False)
+    publisher = models.ForeignKey(Publisher, related_name='websites', blank=True, null=True)
+
+    class Meta:
+        app_label = 'publisher'
+        db_table = 'publisher_website'
+
+    def __unicode__(self):
+        return self.website_name

@@ -98,11 +98,12 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(_("You're not a publisher!"))
 
         list_of_categories = self.context['request'].data.pop('industry', None)
+
         if isinstance(list_of_categories, list):
             list_of_categories = list_of_categories[0]
 
         website = Website.objects.create(**validated_data)
-        website.publishers.add(publisher)
+        website.publisher = publisher
 
         if list_of_categories:
             website.industry.add(

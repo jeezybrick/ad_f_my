@@ -103,11 +103,13 @@ class PublisherWebsiteList(generics.GenericAPIView):
                 'industry_type': sub_category,
                 'type': 'sub',
             }]
-        else:
+        elif default_category:
             request.data['industry'] = [{
                 'industry_type': default_category,
                 'type': 'default',
             }]
+        else:
+            request.data['industry'] = None
 
         serializer = serializers.PublisherWebsiteSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
@@ -120,7 +122,8 @@ class PublisherWebsiteList(generics.GenericAPIView):
             publisher = Publisher.objects.get(id=self.request.user.id)
         except ObjectDoesNotExist:
             raise PermissionDenied("You're not a publisher!")
-        queryset = Website.objects.filter(publishers__id__exact=publisher.id)
+        # queryset = Website.objects.filter(publishers__id__exact=publisher.id)
+        queryset = publisher.websites.all()
         return queryset
 
     def perform_create(self, serializer):
