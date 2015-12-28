@@ -34,11 +34,13 @@
 
                 </div>
 
-
-                <button ng-class="{'disabled' : vm.addSponsorsProcess}" class="form-button" type="submit" ng-click="vm.addSponsors()">
-                    NEXT
-                </button>
-
+                    <div layout="column" layout-align="center center">
+                        <button ng-class="{'disabled' : vm.addSponsorsProcess}" class="form-button" type="submit" ng-click="vm.addSponsors()">
+                            NEXT
+                        </button>
+                        <md-progress-circular class="md-accent md-hue-2" md-mode="indeterminate"
+                                  md-diameter="40" ng-show="vm.addSponsorsProcess"></md-progress-circular>
+                    </div>
             </div>
 
             <div class="sponsor-network-text col-lg-5 col-md-5 col-sm-12 col-xs-12">
