@@ -51,7 +51,6 @@ class PublisherSerializer(serializers.ModelSerializer):
 
 
 class SponsorTypeSerializer(serializers.ModelSerializer):
-    # sponsor_set = SponsorSerializer(many=True, required=False, read_only=True)
     sponsor_set = serializers.SerializerMethodField()
 
     def get_sponsor_set(self, obj):
