@@ -6,13 +6,16 @@ function PublisherAddSitesController(Website, $log, $state, Upload) {
     var vm = this;
     vm.addWebsite = addWebsite;
     vm.clear = clear;
+
     vm.publisher = {};
+    vm.addWebsiteProcess = false;
     vm.fileReader = new FileReader();
 
     vm.website = new Website();
 
 
     function addWebsite(next_page) {
+         vm.addWebsiteProcess = true;
 
         Upload.upload({
             url: '/api/publisher/website/',
