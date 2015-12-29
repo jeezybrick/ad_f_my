@@ -39,11 +39,13 @@ def get_website_logo_path(instance, filename):
 IS_COMPLETED_DEFAULT = 'advertisers'
 IS_COMPLETED_ADD_WEBSITE = 'add_website'
 IS_COMPLETED_GET_CODE = 'get_code'
+IS_COMPLETED_TRUE = 'completed'
 
 IS_COMPLETED_STAGE = (
     (IS_COMPLETED_DEFAULT, 'advertisers'),
     (IS_COMPLETED_ADD_WEBSITE, 'Add website'),
     (IS_COMPLETED_GET_CODE, 'Get code'),
+    (IS_COMPLETED_TRUE, 'Register complete'),
 )
 
 

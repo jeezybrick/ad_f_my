@@ -9,7 +9,7 @@
     </md-toolbar>
     <md-content layout-padding layout="column" ng-controller="SidebarController as vm">
 
-        {% if user.is_authenticated %}
+        {% if user.is_authenticated and publisher_auth_status %}
             <md-button ng-click="vm.close()" class="link-nav" ui-sref-active="md-raised md-primary active-link-nav"
                        ui-sref="publisher.dashboard" aria-label="Dashboard">
                 Dashboard

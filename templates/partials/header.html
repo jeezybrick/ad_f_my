@@ -12,25 +12,22 @@
                 </li>
                 <li id="navbar" class="nav-container collapsed">
                     <ul id="nav">
-                        <li id="home-link">
-                            <a href="{% url 'home' %}">Home</a>
-                        </li>
 
                         <li id="how-it-works-link">
                             <a href="#widget-section">How it works</a>
                         </li>
-                        <li id="request-acc-link" class="cta">
-                            <a href="#section-form">Get Early Access</a>
+                        <li id="request-acc-link">
+                            <a href="#section-form">Contact Us</a>
+                        </li>
+                        <li id="request-acc-link">
+                            <a href="{%  url 'publisher_login' %}">PUBLISHER LOGIN</a>
                         </li>
 
-                        <li class="social-nav">
-                            <a href="https://twitter.com/ADfits" target="_blank">
-                                <img height="30px" src="{% static 'images/greytwitter.png' %}" alt="">
-                            </a>
-                            <a href="https://www.linkedin.com/company/ad-fits" target="_blank">
-                                <img height="30px" src="{% static 'images/greylinkedin.png' %}" alt="">
-                            </a>
+                        <li id="request-acc-link" class="cta">
+                            <a href="{%  url 'join-network' %}">JOIN NETWORK</a>
                         </li>
+
+
 
                     </ul>
                 </li>

@@ -2,15 +2,17 @@ angular
     .module('myApp')
     .controller('PublisherController', PublisherController);
 
-function PublisherController(Sponsor, Publisher, Website, $log, $location, $state, $stateParams) {
+function PublisherController(Sponsor, Publisher, Website, $log, $location, $state, $stateParams, $http) {
     var vm = this;
     vm.addSponsors = addSponsors;
+    vm.completeRegistration = completeRegistration;
     vm.clear = clear;
 
     vm.isSponsorsLoad = false;
     vm.sponsors_type = {};
     vm.publisher_default = {};
     vm.getCodeScriptText = '';
+    vm.completeRegisterPage = '/api/complete-setup/';
 
     vm.sponsors_type = Sponsor.query(function (response) {
 
@@ -39,8 +41,18 @@ function PublisherController(Sponsor, Publisher, Website, $log, $location, $stat
     });
 
     function addSponsors() {
-        // $location.path('/')
+
         $state.go('publisher.dashboard')
+
+    }
+
+    function completeRegistration() {
+        $http.post(vm.completeRegisterPage, {publisher_id: vm.publisher.id}).success(function (data) {
+
+            $state.go('publisher.dashboard')
+
+        });
+
     }
 
     function clear() {

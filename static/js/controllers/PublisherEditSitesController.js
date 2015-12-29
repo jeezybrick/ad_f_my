@@ -14,7 +14,7 @@ function PublisherEditSitesController(Website, Publisher, $log, $state, $statePa
     vm.jsTag = '';
 
     /**
-     * Get item detail
+     * Get website detail
      */
     vm.website = Website.get({id: $stateParams.id}, function (response) {
         vm.publisher = Publisher.query(function (response) {

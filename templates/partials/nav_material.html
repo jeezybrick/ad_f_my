@@ -15,7 +15,7 @@
 
         <img height="65" width="125" class="nav-logo" src="{% static 'images/logo2.png' %}" alt="logo">
 
-        {% if user.is_authenticated %}
+        {% if user.is_authenticated and publisher_auth_status %}
             <md-button class="link-nav" ui-sref-active="md-raised md-primary active-link-nav"
                        ui-sref="publisher.dashboard" aria-label="Dashboard">
                 Dashboard

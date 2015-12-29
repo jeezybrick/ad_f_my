@@ -46,6 +46,7 @@ class PublisherSerializer(serializers.ModelSerializer):
         for sponsor in sponsors:
             instance.sponsor.add(Sponsor.objects.get(id=sponsor.get('id')))
             instance.save()
+        instance.is_completed_auth = 'add_website'
         instance.save()
         return instance
 
@@ -113,5 +114,7 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
                   for industry in list_of_categories]
             )
 
+        publisher.is_completed_auth = 'get_code'
+        publisher.save()
         website.save()
         return website

@@ -25,6 +25,24 @@ from login.backend import authenticate
 # from core.views import LoginRequiredMixin
 
 
+class PublisherIndex(LoginRequiredMixin, TemplateView):
+    template_name = 'publisher/index.html'
+    login_url = '/publisher/login/'
+
+    def render_to_response(self, context, **response_kwargs):
+        try:
+            publisher = Publisher.objects.get(myuser_ptr=self.request.user.id)
+        except ObjectDoesNotExist:
+            publisher = None
+
+        context['publisher'] = publisher
+        context['publisher_auth_status'] = False
+        if publisher.is_completed_auth == 'completed':
+            context['publisher_auth_status'] = True
+
+        return self.response_class(request=self.request, template=self.template_name, context=context)
+
+
 class DashboardView(LoginRequiredMixin, TemplateView):
     """
     Would help to render the publisher dashboard with different 
@@ -36,6 +54,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
     redirect_field_name = ''
 
     def render_to_response(self, context, **response_kwargs):
+
         context['coupons_redeemed'] = RedeemCoupon.objects.count() * 5
         context['campaign'] = Campaign.objects.filter(publisher_id=self.request.user.id).count()
         '''

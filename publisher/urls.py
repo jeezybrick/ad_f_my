@@ -22,6 +22,6 @@ urlpatterns = patterns('',
     # url(r"^advertisers/$", TemplateView.as_view(template_name="publisher/index.html"), name='advertisers'),
     url(r"^sites/get-code/$", GetCodeView.as_view(), name='get-code'),
     url(r"^profile/$", ProfileView.as_view(), name='publisher-profile'),
-    url(r'^$', login_required(TemplateView.as_view(template_name="publisher/index.html"), login_url='/publisher/login/'), name='publisher_dashboard'),
+    url(r'^$', PublisherIndex.as_view(), name='publisher_index'),
 
 )
