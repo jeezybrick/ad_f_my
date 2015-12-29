@@ -1,4 +1,5 @@
 import calendar
+from django.shortcuts import redirect
 from django.core.exceptions import ObjectDoesNotExist
 import xlwt
 from django.contrib.auth.hashers import make_password
@@ -28,6 +29,7 @@ from login.backend import authenticate
 class PublisherIndex(LoginRequiredMixin, TemplateView):
     template_name = 'publisher/index.html'
     login_url = '/publisher/login/'
+    redirect_url = '/publisher/#/advertisers/'
 
     def render_to_response(self, context, **response_kwargs):
         try:
@@ -39,6 +41,8 @@ class PublisherIndex(LoginRequiredMixin, TemplateView):
         context['publisher_auth_status'] = False
         if publisher.is_completed_auth == 'completed':
             context['publisher_auth_status'] = True
+        else:
+            return redirect(self.redirect_url)
 
         return self.response_class(request=self.request, template=self.template_name, context=context)
 
