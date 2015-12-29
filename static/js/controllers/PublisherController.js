@@ -2,7 +2,7 @@ angular
     .module('myApp')
     .controller('PublisherController', PublisherController);
 
-function PublisherController(Sponsor,Publisher, $log, $location, $state, $stateParams) {
+function PublisherController(Sponsor, Publisher, Website, $log, $location, $state, $stateParams) {
     var vm = this;
     vm.addSponsors = addSponsors;
     vm.clear = clear;
@@ -22,9 +22,17 @@ function PublisherController(Sponsor,Publisher, $log, $location, $state, $stateP
 
     vm.publisher = Publisher.query(function (response) {
 
-        vm.getCodeScriptText = '<div id="ad-adfits" pub_id="'+response.id+'">' +
-        '<script src="http://adfits.com/static/js/tag/ads.js"></script>' +
-        '</div>';
+        vm.website = Website.query(function (response) {
+
+            vm.getCodeScriptText = '<div id="ad-adfits" pub_id="' + vm.publisher.id + '" web_id="' + vm.website.results[0].id + '">' +
+                '<script src="http://adfits.com/static/js/tag/ads.js"></script>' +
+                '</div>';
+        }, function (error) {
+
+            vm.websitesLoadError = error.data;
+
+        });
+
 
     }, function () {
 

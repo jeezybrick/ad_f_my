@@ -123,7 +123,7 @@ class PublisherWebsiteList(generics.GenericAPIView):
         except ObjectDoesNotExist:
             raise PermissionDenied("You're not a publisher!")
         # queryset = Website.objects.filter(publishers__id__exact=publisher.id)
-        queryset = publisher.websites.all()
+        queryset = publisher.websites.all().order_by('-id')
         return queryset
 
     def perform_create(self, serializer):
