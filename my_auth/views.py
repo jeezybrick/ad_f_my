@@ -9,7 +9,7 @@ from login.forms import LoginForm
 class LoginView(FormView):
     form_class = LoginForm
     template_name = 'login.html'
-    success_url = reverse_lazy("publisher_dashboard")
+    success_url = '/publisher/'
 
     def form_valid(self, form):
         auth_login(self.request, form.get_user())
