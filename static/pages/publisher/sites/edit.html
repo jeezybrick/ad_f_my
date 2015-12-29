@@ -65,7 +65,7 @@
                         </md-autocomplete>
                         -->
                         <div layout="row">
-                            <md-button class="md-raised md-primary" ng-click="vm.editWebsite()">Save</md-button>
+                            <md-button class="md-raised md-primary" ng-click="vm.editWebsite()" ng-disabled="edit_website.$invalid">Save</md-button>
                             <md-button class="md-raised" ng-click="vm.clear()">Cancel</md-button>
                         </div>
 
