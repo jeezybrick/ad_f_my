@@ -33,7 +33,7 @@ class JoinNetworkView(FormView):
 
     def form_valid(self, form):
         form.save()
-        form.send_email()
+        # form.send_email()
 
         email = form.cleaned_data['email']
         password = form.cleaned_data['password1']

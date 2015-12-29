@@ -49,7 +49,7 @@ function PublisherController(Sponsor, Publisher, Website, $log, $location, $stat
     function completeRegistration() {
         $http.post(vm.completeRegisterPage, {publisher_id: vm.publisher.id}).success(function (data) {
 
-            $state.go('publisher.dashboard')
+            $state.go('publisher.dashboard', {}, {reload: true});
 
         });
 
