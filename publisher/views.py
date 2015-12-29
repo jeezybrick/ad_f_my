@@ -41,8 +41,8 @@ class PublisherIndex(LoginRequiredMixin, TemplateView):
         context['publisher_auth_status'] = False
         if publisher.is_completed_auth == 'completed':
             context['publisher_auth_status'] = True
-        else:
-            return redirect(self.redirect_url)
+        #else:
+            #return redirect(self.redirect_url)
 
         return self.response_class(request=self.request, template=self.template_name, context=context)
 
