@@ -22,7 +22,7 @@ function PublisherController(Sponsor,Publisher, $log, $location, $state, $stateP
 
     vm.publisher = Publisher.query(function (response) {
 
-        vm.getCodeScriptText = '<div id="ad-adfits-'+response.id+'">' +
+        vm.getCodeScriptText = '<div id="ad-adfits" pub_id="'+response.id+'">' +
         '<script src="http://adfits.com/static/js/tag/ads.js"></script>' +
         '</div>';
 
