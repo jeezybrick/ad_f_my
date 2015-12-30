@@ -276,12 +276,21 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'email']
+
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_TWITTER_SCOPE = ['email']
+SOCIAL_AUTH_GITHUB_SCOPE = ['email']
+
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
   'locale': 'en_EN',
   'fields': 'id, name, email'
 }
-SOCIAL_AUTH_GITHUB_SCOPE = ['email']
+
+SOCIAL_AUTH_TWITTER_PROFILE_EXTRA_PARAMS = {
+  'locale': 'en_EN',
+  'fields': 'email'
+}
+
 
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/publisher/'
 
