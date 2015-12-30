@@ -49,12 +49,12 @@ class CategoryList(APIView):
         parent = request.GET.get('parent', None)
         sub = request.GET.get('sub', None)
         if parent:
-            lol = Q(industry_type__contains=parent, type='default')
+            category_filter = Q(industry_type__contains=parent, type='default')
         elif sub:
-            lol = Q(industry_type__contains=sub, type='sub')
+            category_filter = Q(industry_type__contains=sub, type='sub')
         else:
-            lol = Q()
-        queryset = Industry.objects.filter(lol)
+            category_filter = Q()
+        queryset = Industry.objects.filter(category_filter)
 
         serializer = serializers.CategorySerializer(queryset, many=True)
         return Response(serializer.data)
@@ -126,14 +126,11 @@ class PublisherWebsiteList(generics.GenericAPIView):
 class PublisherWebsiteDetail(generics.RetrieveAPIView, generics.UpdateAPIView, ):
     permission_classes = (permissions.IsAuthenticated, IsPublisherAuthorOrReadOnly)
     serializer_class = serializers.PublisherWebsiteSerializer
-    # parser_classes = (FileUploadParser, MultiPartParser, )
 
     def get_object(self):
         lookup_url_kwarg = self.lookup_url_kwarg or self.lookup_field
         filter_kwargs = {self.lookup_field: self.kwargs[lookup_url_kwarg]}
         obj = get_object_or_404(Website, id=filter_kwargs['pk'])
-        if obj is None:
-            raise Http404
         self.check_object_permissions(self.request, obj)
 
         return obj

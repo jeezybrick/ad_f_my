@@ -1,6 +1,6 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.translation import ugettext_lazy as _
-from django.db.models import Avg, Max, Min, Count, Sum
+from django.db.models import Sum
 from rest_framework import serializers
 from core.models import Country
 from publisher.models import Publisher, Website

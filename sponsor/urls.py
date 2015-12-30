@@ -13,6 +13,4 @@ urlpatterns = patterns('',
     url(r'^reports/$', ReportView.as_view(), name='sponsor_report'),
     url(r'^report/(?P<pk>\w+)/$', ReportView.as_view(), name='sponsor_report_id'),
     url(r'^faq$', TemplateView.as_view(template_name="sponsor/faq.html"), name='sponsor_faq'),
-    url(r'^change-password/$',ChangePassword.as_view(), kwargs={'model': Sponsor}, name="sponsor_pass_change"),
-    url(r'^logout$', 'django.contrib.auth.views.logout', {'next_page': '/sponsor/login'}, name='logout')
 )
