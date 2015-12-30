@@ -1,8 +1,7 @@
 <div class="container">
     <div class="row clearfix">
 
-        <div class="col-md-4 column">
-            <form name="edit_website" class="form-horizontal" method="post" action="." enctype="multipart/form-data">
+            <form name="edit_website" class="form-horizontal" method="post" action=".">
 
                 <div layout="row" layout-align="center center" flex="auto">
 
@@ -16,7 +15,6 @@
                                 <div ng-message="required">This is required.</div>
                             </div>
                         </md-input-container>
-
                         <md-input-container class="md-block" flex>
                             <label>Website URL</label>
                             <input required name="website_domain" ng-model="vm.website.website_domain" type="url">
@@ -38,13 +36,8 @@
                             <input name="facebook_page" ng-model="vm.website.facebook_page" type="text">
 
                         </md-input-container>
-
-                            <label>Website logo</label>
-                            <input ngf-select id="website_logo" name="website_logo" ng-model="vm.website.website_logo" type="file">
-
-                         <md-button md-no-ink class="md-primary" ng-click="vm.showJsTag($event)">Show js tag</md-button>
-                          <!--
-                         <md-autocomplete
+                        <!--
+                        <md-autocomplete
                                 ng-disabled="false"
                                 md-no-cache=""
                                 md-selected-item="vm.website.industry"
@@ -64,9 +57,18 @@
                                 <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
                             </md-not-found>
                         </md-autocomplete>
-                        -->
+                         -->
+                        <label>Website logo</label>
+                        <input ngf-select id="website_logo" name="website_logo" ng-model="vm.website.website_logo"
+                               type="file">
+
+                        <md-button md-no-ink class="md-primary" ng-click="vm.showJsTag($event)">Show js tag</md-button>
+
+
                         <div layout="row">
-                            <md-button class="md-raised md-primary" ng-click="vm.editWebsite()" ng-disabled="edit_website.$invalid">Save</md-button>
+                            <md-button class="md-raised md-primary" ng-click="vm.editWebsite()"
+                                       ng-disabled="edit_website.$invalid">Save
+                            </md-button>
                             <md-button class="md-raised" ng-click="vm.clear()">Cancel</md-button>
                         </div>
 
@@ -74,8 +76,7 @@
 
                 </div>
                 </fieldset>
-            </form>
-        </div>
+                </form>
 
     </div>
 </div>

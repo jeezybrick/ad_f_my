@@ -56,7 +56,7 @@
 
                         <div layout="row">
                             <md-button class="md-raised md-primary" ng-click="vm.addWebsite('publisher.sites')" ng-disabled="edit_website.$invalid">Add website</md-button>
-                            <md-button class="md-raised" ng-click="vm.clear()">Cancel</md-button>
+                            <md-button class="md-raised" ui-sref="publisher.sites" ng-click="vm.clear()">Cancel</md-button>
                         </div>
                         <div layout="row" layout-align="center start" flex="auto">
                         <md-progress-circular class="md-accent md-hue-2" md-mode="indeterminate"
