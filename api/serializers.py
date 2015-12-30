@@ -119,7 +119,8 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
                   for industry in list_of_categories]
             )
 
-        publisher.is_completed_auth = 'get_code'
+        if publisher.is_completed_auth != 'completed':
+            publisher.is_completed_auth = 'get_code'
         publisher.save()
         website.save()
         return website
