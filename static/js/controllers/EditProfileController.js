@@ -14,13 +14,14 @@ function EditProfileController(Publisher, $log, $http, $mdToast) {
     vm.publisher_default = {};
     vm.editableName = false;
     vm.editablePhone = false;
+    vm.publisherLoadError = '';
     vm.changePasswordPage = '/rest-auth/password/change/';
 
     vm.publisher = Publisher.query(function (response) {
         angular.copy(vm.publisher, vm.publisher_default);
 
-    }, function () {
-
+    }, function (error) {
+        vm.publisherLoadError = error;
     });
 
     function updateProfile() {

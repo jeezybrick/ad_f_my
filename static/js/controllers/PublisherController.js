@@ -9,6 +9,7 @@ function PublisherController(Sponsor, Publisher, Website, $log, $location, $stat
     vm.clear = clear;
 
     vm.isSponsorsLoad = false;
+    vm.publisherLoadError = '';
     vm.sponsors_type = {};
     vm.publisher_default = {};
     vm.getCodeScriptText = '';
@@ -44,8 +45,8 @@ function PublisherController(Sponsor, Publisher, Website, $log, $location, $stat
         });
 
 
-    }, function () {
-
+    }, function (error) {
+        vm.publisherLoadError = error.data[0];
     });
 
     function addSponsors() {
