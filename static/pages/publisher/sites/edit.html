@@ -19,10 +19,11 @@
                         </md-input-container>
                         <md-input-container class="md-block" flex>
                             <label>Website URL</label>
-                            <input required name="website_domain" ng-model="vm.website.website_domain" type="text">
+                            <input required name="website_domain" ng-model="vm.website.website_domain" type="url">
 
                             <div ng-messages="edit_website.website_domain.$error">
                                 <div ng-message="required">This is required.</div>
+                                <div ng-message="url">Enter a valid URL</div>
                             </div>
                         </md-input-container>
 

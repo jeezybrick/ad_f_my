@@ -104,7 +104,7 @@
                                 <label class="control-label" for="website-logo">Website Logo:</label>
 
                                 <div class="controls">
-                                   <input ngf-select ng-model="vm.website.website_logo" id="id_website_logo" name="website_logo" type="file">
+                                   <input ngf-max-size="1MB" ngf-select ng-model="vm.website.website_logo" id="id_website_logo" name="website_logo" type="file">
 
                                     <div class="alert alert-danger" role="alert" ng-show="vm.addWebsiteProcessError.data.website_logo">
                                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
