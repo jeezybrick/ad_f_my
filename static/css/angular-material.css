@@ -13778,8 +13778,8 @@ md-toolbar + md-tabs {
   border-top-right-radius: 0; }
 
 md-toast {
-  position: absolute;
-  z-index: 105;
+  position: fixed;
+  z-index: 10005;
   box-sizing: border-box;
   cursor: default;
   overflow: hidden;

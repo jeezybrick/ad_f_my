@@ -12,7 +12,8 @@ angular
         'ngMdIcons',
         'angucomplete-alt',
         'ui.bootstrap',
-        'ngFileUpload'
+        'ngFileUpload',
+        'flash'
     ])
     .config(function ($locationProvider, $httpProvider, $resourceProvider, $interpolateProvider, $routeProvider,
                       $compileProvider, $stateProvider, $urlRouterProvider, $mdThemingProvider) {

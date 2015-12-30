@@ -952,3 +952,16 @@ md-toast.md-error-toast-theme {
     animation: fadeOutUpDown 0.5s;
 }
 */
+
+.flash-message {
+  margin-top: 70px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 15px 30px;
+  width: 30%;
+  border-radius: 6px;
+}

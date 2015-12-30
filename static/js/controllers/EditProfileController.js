@@ -2,7 +2,7 @@ angular
     .module('myApp')
     .controller('EditProfileController', EditProfileController);
 
-function EditProfileController(Publisher, $log, $http, $mdToast) {
+function EditProfileController(Publisher, $log, $http, $mdToast, Flash) {
     var vm = this;
     vm.updateProfile = updateProfile;
     vm.clear = clear;
@@ -16,6 +16,10 @@ function EditProfileController(Publisher, $log, $http, $mdToast) {
     vm.editablePhone = false;
     vm.publisherLoadError = '';
     vm.changePasswordPage = '/rest-auth/password/change/';
+    vm.successChangePasswordMessage = 'Password changed!';
+    vm.successEditProfileMessage = 'Profile saved';
+    vm.errorEditProfileMessage = '';
+    vm.errorChangePasswordMessage = 'Password mismatch';
 
     vm.publisher = Publisher.query(function (response) {
         angular.copy(vm.publisher, vm.publisher_default);
@@ -26,9 +30,9 @@ function EditProfileController(Publisher, $log, $http, $mdToast) {
 
     function updateProfile() {
         vm.publisher.$update(function (response) {
-
+            Flash.create('success', vm.successEditProfileMessage, 'flash-message');
         }, function (error) {
-
+            Flash.create('danger', vm.errorEditProfileMessage, 'flash-message');
         });
     }
 
@@ -39,11 +43,12 @@ function EditProfileController(Publisher, $log, $http, $mdToast) {
     function changePassword() {
 
         $http.post(vm.changePasswordPage, vm.authUser).success(function (data) {
-
+            Flash.create('success', vm.successChangePasswordMessage, 'flash-message');
 
         }).error(function (error) {
 
              // error toast
+             Flash.create('danger', vm.errorChangePasswordMessage, 'flash-message');
             /*$mdToast.show(
                 $mdToast.simple()
                     .content('jjjjjjjjjjjjjjjj')
