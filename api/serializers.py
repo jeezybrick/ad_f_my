@@ -44,10 +44,14 @@ class PublisherSerializer(serializers.ModelSerializer):
         sponsors = validated_data.get('sponsor', instance.sponsor)
         instance.name = validated_data.get('name', instance.name)
         instance.telephone = validated_data.get('telephone', instance.telephone)
+
         for sponsor in sponsors:
             instance.sponsor.add(Sponsor.objects.get(id=sponsor.get('id')))
             instance.save()
-        instance.is_completed_auth = 'add_website'
+
+        if instance.is_completed_auth != 'completed':
+            instance.is_completed_auth = 'add_website'
+
         instance.save()
         return instance
 
