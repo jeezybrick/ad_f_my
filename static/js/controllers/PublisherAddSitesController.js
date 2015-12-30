@@ -9,6 +9,7 @@ function PublisherAddSitesController(Website, $log, $state, Upload) {
 
     vm.publisher = {};
     vm.addWebsiteProcess = false;
+    vm.addWebsiteProcessError = {};
     vm.fileReader = new FileReader();
 
     vm.website = new Website();
@@ -23,6 +24,7 @@ function PublisherAddSitesController(Website, $log, $state, Upload) {
         }).then(function (resp) {
             $state.go(next_page);
         }, function (err) {
+            vm.addWebsiteProcessError = err;
             console.log('Error status: '+ err);
         }, function (evt) {
         });

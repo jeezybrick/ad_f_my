@@ -105,6 +105,12 @@
 
                                 <div class="controls">
                                    <input ngf-select ng-model="vm.website.website_logo" id="id_website_logo" name="website_logo" type="file">
+
+                                    <div class="alert alert-danger" role="alert" ng-show="vm.addWebsiteProcessError.data.website_logo">
+                                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                        <span class="sr-only">Error:</span>
+                                        [[  vm.addWebsiteProcessError.data.website_logo[0] ]]
+                                    </div>
                                 </div>
                             </div>
                             <!-- Button (Double) -->
