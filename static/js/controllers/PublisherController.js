@@ -24,6 +24,14 @@ function PublisherController(Sponsor, Publisher, Website, $log, $location, $stat
 
     vm.publisher = Publisher.query(function (response) {
 
+        if(angular.equals(response.is_completed_auth, 'get_code')) {
+           $state.go('publisher.getcode');
+        }else if(angular.equals(response.is_completed_auth, 'add_website')){
+            $state.go('publisher.addsites');
+        }else if(angular.equals(response.is_completed_auth, 'advertisers')){
+            $state.go('publisher.advertisers');
+        }
+
         vm.website = Website.query(function (response) {
 
             vm.getCodeScriptText = '<div id="ad-adfits" pub_id="' + vm.publisher.id + '" web_id="' + vm.website.results[0].id + '">' +
@@ -42,7 +50,7 @@ function PublisherController(Sponsor, Publisher, Website, $log, $location, $stat
 
     function addSponsors() {
 
-        $state.go('publisher.dashboard')
+        $state.go('publisher.dashboard');
 
     }
 
@@ -50,7 +58,7 @@ function PublisherController(Sponsor, Publisher, Website, $log, $location, $stat
         $http.post(vm.completeRegisterPage, {publisher_id: vm.publisher.id}).success(function (data) {
 
             //$state.go('publisher.dashboard', {}, {reload: true});
-            window.location.href = '/publisher/'
+            window.location.href = '/publisher/';
 
         });
 

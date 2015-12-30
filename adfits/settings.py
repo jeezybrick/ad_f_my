@@ -256,6 +256,7 @@ SOCIAL_AUTH_USER_MODEL = 'my_auth.MyUser'
 AUTHENTICATION_BACKENDS = (
     'social.backends.facebook.FacebookOAuth2',
     'social.backends.github.GithubOAuth2',
+    'social.backends.twitter.TwitterOAuth',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -264,6 +265,9 @@ SOCIAL_AUTH_GITHUB_SECRET = '4be14a5e6acef884cae00b76defa6cea86854a4c'
 
 SOCIAL_AUTH_FACEBOOK_KEY = '1627150820892036'
 SOCIAL_AUTH_FACEBOOK_SECRET = 'e2b17ae2c8a8eb78c70c05d16136cedd'
+
+SOCIAL_AUTH_TWITTER_KEY = 'nIUfoEtuqBVzmw0Se0McSw3h5'
+SOCIAL_AUTH_TWITTER_SECRET = '0pw5xNNqNeeLP5lJf1yjfqQajpTAFD8gIC5HMObaJaJ5lUlEQe'
 
 TEMPLATE_CONTEXT_PROCESSORS = (
 
@@ -293,4 +297,3 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details'
 )
-

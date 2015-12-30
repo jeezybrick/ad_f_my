@@ -37,7 +37,8 @@ class PublisherSerializer(serializers.ModelSerializer):
     class Meta:
         model = Publisher
         fields = ('id', 'name', 'telephone', 'address', 'country', 'email', 'sponsor', 'count_of_added_websites',
-                  'total_avg_monthly_pageviews', )
+                  'total_avg_monthly_pageviews', 'is_completed_auth', )
+        read_only_fields = ('is_completed_auth', )
 
     def update(self, instance, validated_data):
         sponsors = validated_data.get('sponsor', instance.sponsor)

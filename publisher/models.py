@@ -34,8 +34,6 @@ def get_website_logo_path(instance, filename):
     instance.token = token
     return os.path.join('campaign/website_logo/%s/%s') % (token, filename)
 
-
-
 IS_COMPLETED_DEFAULT = 'advertisers'
 IS_COMPLETED_ADD_WEBSITE = 'add_website'
 IS_COMPLETED_GET_CODE = 'get_code'
