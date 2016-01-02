@@ -748,8 +748,8 @@ nav {
 .advertisers-header, .get-code-header {
   margin-top: 50px;
   h2 {
-    color: $header_purple_text;
-    font-weight: 600;
+    color: $header_purple;
+    font-weight: 300;
   }
 }
 
@@ -757,9 +757,10 @@ nav {
   margin-top: 20%;
 
   h2 {
-    color: $header_purple_text;
-    font-size: 1.8em;
+    color: $common_purple;
+    font-size: 1.6em;
     margin: 10px;
+    font-weight: 300;
   }
 }
 
@@ -836,7 +837,7 @@ nav {
   font-size: 2.1em;
   margin-left: 0;
   margin-bottom: 50px;
-  font-weight: 600;
+  font-weight: 300;
 }
 
 #add-website-form {

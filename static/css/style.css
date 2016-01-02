@@ -594,15 +594,16 @@ nav ul, nav ol {
 .advertisers-header, .get-code-header {
   margin-top: 50px; }
   .advertisers-header h2, .get-code-header h2 {
-    color: #76459b;
-    font-weight: 600; }
+    color: #483276;
+    font-weight: 300; }
 
 .sponsor-network-text {
   margin-top: 20%; }
   .sponsor-network-text h2 {
-    color: #76459b;
-    font-size: 1.8em;
-    margin: 10px; }
+    color: #5d6491;
+    font-size: 1.6em;
+    margin: 10px;
+    font-weight: 300; }
 
 .get-code-content {
   margin-bottom: 100px; }
@@ -665,7 +666,7 @@ nav ul, nav ol {
   font-size: 2.1em;
   margin-left: 0;
   margin-bottom: 50px;
-  font-weight: 600; }
+  font-weight: 300; }
 
 #add-website-form .control-group {
   margin-bottom: 30px; }
