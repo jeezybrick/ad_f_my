@@ -90,8 +90,9 @@ class JoinNetworkForm(forms.ModelForm):
                                                                       'invalid'), ])
 
     accept = forms.BooleanField(label='', required=True,
-                                help_text="I accept the Terms & Conditions and Privacy Policy.")
-    # country = forms.ChoiceField(choices=(('USA', 'USA'), ('Canada', 'Canada'), ), label='', help_text="<hr>")
+                                help_text="<span class=\"accept-joint-network-text\">I accept the "
+                                          "<a href=\"/terms/\">Terms & Conditions</a> and "
+                                          "<a href=\"/policy/\">Privacy Policy.</a></span>")
 
     password1 = forms.CharField(label='', min_length=8,
                                 widget=forms.PasswordInput())
@@ -199,7 +200,7 @@ class JoinNetworkForm(forms.ModelForm):
             self.cleaned_data.get('country'),
             self.cleaned_data.get('email'),
         )
-        # send_mail(subject, message, email_from, email_to, fail_silently=False)
+        send_mail(subject, message, email_from, email_to, fail_silently=False)
 
 
 class PublisherProfileForm(forms.ModelForm):
