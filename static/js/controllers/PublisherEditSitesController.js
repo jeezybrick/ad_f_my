@@ -12,6 +12,7 @@ function PublisherEditSitesController(Website, Publisher, $log, $state, $statePa
     vm.website = {};
     vm.test = {};
     vm.jsTag = '';
+    vm.editWebsiteProcess = false;
 
     /**
      * Get website detail
@@ -46,12 +47,21 @@ function PublisherEditSitesController(Website, Publisher, $log, $state, $statePa
 
 
     function editWebsite() {
+        vm.editWebsiteProcess = true;
 
-        if (vm.website.website_logo === null) {
+        /*vm.website.$update(function (response) {
+
+
+        }, function (error) {
+
+        });*/
+
+        /*if (vm.website.website_logo === null) {
             var sendData = {
                 website_name: vm.website.website_name,
                 website_domain: vm.website.website_domain,
             };
+
         } else {
 
             var sendData = {
@@ -60,16 +70,23 @@ function PublisherEditSitesController(Website, Publisher, $log, $state, $statePa
                 website_logo: vm.website.website_logo,
             };
 
-        }
+        }*/
 
         Upload.upload({
             url: '/api/publisher/website/' + $stateParams.id + '/',
-            data: sendData,
+            data: {
+                website_name:vm.website.website_name,
+                website_domain:vm.website.website_domain,
+                twitter_name:vm.website.twitter_name,
+                facebook_page:vm.website.facebook_page,
+            },
+            file:vm.website_logo,
             method: 'PUT'
         }).then(function (resp) {
+            vm.editWebsiteProcess = false;
             $state.go('publisher.sites');
         }, function (err) {
-            console.log('Error status: ' + err);
+            vm.editWebsiteProcess = false;
         }, function (evt) {
         });
 

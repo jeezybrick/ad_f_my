@@ -80,7 +80,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Industry
-        fields = ('industry_type', 'type')
+        fields = ('industry_type', 'type', )
 
 
 class PublisherWebsiteSerializer(serializers.ModelSerializer):
@@ -97,6 +97,8 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
         return industry
 
     def create(self, validated_data):
+
+        print(self.context['request'].data)
         # Get current publisher
         user = self.context['request'].user
         try:
@@ -104,20 +106,21 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
         except ObjectDoesNotExist:
             raise serializers.ValidationError(_("You're not a publisher!"))
 
-        list_of_categories = self.context['request'].data.pop('industry', None)
-
-        if isinstance(list_of_categories, list):
-            list_of_categories = list_of_categories[0]
+        list_of_categories_parent = self.context['request'].data.pop('category_parent', None)
+        list_of_categories_sub = self.context['request'].data.pop('category_sub', None)
 
         website = Website.objects.create(**validated_data)
         website.publisher = publisher
 
-        if list_of_categories:
-            website.industry.add(
-                *[Industry.objects.get_or_create(industry_type=industry['industry_type'],
-                                                 type=industry['type'])[0]
-                  for industry in list_of_categories]
-            )
+        for categories in list_of_categories_parent:
+            category_obj = Industry.objects.get_or_create(industry_type=categories['industry_type'],
+                                                 type=categories['type'])
+            website.industry.add(category_obj[0])
+
+        for categories in list_of_categories_sub:
+            category_obj = Industry.objects.get_or_create(industry_type=categories['industry_type'],
+                                                 type=categories['type'])
+            website.industry.add(category_obj[0])
 
         if publisher.is_completed_auth != 'completed':
             publisher.is_completed_auth = 'get_code'

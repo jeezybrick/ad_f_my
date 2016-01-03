@@ -87,6 +87,7 @@ class PublisherWebsiteList(generics.GenericAPIView):
         return Response(serializer.data)
 
     def post(self, request):
+        '''
         default_category = request.data.get('industry_default[originalObject]', None)
         sub_category = request.data.get('industry_sub[originalObject]', None)
         if default_category and sub_category:
@@ -98,7 +99,7 @@ class PublisherWebsiteList(generics.GenericAPIView):
             request.data['industry'] = [{'industry_type': default_category, 'type': 'default', }]
         else:
             request.data['industry'] = None
-
+        '''
         serializer = serializers.PublisherWebsiteSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
@@ -115,12 +116,11 @@ class PublisherWebsiteList(generics.GenericAPIView):
         return queryset
 
     def perform_create(self, serializer):
-        try:
-            publisher = Publisher.objects.get(id=self.request.user.id)
-        except ObjectDoesNotExist:
-            raise ser.ValidationError(_("You're not a publisher!"))
-
-        serializer.save(publishers=publisher)
+        print('perform create')
+        new_logo = self.request.data.get('file', None)
+        if new_logo is not None:
+            serializer.save(website_logo=self.request.data.get('file'))
+        serializer.save()
 
 
 class PublisherWebsiteDetail(generics.RetrieveAPIView, generics.UpdateAPIView, ):
@@ -132,8 +132,13 @@ class PublisherWebsiteDetail(generics.RetrieveAPIView, generics.UpdateAPIView, )
         filter_kwargs = {self.lookup_field: self.kwargs[lookup_url_kwarg]}
         obj = get_object_or_404(Website, id=filter_kwargs['pk'])
         self.check_object_permissions(self.request, obj)
-
         return obj
+
+    def perform_update(self, serializer):
+        new_logo = self.request.data.get('file', None)
+        if new_logo is not None:
+            serializer.save(website_logo=self.request.data.get('file'))
+        serializer.save()
 
 
 class CompleteSetupView(APIView):
@@ -147,7 +152,7 @@ class CompleteSetupView(APIView):
             except ObjectDoesNotExist:
                 raise PermissionDenied("You're not a publisher!")
 
-            if publisher.is_completed_auth == 'get_code':
+            if publisher.is_completed_auth == 'get_code' or publisher.is_completed_auth == 'completed':
                 publisher.is_completed_auth = 'completed'
                 publisher.save()
                 return Response(status=status.HTTP_202_ACCEPTED)

@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container add-website-after-wrapper">
     <div class="row clearfix">
         <div class="col-md-4 column">
         </div>
         <div class="col-md-4 column">
-            <form name="edit_website" class="form-horizontal" method="post" action="." enctype="multipart/form-data">
+            <form id="add-website-after-form" name="add_website" class="form-horizontal" method="post" action=".">
 
                 <div layout="row" layout-align="center start" flex="auto">
 
@@ -13,7 +13,7 @@
                             <label>Website Name</label>
                             <input required name="website_name" ng-model="vm.website.website_name" type="text">
 
-                            <div ng-messages="edit_website.website_name.$error">
+                            <div ng-messages="add_website.website_name.$error">
                                 <div ng-message="required">This is required.</div>
                             </div>
                         </md-input-container>
@@ -21,20 +21,52 @@
                             <label>Website URL</label>
                             <input required name="website_domain" ng-model="vm.website.website_domain" type="url">
 
-                            <div ng-messages="edit_website.website_domain.$error">
+                            <div ng-messages="add_website.website_domain.$error">
                                 <div ng-message="required">This is required.</div>
                                 <div ng-message="url">Enter a valid URL</div>
                             </div>
                         </md-input-container>
 
-                        <md-input-container class="md-block" flex>
-                            <md-select ng-model="vm.website.industry" placeholder="Select a category" multiple="true">
-                                <md-option ng-value="industry" ng-repeat="industry in vm.website.industry">
-                                    [[industry.industry_type ]]
-                                </md-option>
-                            </md-select>
+                        <md-chips ng-model="vm.category_default" md-autocomplete-snap
+                                  md-transform-chip="vm.transformChip($chip, 'parent')"
+                                  md-require-match="vm.autocompleteDemoRequireMatch">
+                            <md-autocomplete
+                                    md-selected-item="vm.selectedCategoryParent"
+                                    md-search-text="vm.searchTextParent"
+                                    md-items="category in vm.querySearch(vm.searchTextParent, 'parent')"
+                                    md-item-text="category.industry_type"
+                                    placeholder="Website category">
+                                <span md-highlight-text="vm.searchTextParent">[[ category.industry_type ]]</span>
+                            </md-autocomplete>
+                            <md-chip-template>
+                                        <span>
+                                          <strong>[[$chip.industry_type]]</strong>
+                                          <em ng-show="$chip.type.length && !$chip.type_public.length">([[$chip.type]])</em>
+                                          <em ng-show="$chip.type_public.length">([[$chip.type_public]])</em>
+                                        </span>
+                            </md-chip-template>
+                        </md-chips>
 
-                        </md-input-container>
+                        <md-chips ng-model="vm.category_sub" md-autocomplete-snap
+                                  md-transform-chip="vm.transformChip($chip, 'sub')"
+                                  md-require-match="vm.autocompleteDemoRequireMatch"
+                                  md-separator-keys="vm.keys">
+                            <md-autocomplete
+                                    md-selected-item="vm.selectedCategorySub"
+                                    md-search-text="vm.searchTextSub"
+                                    md-items="category in vm.querySearch(vm.searchTextSub, 'sub')"
+                                    md-item-text="category.industry_type"
+                                    placeholder="Website sub category">
+                                <span md-highlight-text="vm.searchTextSub">[[ category.industry_type ]]</span>
+                            </md-autocomplete>
+                            <md-chip-template>
+                                        <span>
+                                          <strong>[[$chip.industry_type]]</strong>
+                                          <em ng-show="$chip.type.length && !$chip.type_public.length">([[$chip.type]])</em>
+                                          <em ng-show="$chip.type_public.length">([[$chip.type_public]])</em>
+                                        </span>
+                            </md-chip-template>
+                        </md-chips>
 
                         <md-input-container class="md-block" flex>
                             <label>Twitter</label>
@@ -48,20 +80,25 @@
 
                         </md-input-container>
 
-                        <div class="md-block" flex>
+                        <div class="md-block add-logo" flex>
                             <label>Website logo</label>
-                            <input ngf-select id="website_logo" name="website_logo" ng-model="vm.website.website_logo" type="file">
+                            <input ngf-select id="website_logo" name="website_logo" ng-model="vm.website.website_logo"
+                                   type="file">
 
                         </div>
 
                         <div layout="row">
-                            <md-button class="md-raised md-primary" ng-click="vm.addWebsite('publisher.sites')" ng-disabled="edit_website.$invalid">Add website</md-button>
-                            <md-button class="md-raised" ui-sref="publisher.sites" ng-click="vm.clear()">Cancel</md-button>
+                            <md-button class="md-raised md-primary" ng-click="vm.addWebsite('publisher.sites')"
+                                       ng-disabled="add_website.$invalid">Add website
+                            </md-button>
+                            <md-button class="md-raised" ui-sref="publisher.sites" ng-click="vm.clear()">Cancel
+                            </md-button>
                         </div>
                         <div layout="row" layout-align="center start" flex="auto">
-                        <md-progress-circular class="md-accent md-hue-2" md-mode="indeterminate"
-                                  md-diameter="40" ng-show="vm.addWebsiteProcess"></md-progress-circular>
-                    </div>
+                            <md-progress-circular class="md-accent md-hue-2" md-mode="indeterminate"
+                                                  md-diameter="40"
+                                                  ng-show="vm.addWebsiteProcess"></md-progress-circular>
+                        </div>
 
 
                     </div>

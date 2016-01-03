@@ -7,7 +7,7 @@
         </h3>
 
         <div class="col-lg-7 col-md-7 col-sm-9 col-xs-12">
-            <form id="add-website-form"  ng-submit="vm.addWebsite('publisher.getcode')">
+            <form id="add-website-form" ng-submit="vm.addWebsite('publisher.getcode')">
 
                 <fieldset>
 
@@ -32,7 +32,8 @@
                                        placeholder="Enter your website domain" type="url" required>
 
                                 <div class="alert alert-danger" role="alert"
-                                     ng-show="vm.addWebsiteProcessError.data.website_domain" ng-focus="vm.addWebsiteProcessError.data.website_domain">
+                                     ng-show="vm.addWebsiteProcessError.data.website_domain"
+                                     ng-focus="vm.addWebsiteProcessError.data.website_domain">
                                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                     <span class="sr-only">Error:</span>
                                     [[ vm.addWebsiteProcessError.data.website_domain[0] ]]
@@ -41,48 +42,61 @@
                         </div>
                         <!-- Select Basic -->
                         <div class="control-group">
-                            <label class="control-label" for="categories">Select the <strong>category</strong> that
+                            <label class="control-label" for="categories">Enter ONE <strong>category</strong> that
                                 best describes your website:</label>
 
                             <div class="controls">
 
-                                <angucomplete-alt id="categories"
-                                                  placeholder="Examples: Parenting, Travel, Moms, Gaming, etc."
-                                                  pause="100"
-                                                  selected-object="vm.website.industry_default"
-                                                  remote-url="http://adfits.com/api/category?parent="
-                                                  remote-url-request-formatter="remoteUrlRequestFn"
-                                                  title-field="industry_type"
-                                                  image-field="profilePic"
-                                                  minlength="3"
-                                                  input-class="form-control form-control-small"
-                                                  match-class="highlight"
-                                                  override-suggestions="true"
-                                        />
-
+                                <md-chips class="add-site-register" ng-model="vm.category_default" md-autocomplete-snap
+                                          md-transform-chip="vm.transformChip($chip, 'parent')"
+                                          md-require-match="vm.autocompleteDemoRequireMatch">
+                                    <md-autocomplete
+                                            md-selected-item="vm.selectedCategoryParent"
+                                            md-search-text="vm.searchTextParent"
+                                            md-items="category in vm.querySearch(vm.searchTextParent, 'parent')"
+                                            md-item-text="category.industry_type"
+                                            placeholder="Examples: Parenting, Travel, Moms, Gaming, etc.">
+                                        <span md-highlight-text="vm.searchTextParent">[[ category.industry_type ]]</span>
+                                    </md-autocomplete>
+                                    <md-chip-template>
+                                        <span>
+                                          <strong>[[$chip.industry_type]]</strong>
+                                          <em ng-show="$chip.type.length && !$chip.type_public.length">([[$chip.type]])</em>
+                                          <em ng-show="$chip.type_public.length">([[$chip.type_public]])</em>
+                                        </span>
+                                    </md-chip-template>
+                                </md-chips>
                             </div>
                         </div>
 
                         <div class="control-group">
-                            <label class="control-label" for="categories">Select <strong>sub-categories</strong> for
-                                your website.
+                            <label class="control-label" for="categories">Choose multiple
+                                <strong>sub-categories</strong> for your website.
                                 <br>
                                 The best sub-categories to use are sub-sections from your website.</label>
 
                             <div class="controls">
-                                <angucomplete-alt id="categories_sub"
-                                                  placeholder="Examples: Food, Health, Style, Games"
-                                                  pause="100"
-                                                  selected-object="vm.website.industry_sub"
-                                                  remote-url="http://adfits.com/api/category?sub="
-                                                  remote-url-request-formatter="remoteUrlRequestFn"
-                                                  title-field="industry_type"
-                                                  image-field="profilePic"
-                                                  minlength="3"
-                                                  input-class="form-control form-control-small"
-                                                  match-class="highlight"
-                                                  override-suggestions="true"
-                                        />
+
+                                <md-chips ng-model="vm.category_sub" md-autocomplete-snap
+                                          md-transform-chip="vm.transformChip($chip, 'sub')"
+                                          md-require-match="vm.autocompleteDemoRequireMatch"
+                                          md-separator-keys="vm.keys">
+                                    <md-autocomplete
+                                            md-selected-item="vm.selectedCategorySub"
+                                            md-search-text="vm.searchTextSub"
+                                            md-items="category in vm.querySearch(vm.searchTextSub, 'sub')"
+                                            md-item-text="category.industry_type"
+                                            placeholder="Examples: Food, Health, Style, Games">
+                                        <span md-highlight-text="vm.searchTextSub">[[ category.industry_type ]]</span>
+                                    </md-autocomplete>
+                                    <md-chip-template>
+                                        <span>
+                                          <strong>[[$chip.industry_type]]</strong>
+                                          <em ng-show="$chip.type.length && !$chip.type_public.length">([[$chip.type]])</em>
+                                          <em ng-show="$chip.type_public.length">([[$chip.type_public]])</em>
+                                        </span>
+                                    </md-chip-template>
+                                </md-chips>
 
                             </div>
                         </div>

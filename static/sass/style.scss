@@ -460,7 +460,7 @@ header.header-is-scrolled {
   &:active {
     outline: none !important;
   }
-  &:visited{
+  &:visited {
     outline: none !important;
   }
 
@@ -845,13 +845,23 @@ nav {
     margin-bottom: 30px;
   }
   label {
-    color: grey;
+    color: $common_purple;
     font-size: 1.5em;
-    font-weight: 500;
+    font-weight: 300;
   }
   input {
     height: 50px;
     border-radius: 6px;
+  }
+
+  md-chips .md-chips {
+    box-shadow: 0 1px rgb(224, 224, 224);
+    border: 1px solid #ccc !important;
+    border-radius: 6px !important;
+  }
+
+  .md-chips .md-chip-input-container md-autocomplete-wrap {
+    height: 42px;
   }
 }
 
@@ -976,10 +986,34 @@ md-toast.md-error-toast-theme {
   border-radius: 6px;
 }
 
-.accept-joint-network-text{
+.accept-joint-network-text {
+  color: $white;
+  a {
     color: $white;
-    a{
-      color: $white;
-      text-decoration: underline;
-    }
+    text-decoration: underline;
   }
+}
+
+.md-chips .md-chip-input-container {
+  width: 100%;
+  // float: none !important;
+}
+
+.add-website-after-wrapper {
+  margin-bottom: 180px;
+}
+
+#add-website-after-form {
+
+  md-chips .md-chips {
+    margin: 18px 0;
+  }
+  .add-logo {
+    margin-bottom: 40px;
+  }
+
+}
+
+.edit-website-wrapper{
+  margin-bottom: 160px;
+}

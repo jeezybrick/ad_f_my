@@ -1,82 +1,68 @@
-<div class="container">
+<div class="container edit-website-wrapper">
     <div class="row clearfix">
 
-            <form name="edit_website" class="form-horizontal" method="post" action=".">
+        <form name="edit_website" class="form-horizontal" method="post" action=".">
 
-                <div layout="row" layout-align="center center" flex="auto">
+            <div layout="row" layout-align="center center" flex="auto">
 
-                    <div layout="column">
-                        <h2>Edit Website</h2>
-                        <md-input-container class="md-block" flex>
-                            <label>Website Name</label>
-                            <input required name="website_name" ng-model="vm.website.website_name" type="text">
+                <div layout="column">
+                    <h2>Edit Website</h2>
+                    <md-input-container class="md-block" flex>
+                        <label>Website Name</label>
+                        <input required name="website_name" ng-model="vm.website.website_name" type="text">
 
-                            <div ng-messages="edit_website.website_name.$error">
-                                <div ng-message="required">This is required.</div>
-                            </div>
-                        </md-input-container>
-                        <md-input-container class="md-block" flex>
-                            <label>Website URL</label>
-                            <input required name="website_domain" ng-model="vm.website.website_domain" type="url">
-
-                            <div ng-messages="edit_website.website_domain.$error">
-                                <div ng-message="required">This is required.</div>
-                                <div ng-message="url">Enter a valid URL</div>
-                            </div>
-                        </md-input-container>
-
-                        <md-input-container class="md-block" flex>
-                            <label>Twitter</label>
-                            <input name="twitter_name" ng-model="vm.website.twitter_name" type="text">
-
-                        </md-input-container>
-
-                        <md-input-container class="md-block" flex>
-                            <label>Facebook Page:</label>
-                            <input name="facebook_page" ng-model="vm.website.facebook_page" type="text">
-
-                        </md-input-container>
-                        <!--
-                        <md-autocomplete
-                                ng-disabled="false"
-                                md-no-cache=""
-                                md-selected-item="vm.website.industry"
-                                md-search-text-change=""
-                                md-search-text=""
-                                md-selected-item-change=""
-                                md-items="industry in vm.website.industry"
-                                md-item-text="industry.industry_type"
-                                md-min-length="0"
-                                placeholder="Select a category">
-                            <md-item-template>
-                                <span md-highlight-text="industry.industry_type"
-                                      md-highlight-flags="^i">[[ industry.industry_type ]]</span>
-                            </md-item-template>
-                            <md-not-found>
-                                No states matching "{{ ctrl.searchText }}" were found.
-                                <a ng-click="ctrl.newState(ctrl.searchText)">Create a new one!</a>
-                            </md-not-found>
-                        </md-autocomplete>
-                         -->
-                        <label>Website logo</label>
-                        <input ngf-select id="website_logo" name="website_logo" ng-model="vm.website.website_logo"
-                               type="file">
-
-                        <md-button md-no-ink class="md-primary" ng-click="vm.showJsTag($event)">Show js tag</md-button>
-
-
-                        <div layout="row">
-                            <md-button class="md-raised md-primary" ng-click="vm.editWebsite()"
-                                       ng-disabled="edit_website.$invalid">Save
-                            </md-button>
-                            <md-button class="md-raised" ng-click="vm.clear()">Cancel</md-button>
+                        <div ng-messages="edit_website.website_name.$error">
+                            <div ng-message="required">This is required.</div>
                         </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex>
+                        <label>Website URL</label>
+                        <input required name="website_domain" ng-model="vm.website.website_domain" type="url">
 
+                        <div ng-messages="edit_website.website_domain.$error">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="url">Enter a valid URL</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block" flex>
+                        <label>Twitter</label>
+                        <input name="twitter_name" ng-model="vm.website.twitter_name" type="text">
+
+                    </md-input-container>
+
+                    <md-input-container class="md-block" flex>
+                        <label>Facebook Page:</label>
+                        <input name="facebook_page" ng-model="vm.website.facebook_page" type="text">
+
+                    </md-input-container>
+
+
+                    <label>Website logo</label>
+                    <input ngf-select id="website_logo" name="website_logo" ng-model="vm.website_logo"
+                           type="file">
+
+                    <md-button md-no-ink class="md-primary" ng-click="vm.showJsTag($event)">Show js tag</md-button>
+
+
+                    <div layout="row">
+                        <md-button class="md-raised md-primary" ng-click="vm.editWebsite()"
+                                   ng-disabled="edit_website.$invalid">Save
+                        </md-button>
+                        <md-button class="md-raised" ui-sref="publisher.sites" ng-click="vm.clear()">Cancel</md-button>
                     </div>
 
+                    <div layout="row" layout-align="center start" flex="auto">
+                            <md-progress-circular class="md-accent md-hue-2" md-mode="indeterminate"
+                                                  md-diameter="40"
+                                                  ng-show="vm.editWebsiteProcess"></md-progress-circular>
+                        </div>
+
                 </div>
-                </fieldset>
-                </form>
+
+            </div>
+            </fieldset>
+        </form>
 
     </div>
 </div>
