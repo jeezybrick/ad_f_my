@@ -1,5 +1,9 @@
 <div class="container edit-website-wrapper">
     <div class="row clearfix">
+        
+        <div layout="row" layout-align="end center" flex="auto">
+            <md-button md-no-ink class="md-raised md-warn" ng-click="vm.showJsTag($event)">Show js tag</md-button>
+        </div>
 
         <form name="edit_website" class="form-horizontal" method="post" action=".">
 
@@ -42,8 +46,6 @@
                     <input ngf-select id="website_logo" name="website_logo" ng-model="vm.website_logo"
                            type="file">
 
-                    <md-button md-no-ink class="md-primary" ng-click="vm.showJsTag($event)">Show js tag</md-button>
-
 
                     <div layout="row">
                         <md-button class="md-raised md-primary" ng-click="vm.editWebsite()"
@@ -53,10 +55,10 @@
                     </div>
 
                     <div layout="row" layout-align="center start" flex="auto">
-                            <md-progress-circular class="md-accent md-hue-2" md-mode="indeterminate"
-                                                  md-diameter="40"
-                                                  ng-show="vm.editWebsiteProcess"></md-progress-circular>
-                        </div>
+                        <md-progress-circular class="md-accent md-hue-2" md-mode="indeterminate"
+                                              md-diameter="40"
+                                              ng-show="vm.editWebsiteProcess"></md-progress-circular>
+                    </div>
 
                 </div>
 
