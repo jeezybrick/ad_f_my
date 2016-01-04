@@ -36,17 +36,17 @@
             </md-button>
 
             <md-button ng-click="vm.close()" class="link-nav" ui-sref-active="md-raised md-primary active-link-nav"
-                       ui-sref="publisher.changepassword" aria-label="Profile">
+                       ui-sref="publisher.changepassword" aria-label="Change Password">
                 <ng-md-icon icon="vpn_key"></ng-md-icon>
                 Change Password
             </md-button>
 
-            <md-button class="link-nav" href="/logout" aria-label="Logout">
+            <md-button class="link-nav" href="{% url 'logout' %}" aria-label="Logout">
                 <ng-md-icon icon="logout"></ng-md-icon>
                 Logout
             </md-button>
         {% else %}
-            <md-button class="link-nav" href="/" aria-label="Home">
+            <md-button class="link-nav" href="{% url 'home' %}" aria-label="Home">
                 Home
             </md-button>
 

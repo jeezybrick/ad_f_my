@@ -98,7 +98,6 @@ class PublisherWebsiteSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
 
-        print(self.context['request'].data)
         # Get current publisher
         user = self.context['request'].user
         try:
