@@ -72,14 +72,5 @@
             </md-menu>
         {% endif %}
 
-        {% if user.is_authenticated and not publisher_auth_status  %}
-            <!-- Right side -->
-            <span flex></span>
-            <md-button class="link-nav" href="{% url 'logout' %}" aria-label="Logout">
-                <ng-md-icon class="nav-icons" icon="logout"></ng-md-icon>
-                            Logout
-            </md-button>
-        {% endif %}
-
     </div>
 </md-toolbar>

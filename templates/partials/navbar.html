@@ -17,7 +17,7 @@
 
             <md-button ng-click="vm.close()" class="link-nav" ui-sref-active="md-raised md-primary active-link-nav"
                        ui-sref="publisher.sites"
-                       aria-label="Sites">
+                       aria-label="Sites">0
                 Sites
             </md-button>
 
@@ -52,13 +52,5 @@
 
         {% endif %}
 
-        {% if user.is_authenticated and not publisher_auth_status %}
-            <!-- Right side -->
-            <span flex></span>
-            <md-button class="link-nav" href="{% url 'logout' %}" aria-label="Logout">
-                <ng-md-icon class="nav-icons" icon="logout"></ng-md-icon>
-                Logout
-            </md-button>
-        {% endif %}
     </md-content>
 </md-sidenav>

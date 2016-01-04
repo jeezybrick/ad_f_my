@@ -59,7 +59,9 @@ urlpatterns = patterns('',
         name='password_reset_complete'),
 
     # Social
-    url('', include('social.apps.django_app.urls', namespace='social'))
+    url('', include('social.apps.django_app.urls', namespace='social')),
+
+    url(r'^accounts/', include('allauth.urls')),
 
 
 )

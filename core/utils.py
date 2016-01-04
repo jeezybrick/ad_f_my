@@ -5,6 +5,7 @@ from django.conf import settings
 
 def send_email_with_form_data(data):
     email_to = ['ali@adfits.com', 'info@adfits.com']
+    # email_to = ['arsenij.sychev@gmail.com']
     email_from = settings.EMAIL_HOST_USER
     subject = 'REQUEST FOR ACCESS'
 
@@ -28,7 +29,6 @@ def send_email_with_form_data(data):
 
 
 def send_email_with_form_data_join(data):
-    print(data)
     email_to = ['ali@adfits.com', 'info@adfits.com']
     email_from = settings.EMAIL_HOST_USER
     subject = 'A NEW PUBLISHER HAS JOINED'

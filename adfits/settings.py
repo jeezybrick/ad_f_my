@@ -139,6 +139,7 @@ TEMPLATES = [
 ]
 INSTALLED_APPS = (
     'grappelli',
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -164,6 +165,8 @@ INSTALLED_APPS = (
     'rest_framework.authtoken',
     'rest_auth',
     'social.apps.django_app.default',
+    'allauth',
+    'allauth.account',
     # 'simple_email_confirmation',
 )
 
@@ -249,7 +252,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'smooker14@gmail.com'
 EMAIL_HOST_PASSWORD = '16931693'
-
 '''
 
 OLD_PASSWORD_FIELD_ENABLED = True
@@ -309,3 +311,8 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details'
 )
+
+# Some really nice defaults
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
