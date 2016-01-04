@@ -539,6 +539,8 @@ nav ul, nav ol {
     .section-join-network .widget-block-questions h2 {
       margin: 0;
       line-height: 0.7em; }
+    .section-join-network .widget-block-questions small {
+      color: #5d6491; }
     .section-join-network .widget-block h2 {
       color: #483276;
       font-weight: 300;

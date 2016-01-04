@@ -22,6 +22,12 @@
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" ng-repeat="sponsor in vm.sponsors_type">
                         <h2><em>[[ sponsor.type ]]</em></h2>
 
+                        <div class="checkbox">
+                            <md-checkbox ng-checked="exists(sponsor.type, selectedAll)" ng-click="toggleAll(selected, sponsor.type);vm.toggleSelectAll(sponsor.type, selectedAll)">
+                                <strong>Select all</strong>
+                            </md-checkbox>
+
+                        </div>
 
                         <div class="checkbox" ng-repeat="sponsor in sponsor.sponsor_set">
                             <md-checkbox ng-checked="exists(sponsor, selected)" ng-click="toggle(sponsor, selected)">

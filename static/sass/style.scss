@@ -676,8 +676,12 @@ nav {
     }
     &-questions {
       h2 {
+
         margin: 0;
         line-height: 0.7em;
+      }
+      small{
+        color: $common_purple;
       }
     }
     h2 {

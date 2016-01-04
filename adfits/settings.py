@@ -1,5 +1,7 @@
 # Django settings for adfits project.
 import os
+# import django
+# django.setup()
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 DEBUG = False
@@ -162,6 +164,7 @@ INSTALLED_APPS = (
     'rest_framework.authtoken',
     'rest_auth',
     'social.apps.django_app.default',
+    # 'simple_email_confirmation',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

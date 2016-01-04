@@ -133,7 +133,9 @@
   .join-network-wrapper {
     width: 95%; }
   .nav-logo {
-    margin-right: 0; } }
+    margin-right: 0; }
+  #div_id_accept {
+    margin-left: 18%; } }
 
 /* Landscape phones and portrait tablets */
 @media (max-width: 767px) {

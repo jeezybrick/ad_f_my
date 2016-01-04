@@ -29,7 +29,7 @@
                             <div class="controls">
                                 <input ng-model="vm.website.website_domain" class="form-control input-small"
                                        id="website_domain" name="website_domain"
-                                       placeholder="Enter your website domain" type="url" required>
+                                       placeholder="Enter your website domain beginning with http://" type="url" required>
 
                                 <div class="alert alert-danger" role="alert"
                                      ng-show="vm.addWebsiteProcessError.data.website_domain"
@@ -72,7 +72,7 @@
                         <div class="control-group">
                             <label class="control-label" for="categories">Choose multiple
                                 <strong>sub-categories</strong> for your website.
-                                <br>
+
                                 The best sub-categories to use are sub-sections from your website.</label>
 
                             <div class="controls">

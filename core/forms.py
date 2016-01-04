@@ -82,7 +82,8 @@ class JoinNetworkForm(forms.ModelForm):
         'password_mismatch': _("The two password fields didn't match."),
     }
     name = forms.CharField(label='', required=True)
-    email = forms.EmailField(label='', required=True)
+    email = forms.EmailField(label='', required=True,
+                             error_messages={'unique': 'Publisher with this Email already exists'})
     telephone = forms.CharField(required=True,
                                 label='',
                                 validators=[validators.RegexValidator(r'^\d{3}\-\d{3}\-\d{4}$',
@@ -200,7 +201,7 @@ class JoinNetworkForm(forms.ModelForm):
             self.cleaned_data.get('country'),
             self.cleaned_data.get('email'),
         )
-        send_mail(subject, message, email_from, email_to, fail_silently=False)
+       #  send_mail(subject, message, email_from, email_to, fail_silently=False)
 
 
 class PublisherProfileForm(forms.ModelForm):

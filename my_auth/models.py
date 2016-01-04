@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, AbstractBaseUser, PermissionsMixin
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+# from simple_email_confirmation import SimpleEmailConfirmationUserMixin
 from core.models import TimeStampedModel
 from my_auth.managers import CustomUserManager
 
