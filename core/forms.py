@@ -201,7 +201,8 @@ class JoinNetworkForm(forms.ModelForm):
             self.cleaned_data.get('country'),
             self.cleaned_data.get('email'),
         )
-       #  send_mail(subject, message, email_from, email_to, fail_silently=False)
+
+        send_mail(subject, message, email_from, email_to, fail_silently=False)
 
 
 class PublisherProfileForm(forms.ModelForm):
