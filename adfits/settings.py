@@ -149,14 +149,9 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'allauth',
+    'allauth.account',
     'gunicorn',
-    'campaign',
-    'client',
-    'sponsor',
-    'publisher',
-    'core',
-    'my_auth',
-
     'colorful',
     'login',
     'django_crontab',
@@ -165,8 +160,14 @@ INSTALLED_APPS = (
     'rest_framework.authtoken',
     'rest_auth',
     'social.apps.django_app.default',
-    'allauth',
-    'allauth.account',
+
+    'campaign',
+    'client',
+    'sponsor',
+    'publisher',
+    'core',
+    'my_auth',
+
     # 'simple_email_confirmation',
 )
 
@@ -243,8 +244,8 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'info@adfits.com'
 EMAIL_HOST_PASSWORD = 'WegB8PVa9J6qhDr6x_rx5w'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
 '''
+
 # Email setting
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
@@ -253,6 +254,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'smooker14@gmail.com'
 EMAIL_HOST_PASSWORD = '16931693'
 
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 OLD_PASSWORD_FIELD_ENABLED = True
 
@@ -263,6 +265,7 @@ AUTHENTICATION_BACKENDS = (
     'social.backends.github.GithubOAuth2',
     'social.backends.twitter.TwitterOAuth',
     'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 SOCIAL_AUTH_GITHUB_KEY = '2abee56deea44960508b'
@@ -317,3 +320,4 @@ SOCIAL_AUTH_PIPELINE = (
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'optional'
+LOGIN_REDIRECT_URL = '/'

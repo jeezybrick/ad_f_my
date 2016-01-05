@@ -188,8 +188,8 @@ class JoinNetworkForm(forms.ModelForm):
         return user
 
     def send_email(self):
-        email_to = ['ali@adfits.com', 'info@adfits.com']
-        # email_to = ['arsenij.sychev@gmail.com']
+        # email_to = ['ali@adfits.com', 'info@adfits.com']
+        email_to = ['smooker14@gmail.com']
         email_from = settings.EMAIL_HOST_USER
         subject = 'A NEW PUBLISHER HAS JOINED'
 

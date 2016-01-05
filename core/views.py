@@ -40,7 +40,12 @@ class JoinNetworkView(FormView):
         user = authenticate(email=email, password=password)
 
         if user is not None:
+
+            from allauth.account.utils import complete_signup
+            from allauth.account import app_settings
+            complete_signup(self.request, user, app_settings.EMAIL_VERIFICATION, '/')
+
             login(self.request, user)
             return HttpResponseRedirect(self.get_success_url())
-       #  messages.error(self.request, "Wrong username and Password combination.")
+        # messages.error(self.request, "Wrong username and Password combination.")
         return super(JoinNetworkView, self).form_valid(form)
