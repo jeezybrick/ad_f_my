@@ -3,18 +3,13 @@
 
 <nav id="sidebar-nav">
     <ul class="nav-2" id="nav-3">
-        <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="#widget-section">How it works</a></li>
-        <li class="cta"><a href="#section-form">REQUEST ACCESS</a></li>
-        <li class="social text-center">
-            <a href="https://twitter.com/ADfits" target="_blank">
-                <img height="45" src="{% static 'images/greytwitter.png' %}" alt="Twitter">
-            </a>
+        <li><a href="#widget-section">Contact Us</a></li>
+        <li id="request-acc-link">
+            <a href="{% url 'publisher_login' %}">PUBLISHER LOGIN</a>
         </li>
-        <li class="social text-center">
-            <a href="https://www.linkedin.com/company/ad-fits" target="_blank">
-                <img height="45" src="{% static 'images/greylinkedin.png' %}" alt="linkedIn">
-            </a>
+        <li id="request-acc-link" class="cta">
+            <a href="{% url 'join-network' %}">JOIN NETWORK</a>
         </li>
 
     </ul>
