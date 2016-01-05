@@ -6,50 +6,52 @@
 {% block title %} Login {% endblock %}
 {% block content %}
 
-{% include 'partials/nav_material.html' %}
+    {% include 'partials/nav_material.html' %}
 
-    <div ng-cloak class="wrapper-form col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-controller="PublisherLoginController as vm">
-    {% if not user.is_authenticated %}
-        <!-- form for login-->
-        <form name="loginForm" action="#" class="form-horizontal action_add" role="form" method="POST">
-            {% csrf_token %}
-            <div class="row">
-                <div class="publisher-login-block" layout="row" layout-align="center center" flex="auto">
-                    <div layout="column">
-                        <h3>Publisher Login</h3>
-                        <md-divider class="login-divider"></md-divider>
-                        <md-input-container class="md-icon-float md-icon-right md-block" flex>
-                            <label>Enter your email</label>
-                            <input required name="email" ng-model="user.email" type="email">
-                            <md-icon md-svg-src="{% static 'images/icons/profile_black.svg' %}"></md-icon>
-                            <div ng-messages="loginForm.email.$error">
-                                <div ng-message="required">This is required.</div>
-                            </div>
-                        </md-input-container>
-                        <md-input-container class="md-icon-float md-icon-right md-block" flex>
-                            <label>Password</label>
-                            <input required name="password" ng-model="user.password" type="password">
-                            <md-icon md-svg-src="{% static 'images/icons/lock_black.svg' %}"></md-icon>
+    <div ng-cloak class="wrapper-form col-lg-12 col-md-12 col-sm-12 col-xs-12"
+         ng-controller="PublisherLoginController as vm">
+        {% if not user.is_authenticated %}
+            <!-- form for login-->
+            <form name="loginForm" action="#" class="form-horizontal action_add" role="form" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="publisher-login-block" layout="row" layout-align="center center" flex="auto">
+                        <div layout="column">
+                            <h3>Publisher Login</h3>
+                            <md-divider class="login-divider"></md-divider>
+                            <md-input-container class="md-icon-float md-icon-right md-block" flex>
+                                <label>Enter your email</label>
+                                <input required name="email" ng-model="user.email" type="email">
+                                <md-icon md-svg-src="{% static 'images/icons/profile_black.svg' %}"></md-icon>
+                                <div ng-messages="loginForm.email.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-icon-float md-icon-right md-block" flex>
+                                <label>Password</label>
+                                <input required name="password" ng-model="user.password" type="password">
+                                <md-icon md-svg-src="{% static 'images/icons/lock_black.svg' %}"></md-icon>
 
-                            <div ng-messages="loginForm.password.$error">
-                                <div ng-message="required">This is required.</div>
-                            </div>
-                        </md-input-container>
+                                <div ng-messages="loginForm.password.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="publisher-login-button-wrapper" layout="row" layout-align="center center" flex="auto">
-                <md-button type="submit" ng-disabled="loginForm.$invalid"
-                           class="login-btn md-raised md-primary publisher-login-button" ng-click="vm.sendLoginData()">
-                    Publisher Login
-                </md-button>
-            </div>
-            <section id="socialLoginForm" layout="row" layout-align="center center" flex="auto">
-                    <a href="{%  url 'social:begin' 'facebook' %}" ng-click="vm.sendLoginData()">
+                <div class="publisher-login-button-wrapper" layout="row" layout-align="center center" flex="auto">
+                    <md-button type="submit" ng-disabled="loginForm.$invalid"
+                               class="login-btn md-raised md-primary publisher-login-button"
+                               ng-click="vm.sendLoginData()">
+                        Publisher Login
+                    </md-button>
+                </div>
+                <section id="socialLoginForm" layout="row" layout-align="center center" flex="auto">
+                    <a href="{% url 'social:begin' 'facebook' %}" ng-click="vm.sendLoginData()">
                         <i class="fa fa-facebook-official fa-4x"></i>
                     </a>
-                <!--
+                    <!--
                     <a href="{%  url 'social:begin' 'twitter' %}" ng-click="vm.sendLoginData()">
                         <i class="fa fa-twitter fa-4x"></i>
                     </a>
@@ -57,15 +59,22 @@
                 </section>
 
                 <div layout="row" layout-align="center center" flex="auto" ng-show="vm.loginProcess">
-                    <md-progress-circular class="login-progress-circular md-accent md-hue-2" md-mode="indeterminate" md-diameter="80"></md-progress-circular>
+                    <md-progress-circular class="login-progress-circular md-accent md-hue-2" md-mode="indeterminate"
+                                          md-diameter="80"></md-progress-circular>
                 </div>
 
-        </form>
+            </form>
         {% else %}
             <div layout="row" layout-align="center center" flex="auto">
                 <h2>You are already logged in!</h2>
             </div>
         {% endif %}
+
+        <h1 layout="row" layout-align="center center" class="md-accent md-hue-2" ng-show="vm.publisherLoadError"
+            style="color: #F44336">
+            [[ vm.publisherLoadError ]]
+        </h1>
+
         <!-- Flash error messages -->
         <div class="col-lg-12">
             <div flash-message="4000"></div>
@@ -80,7 +89,7 @@
 
 {% block js %}
     <script>
-        $('.container').css('width','100%').css('padding','0 30px');
+        $('.container').css('width', '100%').css('padding', '0 30px');
     </script>
 
     <script src="{% static 'js/controllers/PublisherLoginController.js' %}"></script>

@@ -26,7 +26,7 @@ function PublisherLoginController(Publisher, $state) {
 
 
     }, function (error) {
-
+        vm.publisherLoadError = error.data[0];
     });
 
 
