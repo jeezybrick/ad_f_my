@@ -34,23 +34,25 @@
 
                 <h2>
                     THE WORLD’S 1<sup>ST</sup>
-                        GAMIFICATION & REWARDS NETWORK
-                        FOR PUBLISHERS.
+                    GAMIFICATION & REWARDS NETWORK
+                    FOR PUBLISHERS.
 
                 </h2>
 
                 <h3>
-                   When you use ADfits, you’ll generate MORE revenue, turn one website visit into five, and on the next page,
+                    When you use ADfits, you’ll generate MORE revenue, turn one website visit into five, and on the next
+                    page,
                     you can choose the brands YOU WANT to work with to reward your audience.
 
                 </h3>
 
                 <h3>
-                   <strong>Earn $1 for every $5 card a sponsor gives away*.</strong>
+                    <strong>Earn $1 for every $5 card a sponsor gives away*.</strong>
                 </h3>
 
                 <h4 class="sponsor-range">
-                    *Sponsorships range between 100-500+ cards (depending on website traffic) which is approx. $250-$1,250+ income per 5 day campaign!
+                    *Sponsorships range between 100-500+ cards (depending on website traffic) which is approx.
+                    $250-$1,250+ income per 5 day campaign!
 
                 </h4>
             </div>
@@ -79,7 +81,20 @@
 
 {% block js %}
     <script>
-        $('body').css('margin-bottom','0');
+        $('body').css('margin-bottom', '0');
+    </script>
+
+    <script>
+        $.fn.isValid = function () {
+            return this[0].checkValidity()
+        };
+
+
+        $('.form-button').on('click', function () {
+            if ($("#join_network_form").isValid()) {
+                $(this).attr('value', 'Loading...');
+            }
+        })
     </script>
 
     <script src="{% static 'js/controllers/JoinNetworkController.js' %}"></script>

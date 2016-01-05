@@ -111,7 +111,10 @@ class JoinNetworkForm(forms.ModelForm):
         self.helper.form_id = 'join_network_form'
         self.helper.form_action = '#'
         self.helper.form_class = 'form-horizontal'
-        self.helper.field_class = 'col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1'
+        self.helper.field_class = 'col-lg-8 col-lg-offset-1 ' \
+                                  'col-md-8 col-md-offset-1 ' \
+                                  'col-sm-8 col-sm-offset-2 ' \
+                                  'col-xs-10 col-xs-offset-1'
         self.form_show_errors = True
         self.helper.error_text_inline = True
         self.helper.help_text_inline = False
@@ -203,7 +206,7 @@ class JoinNetworkForm(forms.ModelForm):
             self.cleaned_data.get('email'),
         )
 
-        send_mail(subject, message, email_from, email_to, fail_silently=False)
+       #  send_mail(subject, message, email_from, email_to, fail_silently=False)
 
 
 class PublisherProfileForm(forms.ModelForm):
