@@ -235,7 +235,7 @@ AUTH_USER_MODEL = 'my_auth.MyUser'
 
 # boostrap 3 for crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
-
+'''
 # Email settings
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.mandrillapp.com'
@@ -252,7 +252,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'smooker14@gmail.com'
 EMAIL_HOST_PASSWORD = '16931693'
-'''
+
 
 OLD_PASSWORD_FIELD_ENABLED = True
 
@@ -300,13 +300,14 @@ SOCIAL_AUTH_TWITTER_PROFILE_EXTRA_PARAMS = {
 SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/publisher/'
 
 SOCIAL_AUTH_PIPELINE = (
+    # 'my_auth.pipeline.redirect_to_login_form',  # my pipeline
     'social.pipeline.social_auth.social_details',
     'social.pipeline.social_auth.social_uid',
     'social.pipeline.social_auth.auth_allowed',
     'social.pipeline.social_auth.social_user',
     'social.pipeline.user.get_username',
     'social.pipeline.user.create_user',
-    # 'my_auth.pipeline.redirect_to_login_form',  # my pipeline
+
     'social.pipeline.social_auth.associate_user',
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details'
