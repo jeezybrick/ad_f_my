@@ -745,6 +745,8 @@ nav {
 
 #id_accept {
   transform: scale(1.8);
+  -moz-transform: scale(1.8);
+  -moz-appearance: none;
   margin-right: 10px;
 }
 

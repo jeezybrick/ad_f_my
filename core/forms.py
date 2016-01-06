@@ -6,7 +6,7 @@ from django.contrib.auth.models import AbstractBaseUser
 from django.conf import settings
 from django.core.mail import send_mail
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit, Layout, Field
+from crispy_forms.layout import Submit, Layout, Field, Div, HTML
 from core.models import Country
 from publisher.models import Publisher
 
@@ -122,6 +122,7 @@ class JoinNetworkForm(forms.ModelForm):
 
         self.helper.add_input(Submit('submit', _('ACCESS NETWORK'),
                                      css_class='form-button'))
+       #  self.helper['accept'].wrap(Field, template="partials/checkbox_template.html")
 
         self.helper.layout = Layout(
             Field(
@@ -159,11 +160,13 @@ class JoinNetworkForm(forms.ModelForm):
             )
 
             ,
-
             Field(
                 'accept',
-                placeholder=_('')
+                placeholder=_(''),
+                # template='partials/checkbox_template.html',
+
             )
+            ,
 
         )
 

@@ -586,6 +586,8 @@ nav ul, nav ol {
   -webkit-transform: scale(1.8);
       -ms-transform: scale(1.8);
           transform: scale(1.8);
+  -moz-transform: scale(1.8);
+  -moz-appearance: none;
   margin-right: 10px; }
 
 #hint_id_accept {
