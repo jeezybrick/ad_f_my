@@ -583,12 +583,11 @@ nav ul, nav ol {
   padding-left: 15px; }
 
 #id_accept {
+  -ms-transform: scale(1.8);
+      transform: scale(1.8);
   -webkit-transform: scale(1.8);
-      -ms-transform: scale(1.8);
-          transform: scale(1.8);
   -moz-transform: scale(1.8);
   -moz-appearance: none;
-  -webkit-appearance: none;
   margin-right: 10px; }
 
 #hint_id_accept {
