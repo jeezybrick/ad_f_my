@@ -459,9 +459,17 @@ header.header-is-scrolled {
   }
   &:active {
     outline: none !important;
+    background: #5ec8f2 !important;
   }
   &:visited {
     outline: none !important;
+    background: #5ec8f2 !important;
+  }
+  &:active {
+
+  }
+  &:link {
+
   }
 
 }

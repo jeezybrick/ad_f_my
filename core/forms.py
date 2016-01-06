@@ -92,8 +92,8 @@ class JoinNetworkForm(forms.ModelForm):
 
     accept = forms.BooleanField(label='', required=True,
                                 help_text="<span class=\"accept-joint-network-text\">I accept the "
-                                          "<a href=\"/terms/\">Terms & Conditions</a> and "
-                                          "<a href=\"/policy/\">Privacy Policy.</a></span>")
+                                          "<a href=\"/terms/\" target=\"_blank\">Terms & Conditions</a> and "
+                                          "<a href=\"/policy/\" target=\"_blank\">Privacy Policy.</a></span>")
 
     password1 = forms.CharField(label='', min_length=8,
                                 widget=forms.PasswordInput())
@@ -191,8 +191,8 @@ class JoinNetworkForm(forms.ModelForm):
         return user
 
     def send_email(self):
-        email_to = ['ali@adfits.com', 'info@adfits.com']
-        # email_to = ['smooker14@gmail.com']
+        # email_to = ['ali@adfits.com', 'info@adfits.com']
+        email_to = ['smooker14@gmail.com']
         email_from = settings.EMAIL_HOST_USER
         subject = 'A NEW PUBLISHER HAS JOINED'
 
@@ -206,7 +206,7 @@ class JoinNetworkForm(forms.ModelForm):
             self.cleaned_data.get('email'),
         )
 
-       #  send_mail(subject, message, email_from, email_to, fail_silently=False)
+        send_mail(subject, message, email_from, email_to, fail_silently=False)
 
 
 class PublisherProfileForm(forms.ModelForm):

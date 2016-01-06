@@ -372,9 +372,11 @@ header.header-is-scrolled .logo-container a {
   .form-button:hover {
     background: #483276; }
   .form-button:active {
-    outline: none !important; }
+    outline: none !important;
+    background: #5ec8f2 !important; }
   .form-button:visited {
-    outline: none !important; }
+    outline: none !important;
+    background: #5ec8f2 !important; }
 
 .clear-button {
   background: grey;
