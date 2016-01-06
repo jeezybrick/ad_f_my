@@ -583,12 +583,9 @@ nav ul, nav ol {
   padding-left: 15px; }
 
 #id_accept {
-  -ms-transform: scale(1.8);
-      transform: scale(1.8);
-  -webkit-transform: scale(1.8);
-  -moz-transform: scale(1.8);
-  -moz-appearance: none;
-  margin-right: 10px; }
+  width: 22px;
+  height: 22px;
+  bottom: 13px; }
 
 #hint_id_accept {
   margin-top: 0;
