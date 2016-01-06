@@ -34,10 +34,12 @@ function PublisherController(Sponsor, Publisher, Website, $log, $location, $stat
         }
 
         vm.website = Website.query(function (response) {
-
-            vm.getCodeScriptText = '<div id="ad-adfits" pub_id="' + vm.publisher.id + '" web_id="' + vm.website.results[0].id + '">' +
+            if(response){
+                vm.getCodeScriptText = '<div id="ad-adfits" pub_id="' + vm.publisher.id + '" web_id="' + vm.website.results[0].id + '">' +
                 '<script src="http://adfits.com/static/js/tag/ads.js"></script>' +
                 '</div>';
+            }
+
         }, function (error) {
 
             vm.websitesLoadError = error.data;
