@@ -741,8 +741,10 @@ nav ul, nav ol {
 md-toast.md-error-toast-theme {
   background-color: #a94442; }
 
-#socialLoginForm > a {
-  margin: 0 5px; }
+#socialLoginForm {
+  margin-right: 40px; }
+  #socialLoginForm > a {
+    margin: 0 5px; }
 
 .pager li > button {
   display: inline-block;
@@ -808,3 +810,6 @@ md-toast.md-error-toast-theme {
 
 #edit-website-form .add-logo {
   margin-bottom: 40px; }
+
+.wrapper-form {
+  left: 25px; }
