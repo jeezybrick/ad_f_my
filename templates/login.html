@@ -25,6 +25,7 @@
                                 <md-icon md-svg-src="{% static 'images/icons/profile_black.svg' %}"></md-icon>
                                 <div ng-messages="loginForm.email.$error">
                                     <div ng-message="required">This is required.</div>
+                                    <div ng-message="email">Please enter a valid email address.</div>
                                 </div>
                             </md-input-container>
                             <md-input-container class="md-icon-float md-icon-right md-block" flex>
