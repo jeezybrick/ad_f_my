@@ -813,3 +813,5 @@ md-toast.md-error-toast-theme {
 
 .wrapper-form {
   left: 25px; }
+  .wrapper-form #progCirc {
+    margin-right: 30px; }

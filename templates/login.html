@@ -59,7 +59,7 @@
                      -->
                 </section>
 
-                <div layout="row" layout-align="center center" flex="auto" ng-show="vm.loginProcess">
+                <div layout="row" id="progCirc" layout-align="center center" flex="auto" ng-show="vm.loginProcess">
                     <md-progress-circular class="login-progress-circular md-accent md-hue-2" md-mode="indeterminate"
                                           md-diameter="80"></md-progress-circular>
                 </div>
@@ -71,7 +71,7 @@
             </div>
         {% endif %}
 
-        <h1 layout="row" layout-align="center center" class="md-accent md-hue-2" ng-show="vm.publisherLoadError"
+        <h1 layout="row"  layout-align="center center" class="md-accent md-hue-2" ng-show="vm.publisherLoadError"
             style="color: #F44336">
             [[ vm.publisherLoadError ]]
         </h1>
