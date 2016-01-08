@@ -5,7 +5,7 @@
             <md-button md-no-ink class="md-raised md-warn" ng-click="vm.showJsTag($event)">Show js tag</md-button>
         </div>
 
-        <form name="edit_website" class="form-horizontal" method="post" action=".">
+        <form id="edit-website-form" name="edit_website" class="form-horizontal" method="post" action=".">
 
             <div layout="row" layout-align="center center" flex="auto">
 
@@ -29,6 +29,47 @@
                         </div>
                     </md-input-container>
 
+                    <md-chips ng-model="vm.category_default" md-autocomplete-snap
+                              md-transform-chip="vm.transformChip($chip, 'parent')"
+                              md-require-match="vm.autocompleteDemoRequireMatch">
+                        <md-autocomplete
+                                md-selected-item="vm.selectedCategoryParent"
+                                md-search-text="vm.searchTextParent"
+                                md-items="category in vm.querySearch(vm.searchTextParent, 'parent')"
+                                md-item-text="category.industry_type"
+                                placeholder="Website category">
+                            <span md-highlight-text="vm.searchTextParent">[[ category.industry_type ]]</span>
+                        </md-autocomplete>
+                        <md-chip-template>
+                                        <span>
+                                          <strong>[[$chip.industry_type]]</strong>
+                                          <em ng-show="$chip.type.length && !$chip.type_public.length">([[$chip.type]])</em>
+                                          <em ng-show="$chip.type_public.length">([[$chip.type_public]])</em>
+                                        </span>
+                        </md-chip-template>
+                    </md-chips>
+
+                    <md-chips ng-model="vm.category_sub" md-autocomplete-snap
+                              md-transform-chip="vm.transformChip($chip, 'sub')"
+                              md-require-match="vm.autocompleteDemoRequireMatch"
+                              md-separator-keys="vm.keys">
+                        <md-autocomplete
+                                md-selected-item="vm.selectedCategorySub"
+                                md-search-text="vm.searchTextSub"
+                                md-items="category in vm.querySearch(vm.searchTextSub, 'sub')"
+                                md-item-text="category.industry_type"
+                                placeholder="Website sub category">
+                            <span md-highlight-text="vm.searchTextSub">[[ category.industry_type ]]</span>
+                        </md-autocomplete>
+                        <md-chip-template>
+                                        <span>
+                                          <strong>[[$chip.industry_type]]</strong>
+                                          <em ng-show="$chip.type.length && !$chip.type_public.length">([[$chip.type]])</em>
+                                          <em ng-show="$chip.type_public.length">([[$chip.type_public]])</em>
+                                        </span>
+                        </md-chip-template>
+                    </md-chips>
+
                     <md-input-container class="md-block" flex>
                         <label>Twitter</label>
                         <input name="twitter_name" ng-model="vm.website.twitter_name" type="text">
@@ -41,10 +82,11 @@
 
                     </md-input-container>
 
-
-                    <label>Website logo</label>
-                    <input ngf-select id="website_logo" name="website_logo" ng-model="vm.website_logo"
-                           type="file">
+                    <div class="md-block add-logo" flex>
+                        <label>Website logo</label>
+                        <input ngf-select id="website_logo" name="website_logo" ng-model="vm.website_logo"
+                               type="file">
+                    </div>
 
                     <div layout="row">
                         <md-button class="md-raised md-primary" ng-click="vm.editWebsite()"

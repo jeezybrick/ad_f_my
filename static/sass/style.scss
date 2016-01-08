@@ -1029,3 +1029,12 @@ md-toast.md-error-toast-theme {
 .edit-website-wrapper{
   margin-bottom: 160px;
 }
+
+#edit-website-form{
+  md-chips .md-chips {
+    margin: 18px 0;
+  }
+  .add-logo {
+    margin-bottom: 40px;
+  }
+}
