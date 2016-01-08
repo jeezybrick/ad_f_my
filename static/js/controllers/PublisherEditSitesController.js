@@ -38,7 +38,7 @@ function PublisherEditSitesController(Website, Publisher, $log, $state, $statePa
                 '<script src="http://adfits.com/static/js/tag/ads.js"></script>' +
                 '</div>';
 
-            for(var i=0;i < vm.website.industry.length;i++){
+            for(var i=0;i<vm.website.industry.length;i++){
                 if(angular.equals(vm.website.industry[i].type, 'default')){
                     vm.category_default.push(vm.website.industry[i]);
                 }else{
