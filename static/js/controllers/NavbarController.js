@@ -25,7 +25,7 @@ function NavbarController($mdSidenav, $log) {
     }
 
     function close() {
-        $log.debug("'''''''''''''");
+       // $log.debug("'''''''''''''");
         $mdSidenav('right').close()
             .then(function () {
                 // $log.debug("close LEFT is done");
