@@ -20,7 +20,7 @@ $(document).ready(function () {
     });
 });
 
-
+$(document).ready(function () {
     $.ajax({
         url: '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
         dataType: 'script',
@@ -37,8 +37,9 @@ $(document).ready(function () {
         }
     });
 
-    $( ".adsbygoogle" ).remove();
-    $( "ins[data-ad-client]" ).remove();
-    $( "ins[data-ad-slot]" ).remove();
-    $( "ins[data-ad-format]" ).remove();
+    $(".adsbygoogle").remove();
+    $("ins[data-ad-client]").remove();
+    $("ins[data-ad-slot]").remove();
+    $("ins[data-ad-format]").remove();
     //$( 'script[src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]' ).remove();
+});
