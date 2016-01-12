@@ -34,8 +34,7 @@ function PublisherEditSitesController(Website, Publisher, $log, $state, $statePa
     vm.website = Website.get({id: $stateParams.id}, function (response) {
         vm.publisher = Publisher.query(function (response) {
 
-            vm.jsTag = '<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>' +
-                '<div id="ad-adfits" pub_id="' + vm.publisher.id + '" web_id="' + vm.website.id + '">' +
+            vm.jsTag = '<div id="ad-adfits" pub_id="' + vm.publisher.id + '" web_id="' + vm.website.id + '">' +
                 '<script src="http://adfits.com/static/js/tag/ads.js"></script>' +
                 '</div>';
 
