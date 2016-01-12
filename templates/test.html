@@ -17,6 +17,8 @@
         url: '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
         dataType: 'script',
         beforeSend: function (xhr, opts) {
+            $( 'script[src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]' ).remove();
+
             console.log(xhr);
             if (1 == 1) //just an example
             {
