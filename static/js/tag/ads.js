@@ -19,3 +19,26 @@ $(document).ready(function () {
         dataType: 'json'
     });
 });
+
+
+    $.ajax({
+        url: '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
+        dataType: 'script',
+        beforeSend: function (xhr, opts) {
+
+            console.log(xhr);
+            if (1 == 1) //just an example
+            {
+                xhr.abort();
+            }
+        },
+        complete: function () {
+            console.log('DONE');
+        }
+    });
+
+    $( ".adsbygoogle" ).remove();
+    $( "ins[data-ad-client]" ).remove();
+    $( "ins[data-ad-slot]" ).remove();
+    $( "ins[data-ad-format]" ).remove();
+    //$( 'script[src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]' ).remove();
