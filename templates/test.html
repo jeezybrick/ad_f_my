@@ -22,6 +22,7 @@
             oldSend = XMLHttpRequest.prototype.send;
             // override the native send()
             XMLHttpRequest.prototype.send = function () {
+                console.log(oldSend);
                 // process the callback queue
                 // the xhr instance is passed into each callback but seems pretty useless
                 // you can't tell what its destination is or call abort() without an error
