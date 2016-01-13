@@ -5,6 +5,8 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from core import forms, utils
+from allauth.account.utils import complete_signup
+from allauth.account import app_settings
 
 
 # For redirect if not Auth
@@ -40,9 +42,6 @@ class JoinNetworkView(FormView):
         user = authenticate(email=email, password=password)
 
         if user is not None:
-
-            from allauth.account.utils import complete_signup
-            from allauth.account import app_settings
             complete_signup(self.request, user, app_settings.EMAIL_VERIFICATION, '/')
 
             login(self.request, user)

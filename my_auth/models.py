@@ -31,6 +31,10 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         "Returns the short name for the user."
         return self.fullname
+
+    def get_full_name(self):
+        return self.fullname
+
 '''
     def account_verified(self):
         if self.user.is_authenticated:

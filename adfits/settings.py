@@ -2,6 +2,7 @@
 import os
 # import django
 # django.setup()
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 DEBUG = False
@@ -159,6 +160,7 @@ INSTALLED_APPS = (
     'rest_framework.authtoken',
     'rest_auth',
     'social.apps.django_app.default',
+    'djrill',
 
     'campaign',
     'client',
@@ -216,7 +218,7 @@ LOGGING = {
 }
 
 GRAPPELLI_ADMIN_TITLE = "Ad Fits Admin"
-MANDRILL_API_KEY = "hUOpJAHnhJGoZhFzKeWLog"
+# MANDRILL_API_KEY = "hUOpJAHnhJGoZhFzKeWLog"
 
 CRONJOBS = [
     ('0 10 * * *', 'client.cron.send_coupon_notification'),
@@ -237,12 +239,29 @@ AUTH_USER_MODEL = 'my_auth.MyUser'
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # Email settings
+'''
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.mandrillapp.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'info@adfits.com'
 EMAIL_HOST_PASSWORD = '-Si3CqhjhJ-6Vxu-hoBnig'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+MANDRILL_API_KEY = "-Si3CqhjhJ-6Vxu-hoBnig"
+'''
+'''
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'smooker14@gmail.com'
+EMAIL_HOST_PASSWORD = 'jeezy1693'
+'''
+
+
+# MANDRILL
+MANDRILL_API_KEY = "-Si3CqhjhJ-6Vxu-hoBnig"
+EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
+DEFAULT_FROM_EMAIL = "info@adfits.com"
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
