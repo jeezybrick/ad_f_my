@@ -11,6 +11,7 @@
 
 <script>
     function addXMLRequestCallback(callback) {
+        console.log(XMLHttpRequest.prototype.send);
         var oldSend, i;
         if (XMLHttpRequest.callbacks) {
             // we've already overridden send() so just add the callback
