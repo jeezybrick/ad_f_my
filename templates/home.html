@@ -176,6 +176,7 @@
         });
 
         $(document).ready(function () {
+            var staticValue = 120+30;
             $.fn.scrollBottom = function () {
                 return $(document).height() - this.scrollTop() - this.height();
             };
@@ -183,10 +184,12 @@
             $(window).scroll(function () {
 
                 if ($(this).scrollTop() >= 280 && $(this).scrollBottom() > 120) {
-                    $('#scroller').fadeIn();
+                    $('#scroller').fadeIn().css('bottom', '30px');
                 }
                 else if ($(this).scrollBottom() <= 120) {
-                    $('#scroller').fadeOut();
+                    //$('#scroller').fadeOut();
+
+                    $('#scroller').css('bottom', staticValue - $(this).scrollBottom());
                 }else{
                     $('#scroller').fadeOut();
                 }
