@@ -184,12 +184,10 @@
             $(window).scroll(function () {
 
                 if ($(this).scrollTop() >= 280 && $(this).scrollBottom() > 120) {
-                    $('#scroller').fadeIn().css('bottom', '30px');
+                    $('#scroller').fadeIn().css('bottom', '30px').removeClass('animated infinite pulse');
                 }
                 else if ($(this).scrollBottom() <= 120) {
-                    //$('#scroller').fadeOut();
-
-                    $('#scroller').css('bottom', staticValue - $(this).scrollBottom());
+                    $('#scroller').css('bottom', staticValue - $(this).scrollBottom()).addClass('animated infinite pulse');
                 }else{
                     $('#scroller').fadeOut();
                 }
