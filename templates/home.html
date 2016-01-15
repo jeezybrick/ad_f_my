@@ -176,12 +176,21 @@
         });
 
         $(document).ready(function () {
+            $.fn.scrollBottom = function () {
+                return $(document).height() - this.scrollTop() - this.height();
+            };
+
             $(window).scroll(function () {
-                if ($(this).scrollTop() >= 280) {
+
+                if ($(this).scrollTop() >= 280 && $(this).scrollBottom() > 120) {
                     $('#scroller').fadeIn();
-                } else {
+                }
+                else if ($(this).scrollBottom() <= 120) {
+                    $('#scroller').fadeOut();
+                }else{
                     $('#scroller').fadeOut();
                 }
+
             });
             $('#scroller').click(function () {
                 $('body,html').animate({
