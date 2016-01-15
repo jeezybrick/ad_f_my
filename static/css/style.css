@@ -45,7 +45,7 @@ header {
     float: left; }
   header .logo-container a {
     display: block;
-    background: url("/static/images/compression/logo_white.png") no-repeat;
+    background: url("/static/images/logo_white.png") no-repeat;
     background-size: 220px 120px;
     height: 120px;
     width: 220px; }
