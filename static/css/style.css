@@ -815,3 +815,13 @@ md-toast.md-error-toast-theme {
   left: 25px; }
   .wrapper-form #progCirc {
     margin-right: 30px; }
+
+#scroller {
+  position: fixed;
+  bottom: 30px;
+  right: 60px;
+  background: transparent url("/static/images/to_top_arrow.png") no-repeat left top;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: none; }

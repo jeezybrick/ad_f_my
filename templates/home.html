@@ -112,7 +112,8 @@
                         </h1>
 
                         <h3>
-                            Deepen ad engagement, build your audience, and instantly fuel the growth of your email subscriber list.
+                            Deepen ad engagement, build your audience, and instantly fuel the growth of your email
+                            subscriber list.
                         </h3>
 
                         <h3>
@@ -145,6 +146,9 @@
 
         </section>
     </div>
+    <!-- to top scroll -->
+    <div id="scroller"></div>
+
     {% include 'partials/sidebar.html' %}
 
     {% include 'partials/footer.html' %}
@@ -169,6 +173,22 @@
 
         $('.experience-button').click(function () {
             document.getElementById('section-form').scrollIntoView();
+        });
+
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() >= 280) {
+                    $('#scroller').fadeIn();
+                } else {
+                    $('#scroller').fadeOut();
+                }
+            });
+            $('#scroller').click(function () {
+                $('body,html').animate({
+                    scrollTop: 0
+                }, 400);
+                return false;
+            });
         });
     </script>
 {% endblock %}
