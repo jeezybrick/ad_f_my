@@ -57,7 +57,7 @@ header {
   }
   .logo-container a {
     display: block;
-    background: url('/static/images/logo_white.png') no-repeat;
+    background: url('/static/images/compression/logo_white.png') no-repeat;
     background-size: 220px 120px;
     height: 120px;
     width: 220px;
@@ -135,7 +135,7 @@ header.header-is-scrolled {
   }
   .logo-container a {
     display: block;
-    background: url('/static/images/logo1.png') no-repeat;
+    background: url('/static/images/compression/logo1.png') no-repeat;
     background-size: 220px 120px;
     height: 120px;
     width: 220px;
@@ -144,7 +144,7 @@ header.header-is-scrolled {
 
 #header-second.header-is-scrolled .logo-container a {
   display: block;
-  background: url('/static/images/logo2.png') no-repeat;
+  background: url('/static/images/compression/logo2.png') no-repeat;
   background-size: 220px 120px;
   height: 120px;
   width: 220px;
@@ -361,7 +361,7 @@ header.header-is-scrolled {
   height: 790px;
   text-align: center;
   color: #fff;
-  background: url('/static/images/main_background.jpg') center;
+  background: url('/static/images/compression/main_background.jpg') center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -409,7 +409,7 @@ header.header-is-scrolled {
   height: 900px;
   text-align: center;
   color: #fff;
-  background: url('/static/images/image%232-mountains-1195width.png') center;
+  background: url('/static/images/compression/image%232-mountains-1195width.png') center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -718,7 +718,7 @@ nav {
   .form-block {
     height: 100%;
     margin-top: 0;
-    background: url('/static/images/join-network-bg.jpeg') center;
+    background: url('/static/images/compression/join-network-bg.jpeg') center;
     background-size: cover;
     padding: 10px 15px;
     h3, h4 {
@@ -1051,7 +1051,7 @@ md-toast.md-error-toast-theme {
     position: fixed;
     bottom: 30px;
     right: 60px;
-    background: transparent url('/static/images/to_top_arrow.png') no-repeat left top;
+    background: transparent url('/static/images/compression/to_top_arrow.png') no-repeat left top;
     background-size: 52px 52px;
     width: 52px;
     height: 52px;
