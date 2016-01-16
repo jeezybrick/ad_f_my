@@ -122,7 +122,9 @@ header.header-is-scrolled .logo-container a {
   .hero-title h1 {
     font-weight: 300; }
   .hero-title h2 {
-    font-weight: 500; }
+    font-weight: 500;
+    -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s; }
 
 .container {
   width: 80%; }
@@ -827,3 +829,9 @@ md-toast.md-error-toast-theme {
   cursor: pointer;
   display: none;
   z-index: 9999999999; }
+
+.hideme {
+  opacity: 0; }
+
+.visible {
+  opacity: 1; }

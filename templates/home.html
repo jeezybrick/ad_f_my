@@ -17,11 +17,11 @@
                 <div class="row">
                     <div class="hero-title col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                        <h1>
+                        <h1 class="animated fadeIn">
                             Deliver 10x digital ad performance to your clients.
                         </h1>
 
-                        <h2>Effortlessly.</h2>
+                        <h2 class="animated fadeIn">Effortlessly.</h2>
                     </div>
                 </div>
             </div>
@@ -157,6 +157,22 @@
 
 
 {% block js %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-viewport-checker/1.8.7/jquery.viewportchecker.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $('.image-half').addClass("hideme").viewportChecker({
+                classToAdd: 'visible animated fadeIn',
+                offset: 300
+            });
+            $('.text-half').addClass("hideme").viewportChecker({
+                classToAdd: 'visible animated fadeIn',
+                offset: 100
+            });
+        });
+    </script>
 
     <script>
         <!-- Scrolled header -->
