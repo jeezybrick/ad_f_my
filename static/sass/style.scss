@@ -157,6 +157,7 @@ header.header-is-scrolled {
   }
   h2 {
     font-weight: 500;
+    animation-delay: 0.6s
   }
 }
 
@@ -1058,3 +1059,10 @@ md-toast.md-error-toast-theme {
     display:none;
     z-index: 9999999999;
 }
+
+ .hideme{
+ opacity:0;
+ }
+ .visible{
+ opacity:1;
+ }
