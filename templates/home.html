@@ -8,151 +8,162 @@
 
 {% block content %}
 
-    {% include 'partials/header.html' %}
+    <!-- postloader -->
+    <div class="main-preloader-wrapper">
+        <div class="main-preloader">
+            <md-progress-circular class="md-accent md-hue-2" md-mode="indeterminate"
+                                  md-diameter="120"></md-progress-circular>
+        </div>
 
-    <div class="main-content">
-        <!-- First section -->
-        <section class="section_1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    </div>
+
+    <div class="main-content-wrapper hidden">
+
+        {% include 'partials/header.html' %}
+
+        <div class="main-content">
+            <!-- First section -->
+            <section class="section_1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="hero-title col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                            <h1 class="animated fadeInDown">
+                                Deliver 10x digital ad performance to your clients.
+                            </h1>
+
+                            <h2 class="animated fadeIn">Effortlessly.</h2>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <div class="container">
                 <div class="row">
-                    <div class="hero-title col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- Second section -->
+                    <section class="section_2 col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                        <h1 class="animated fadeInDown">
-                            Deliver 10x digital ad performance to your clients.
-                        </h1>
+                        <div class="section-content">
+                            <div class="image-half col-lg-4 col-md-5 col-sm-12 col-xs-12 text-center">
+                                <img height="256" src="{% static 'images/icon#1-loyalty.png' %}" alt="Loyalty">
+                            </div>
+                            <div class="text-half col-lg-8 col-md-7 col-sm-12 col-xs-12">
+                                <h1>
+                                    Generate visitor loyalty through rewards
+                                </h1>
 
-                        <h2 class="animated fadeIn">Effortlessly.</h2>
-                    </div>
-                </div>
-            </div>
-        </section>
+                                <h3>
+                                    Build visitor loyalty with the element of serendipitous rewards.
+                                    Develop your audience with key demographic data for
+                                    retargeting and future ad campaigns.
+                                </h3>
+                            </div>
 
-        <div class="container">
-            <div class="row">
-                <!-- Second section -->
-                <section class="section_2 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                    <div class="section-content">
-                        <div class="image-half col-lg-4 col-md-5 col-sm-12 col-xs-12 text-center">
-                            <img height="256" src="{% static 'images/icon#1-loyalty.png' %}" alt="Loyalty">
                         </div>
+                    </section>
+                </div>
+
+            </div>
+
+
+            <section class="section_3 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="container">
+                    <div class="section-content">
                         <div class="text-half col-lg-8 col-md-7 col-sm-12 col-xs-12">
                             <h1>
-                                Generate visitor loyalty through rewards
+                                Increase premium ad revenue streams
                             </h1>
 
                             <h3>
-                                Build visitor loyalty with the element of serendipitous rewards.
-                                Develop your audience with key demographic data for
-                                retargeting and future ad campaigns.
+                                Go beyond RTB inventory. Effortlessly launch gamification ad
+                                campaigns that deliver 10x digital ad performance to your
+                                clients, enabling you to close more deals.
                             </h3>
                         </div>
-
+                        <div class="image-half col-lg-4 col-md-5 col-sm-12 col-xs-12 text-center">
+                            <img height="256" src="{% static 'images/icon#2-revenue.png' %}" alt="Revenue">
+                        </div>
                     </div>
-                </section>
-            </div>
+                </div>
 
-        </div>
+            </section>
 
-
-        <section class="section_3 col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="container">
-                <div class="section-content">
-                    <div class="text-half col-lg-8 col-md-7 col-sm-12 col-xs-12">
-                        <h1>
-                            Increase premium ad revenue streams
-                        </h1>
+                <div class="row">
+                    <section class="section_4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="section-content">
 
-                        <h3>
-                            Go beyond RTB inventory. Effortlessly launch gamification ad
-                            campaigns that deliver 10x digital ad performance to your
-                            clients, enabling you to close more deals.
-                        </h3>
-                    </div>
-                    <div class="image-half col-lg-4 col-md-5 col-sm-12 col-xs-12 text-center">
-                        <img height="256" src="{% static 'images/icon#2-revenue.png' %}" alt="Revenue">
-                    </div>
+                            <div class="image-half col-lg-4 col-md-5 col-sm-12 col-xs-12 text-center">
+                                <img height="256" src="{% static 'images/icon#3-performance.png' %}" alt="Performance">
+                            </div>
+
+                            <div class="text-half col-lg-8 col-md-7 col-sm-12 col-xs-12">
+                                <h1>
+                                    Deliver jaw-dropping KPIs and massive ROI
+                                </h1>
+
+                                <h3>
+                                    Report key metrics that will get your clients salivating for
+                                    more. Why sell abysmal click-through-rates when you can
+                                    guarantee CPA driven ad performance?
+                                </h3>
+                            </div>
+
+                        </div>
+                    </section>
                 </div>
             </div>
 
-        </section>
-
-        <div class="container">
-            <div class="row">
-                <section class="section_4 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="section-content">
-
-                        <div class="image-half col-lg-4 col-md-5 col-sm-12 col-xs-12 text-center">
-                            <img height="256" src="{% static 'images/icon#3-performance.png' %}" alt="Performance">
-                        </div>
-
-                        <div class="text-half col-lg-8 col-md-7 col-sm-12 col-xs-12">
+            <section id="widget-section" class="section_5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="container">
+                    <div class="section-content turn-key-section">
+                        <div class="text-half col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <h1>
-                                Deliver jaw-dropping KPIs and massive ROI
+                                Turn-key Ad Gamification & Rewards
                             </h1>
 
                             <h3>
-                                Report key metrics that will get your clients salivating for
-                                more. Why sell abysmal click-through-rates when you can
-                                guarantee CPA driven ad performance?
+                                Deepen ad engagement, build your audience, and instantly fuel the growth of your email
+                                subscriber list.
                             </h3>
+
+                            <h3>
+                                You can even spread “the love” with social media
+                                amplification tools built right into the ad unit!
+                            </h3>
+                            <button class="experience-button">EXPERIENCE ALL OF IT</button>
                         </div>
-
+                        <div class="widget-wrapper col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                            {% include 'partials/widget.html' %}
+                        </div>
                     </div>
-                </section>
-            </div>
-        </div>
+                </div>
 
-        <section id="widget-section" class="section_5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="container">
-                <div class="section-content turn-key-section">
-                    <div class="text-half col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            </section>
+
+            <section id="section-form" class="section_6 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+
+                <div class="section-form row">
+                    <div class="text-half col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <h1>
-                            Turn-key Ad Gamification & Rewards
+                            Unlock the power of digital ads 3.0
                         </h1>
-
-                        <h3>
-                            Deepen ad engagement, build your audience, and instantly fuel the growth of your email
-                            subscriber list.
-                        </h3>
-
-                        <h3>
-                            You can even spread “the love” with social media
-                            amplification tools built right into the ad unit!
-                        </h3>
-                        <button class="experience-button">EXPERIENCE ALL OF IT</button>
-                    </div>
-                    <div class="widget-wrapper col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
-                        {% include 'partials/widget.html' %}
                     </div>
                 </div>
-            </div>
-
-        </section>
-
-        <section id="section-form" class="section_6 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-
-            <div class="section-form row">
-                <div class="text-half col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <h1>
-                        Unlock the power of digital ads 3.0
-                    </h1>
+                <div class="form-block">
+                    {% load crispy_forms_tags %}
+                    {% crispy form %}
                 </div>
-            </div>
-            <div class="form-block">
-                {% load crispy_forms_tags %}
-                {% crispy form %}
-            </div>
 
-        </section>
+            </section>
+        </div>
+        <!-- to top scroll -->
+        <div id="scroller"></div>
+
+        {% include 'partials/sidebar.html' %}
+
+        {% include 'partials/footer.html' %}
     </div>
-    <!-- to top scroll -->
-    <div id="scroller"></div>
-
-    {% include 'partials/sidebar.html' %}
-
-    {% include 'partials/footer.html' %}
-
 {% endblock %}
 
 
@@ -161,7 +172,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-viewport-checker/1.8.7/jquery.viewportchecker.min.js"></script>
 
     <script>
+
+        window.onload = function () {
+            $('.main-preloader-wrapper').addClass('hidden');
+            $('.main-content-wrapper').removeClass('hidden');
+        };
+
         $(document).ready(function () {
+
 
             $('.image-half').addClass("hideme").viewportChecker({
                 classToAdd: 'visible animated fadeIn',
@@ -192,7 +210,7 @@
         });
 
         $(document).ready(function () {
-            var staticValue = 120+30;
+            var staticValue = 120 + 30;
             $.fn.scrollBottom = function () {
                 return $(document).height() - this.scrollTop() - this.height();
             };
@@ -204,7 +222,7 @@
                 }
                 else if ($(this).scrollBottom() <= 120) {
                     $('#scroller').css('bottom', staticValue - $(this).scrollBottom()).addClass('animated infinite pulse');
-                }else{
+                } else {
                     $('#scroller').fadeOut();
                 }
 
