@@ -7,78 +7,93 @@
 {% endblock %}
 
 {% block content %}
-
-    <div class="main-content join-network-wrapper container" ng-cloak>
-
-        <!-- -->
-        <section class="section-join-network col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-            <div class="widget-block col-lg-5 col-md-6 col-sm-12 col-xs-12">
-                <div class="row">
-                    <div class="widget-block-logo col-lg-5 col-md-6 col-sm-4 text-center">
-                        <img src="{% static 'images/adfits.png' %}" alt="adfits">
-                    </div>
-                    <div class="widget-block-questions col-lg-7 col-md-6 col-sm-8">
-                        <h2>
-                            <small>Questions?</small>
-                        </h2>
-                        <h2>
-                            <small>Call us at 647-328-8001.</small>
-                        </h2>
-                    </div>
-                </div>
-
-                <div class="join-network-widget-wrapper">
-                    {% include 'partials/widget.html' %}
-                </div>
-
-                <h2>
-                    THE WORLD’S 1<sup>ST</sup>
-                    GAMIFICATION & REWARDS NETWORK
-                    FOR PUBLISHERS.
-
-                </h2>
-
-                <h3>
-                    When you use ADfits, you’ll generate MORE revenue, turn one website visit into five, and on the next
-                    page,
-                    you can choose the brands YOU WANT to work with to reward your audience.
-
-                </h3>
-
-                <h3>
-                    <strong>Earn $2.50 for every $5 card a sponsor gives away*.</strong>
-                </h3>
-
-                <h4 class="sponsor-range">
-                    *Sponsorships range between 100-500+ cards (depending on website traffic) which is approx.
-                    $250-$1,250+ income per 5 day campaign!
-
-                </h4>
-            </div>
-
-            <div class="form-block col-lg-7 col-md-6 col-sm-12 col-xs-12">
-                <div id="triangle-right" class="hidden-sm hidden-xs"></div>
-                <h3 class="col-lg-offset-1 col-md-offset-1 col-sm-offset-2 col-xs-offset-1">
-                    Join to use the power of gamification & rewards to monetize your website.
-
-                </h3>
-
-                <h4 class="col-lg-offset-1 col-md-offset-1 col-sm-offset-2 col-xs-offset-1">
-                    Please fill out all fields.
-                </h4>
-
-                {% crispy form %}
-            </div>
-
-        </section>
+    <!-- preloader -->
+    <div class="main-preloader-wrapper">
+        <div class="main-preloader">
+            <md-progress-circular class="md-accent md-hue-2" md-mode="indeterminate"
+                                  md-diameter="120"></md-progress-circular>
+        </div>
 
     </div>
 
+    <div class="main-content-wrapper hidden">
+        <div class="main-content join-network-wrapper container" ng-cloak>
+
+            <!-- -->
+            <section class="section-join-network col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                <div class="widget-block col-lg-5 col-md-6 col-sm-12 col-xs-12">
+                    <div class="row">
+                        <div class="widget-block-logo col-lg-5 col-md-6 col-sm-4 text-center">
+                            <img src="{% static 'images/adfits.png' %}" alt="adfits">
+                        </div>
+                        <div class="widget-block-questions col-lg-7 col-md-6 col-sm-8">
+                            <h2>
+                                <small>Questions?</small>
+                            </h2>
+                            <h2>
+                                <small>Call us at 647-328-8001.</small>
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div class="join-network-widget-wrapper">
+                        {% include 'partials/widget.html' %}
+                    </div>
+
+                    <h2>
+                        THE WORLD’S 1<sup>ST</sup>
+                        GAMIFICATION & REWARDS NETWORK
+                        FOR PUBLISHERS.
+
+                    </h2>
+
+                    <h3>
+                        When you use ADfits, you’ll generate MORE revenue, turn one website visit into five, and on the
+                        next
+                        page,
+                        you can choose the brands YOU WANT to work with to reward your audience.
+
+                    </h3>
+
+                    <h3>
+                        <strong>Earn $2.50 for every $5 card a sponsor gives away*.</strong>
+                    </h3>
+
+                    <h4 class="sponsor-range">
+                        *Sponsorships range between 100-500+ cards (depending on website traffic) which is approx.
+                        $250-$1,250+ income per 5 day campaign!
+
+                    </h4>
+                </div>
+
+                <div class="form-block col-lg-7 col-md-6 col-sm-12 col-xs-12">
+                    <div id="triangle-right" class="hidden-sm hidden-xs"></div>
+                    <h3 class="col-lg-offset-1 col-md-offset-1 col-sm-offset-2 col-xs-offset-1">
+                        Join to use the power of gamification & rewards to monetize your website.
+
+                    </h3>
+
+                    <h4 class="col-lg-offset-1 col-md-offset-1 col-sm-offset-2 col-xs-offset-1">
+                        Please fill out all fields.
+                    </h4>
+
+                    {% crispy form %}
+                </div>
+
+            </section>
+
+        </div>
+    </div>
 {% endblock %}
 
 {% block js %}
     <script>
+        window.onload = function () {
+            $('.main-preloader-wrapper').addClass('hidden');
+            $('.main-content-wrapper').removeClass('hidden');
+        };
+
         $('body').css('margin-bottom', '0');
     </script>
 
