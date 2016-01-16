@@ -13,7 +13,7 @@ body {
 .main-preloader-wrapper {
   width: 100%;
   height: 100vh;
-  background-color: #5d6491; }
+  background-color: lightgrey; }
   .main-preloader-wrapper .main-preloader {
     position: fixed;
     top: 50%;
