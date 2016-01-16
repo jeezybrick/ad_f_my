@@ -180,14 +180,19 @@
 
         $(document).ready(function () {
 
-
-            $('.image-half').addClass("hideme").viewportChecker({
-                classToAdd: 'visible animated fadeIn',
-                offset: 300
+            $('.section_2 .text-half, .section_4 .text-half').addClass("hideme").viewportChecker({
+                classToAdd: 'visible animated fadeInRight',
+                offset: 200
             });
-            $('.text-half').addClass("hideme").viewportChecker({
-                classToAdd: 'visible animated fadeIn',
-                offset: 100
+
+            $('.section_3 .text-half, .section_5 .text-half').addClass("hideme").viewportChecker({
+                classToAdd: 'visible animated fadeInLeft',
+                offset: 200
+            });
+
+            $('.section_6 .text-half').addClass("hideme").viewportChecker({
+                classToAdd: 'visible animated fadeInDown',
+                offset: 200
             });
         });
     </script>
