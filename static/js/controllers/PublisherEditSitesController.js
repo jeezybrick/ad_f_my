@@ -2,13 +2,16 @@ angular
     .module('myApp')
     .controller('PublisherEditSitesController', PublisherEditSitesController);
 
-function PublisherEditSitesController(Website, Publisher, $log, $state, $stateParams, Upload, $mdDialog, $mdConstant, $http) {
+function PublisherEditSitesController($scope, Website, Publisher, $log, $state,
+                                      $stateParams, Upload, $mdDialog, $mdConstant,
+                                      $http, $mdMedia) {
     var vm = this;
     vm.editWebsite = editWebsite;
     vm.clear = clear;
     vm.showJsTag = showJsTag;
     vm.transformChip = transformChip;
     vm.querySearch = querySearch;
+    vm.showAdvanced = showAdvanced;
 
     vm.publisher = {};
     vm.website = {};
@@ -38,10 +41,10 @@ function PublisherEditSitesController(Website, Publisher, $log, $state, $statePa
                 '<script src="http://adfits.com/static/js/tag/ads.js"></script>' +
                 '</div>';
 
-            for(var i=0;i<vm.website.industry.length;i++){
-                if(angular.equals(vm.website.industry[i].type, 'default')){
+            for (var i = 0; i < vm.website.industry.length; i++) {
+                if (angular.equals(vm.website.industry[i].type, 'default')) {
                     vm.category_default.push(vm.website.industry[i]);
-                }else{
+                } else {
                     vm.category_sub.push(vm.website.industry[i]);
                 }
             }
@@ -69,45 +72,46 @@ function PublisherEditSitesController(Website, Publisher, $log, $state, $statePa
         );
     }
 
+    function showAdvanced(ev) {
+        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+        $mdDialog.show({
+            controller: DialogController,
+            templateUrl: '/static/pages/partials/modals/js-tag.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true,
+            fullscreen: useFullScreen,
+            locals: {
+                jsTag: vm.jsTag
+            }
+        })
+            .then(function (answer) {
+                $scope.status = 'You said the information was "' + answer + '".';
+            }, function () {
+                $scope.status = 'You cancelled the dialog.';
+            });
+        $scope.$watch(function () {
+            return $mdMedia('xs') || $mdMedia('sm');
+        }, function (wantsFullScreen) {
+            $scope.customFullscreen = (wantsFullScreen === true);
+        });
+    }
 
     function editWebsite() {
         vm.editWebsiteProcess = true;
 
-        /*vm.website.$update(function (response) {
-
-
-        }, function (error) {
-
-        });*/
-
-        /*if (vm.website.website_logo === null) {
-            var sendData = {
-                website_name: vm.website.website_name,
-                website_domain: vm.website.website_domain,
-            };
-
-        } else {
-
-            var sendData = {
-                website_name: vm.website.website_name,
-                website_domain: vm.website.website_domain,
-                website_logo: vm.website.website_logo,
-            };
-
-        }*/
-
         Upload.upload({
             url: '/api/publisher/website/' + $stateParams.id + '/',
             data: {
-                website_name:vm.website.website_name,
-                website_domain:vm.website.website_domain,
+                website_name: vm.website.website_name,
+                website_domain: vm.website.website_domain,
                 category_parent: vm.category_default,
                 category_sub: vm.category_sub,
-                twitter_name:vm.website.twitter_name,
-                facebook_page:vm.website.facebook_page,
+                twitter_name: vm.website.twitter_name,
+                facebook_page: vm.website.facebook_page,
                 avg_page_views: vm.website.avg_page_views,
             },
-            file:vm.website_logo,
+            file: vm.website_logo,
             method: 'PUT'
         }).then(function (resp) {
             vm.editWebsiteProcess = false;
@@ -146,4 +150,17 @@ function PublisherEditSitesController(Website, Publisher, $log, $state, $statePa
 
     }
 
+}
+
+function DialogController($scope, $mdDialog, jsTag) {
+    $scope.getCodeScriptText = jsTag;
+    $scope.hide = function () {
+        $mdDialog.hide();
+    };
+    $scope.cancel = function () {
+        $mdDialog.cancel();
+    };
+    $scope.answer = function (answer) {
+        $mdDialog.hide(answer);
+    };
 }
