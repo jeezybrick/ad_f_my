@@ -105,6 +105,7 @@ function PublisherEditSitesController(Website, Publisher, $log, $state, $statePa
                 category_sub: vm.category_sub,
                 twitter_name:vm.website.twitter_name,
                 facebook_page:vm.website.facebook_page,
+                avg_page_views: vm.website.avg_page_views,
             },
             file:vm.website_logo,
             method: 'PUT'
