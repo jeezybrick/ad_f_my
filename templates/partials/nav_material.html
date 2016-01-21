@@ -1,59 +1,73 @@
 {% load staticfiles %}
 
-<md-toolbar class="publisher-toolbar" ng-controller="NavbarController as vm" ng-cloak>
+<md-toolbar class="publisher-toolbar" ng-controller="NavbarController as vm"
+            ng-cloak>
 
     <div hide-gt-sm layout="row" layout-align="space-between center">
         <span></span>
-        <img height="65" width="125" class="nav-logo" src="{% static 'images/logo2.png' %}" alt="logo">
+        <img height="65" width="125" class="nav-logo"
+             src="{% static 'images/logo2.png' %}" alt="logo">
 
-        <md-button class="md-icon-button" aria-label="Menu" ng-click="vm.toggleSideNav()">
+        <md-button class="md-icon-button" aria-label="Menu"
+                   ng-click="vm.toggleSideNav()">
             <ng-md-icon icon="menu"></ng-md-icon>
         </md-button>
     </div>
 
     <div class="md-toolbar-tools" hide-xs hide-sm>
 
-        <img height="65" width="125" class="nav-logo" src="{% static 'images/logo2.png' %}" alt="logo">
+        <img height="65" width="125" class="nav-logo"
+             src="{% static 'images/logo2.png' %}" alt="logo">
 
         {% if user.is_authenticated and publisher_auth_status %}
-            <md-button class="link-nav" ui-sref-active="md-raised md-primary active-link-nav"
+            <md-button class="link-nav"
+                       ui-sref-active="md-raised md-primary active-link-nav"
                        ui-sref="publisher.dashboard" aria-label="Dashboard">
                 Dashboard
             </md-button>
 
-            <md-button class="link-nav" ui-sref-active="md-raised md-primary active-link-nav" ui-sref="publisher.sites"
+            <md-button class="link-nav"
+                       ui-sref-active="md-raised md-primary active-link-nav"
+                       ui-sref="publisher.sites"
                        aria-label="Sites">
                 Sites
             </md-button>
 
-            <md-button class="link-nav" ui-sref-active="md-raised md-primary active-link-nav"
+            <md-button class="link-nav"
+                       ui-sref-active="md-raised md-primary active-link-nav"
                        ui-sref="publisher.audience" aria-label="Campaigns">
                 Campaigns
             </md-button>
 
             <!-- Right side -->
             <span flex></span>
-            <md-button class="link-nav" ui-sref-active="md-raised md-primary active-link-nav"
+            <md-button class="link-nav"
+                       ui-sref-active="md-raised md-primary active-link-nav"
                        href="{% url 'faq' %}" aria-label="FAQ">
                 FAQ
             </md-button>
 
             <md-menu md-position-mode="target-right target">
-                <md-button aria-label="Open phone interactions menu" class="md-icon-button"
+                <md-button aria-label="Open phone interactions menu"
+                           class="md-icon-button"
                            ng-click="vm.openMenu($mdOpenMenu, $event)">
                     <ng-md-icon icon="settings" md-menu-origin></ng-md-icon>
                 </md-button>
                 <md-menu-content width="4">
                     <md-menu-item>
-                        <md-button class="link-nav" ui-sref-active="md-raised md-primary active-link-nav"
-                                   ui-sref="publisher.profile" aria-label="Profile">
+                        <md-button class="link-nav"
+                                   ui-sref-active="md-raised md-primary active-link-nav"
+                                   ui-sref="publisher.profile"
+                                   aria-label="Profile">
                             Profile
                         </md-button>
                     </md-menu-item>
 
                     <md-menu-item>
-                        <md-button class="link-nav" ui-sref-active="md-raised md-primary active-link-nav"
-                                    ui-sref="publisher.changepassword" aria-label="Change Password">
+                        <md-button class="link-nav"
+                                   ui-sref-active="md-raised md-primary active-link-nav"
+                                   ui-sref="publisher.changepassword"
+                                   aria-label="Change Password">
                             Change Password
                         </md-button>
                     </md-menu-item>
@@ -61,8 +75,10 @@
                     <md-menu-divider></md-menu-divider>
 
                     <md-menu-item>
-                        <md-button class="link-nav" href="{% url 'logout' %}" aria-label="Logout">
-                            <ng-md-icon class="nav-icons" icon="logout"></ng-md-icon>
+                        <md-button class="link-nav" href="{% url 'logout' %}"
+                                   aria-label="Logout">
+                            <ng-md-icon class="nav-icons"
+                                        icon="logout"></ng-md-icon>
                             Logout
                         </md-button>
 
@@ -70,6 +86,16 @@
 
                 </md-menu-content>
             </md-menu>
+        {% endif %}
+
+        {% if user.is_staff %}
+            <!-- Right side -->
+            <span flex></span>
+            <md-button class="link-nav"
+                       ui-sref-active="md-raised md-primary active-link-nav"
+                       href="{% url 'logout' %}" aria-label="Logout">
+                Logout
+            </md-button>
         {% endif %}
 
     </div>
